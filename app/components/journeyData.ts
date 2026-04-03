@@ -15,57 +15,59 @@ export interface JourneyNode {
 export const journeyNodes: JourneyNode[] = [
   {
     id: "asc-swe",
-    period: "2019",
+    period: "2019–20",
     role: "Associate, Software Engineer",
-    brief: "Email-to-pay. Learning the full stack.",
+    brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
     pill: "Capital One",
     type: "career",
   },
   {
     id: "sr-swe",
-    period: "2020",
+    period: "2020–22",
     role: "Senior Associate, Software Engineer",
-    brief: "Batch pipelines. Real-time APIs. Started asking why.",
+    brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
     pill: "Capital One",
     type: "career",
   },
   {
     id: "sa-xd",
-    period: "2022",
-    role: "SA, Experience Design",
-    brief: "Pivoted. HR tools for better talent decisions.",
+    period: "2022–23",
+    role: "Senior Associate, Experience Design",
+    title: "PATH: 360 Feedback",
+    brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
-    type: "career",
+    type: "project",
   },
   {
     id: "path-360",
     period: "2023–25",
     role: "Principal Associate, Experience Design",
-    title: "PATH: 360 Feedback",
-    brief: "How do you make peer feedback fair at enterprise scale?",
+    title: "PATH",
+    brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
     pill: "Capital One",
     type: "project",
   },
   {
     id: "path-people",
-    period: "2025–",
+    period: "Jun 2025–",
     role: "Manager, Experience Design",
-    title: "PATH: People Leader",
-    brief: "How do you give managers the clarity to actually develop their teams?",
+    title: "Discover Migration",
+    brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
     pill: "Capital One",
+    comingSoon: true,
     type: "project",
   },
   {
     id: "bloom",
-    period: "2024",
+    period: "2026",
     title: "Bloom",
-    brief: "What if relationship patterns showed up in how you care for plants?",
+    brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
     pill: "Personal Project",
     type: "horizon",
   },
   {
     id: "time-tracker",
-    period: "2025 →",
+    period: "2026 →",
     title: "Time Tracking Dashboard",
     brief: "How do you help people see where their time is actually going?",
     pill: "Personal Project",
@@ -75,25 +77,35 @@ export const journeyNodes: JourneyNode[] = [
 ];
 
 export const WAVE_PATH_D = [
-  "M300,30",
-  "C300,110 400,130 400,200",
-  "C400,280 200,300 200,380",
-  "C200,460 400,480 400,560",
-  "C400,700 140,810 140,950",
-  "C140,1150 460,1300 460,1500",
-  "C460,1700 140,1800 140,2000",
-  "C140,2180 460,2270 460,2450",
+  "M 300,20",
+  // Career nodes — tight, quick zigzag (varied x endpoints)
+  "C 380,55 490,90 490,130",    // → node 1 right (x=490)
+  "C 490,190 80,220 80,260",    // → node 2 left  (x=80)
+  "C 80,310 550,340 550,370",   // → node 3 right (x=550)
+  // Loop / teardrop between SA XD and PA XD
+  "C 550,440 460,490 400,500",  // ease down-left
+  "C 300,510 220,500 200,455",  // swing left and up
+  "C 180,410 320,390 390,430",  // curve back right (going backward — loop starts)
+  "C 460,470 460,540 380,560",  // cross back down — loop closes
+  "C 300,590 160,625 50,630",   // sweep left → node 4 (x=50)
+  // Condensed curve: PA XD → Manager
+  "C 50,710 490,780 490,840",   // → node 5 right (x=490)
+  // Curves: Manager → Bloom → Time Tracking
+  "C 490,930 200,980 75,1010",   // → node 6 left  (x=75)
+  "C 75,1080 530,1110 530,1160", // → node 7 right (x=530)
+  // Tail — surfer rides to "still riding"
+  "C 530,1200 300,1240 300,1260",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 2650;
+export const SVG_H = 1260;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 400, y: 200,  side: "right" },
-  { x: 200, y: 380,  side: "left"  },
-  { x: 400, y: 560,  side: "right" },
-  { x: 140, y: 950,  side: "left"  },
-  { x: 460, y: 1500, side: "right" },
-  { x: 140, y: 2000, side: "left"  },
-  { x: 460, y: 2450, side: "right" },
+  { x: 490, y: 130,  side: "right" },
+  { x: 80,  y: 260,  side: "left"  },
+  { x: 550, y: 370,  side: "right" },
+  { x: 50,  y: 630,  side: "left"  },
+  { x: 490, y: 840,  side: "right" },
+  { x: 75,  y: 1010, side: "left"  },
+  { x: 530, y: 1160, side: "right" },
 ];

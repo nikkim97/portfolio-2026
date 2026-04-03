@@ -40,18 +40,10 @@ export function FadeIn({
   );
 }
 
-export function EditorialSection({ number, label }: { number: string; label: string }) {
+export function EditorialSection({ number: _number, label }: { number: string; label: string }) {
   const { ref, visible } = useFadeInOnScroll(0.1);
   return (
     <div ref={ref} className="flex items-center gap-5">
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={visible ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, ease: EASE }}
-        className="text-[11px] font-normal tabular-nums text-[var(--midtone)] shrink-0"
-      >
-        {number}
-      </motion.span>
       <motion.div
         initial={{ scaleX: 0 }}
         animate={visible ? { scaleX: 1 } : {}}
@@ -72,19 +64,22 @@ export function EditorialSection({ number, label }: { number: string; label: str
 }
 
 export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
-  const isGreen = skill === "Claude Code";
   return (
     <motion.span
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay, ease: EASE }}
-      className={[
-        "text-[11px] px-3 py-1.5 cursor-default transition-colors duration-200 tracking-wide",
-        isGreen
-          ? "font-normal bg-[var(--green)] text-[var(--background)]"
-          : "font-light text-[var(--midtone)] border border-[var(--border)] hover:border-[var(--midtone)] hover:text-[var(--foreground)]",
-      ].join(" ")}
+      className="text-[11px] px-3 py-1.5 cursor-default tracking-wide font-light"
+      style={{
+        color: "var(--foreground)",
+        borderRadius: "18px",
+        border: "1px solid rgba(255,255,255,0.65)",
+        background: "rgba(255,255,255,0.32)",
+        backdropFilter: "blur(22px)",
+        WebkitBackdropFilter: "blur(22px)",
+        boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
+      }}
     >
       {skill}
     </motion.span>

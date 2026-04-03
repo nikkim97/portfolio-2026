@@ -3,9 +3,8 @@
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import NMLogo from "./components/NMLogo";
 import SurferJourney from "./components/SurferJourney";
-import { EASE, FadeIn, EditorialSection, SkillPill } from "./components/ui";
+import { EASE, FadeIn, SkillPill } from "./components/ui";
 
 const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
 
@@ -45,7 +44,7 @@ export default function Home() {
             style={{ backgroundColor: "rgba(250,248,245,0.92)", backdropFilter: "blur(12px)", ...FONT }}
           >
             <div className="max-w-5xl mx-auto px-8 sm:px-16 h-12 flex items-center justify-between">
-              <a href="#"><NMLogo size={28} /></a>
+              <a href="#" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">NM</a>
               <div className="flex items-center gap-8">
                 {[
                   { label: "Work", href: "#work" },
@@ -70,8 +69,40 @@ export default function Home() {
         )}
       </AnimatePresence>
 
+      {/* ── Page-level background blobs (fixed so they persist across all sections) ── */}
+      <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+        {/* Hero — yellow orb top-right */}
+        <div style={{
+          position: "absolute", top: "-5vh", right: "5%",
+          width: 560, height: 560, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(228,210,80,0.36) 0%, transparent 68%)",
+          filter: "blur(14px)",
+        }} />
+        {/* Hero — terracotta mid */}
+        <div style={{
+          position: "absolute", top: "45vh", right: "22%",
+          width: 320, height: 320, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(193,123,90,0.16) 0%, transparent 70%)",
+          filter: "blur(18px)",
+        }} />
+        {/* Work section — yellow orb left */}
+        <div style={{
+          position: "absolute", top: "110vh", left: "2%",
+          width: 480, height: 480, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(228,210,80,0.28) 0%, transparent 68%)",
+          filter: "blur(16px)",
+        }} />
+        {/* Work section — terracotta right */}
+        <div style={{
+          position: "absolute", top: "180vh", right: "0%",
+          width: 400, height: 400, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(193,123,90,0.14) 0%, transparent 70%)",
+          filter: "blur(20px)",
+        }} />
+      </div>
+
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex overflow-hidden" style={FONT}>
+      <section className="relative min-h-screen flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
         {/* Left: narrow photo column */}
         <motion.div
@@ -131,10 +162,10 @@ export default function Home() {
                 const mm = String(now.getMonth() + 1).padStart(2, "0");
                 const dd = String(now.getDate()).padStart(2, "0");
                 return (
-                  <>
+                  <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
                     <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>{mm}</p>
-                    <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>{dd}.</p>
-                  </>
+                    <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>{dd}<span style={{ color: "var(--accent)" }}>.</span></p>
+                  </div>
                 );
               })()}
             </motion.div>
@@ -148,53 +179,24 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.6, ease: EASE }}
               className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
             >
-              Designer · Engineer · Builder
+              Designer · Engineer · <span style={{ color: "var(--accent)", fontWeight: 600 }}>Builder</span> · Surfer
             </motion.p>
 
-            <div style={{ overflow: "hidden" }}>
-              <motion.h1
-                initial={{ y: "106%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.72, ease: EASE }}
-                className="font-semibold text-[var(--foreground)]"
-                style={{ fontSize: "clamp(56px, 8.5vw, 118px)", letterSpacing: "-0.03em", lineHeight: 0.88 }}
-              >
-                Niharika<span style={{ color: "var(--accent)" }}>.</span>
-              </motion.h1>
+            <div className="flex flex-col">
+              {["I solve problems", "that matter to people."].map((line, i) => (
+                <div key={i} style={{ overflow: "hidden" }}>
+                  <motion.p
+                    initial={{ y: "106%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1, delay: 0.72 + i * 0.1, ease: EASE }}
+                    className="font-light text-[var(--foreground)]"
+                    style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
+                  >
+                    {line}{i === 1 && <span style={{ color: "var(--accent)" }}></span>}
+                  </motion.p>
+                </div>
+              ))}
             </div>
-
-            {/* Mirror reflection */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.15, ease: EASE }}
-              aria-hidden
-              style={{
-                transform: "scaleY(-1)",
-                WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.13) 0%, transparent 60%)",
-                maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.13) 0%, transparent 60%)",
-                userSelect: "none",
-                pointerEvents: "none",
-                marginTop: 2,
-              }}
-            >
-              <span
-                className="font-semibold text-[var(--foreground)] block"
-                style={{ fontSize: "clamp(56px, 8.5vw, 118px)", letterSpacing: "-0.03em", lineHeight: 0.88 }}
-              >
-                Mishra<span style={{ color: "var(--accent)" }}>.</span>
-              </span>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
-              className="font-light text-[var(--foreground)] mt-5"
-              style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}
-            >
-              I choose problems that matter to people.
-            </motion.p>
           </div>
 
           {/* Nav links */}
@@ -223,11 +225,11 @@ export default function Home() {
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <main className="flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={FONT}>
+      <main className="relative flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={{ ...FONT, zIndex: 1 }}>
 
         {/* ── 01 WORK ── */}
-        <section id="work" className="py-28 sm:py-36 flex flex-col gap-16">
-          <EditorialSection number="01" label="Work" />
+        <section id="work" className="py-12 sm:py-16 flex flex-col gap-16">
+
           <FadeIn>
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}>
               Every project started with a human question.
@@ -237,8 +239,8 @@ export default function Home() {
         </section>
 
         {/* ── 02 ABOUT ── */}
-        <section id="about" className="py-28 sm:py-36 flex flex-col gap-20">
-          <EditorialSection number="02" label="About" />
+        <section id="about" className="py-12 sm:py-16 flex flex-col gap-20">
+
 
           <div className="grid md:grid-cols-2 gap-16 md:gap-24">
             <FadeIn>
@@ -246,12 +248,12 @@ export default function Home() {
                 The choices weren't accidental.
               </p>
             </FadeIn>
-            <div className="flex flex-col gap-5 text-sm font-light text-[var(--midtone)] leading-[1.9]">
+            <div className="flex flex-col gap-5 text-sm font-light leading-[1.9]" style={{ color: "#3A3530" }}>
               {[
-                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural — I wanted to get closer to the why behind how people think, struggle, and make decisions.",
-                "I'm drawn to messy, human problems. The kind where the problem statement is still being written. That's what pulled me into HR tech at Capital One, where I spent years rethinking how performance management could actually serve people — not just process them.",
+                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural; I wanted to get closer to the why behind how people think, struggle, and make decisions.",
+                "I'm drawn to messy, human problems. The kind where the problem statement is still being written. That's what pulled me into HR tech at Capital One, where I spent years rethinking how performance management could actually serve people, not just process them.",
                 "Now I build too. Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. I think in systems, design for humans, and build to ship.",
-                "Design and engineering are how I build good for the world. I'm looking for teams where that combo — and that drive — actually matters.",
+                "Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
               ].map((p, i) => (
                 <FadeIn key={i} delay={i * 0.08} distance={12}>
                   <p>{p}</p>
@@ -271,8 +273,8 @@ export default function Home() {
         </section>
 
         {/* ── 03 CONTACT ── */}
-        <section id="contact" className="py-28 sm:py-36 flex flex-col gap-16">
-          <EditorialSection number="03" label="Contact" />
+        <section id="contact" className="py-12 sm:py-16 flex flex-col gap-16">
+
 
           <div className="flex flex-col gap-12">
             <FadeIn>
@@ -306,7 +308,7 @@ export default function Home() {
         {/* ── FOOTER ── */}
         <footer className="py-10 border-t border-[var(--border)] flex items-center justify-between">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
-          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Built with intention.</p>
+          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Built with intention. Built with <span style={{ color: "var(--accent)" }}>Claude Code</span>.</p>
         </footer>
       </main>
     </>
