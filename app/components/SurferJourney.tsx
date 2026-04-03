@@ -157,14 +157,18 @@ export default function SurferJourney() {
 
         const isActionable = !isCareer && !node.comingSoon;
 
+        const Wrapper = isActionable ? "a" : "div";
+
         return (
-          <div
+          <Wrapper
             key={node.id}
+            {...(isActionable ? { href: node.href } : {})}
             className="absolute group"
             style={{
               top: a.y, left: posLeft, right: posRight,
               transform: "translateY(-50%)",
               cursor: isActionable ? "pointer" : "default",
+              textDecoration: "none",
             }}
           >
             <div
@@ -248,7 +252,7 @@ export default function SurferJourney() {
                 </span>
               )}
             </div>
-          </div>
+          </Wrapper>
         );
       })}
 

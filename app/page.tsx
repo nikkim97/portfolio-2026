@@ -141,7 +141,7 @@ export default function Home() {
             className="absolute bottom-14 right-3 z-20 text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)] select-none pointer-events-none"
             style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", whiteSpace: "nowrap" }}
           >
-            Experience Design · Capital One
+            Niharika Mishra · Experience Design · Capital One
           </motion.p>
         </motion.div>
 

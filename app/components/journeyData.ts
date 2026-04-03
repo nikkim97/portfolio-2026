@@ -36,6 +36,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "PATH: 360 Feedback",
     brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
+    href: "/case-study/sa-xd",
     type: "project",
   },
   {
@@ -45,6 +46,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "PATH",
     brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
     pill: "Capital One",
+    href: "/case-study/path-360",
     type: "project",
   },
   {
@@ -54,8 +56,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Discover Migration",
     brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
     pill: "Capital One",
-    comingSoon: true,
-    type: "project",
+    type: "career",
   },
   {
     id: "bloom",
@@ -63,6 +64,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Bloom",
     brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
     pill: "Personal Project",
+    href: "/case-study/bloom",
     type: "horizon",
   },
   {
