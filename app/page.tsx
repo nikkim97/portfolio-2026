@@ -183,7 +183,7 @@ export default function Home() {
             </motion.p>
 
             <div className="flex flex-col">
-              {["I solve problems", "that matter to people."].map((line, i) => (
+              {["I choose problems", "that matter to people."].map((line, i) => (
                 <div key={i} style={{ overflow: "hidden" }}>
                   <motion.p
                     initial={{ y: "106%" }}

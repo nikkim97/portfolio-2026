@@ -69,7 +69,7 @@ export const journeyNodes: JourneyNode[] = [
   },
   {
     id: "time-tracker",
-    period: "2026 →",
+    period: "2026",
     title: "Time Tracking Dashboard",
     brief: "How do you help people see where their time is actually going?",
     pill: "Personal Project",

@@ -15,7 +15,7 @@ export default function SurferJourney() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 80%", "end 100%"],
+    offset: ["start 50%", "end 100%"],
   });
 
   useEffect(() => {
@@ -171,11 +171,15 @@ export default function SurferJourney() {
               textDecoration: "none",
             }}
           >
-            <div
-              className="flex flex-col gap-1 transition-transform duration-300 ease-out group-hover:-translate-y-1.5"
+            <motion.div
+              className="flex flex-col gap-1"
+              animate={{ scale: isPassed[i] ? 1.25 : 1.15 }}
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
               style={{
                 maxWidth: isCareer ? 160 : 210,
                 textAlign: isRight ? "left" : "right",
+                transformOrigin: isRight ? "left center" : "right center",
                 ...(isCareer ? {} : {
                   padding: "12px 16px",
                   borderRadius: "18px",
@@ -212,7 +216,7 @@ export default function SurferJourney() {
                   className="font-light leading-snug"
                   style={{
                     fontSize: isCareer ? 10 : 12,
-                    color: isCareer ? "var(--midtone)" : "var(--foreground)",
+                    color: isCareer ? "#3A3530" : "var(--foreground)",
                     letterSpacing: "-0.01em",
                   }}
                 >
@@ -229,7 +233,7 @@ export default function SurferJourney() {
               )}
               <p
                 className="font-light leading-relaxed"
-                style={{ fontSize: isCareer ? 10 : 11, color: "var(--midtone)" }}
+                style={{ fontSize: isCareer ? 10 : 11, color: isCareer ? "#3A3530" : "var(--midtone)" }}
               >
                 {node.brief}
               </p>
@@ -251,7 +255,7 @@ export default function SurferJourney() {
                   View case study ↗
                 </span>
               )}
-            </div>
+            </motion.div>
           </Wrapper>
         );
       })}
