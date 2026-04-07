@@ -5,7 +5,146 @@ import { useEffect, useRef, useState } from "react";
 import { EASE } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
 
+function MobileCardSwitcher() {
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+  const touchStartX = useRef(0);
+
+  const go = (next: number) => {
+    setDir(next > index ? 1 : -1);
+    setIndex(next);
+  };
+
+  const node = journeyNodes[index];
+  const isCareer = node.type === "career";
+  const isActionable = !!node.href && !node.comingSoon;
+  const Wrapper = isActionable ? "a" : "div";
+
+  return (
+    <div className="flex flex-col gap-5">
+      {/* Card area */}
+      <div
+        className="relative overflow-hidden"
+        style={{ minHeight: 160 }}
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          const dx = touchStartX.current - e.changedTouches[0].clientX;
+          if (dx > 40 && index < journeyNodes.length - 1) go(index + 1);
+          if (dx < -40 && index > 0) go(index - 1);
+        }}
+      >
+        <motion.div
+          key={node.id}
+          initial={{ x: dir * 40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: dir * -40, opacity: 0 }}
+          transition={{ duration: 0.28, ease: EASE }}
+        >
+          <Wrapper
+            {...(isActionable ? { href: node.href } : {})}
+            className="flex flex-col gap-2"
+            style={{
+              textDecoration: "none",
+              ...(isCareer ? {
+                paddingLeft: 16,
+                borderLeft: "2px solid var(--border)",
+              } : {
+                padding: "16px 20px",
+                borderRadius: "18px",
+                border: "1px solid rgba(255,255,255,0.65)",
+                background: "rgba(255,255,255,0.32)",
+                backdropFilter: "blur(22px)",
+                WebkitBackdropFilter: "blur(22px)",
+                boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
+              }),
+            }}
+          >
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: isCareer ? "var(--midtone)" : "var(--accent)" }}>
+                {node.period}
+              </span>
+              {node.pill && (
+                <span
+                  className="text-[8px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                  style={{ color: isCareer ? "var(--midtone)" : "var(--accent)", borderColor: isCareer ? "var(--border)" : "var(--accent)", opacity: isCareer ? 0.7 : 1 }}
+                >
+                  {node.pill}
+                </span>
+              )}
+            </div>
+            {node.role && (
+              <p className="font-light leading-snug" style={{ fontSize: isCareer ? 11 : 12, color: isCareer ? "#3A3530" : "var(--foreground)", letterSpacing: "-0.01em" }}>
+                {node.role}
+              </p>
+            )}
+            {node.title && (
+              <p className="font-semibold leading-snug" style={{ fontSize: 14, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
+                {node.title}
+              </p>
+            )}
+            <p className="font-light leading-relaxed" style={{ fontSize: 12, color: isCareer ? "#3A3530" : "var(--midtone)" }}>
+              {node.brief}
+            </p>
+            {node.type === "horizon" && !node.comingSoon && (
+              <span className="text-[9px] tracking-[0.14em] uppercase mt-1" style={{ color: "var(--accent)" }}>Built with Claude Code</span>
+            )}
+            {node.comingSoon && (
+              <span className="text-[9px] tracking-[0.14em] uppercase mt-1 text-[var(--midtone)]">Coming Soon</span>
+            )}
+            {isActionable && (
+              <span className="text-[9px] tracking-[0.14em] uppercase mt-1" style={{ color: "var(--accent)" }}>View case study ↗</span>
+            )}
+          </Wrapper>
+        </motion.div>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={() => go(index - 1)}
+          disabled={index === 0}
+          className="text-[11px] tracking-[0.15em] uppercase transition-opacity duration-200"
+          style={{ color: "var(--midtone)", opacity: index === 0 ? 0.25 : 1 }}
+        >
+          ← Prev
+        </button>
+        {/* Dots */}
+        <div className="flex items-center gap-1.5">
+          {journeyNodes.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className="rounded-full transition-all duration-200"
+              style={{
+                width: i === index ? 16 : 5,
+                height: 5,
+                background: i === index ? "var(--accent)" : "var(--border)",
+              }}
+            />
+          ))}
+        </div>
+        <button
+          onClick={() => go(index + 1)}
+          disabled={index === journeyNodes.length - 1}
+          className="text-[11px] tracking-[0.15em] uppercase transition-opacity duration-200"
+          style={{ color: "var(--midtone)", opacity: index === journeyNodes.length - 1 ? 0.25 : 1 }}
+        >
+          Next →
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function SurferJourney() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const drawPathRef = useRef<SVGPathElement>(null);
@@ -52,6 +191,8 @@ export default function SurferJourney() {
   }, [scrollYProgress, pathLen]);
 
   const isPassed = WAVE_ANCHORS.map(a => surferY >= a.y);
+
+  if (isMobile) return <MobileCardSwitcher />;
 
   return (
     <div ref={containerRef} className="relative w-full" style={{ height: SVG_H }}>

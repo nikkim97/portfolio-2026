@@ -43,15 +43,15 @@ export default function Home() {
             className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
             style={{ backgroundColor: "rgba(250,248,245,0.92)", backdropFilter: "blur(12px)", ...FONT }}
           >
-            <div className="max-w-5xl mx-auto px-8 sm:px-16 h-12 flex items-center justify-between">
+            <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
               <a href="#" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">NM</a>
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-6 sm:gap-8">
                 {[
                   { label: "Work", href: "#work" },
                   { label: "About", href: "#about" },
                   { label: "Contact", href: "#contact" },
                 ].map(({ label, href }) => (
-                  <a key={label} href={href} className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
+                  <a key={label} href={href} className="hidden sm:block text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
                     {label}
                   </a>
                 ))}
@@ -102,7 +102,7 @@ export default function Home() {
       </div>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
+      <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
         {/* Left: narrow photo column */}
         <motion.div
@@ -146,7 +146,7 @@ export default function Home() {
         </motion.div>
 
         {/* Right: editorial text */}
-        <div className="flex-1 flex flex-col justify-between px-10 md:px-14 py-10 md:py-12 min-w-0">
+        <div className="flex-1 flex flex-col justify-between px-6 md:px-14 py-10 md:py-12 min-w-0">
 
           {/* Date stamp */}
           <div className="flex justify-end items-start">
@@ -306,7 +306,7 @@ export default function Home() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex items-center justify-between">
+        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Built with intention. Built with <span style={{ color: "var(--accent)" }}>Claude Code</span>.</p>
         </footer>
