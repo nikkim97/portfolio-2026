@@ -4,9 +4,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SurferJourney from "./components/SurferJourney";
-import { EASE, FadeIn, SkillPill } from "./components/ui";
-
-const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
+import { EASE, FadeIn, FONT, SkillPill } from "./components/ui";
 
 const skills = [
   "Product Strategy", "Claude Code", "Interaction Design", "UX Design",

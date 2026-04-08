@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
+import { FONT, GLASS } from "../../components/ui";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -343,13 +342,7 @@ export default function BloomCaseStudy() {
 
           <div
             className="flex flex-col gap-4 p-6 rounded-2xl"
-            style={{
-              border: "1px solid rgba(255,255,255,0.65)",
-              background: "rgba(255,255,255,0.32)",
-              backdropFilter: "blur(22px)",
-              WebkitBackdropFilter: "blur(22px)",
-              boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
-            }}
+            style={GLASS}
           >
             <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Built with</p>
             <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>

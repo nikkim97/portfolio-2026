@@ -3,14 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { journeyNodes } from "../../components/journeyData";
 import { caseStudies } from "../../components/caseStudyData";
+import { FONT } from "../../components/ui";
 
 export function generateStaticParams() {
   return journeyNodes
     .filter((n) => n.href)
     .map((n) => ({ slug: n.id }));
 }
-
-const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
 
 export default async function CaseStudyPage({
   params,

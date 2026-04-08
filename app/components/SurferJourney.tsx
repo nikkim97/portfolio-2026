@@ -2,7 +2,7 @@
 
 import { motion, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { EASE } from "./ui";
+import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
 
 function MobileCardSwitcher() {
@@ -51,11 +51,7 @@ function MobileCardSwitcher() {
               } : {
                 padding: "16px 20px",
                 borderRadius: "18px",
-                border: "1px solid rgba(255,255,255,0.65)",
-                background: "rgba(255,255,255,0.32)",
-                backdropFilter: "blur(22px)",
-                WebkitBackdropFilter: "blur(22px)",
-                boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
+                ...GLASS,
               }),
             }}
           >
@@ -324,11 +320,7 @@ export default function SurferJourney() {
                 ...(isCareer ? {} : {
                   padding: "12px 16px",
                   borderRadius: "18px",
-                  border: "1px solid rgba(255,255,255,0.65)",
-                  background: "rgba(255,255,255,0.32)",
-                  backdropFilter: "blur(22px)",
-                  WebkitBackdropFilter: "blur(22px)",
-                  boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
+                  ...GLASS,
                 }),
               }}
             >

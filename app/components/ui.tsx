@@ -5,7 +5,17 @@ import { useEffect, useRef, useState } from "react";
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
-export function useFadeInOnScroll(threshold = 0.1) {
+export const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
+
+export const GLASS = {
+  border: "1px solid rgba(255,255,255,0.65)",
+  background: "rgba(255,255,255,0.32)",
+  backdropFilter: "blur(22px)",
+  WebkitBackdropFilter: "blur(22px)",
+  boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
+};
+
+function useFadeInOnScroll(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -40,29 +50,6 @@ export function FadeIn({
   );
 }
 
-export function EditorialSection({ number: _number, label }: { number: string; label: string }) {
-  const { ref, visible } = useFadeInOnScroll(0.1);
-  return (
-    <div ref={ref} className="flex items-center gap-5">
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={visible ? { scaleX: 1 } : {}}
-        transition={{ duration: 1, delay: 0.1, ease: EASE }}
-        style={{ transformOrigin: "left" }}
-        className="flex-1 h-px bg-[var(--border)]"
-      />
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={visible ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-        className="text-[11px] font-normal tracking-[0.22em] uppercase text-[var(--midtone)] shrink-0"
-      >
-        {label}
-      </motion.span>
-    </div>
-  );
-}
-
 export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
   return (
     <motion.span
@@ -71,15 +58,7 @@ export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay, ease: EASE }}
       className="text-[11px] px-3 py-1.5 cursor-default tracking-wide font-light"
-      style={{
-        color: "var(--foreground)",
-        borderRadius: "18px",
-        border: "1px solid rgba(255,255,255,0.65)",
-        background: "rgba(255,255,255,0.32)",
-        backdropFilter: "blur(22px)",
-        WebkitBackdropFilter: "blur(22px)",
-        boxShadow: "0 6px 28px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75)",
-      }}
+      style={{ color: "var(--foreground)", borderRadius: "18px", ...GLASS }}
     >
       {skill}
     </motion.span>
