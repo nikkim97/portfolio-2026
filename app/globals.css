@@ -28,3 +28,43 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.prose p {
+  margin-bottom: 1em;
+  line-height: 1.85;
+}
+.prose p:last-child {
+  margin-bottom: 0;
+}
+.prose strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.prose em {
+  font-style: italic;
+  color: var(--midtone);
+}
+.prose ul {
+  margin: 0.75em 0 1em 0;
+  padding-left: 1.25em;
+  list-style: none;
+}
+.prose ul li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+.prose ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: var(--midtone);
+  font-style: italic;
+}

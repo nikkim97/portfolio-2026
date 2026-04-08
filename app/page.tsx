@@ -101,6 +101,15 @@ export default function Home() {
         }} />
       </div>
 
+      {/* ── Curtain ── */}
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: "-100%" }}
+        transition={{ duration: 0.85, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+        className="fixed inset-0 z-[100] pointer-events-none"
+        style={{ background: "var(--background)" }}
+      />
+
       {/* ── HERO ── */}
       <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
@@ -108,14 +117,14 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, ease: EASE }}
+          transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
           className="hidden md:block relative flex-shrink-0"
           style={{ width: "clamp(180px, 22vw, 280px)" }}
         >
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8, ease: EASE }}
+            transition={{ duration: 0.6, delay: 1.3, ease: EASE }}
             className="absolute top-8 left-5 z-20 text-[10px] tabular-nums tracking-[0.18em] text-white/40 select-none"
           >
             001
@@ -137,7 +146,7 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.5, ease: EASE }}
+            transition={{ duration: 0.8, delay: 1.9, ease: EASE }}
             className="absolute bottom-14 right-3 z-20 text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)] select-none pointer-events-none"
             style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", whiteSpace: "nowrap" }}
           >
@@ -153,7 +162,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
+              transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
               className="text-right"
               style={{ lineHeight: 0.88 }}
             >
@@ -176,7 +185,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6, ease: EASE }}
+              transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
               className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
             >
               Designer · Engineer · <span style={{ color: "var(--accent)", fontWeight: 600 }}>Builder</span> · Surfer
@@ -188,7 +197,7 @@ export default function Home() {
                   <motion.p
                     initial={{ y: "106%" }}
                     animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.72 + i * 0.1, ease: EASE }}
+                    transition={{ duration: 1, delay: 1.15 + i * 0.1, ease: EASE }}
                     className="font-light text-[var(--foreground)]"
                     style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                   >
@@ -203,7 +212,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.3, ease: EASE }}
+            transition={{ duration: 0.6, delay: 1.6, ease: EASE }}
             className="flex flex-wrap items-center gap-8"
           >
             {[
