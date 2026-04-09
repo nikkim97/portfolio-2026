@@ -141,42 +141,43 @@ export default function Home() {
             style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
           />
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.9, ease: EASE }}
-            className="absolute bottom-14 right-3 z-20 text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)] select-none pointer-events-none"
-            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", whiteSpace: "nowrap" }}
-          >
-            Niharika Mishra · Experience Design · Capital One
-          </motion.p>
         </motion.div>
 
         {/* Right: editorial text */}
         <div className="flex-1 flex flex-col justify-between px-6 md:px-14 py-10 md:py-12 min-w-0">
 
-          {/* Date stamp */}
-          <div className="flex justify-end items-start">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
-              className="text-right"
-              style={{ lineHeight: 0.88 }}
-            >
-              {(() => {
-                const now = new Date();
-                const mm = String(now.getMonth() + 1).padStart(2, "0");
-                const dd = String(now.getDate()).padStart(2, "0");
-                return (
-                  <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
-                    <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>{mm}</p>
-                    <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>{dd}<span style={{ color: "var(--accent)" }}>.</span></p>
-                  </div>
-                );
-              })()}
-            </motion.div>
-          </div>
+          {/* Top row: nav + date */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
+            className="flex items-start justify-between"
+          >
+            <div className="flex items-center gap-6 sm:gap-8">
+              {[
+                { label: "Work", href: "#work" },
+                { label: "About", href: "#about" },
+                { label: "Résumé ↗", href: "/resume.pdf", external: true },
+              ].map(({ label, href, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+            <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                {String(new Date().getMonth() + 1).padStart(2, "0")}
+              </p>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
+              </p>
+            </div>
+          </motion.div>
 
           {/* Name block */}
           <div className="flex flex-col">
@@ -186,7 +187,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
               className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
             >
-              Designer · Engineer · <span style={{ color: "var(--accent)", fontWeight: 600 }}>Builder</span> · Surfer
+              Niharika Mishra · Experience Design · Capital One
             </motion.p>
 
             <div className="flex flex-col">
@@ -206,28 +207,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Nav links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.6, ease: EASE }}
-            className="flex flex-wrap items-center gap-8"
-          >
-            {[
-              { label: "Work", href: "#work" },
-              { label: "About", href: "#about" },
-              { label: "Résumé ↗", href: "/resume.pdf", external: true },
-            ].map(({ label, href, external }) => (
-              <a
-                key={label}
-                href={href}
-                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
-              >
-                {label}
-              </a>
-            ))}
-          </motion.div>
+          {/* Spacer to preserve justify-between layout */}
+          <div />
         </div>
       </section>
 

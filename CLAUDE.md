@@ -1,5 +1,24 @@
 @AGENTS.md
 
+## UI Iteration
+- Before implementing large UI experiments (e.g., vertical text, alternate layouts), describe the approach in 1-2 sentences and confirm with user before coding.
+- For mobile variants, prefer card/switcher patterns over vertical timelines unless specified.
+
+## Stack Versions
+- **Next.js 16.2.2** — Turbopack on by default. Dynamic route `params` are a Promise: always `await params` in server components (`const { slug } = await params`). App Router only.
+- **React 19.2.4** — `use()`, `useOptimistic`, `useFormStatus` are stable. No need to import React for JSX.
+- **Tailwind CSS 4.x** — No `tailwind.config.js`. Config lives in CSS via `@theme {}`. Import is `@import "tailwindcss"` (not the old `@tailwind base/components/utilities` directives). Some utility names changed from v3.
+- **Framer Motion 12.x** — API is stable; no breaking changes from v11 for this project's usage.
+- **@anthropic-ai/sdk 0.86.x** — installed. Use `client.messages.stream()` for streaming responses.
+- **shadcn/ui** — not installed. If added, use the Tailwind v4 compatible init path.
+
+## Stack Defaults
+- This portfolio uses TypeScript + Next.js App Router. All pages are server components by default; add `"use client"` only when needed.
+- When renaming image/asset files on macOS, use `git mv` to avoid case-insensitivity issues.
+
+## Dev Server
+- Default port is 3000; if occupied, kill the other process rather than silently falling back to 3001.
+
 ## Projects
 
 ### Bloom (Plant Match)
