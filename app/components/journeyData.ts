@@ -14,6 +14,16 @@ export interface JourneyNode {
 
 export const journeyNodes: JourneyNode[] = [
   {
+    id: "visn",
+    period: "Jan–May 2019",
+    role: "PM & Designer",
+    title: "VISN",
+    brief: "A wearable navigation system for visually impaired people — hardware and software, end to end. Won the capstone among 60 engineering teams.",
+    pill: "Rutgers Capstone",
+    href: "/case-study/visn",
+    type: "project",
+  },
+  {
     id: "asc-swe",
     period: "2019–20",
     role: "Associate, Software Engineer",
@@ -80,34 +90,37 @@ export const journeyNodes: JourneyNode[] = [
 
 export const WAVE_PATH_D = [
   "M 300,20",
-  // Career nodes — tight, quick zigzag (varied x endpoints)
-  "C 380,55 490,90 490,130",    // → node 1 right (x=490)
-  "C 490,190 80,220 80,260",    // → node 2 left  (x=80)
-  "C 80,310 550,340 550,370",   // → node 3 right (x=550)
-  // Loop / teardrop between SA XD and PA XD
-  "C 550,440 460,490 400,500",  // ease down-left
-  "C 300,510 220,500 200,455",  // swing left and up
-  "C 180,410 320,390 390,430",  // curve back right (going backward — loop starts)
-  "C 460,470 460,540 380,560",  // cross back down — loop closes
-  "C 300,590 160,625 50,630",   // sweep left → node 4 (x=50)
+  // VISN — first node, left side
+  "C 200,60 80,95 80,130",      // → node 1 left  (x=80)
+  // Career nodes — tight, quick zigzag
+  "C 80,190 490,240 490,280",   // → node 2 right (x=490)
+  "C 490,340 80,375 80,410",    // → node 3 left  (x=80)
+  "C 80,460 550,490 550,520",   // → node 4 right (x=550)
+  // Loop / teardrop between SA XD and PATH
+  "C 550,590 460,640 400,650",  // ease down-left
+  "C 300,660 220,650 200,605",  // swing left and up
+  "C 180,560 320,540 390,580",  // curve back right (loop starts)
+  "C 460,620 460,690 380,710",  // cross back down — loop closes
+  "C 300,740 160,775 50,780",   // sweep left → node 5 (x=50)
   // Condensed curve: PA XD → Manager
-  "C 50,710 490,780 490,840",   // → node 5 right (x=490)
+  "C 50,860 490,930 490,990",   // → node 6 right (x=490)
   // Curves: Manager → Bloom → Time Tracking
-  "C 490,930 200,980 75,1010",   // → node 6 left  (x=75)
-  "C 75,1080 530,1110 530,1160", // → node 7 right (x=530)
+  "C 490,1080 200,1130 75,1160",  // → node 7 left  (x=75)
+  "C 75,1230 530,1260 530,1310", // → node 8 right (x=530)
   // Tail — surfer rides to "still riding"
-  "C 530,1200 300,1240 300,1260",
+  "C 530,1350 300,1390 300,1410",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 1260;
+export const SVG_H = 1410;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 490, y: 130,  side: "right" },
-  { x: 80,  y: 260,  side: "left"  },
-  { x: 550, y: 370,  side: "right" },
-  { x: 50,  y: 630,  side: "left"  },
-  { x: 490, y: 840,  side: "right" },
-  { x: 75,  y: 1010, side: "left"  },
-  { x: 530, y: 1160, side: "right" },
+  { x: 80,  y: 130,  side: "left"  }, // VISN
+  { x: 490, y: 280,  side: "right" }, // asc-swe
+  { x: 80,  y: 410,  side: "left"  }, // sr-swe
+  { x: 550, y: 520,  side: "right" }, // sa-xd
+  { x: 50,  y: 780,  side: "left"  }, // path-360
+  { x: 490, y: 990,  side: "right" }, // path-people
+  { x: 75,  y: 1160, side: "left"  }, // bloom
+  { x: 530, y: 1310, side: "right" }, // time-tracker
 ];

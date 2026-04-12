@@ -1,12 +1,20 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FONT } from "../../components/ui";
-
-const IMG = (name: string) => `/case-study/vpr/${name}.jpg`;
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+
+function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
+  return (
+    <div
+      className="w-full overflow-hidden rounded-xl flex items-center justify-center"
+      style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
+    >
+      <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
+    </div>
+  );
+}
 
 export default function Path360CaseStudy() {
   return (
@@ -33,14 +41,12 @@ export default function Path360CaseStudy() {
 
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <div className="w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-          <Image src={IMG("path-hero")} alt="PATH calibrations distribution UI" width={1280} height={960} className="w-full h-full object-cover object-left" priority />
-        </div>
+        <Placeholder label="Hero — PATH calibrations distribution UI showing rating distribution view" aspect="4/3" />
       </div>
 
       {/* ── Full-bleed HMW ── */}
-      <div className="mt-16 w-full overflow-hidden" style={{ aspectRatio: "16/7" }}>
-        <Image src={IMG("path-hmw")} alt="How do we design a calibration experience that gives every leader what they need to make fair, confident decisions?" width={1600} height={700} className="w-full h-full object-cover" />
+      <div className="mt-16 w-full">
+        <Placeholder label="Full-bleed — HMW slide: How do we design a calibration experience that gives every leader what they need to make fair, confident decisions?" aspect="16/7" />
       </div>
 
       {/* ── The Challenge ── */}
@@ -58,11 +64,8 @@ export default function Path360CaseStudy() {
             </div>
           </div>
 
-          {/* Brainstorm image */}
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image src={IMG("path-brainstorm")} alt="Early brainstorming session — mapping the calibration workflow end to end" width={1280} height={720} className="w-full h-full object-cover object-left-top" />
-            </div>
+            <Placeholder label="Early brainstorm — whiteboard mapping the end-to-end calibration workflow" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early whiteboard sessions helped us map the full calibration journey — far messier than the pilot suggested.</figcaption>
           </figure>
         </section>
@@ -80,18 +83,13 @@ export default function Path360CaseStudy() {
             </div>
           </div>
 
-          {/* Personas + JTBD asymmetric pair */}
           <div className="flex flex-col sm:flex-row gap-4">
             <figure className="flex flex-col gap-2 sm:w-[55%]">
-              <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                <Image src={IMG("path-personas")} alt="Personas for PATH — people leaders, senior leaders, HR partners" width={800} height={600} className="w-full h-full object-cover object-top" />
-              </div>
+              <Placeholder label="Personas — people leaders, senior leaders, HR partners each with a different relationship to calibration" aspect="4/3" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas — each role had a fundamentally different relationship to calibration</figcaption>
             </figure>
             <figure className="flex flex-col gap-2 sm:w-[45%]">
-              <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                <Image src={IMG("path-jtbd")} alt="Jobs-to-be-done framework for calibration workflow" width={800} height={600} className="w-full h-full object-cover object-top" />
-              </div>
+              <Placeholder label="Jobs-to-be-done framework — the same calibration session, five different goals" aspect="4/3" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Jobs-to-be-done — the same session, five different goals</figcaption>
             </figure>
           </div>
@@ -111,9 +109,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image src={IMG("path-sessions")} alt="PATH session management — pre-calibration team view and prep experience" width={1280} height={720} className="w-full h-full object-cover object-top" />
-            </div>
+            <Placeholder label="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management — giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
         </section>
@@ -132,17 +128,15 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-              <Image src={IMG("path-live")} alt="Live calibration UI — distribution view with individual deep-dive" width={1280} height={960} className="w-full h-full object-cover object-top" />
-            </div>
+            <Placeholder label="Live calibration UI — distribution view with individual deep-dive panel showing 360 feedback + performance data" aspect="4/3" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Live calibrations — 360 feedback and performance data surfaced together, in the moment decisions are made</figcaption>
           </figure>
         </section>
       </div>
 
       {/* ── Full-bleed live states ── */}
-      <div className="w-full my-4 overflow-hidden" style={{ background: "var(--card)" }}>
-        <Image src={IMG("path-live-states")} alt="Three states of the live calibration experience — distribution, individual, and completed" width={1600} height={900} className="w-full h-auto" />
+      <div className="w-full my-4">
+        <Placeholder label="Full-bleed — three states of the live calibration: distribution view, individual view, completed state" aspect="16/5" />
       </div>
 
       {/* ── Feedback + Scale ── */}
@@ -160,17 +154,15 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image src={IMG("path-feedback")} alt="Early pilot feedback from leaders and HR partners" width={1280} height={720} className="w-full h-full object-cover object-left-top" />
-            </div>
+            <Placeholder label="Early feedback — leader and HR partner testimonials from the pilot" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field — leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>
       </div>
 
       {/* ── Full-bleed scale stat ── */}
-      <div className="w-full my-4" style={{ background: "var(--card)" }}>
-        <Image src={IMG("path-scale")} alt="PATH reached 20,000+ employees in year one" width={1600} height={900} className="w-full h-auto" />
+      <div className="w-full my-4">
+        <Placeholder label="Full-bleed — scale stat: PATH reached 20,000+ employees in year one of enterprise rollout" aspect="16/7" />
       </div>
 
       {/* ── Outcome + Growth ── */}
@@ -209,9 +201,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-              <Image src={IMG("path-growth")} alt="Growth as a leader — enterprise design, cross-functional alignment, evidence-driven decisions" width={1280} height={720} className="w-full h-auto" />
-            </div>
+            <Placeholder label="Growth slide — enterprise design, cross-functional alignment, evidence-driven decisions" aspect="16/9" />
           </figure>
         </section>
 

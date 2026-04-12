@@ -1,12 +1,20 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FONT } from "../../components/ui";
-
-const IMG = (name: string) => `/case-study/vpr/${name}.jpg`;
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+
+function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
+  return (
+    <div
+      className="w-full overflow-hidden rounded-xl flex items-center justify-center"
+      style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
+    >
+      <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
+    </div>
+  );
+}
 
 export default function SaXdCaseStudy() {
   return (
@@ -31,16 +39,14 @@ export default function SaXdCaseStudy() {
         </p>
       </div>
 
-      {/* ── Hero image — feedback form UI ── */}
+      {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <div className="w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-          <Image src={IMG("sa-xd-hero")} alt="360 feedback form interface" width={1280} height={960} className="w-full h-full object-cover object-left" priority />
-        </div>
+        <Placeholder label="Hero — 360 feedback form UI showing competency-based rating interface" aspect="4/3" />
       </div>
 
       {/* ── Full-bleed HMW ── */}
-      <div className="mt-16 w-full overflow-hidden" style={{ aspectRatio: "16/7" }}>
-        <Image src={IMG("sa-xd-hmw")} alt="How do we design a 360-degree feedback experience that ensures high-quality, actionable insights?" width={1600} height={700} className="w-full h-full object-cover" />
+      <div className="mt-16 w-full">
+        <Placeholder label="Full-bleed — HMW slide: How do we design a 360° feedback experience that ensures high-quality, actionable insights?" aspect="16/7" />
       </div>
 
       {/* ── The Problem ── */}
@@ -58,11 +64,8 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          {/* Experience map — full width */}
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image src={IMG("sa-xd-experience-map")} alt="Experience map showing where 360 feedback broke down across the performance cycle" width={1280} height={720} className="w-full h-full object-cover object-left-top" />
-            </div>
+            <Placeholder label="Experience map — showing where 360 feedback broke down across the performance cycle" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with — feedback wasn't designed around how leaders actually used it.</figcaption>
           </figure>
         </section>
@@ -83,9 +86,7 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-              <Image src={IMG("sa-xd-principles")} alt="Three foundation principles: Quant & Qual, Psychological Safety, Comparative Context" width={1280} height={720} className="w-full h-auto" />
-            </div>
+            <Placeholder label="Foundation principles slide — Quant & Qual data, Psychological Safety, Comparative Context" aspect="16/9" />
           </figure>
         </section>
 
@@ -102,18 +103,13 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          {/* Asymmetric pair — 60/40 */}
           <div className="flex flex-col sm:flex-row gap-4">
             <figure className="flex flex-col gap-2 sm:w-[60%]">
-              <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                <Image src={IMG("sa-xd-feedback-form")} alt="360 feedback form built with PwC — competency-based, anonymous by design" width={800} height={600} className="w-full h-full object-cover object-top" />
-              </div>
+              <Placeholder label="Feedback form — competency-based ratings, required qualitative comments, fully anonymous" aspect="4/3" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form — competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
             <figure className="flex flex-col gap-2 sm:w-[40%]">
-              <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                <Image src={IMG("sa-xd-calibration")} alt="Calibration one-pager with peer comparison graph and written feedback" width={800} height={600} className="w-full h-full object-cover object-top" />
-              </div>
+              <Placeholder label="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" aspect="4/3" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager — feedback as a first-class input, not an afterthought</figcaption>
             </figure>
           </div>
@@ -133,17 +129,15 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image src={IMG("sa-xd-measurement")} alt="Measurement framework in Lucid — data triangulation across system data, observations, and surveys" width={1280} height={720} className="w-full h-full object-cover object-left-top" />
-            </div>
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation in Lucid — measuring clarity, consistency, quality, and actionability throughout the pilot</figcaption>
+            <Placeholder label="Measurement framework — data triangulation across system data, live observations, and milestone surveys" aspect="16/9" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation — measuring clarity, consistency, quality, and actionability throughout the pilot</figcaption>
           </figure>
         </section>
       </div>
 
       {/* ── Full-bleed Impact stats ── */}
-      <div className="w-full my-4" style={{ background: "var(--card)" }}>
-        <Image src={IMG("sa-xd-impact")} alt="Impact: 65% Clarity & Consistency, 58% Quality, 52% Actionability" width={1600} height={900} className="w-full h-auto" />
+      <div className="w-full my-4">
+        <Placeholder label="Full-bleed — impact stats: 65% clarity & consistency, 58% quality, 52% actionability" aspect="16/7" />
       </div>
 
       {/* ── Outcome ── */}
@@ -182,9 +176,7 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-              <Image src={IMG("sa-xd-growth")} alt="Growth as a designer — strategic foundations, cross-functional leadership, evidence-driven design" width={1280} height={720} className="w-full h-auto" />
-            </div>
+            <Placeholder label="Growth slide — strategic foundations, cross-functional leadership, evidence-driven design" aspect="16/9" />
           </figure>
         </section>
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FONT, GLASS } from "../../components/ui";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -22,29 +21,21 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 function Screenshot({
-  src,
-  alt,
+  label,
   caption,
   aspect = "16/9",
 }: {
-  src: string;
-  alt: string;
+  label: string;
   caption?: string;
   aspect?: string;
 }) {
   return (
     <figure className="flex flex-col gap-2">
       <div
-        className="w-full rounded-xl overflow-hidden"
-        style={{ aspectRatio: aspect, background: "var(--card)" }}
+        className="w-full rounded-xl overflow-hidden flex items-center justify-center"
+        style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
       >
-        <Image
-          src={src}
-          alt={alt}
-          width={1280}
-          height={720}
-          className="w-full h-full object-cover object-top"
-        />
+        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
       </div>
       {caption && (
         <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
@@ -155,8 +146,7 @@ export default function BloomCaseStudy() {
 
         {/* ── Hero image ── */}
         <Screenshot
-          src="/bloom/v1-homepage.png"
-          alt="Bloom V1 homepage — Every relationship has a nature"
+          label="Hero — Bloom V1 homepage: 'Every relationship has a nature'"
           caption="V1 homepage running on localhost:3000, March 23 2026"
         />
 
@@ -181,13 +171,11 @@ export default function BloomCaseStudy() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              src="/bloom/trait-map.png"
-              alt="Plant trait to human equivalent mapping"
+              label="Trait map — plant care needs (water, light, roots, humidity, temp, growth) mapped to human personality equivalents"
               caption="The trait framework — plant care needs mapped to human personality"
             />
             <Screenshot
-              src="/bloom/question-design.png"
-              alt="Question design conversation with Claude"
+              label="Question design — Claude conversation rebuilding the quiz questions in a warm, non-clinical voice"
               caption="Asking Claude to rebuild the question set in my voice — warm and non-clinical"
             />
           </div>
@@ -219,13 +207,11 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              src="/bloom/collab-model.png"
-              alt="Claude establishing the collaboration model"
+              label="Collaboration model — Claude establishing 'I'm the product partner, Claude Code is the developer'"
               caption="The collaboration model, established in the first session"
             />
             <Screenshot
-              src="/bloom/terminal-build.png"
-              alt="Claude Code writing the full app in one pass"
+              label="Terminal build — Claude Code writing the full app (quiz data, scoring, UI) in one pass"
               caption="Claude Code building the full app — quiz data, scoring, UI — in one terminal session"
             />
           </div>
@@ -254,20 +240,17 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              src="/bloom/v1-results.png"
-              alt="V1 results — Monstera meets Chinese Elephant Ear with trait bars"
+              label="V1 results page — Monstera meets Chinese Elephant Ear with trait bar charts side by side"
               caption="V1 results page — correct, but more data display than emotional resonance"
             />
             <Screenshot
-              src="/bloom/v1-results-flipped.png"
-              alt="V1 results with plant card flipped showing description"
+              label="V1 results with plant cards flipped — descriptions visible but writing still surface-level"
               caption="Cards flipped to reveal descriptions — the writing needed to be richer"
             />
           </div>
 
           <Screenshot
-            src="/bloom/v1-debug.png"
-            alt="Claude debugging the identical plants issue"
+            label="Debug moment — Claude identifying that two plants scoring identically isn't a bug, it's the data"
             caption="'It's not a bug — it's the data.' Claude acting like a product partner, not just a code executor"
           />
 
@@ -298,20 +281,17 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              src="/bloom/evo-cards.png"
-              alt="Evolved plant cards with character portrait descriptions"
+              label="Evolved plant cards — descriptions rewritten as character portraits, not trait profiles"
               caption="Plant cards after iteration — descriptions that read like portraits, not profiles"
             />
             <Screenshot
-              src="/bloom/evo-alignment.png"
-              alt="Where you align / Where you're different sections"
+              label="'Where you align / Where you're different' compatibility breakdown with practical pull-quote advice"
               caption="'Where you align / Where you're different' — interpretation, not just data"
             />
           </div>
 
           <Screenshot
-            src="/bloom/evo-terminal.png"
-            alt="Claude Code confirming the iteration is complete"
+            label="Terminal — Claude confirming iteration complete: 'Check localhost:3000 — run a quiz and see if the results feel more nuanced'"
             caption="'All three files updated. Check localhost:3000 — run a quiz and see if the results feel more nuanced.'"
           />
 

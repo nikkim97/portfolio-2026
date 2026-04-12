@@ -396,7 +396,7 @@ export default function SurferJourney() {
       {/* Tail label */}
       <div
         className="absolute"
-        style={{ top: 1225, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}
+        style={{ top: 1375, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}
       >
         <p className="text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)]">
           still riding
