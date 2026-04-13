@@ -45,31 +45,40 @@ function MobileCardSwitcher() {
             className="flex flex-col gap-2"
             style={{
               textDecoration: "none",
-              ...(isCareer ? {
-                paddingLeft: 16,
-                borderLeft: "2px solid var(--border)",
-              } : {
+              ...(isActionable ? {
                 padding: "16px 20px",
                 borderRadius: "18px",
                 ...GLASS,
+                ...(node.pillColor ? {
+                  background: node.pillColor.replace("1)", "0.1)"),
+                  border: `1px solid ${node.pillColor.replace("1)", "0.35)")}`,
+                } : {}),
+              } : {
+                paddingLeft: 16,
+                borderLeft: "2px solid var(--border)",
               }),
             }}
           >
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: isCareer ? "var(--midtone)" : "var(--accent)" }}>
+              <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: isActionable ? (node.pillColor ?? "var(--midtone)") : "var(--midtone)" }}>
                 {node.period}
               </span>
               {node.pill && (
                 <span
                   className="text-[8px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                  style={{ color: isCareer ? "var(--midtone)" : "var(--accent)", borderColor: isCareer ? "var(--border)" : "var(--accent)", opacity: isCareer ? 0.7 : 1 }}
+                  style={{
+                    color: isActionable ? (node.pillColor ?? "var(--midtone)") : "var(--midtone)",
+                    borderColor: isActionable ? (node.pillColor ?? "var(--border)") : "var(--border)",
+                    background: isActionable && node.pillColor ? node.pillColor.replace("1)", "0.12)") : "transparent",
+                    opacity: isActionable ? 1 : 0.7,
+                  }}
                 >
                   {node.pill}
                 </span>
               )}
             </div>
             {node.role && (
-              <p className="font-light leading-snug" style={{ fontSize: isCareer ? 11 : 12, color: isCareer ? "#3A3530" : "var(--foreground)", letterSpacing: "-0.01em" }}>
+              <p className="font-light leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
                 {node.role}
               </p>
             )}
@@ -78,7 +87,7 @@ function MobileCardSwitcher() {
                 {node.title}
               </p>
             )}
-            <p className="font-light leading-relaxed" style={{ fontSize: 12, color: isCareer ? "#3A3530" : "var(--midtone)" }}>
+            <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
               {node.brief}
             </p>
             {node.type === "horizon" && !node.comingSoon && (
@@ -314,20 +323,24 @@ export default function SurferJourney() {
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 280, damping: 22 }}
               style={{
-                maxWidth: isCareer ? 160 : 210,
+                maxWidth: isActionable ? 210 : 180,
                 textAlign: isRight ? "left" : "right",
                 transformOrigin: isRight ? "left center" : "right center",
-                ...(isCareer ? {} : {
+                ...(isActionable ? {
                   padding: "12px 16px",
                   borderRadius: "18px",
                   ...GLASS,
-                }),
+                  ...(node.pillColor ? {
+                    background: node.pillColor.replace("1)", "0.1)"),
+                    border: `1px solid ${node.pillColor.replace("1)", "0.35)")}`,
+                  } : {}),
+                } : {}),
               }}
             >
               <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
                 <span
                   className="text-[9px] tracking-[0.2em] uppercase"
-                  style={{ color: isCareer ? "var(--midtone)" : "var(--accent)" }}
+                  style={{ color: isActionable ? (node.pillColor ?? "var(--midtone)") : "var(--midtone)" }}
                 >
                   {node.period}
                 </span>
@@ -335,9 +348,10 @@ export default function SurferJourney() {
                   <span
                     className="text-[8px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
                     style={{
-                      color: isCareer ? "var(--midtone)" : "var(--accent)",
-                      borderColor: isCareer ? "var(--border)" : "var(--accent)",
-                      opacity: isCareer ? 0.7 : 1,
+                      color: isActionable ? (node.pillColor ?? "var(--midtone)") : "var(--midtone)",
+                      borderColor: isActionable ? (node.pillColor ?? "var(--border)") : "var(--border)",
+                      background: isActionable && node.pillColor ? node.pillColor.replace("1)", "0.12)") : "transparent",
+                      opacity: isActionable ? 1 : 0.7,
                     }}
                   >
                     {node.pill}
@@ -347,11 +361,7 @@ export default function SurferJourney() {
               {node.role && (
                 <p
                   className="font-light leading-snug"
-                  style={{
-                    fontSize: isCareer ? 10 : 12,
-                    color: isCareer ? "#3A3530" : "var(--foreground)",
-                    letterSpacing: "-0.01em",
-                  }}
+                  style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.01em" }}
                 >
                   {node.role}
                 </p>
@@ -366,7 +376,7 @@ export default function SurferJourney() {
               )}
               <p
                 className="font-light leading-relaxed"
-                style={{ fontSize: isCareer ? 10 : 11, color: isCareer ? "#3A3530" : "var(--midtone)" }}
+                style={{ fontSize: 11, color: "var(--midtone)" }}
               >
                 {node.brief}
               </p>

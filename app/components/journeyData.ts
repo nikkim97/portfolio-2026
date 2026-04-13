@@ -7,19 +7,23 @@ export interface JourneyNode {
   title?: string;
   brief: string;
   pill?: string;
+  pillColor?: string;
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
+  cardBg?: string;
+  cardBorder?: string;
 }
 
 export const journeyNodes: JourneyNode[] = [
   {
     id: "visn",
-    period: "Jan–May 2019",
+    period: "2019",
     role: "PM & Designer",
     title: "VISN",
     brief: "A wearable navigation system for visually impaired people — hardware and software, end to end. Won the capstone among 60 engineering teams.",
-    pill: "Rutgers Capstone",
+    pill: "CE Capstone",
+    pillColor: "rgba(100,140,115,1)",
     href: "/case-study/visn",
     type: "project",
   },
@@ -29,6 +33,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Associate, Software Engineer",
     brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
     pill: "Capital One",
+    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
@@ -37,6 +42,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Senior Associate, Software Engineer",
     brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
     pill: "Capital One",
+    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
@@ -46,6 +52,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Performance Platform",
     brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
+    pillColor: "rgba(80,105,140,1)",
     href: "/case-study/sa-xd",
     type: "project",
   },
@@ -56,6 +63,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Calibrations Ecosystem",
     brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
     pill: "Capital One",
+    pillColor: "rgba(80,105,140,1)",
     href: "/case-study/path-360",
     type: "project",
   },
@@ -66,6 +74,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Discover Migration",
     brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
     pill: "Capital One",
+    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
@@ -73,7 +82,8 @@ export const journeyNodes: JourneyNode[] = [
     period: "2026",
     title: "Bloom",
     brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
-    pill: "Personal Project",
+    pill: "Vibe Coded",
+    pillColor: "rgba(228,210,80,1)",
     href: "/case-study/bloom",
     type: "horizon",
   },
@@ -82,16 +92,16 @@ export const journeyNodes: JourneyNode[] = [
     period: "2026",
     title: "Time Tracking Dashboard",
     brief: "How do you help people see where their time is actually going?",
-    pill: "Personal Project",
+    pill: "Vibe Coded",
+    pillColor: "rgba(228,210,80,1)",
     comingSoon: true,
     type: "horizon",
   },
 ];
 
 export const WAVE_PATH_D = [
-  "M 300,20",
-  // VISN — first node, left side
-  "C 200,60 80,95 80,130",      // → node 1 left  (x=80)
+  "M 80,130",
+  // VISN — path starts here
   // Career nodes — tight, quick zigzag
   "C 80,190 490,240 490,280",   // → node 2 right (x=490)
   "C 490,340 80,375 80,410",    // → node 3 left  (x=80)
