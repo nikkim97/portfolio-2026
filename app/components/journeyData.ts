@@ -13,19 +13,21 @@ export interface JourneyNode {
   type: NodeType;
   cardBg?: string;
   cardBorder?: string;
+  visual?: string;
 }
 
 export const journeyNodes: JourneyNode[] = [
   {
     id: "visn",
     period: "2019",
-    role: "PM & Designer",
+    role: "Engineering Student",
     title: "VISN",
     brief: "A wearable navigation system for visually impaired people — hardware and software, end to end. Won the capstone among 60 engineering teams.",
-    pill: "CE Capstone",
-    pillColor: "rgba(100,140,115,1)",
+    pill: "Capstone",
+    pillColor: "rgba(80,80,80,1)",
     href: "/case-study/visn",
     type: "project",
+    visual: "🧭",
   },
   {
     id: "asc-swe",
@@ -33,7 +35,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Associate, Software Engineer",
     brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
+    pillColor: "rgba(80,80,80,1)",
     type: "career",
   },
   {
@@ -42,7 +44,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Senior Associate, Software Engineer",
     brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
+    pillColor: "rgba(80,80,80,1)",
     type: "career",
   },
   {
@@ -52,9 +54,10 @@ export const journeyNodes: JourneyNode[] = [
     title: "Performance Platform",
     brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
+    pillColor: "rgba(80,80,80,1)",
     href: "/case-study/sa-xd",
     type: "project",
+    visual: "⭐",
   },
   {
     id: "path-360",
@@ -63,9 +66,10 @@ export const journeyNodes: JourneyNode[] = [
     title: "Calibrations Ecosystem",
     brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
+    pillColor: "rgba(80,80,80,1)",
     href: "/case-study/path-360",
     type: "project",
+    visual: "📊",
   },
   {
     id: "path-people",
@@ -74,8 +78,11 @@ export const journeyNodes: JourneyNode[] = [
     title: "Discover Migration",
     brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
-    type: "career",
+    pillColor: "rgba(80,80,80,1)",
+    href: "/case-study/discover-migration",
+    comingSoon: true,
+    type: "project",
+    visual: "🌊",
   },
   {
     id: "bloom",
@@ -83,9 +90,10 @@ export const journeyNodes: JourneyNode[] = [
     title: "Bloom",
     brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
     pill: "Vibe Coded",
-    pillColor: "rgba(228,210,80,1)",
+    pillColor: "rgba(80,80,80,1)",
     href: "/case-study/bloom",
     type: "horizon",
+    visual: "🌱",
   },
   {
     id: "time-tracker",
@@ -93,9 +101,11 @@ export const journeyNodes: JourneyNode[] = [
     title: "Time Tracking Dashboard",
     brief: "How do you help people see where their time is actually going?",
     pill: "Vibe Coded",
-    pillColor: "rgba(228,210,80,1)",
+    pillColor: "rgba(80,80,80,1)",
+    href: "/case-study/time-tracker",
     comingSoon: true,
     type: "horizon",
+    visual: "⏱️",
   },
 ];
 
@@ -114,9 +124,9 @@ export const WAVE_PATH_D = [
   "C 300,740 160,775 50,780",   // sweep left → node 5 (x=50)
   // Condensed curve: PA XD → Manager
   "C 50,860 490,930 490,990",   // → node 6 right (x=490)
-  // Curves: Manager → Bloom → Time Tracking
-  "C 490,1080 200,1130 75,1160",  // → node 7 left  (x=75)
-  "C 75,1230 530,1260 530,1310", // → node 8 right (x=530)
+  // Curves: Manager → Bloom → Time Tracker
+  "C 490,1080 200,1130 75,1160",  // → node 7 left  (x=75) — bloom
+  "C 75,1230 530,1260 530,1310", // → node 8 right (x=530) — time-tracker
   // Tail — surfer rides to "still riding"
   "C 530,1350 300,1390 300,1410",
 ].join(" ");

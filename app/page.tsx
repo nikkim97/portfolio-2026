@@ -3,7 +3,7 @@
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import SurferJourney from "./components/SurferJourney";
+import SurferJourneyDeck from "./components/SurferJourneyDeck";
 import { EASE, FadeIn, FONT, SkillPill } from "./components/ui";
 
 const skills = [
@@ -39,7 +39,7 @@ export default function Home() {
             exit={{ y: -48, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
             className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
-            style={{ backgroundColor: "rgba(250,248,245,0.92)", backdropFilter: "blur(12px)", ...FONT }}
+            style={{ backgroundColor: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)", ...FONT }}
           >
             <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
               <a href="#" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">NM</a>
@@ -69,34 +69,6 @@ export default function Home() {
 
       {/* ── Page-level background blobs (fixed so they persist across all sections) ── */}
       <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Hero — yellow orb top-right */}
-        <div style={{
-          position: "absolute", top: "-5vh", right: "5%",
-          width: 560, height: 560, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(228,210,80,0.36) 0%, transparent 68%)",
-          filter: "blur(14px)",
-        }} />
-        {/* Hero — terracotta mid */}
-        <div style={{
-          position: "absolute", top: "45vh", right: "22%",
-          width: 320, height: 320, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(193,123,90,0.16) 0%, transparent 70%)",
-          filter: "blur(18px)",
-        }} />
-        {/* Work section — yellow orb left */}
-        <div style={{
-          position: "absolute", top: "110vh", left: "2%",
-          width: 480, height: 480, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(228,210,80,0.28) 0%, transparent 68%)",
-          filter: "blur(16px)",
-        }} />
-        {/* Work section — terracotta right */}
-        <div style={{
-          position: "absolute", top: "180vh", right: "0%",
-          width: 400, height: 400, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(193,123,90,0.14) 0%, transparent 70%)",
-          filter: "blur(20px)",
-        }} />
       </div>
 
       {/* ── Curtain ── */}
@@ -109,42 +81,33 @@ export default function Home() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
+      <section className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
-        {/* Left: narrow photo column */}
+        {/* Full-bleed photo */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
-          className="hidden md:block relative flex-shrink-0"
-          style={{ width: "clamp(180px, 22vw, 280px)" }}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2, delay: 0.2, ease: EASE }}
+          className="absolute inset-0"
         >
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.3, ease: EASE }}
-            className="absolute top-8 left-5 z-20 text-[10px] tabular-nums tracking-[0.18em] text-white/40 select-none"
-          >
-            001
-          </motion.span>
-
           <Image
             src="/nikki.jpg"
             alt="Niharika Mishra"
             fill
             priority
-            style={{ objectFit: "cover", objectPosition: "center 15%", filter: "grayscale(1) contrast(1.1) brightness(1.02)" }}
+            style={{ objectFit: "cover", objectPosition: "center 15%", filter: "grayscale(1) contrast(1.1) brightness(0.68)" }}
           />
-
-          <div
-            className="absolute inset-y-0 right-0 w-20 pointer-events-none"
-            style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
-          />
-
         </motion.div>
 
-        {/* Right: editorial text */}
-        <div className="flex-1 flex flex-col justify-between px-6 md:px-14 py-10 md:py-12 min-w-0">
+        {/* Gradient overlay — heavy at bottom for headline legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "linear-gradient(to top, rgba(10,8,6,0.96) 0%, rgba(10,8,6,0.55) 35%, rgba(10,8,6,0.1) 70%, transparent 100%)" }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col justify-between flex-1 px-6 md:px-14 py-10 md:py-12">
 
           {/* Top row: nav + date */}
           <motion.div
@@ -163,29 +126,31 @@ export default function Home() {
                   key={label}
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
+                  className="text-[11px] font-normal tracking-[0.2em] uppercase transition-colors duration-200"
+                  style={{ color: "rgba(245,241,235,0.5)" }}
                 >
                   {label}
                 </a>
               ))}
             </div>
             <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+              <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em", color: "#F5F1EB" }}>
                 {String(new Date().getMonth() + 1).padStart(2, "0")}
               </p>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
-                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
+              <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em", color: "#F5F1EB" }}>
+                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "#C17B5A" }}>.</span>
               </p>
             </div>
           </motion.div>
 
-          {/* Name block */}
+          {/* Headline — bottom, magazine cover layout */}
           <div className="flex flex-col">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
-              className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
+              className="text-[10px] tracking-[0.22em] uppercase mb-5"
+              style={{ color: "rgba(245,241,235,0.35)" }}
             >
               Niharika Mishra · Experience Design · Capital One
             </motion.p>
@@ -197,34 +162,29 @@ export default function Home() {
                     initial={{ y: "106%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1, delay: 1.15 + i * 0.1, ease: EASE }}
-                    className="font-light text-[var(--foreground)]"
-                    style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
+                    className="font-light"
+                    style={{ fontSize: "clamp(40px, 6vw, 88px)", letterSpacing: "-0.025em", lineHeight: 1.08, color: "#F5F1EB" }}
                   >
-                    {line}{i === 1 && <span style={{ color: "var(--accent)" }}></span>}
+                    {line}{i === 1 && <span style={{ color: "#C17B5A" }}></span>}
                   </motion.p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Spacer to preserve justify-between layout */}
-          <div />
         </div>
       </section>
+
+      {/* ── CARD DECK (full-width) ── */}
+      <div style={{ zIndex: 1, position: "relative" }}>
+        <SurferJourneyDeck />
+      </div>
 
       {/* ── MAIN CONTENT ── */}
       <main className="relative flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={{ ...FONT, zIndex: 1 }}>
 
         {/* ── 01 WORK ── */}
-        <section id="work" className="py-12 sm:py-16 flex flex-col gap-16">
-
-          <FadeIn>
-            <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}>
-              Every project started with a human question.
-            </p>
-          </FadeIn>
-          <SurferJourney />
-        </section>
+        <section id="work" />
 
         {/* ── 02 ABOUT ── */}
         <section id="about" className="py-12 sm:py-16 flex flex-col gap-20">
