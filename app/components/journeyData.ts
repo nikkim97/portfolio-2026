@@ -11,6 +11,7 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
+  visual?: string;
   cardBg?: string;
   cardBorder?: string;
 }
@@ -21,9 +22,9 @@ export const journeyNodes: JourneyNode[] = [
     period: "2019",
     role: "PM & Designer",
     title: "VISN",
+    visual: "🧭",
     brief: "A wearable navigation system for visually impaired people — hardware and software, end to end. Won the capstone among 60 engineering teams.",
     pill: "CE Capstone",
-    pillColor: "rgba(100,140,115,1)",
     href: "/case-study/visn",
     type: "project",
   },
@@ -33,7 +34,6 @@ export const journeyNodes: JourneyNode[] = [
     role: "Associate, Software Engineer",
     brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
@@ -42,7 +42,6 @@ export const journeyNodes: JourneyNode[] = [
     role: "Senior Associate, Software Engineer",
     brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
@@ -50,9 +49,9 @@ export const journeyNodes: JourneyNode[] = [
     period: "2022–23",
     role: "Senior Associate, Experience Design",
     title: "Performance Platform",
+    visual: "⭐",
     brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
     href: "/case-study/sa-xd",
     type: "project",
   },
@@ -61,9 +60,9 @@ export const journeyNodes: JourneyNode[] = [
     period: "2023–25",
     role: "Principal Associate, Experience Design",
     title: "Calibrations Ecosystem",
+    visual: "📊",
     brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
     href: "/case-study/path-360",
     type: "project",
   },
@@ -74,16 +73,15 @@ export const journeyNodes: JourneyNode[] = [
     title: "Discover Migration",
     brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
     pill: "Capital One",
-    pillColor: "rgba(80,105,140,1)",
     type: "career",
   },
   {
     id: "bloom",
     period: "2026",
     title: "Bloom",
+    visual: "🌱",
     brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
     pill: "Vibe Coded",
-    pillColor: "rgba(228,210,80,1)",
     href: "/case-study/bloom",
     type: "horizon",
   },
@@ -91,9 +89,9 @@ export const journeyNodes: JourneyNode[] = [
     id: "time-tracker",
     period: "2026",
     title: "Time Tracking Dashboard",
+    visual: "⏱️",
     brief: "How do you help people see where their time is actually going?",
     pill: "Vibe Coded",
-    pillColor: "rgba(228,210,80,1)",
     comingSoon: true,
     type: "horizon",
   },
