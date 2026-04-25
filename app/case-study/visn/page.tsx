@@ -1,20 +1,11 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
+import { PhoneSequence, SystemDiagram } from "./_components/AppMockup";
+import ZoomableImage from "./_components/ZoomableImage";
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
-
-function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
-  return (
-    <div
-      className="w-full overflow-hidden rounded-xl flex items-center justify-center"
-      style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
-    >
-      <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
-    </div>
-  );
-}
 
 export default function VisnCaseStudy() {
   return (
@@ -30,18 +21,25 @@ export default function VisnCaseStudy() {
 
       {/* ── Hero text ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pt-16 pb-12 flex flex-col gap-6">
-        <p className={`${LABEL} text-[var(--midtone)]`}>PM & Designer · Rutgers Capstone · Team of 4</p>
+        <p className={`${LABEL} text-[var(--accent)]`}>PM & Designer · Rutgers Capstone · Team of 4</p>
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           VISN<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
         <p className="font-light leading-relaxed max-w-[58ch]" style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "#3A3530" }}>
-          A wearable navigation system for visually impaired people — hardware and software, end to end. Built as a Rutgers senior capstone. Won first place among 60 engineering teams. The project that confirmed my instinct: when I back an idea that matters, I can make it real.
+          A wearable navigation system for visually impaired people — hardware and software, end to end. Built as a Rutgers senior capstone, where we won our capstone competition. The project that confirmed my instinct: when I back an idea that matters, I can make it real.
         </p>
       </div>
 
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <Placeholder label="Hero — photo of Nikki presenting VISN at the Rutgers capstone fair" aspect="4/3" />
+        <figure className="flex flex-col gap-4">
+          <div
+            className="rounded-2xl px-6 sm:px-10 py-12 sm:py-16"
+            style={{ background: "var(--card)" }}
+          >
+            <PhoneSequence />
+          </div>
+        </figure>
       </div>
 
       {/* ── The Problem ── */}
@@ -49,7 +47,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The Problem</p>
+              <p className={`${LABEL} text-[var(--accent)]`}>The problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Navigation without sight is a design problem</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
@@ -60,7 +58,15 @@ export default function VisnCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Problem — visually impaired navigation: person with cane, phone, and sensor device; gap in existing solutions" aspect="16/9" />
+            <ZoomableImage
+              src="/visn/visn-poster.png"
+              alt="VISN project poster presentation"
+              width={988}
+              height={758}
+              aspectRatio="16/9"
+              fit="cover"
+              sizes="(max-width: 1024px) 100vw, 896px"
+            />
           </figure>
         </section>
 
@@ -68,7 +74,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>01</p>
+              <p className={`${LABEL} text-[var(--accent)]`}>The approach</p>
               <h2 className="font-light" style={SECTION_HEADING}>One system, two layers</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
@@ -78,14 +84,19 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <figure className="flex flex-col gap-2 sm:w-[60%]">
-              <Placeholder label="Circuit diagram — Arduino Nano connected to four ultrasonic sensors, magnetometer, and HC-06 Bluetooth module" aspect="4/3" />
+          <div className="flex flex-col gap-4">
+            <figure className="flex flex-col gap-2">
+              <ZoomableImage
+                src="/visn/visn-circuit.png"
+                alt="VISN circuit diagram with Arduino Nano and sensors"
+                width={951}
+                height={436}
+                aspectRatio="951/436"
+                fit="contain"
+                sizes="(max-width: 1024px) 100vw, 896px"
+                background="var(--card)"
+              />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Circuit diagram — Arduino Nano, four ultrasonic sensors, magnetometer, HC-06 Bluetooth module</figcaption>
-            </figure>
-            <figure className="flex flex-col gap-2 sm:w-[40%]">
-              <Placeholder label="Hardware components — Arduino Nano, HC-06 Bluetooth module, Android Studio (the software stack)" aspect="4/3" />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The hardware stack — inexpensive, modular, and small enough to fit in a fanny pack</figcaption>
             </figure>
           </div>
         </section>
@@ -94,8 +105,8 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>02</p>
-              <h2 className="font-light" style={SECTION_HEADING}>The design decision that mattered most</h2>
+              <p className={`${LABEL} text-[var(--accent)]`}>The design</p>
+              <h2 className="font-light" style={SECTION_HEADING}>The decision that mattered the most</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>We tried a harness first. It held the hardware well — good sensor angles, stable on the body. But it was heavy, conspicuous, and made people feel more disabled, not less. That wasn't acceptable.</p>
@@ -104,40 +115,75 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
-            <Placeholder label="Wearable — fanny pack worn on chest with ultrasonic sensor placement labeled, alongside VISN Android app UI" aspect="16/9" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The wearable setup — sensors, Arduino, and compass inside a fanny pack worn on the chest; the Android app handled navigation and obstacle alerts</figcaption>
-          </figure>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6">
+            <figure className="flex flex-col gap-3">
+              <ZoomableImage
+                src="/visn/visn-wearable.png"
+                alt="VISN wearable fanny pack with sensor placement"
+                width={673}
+                height={487}
+                aspectRatio="16/9"
+                fit="cover"
+                sizes="(max-width: 768px) 100vw, 25vw"
+              />
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The wearable setup — sensors, Arduino, and compass inside a fanny pack worn on the chest; the Android app handled navigation and obstacle alerts</figcaption>
+            </figure>
+
+            <figure className="flex flex-col gap-4">
+              <div
+                className="rounded-2xl px-6 sm:px-10 py-10 sm:py-12 h-full"
+                style={{ background: "var(--card)" }}
+              >
+                <SystemDiagram />
+              </div>
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide text-center max-w-[60ch] mx-auto">
+                Current VISN architecture — wearable sensing, phone intelligence, and non-visual guidance working as one loop.
+              </figcaption>
+            </figure>
+          </div>
         </section>
 
         {/* ── What We Shipped ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>03</p>
-              <h2 className="font-light" style={SECTION_HEADING}>What we shipped — and what we didn't</h2>
+              <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
+              <h2 className="font-light" style={SECTION_HEADING}>We won our capstone.</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We shipped a working system. The app delivered real walking directions. The hardware detected stationary objects in front of the user and updated proximity as they moved. Bluetooth connected reliably. The fanny pack held everything together.</p>
-              <p>But we were honest about the gaps. The magnetometer wasn't fully integrated in time — so directional object alerts (left/right, not just "ahead") didn't make the demo. Indoor GPS was unreliable. Moving obstacles were outside scope. We documented all of it in the poster, because we believed the foundation was strong enough that the gaps were roadmap, not failure.</p>
-              <p>For a four-person team with four months and a hardware budget, we built something that worked outdoors, in real conditions, for a real user need.</p>
+              <p>We shipped a working end-to-end system: real route guidance from the app, live obstacle detection from the wearable, and a reliable Bluetooth link between the two. In outdoor tests, the experience held together in real walking conditions.</p>
+              <p>We were also explicit about what was incomplete. Directional left/right guidance from the magnetometer was not production-ready by demo day, indoor positioning remained unreliable, and moving-obstacle handling was out of scope for the capstone timeline.</p>
+              <p>The outcome was clear: the project direction worked. For four people in four months, it was proof that the core system was valuable, feasible, and worth taking further.</p>
             </div>
           </div>
         </section>
 
-        {/* ── Outcome ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        {/* ── Reflection + Redesign ── */}
+        <section className="py-16 flex flex-col gap-12 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
-              <h2 className="font-light" style={SECTION_HEADING}>First place. 60 teams.</h2>
+              <p className={`${LABEL} text-[var(--accent)]`}>Reflection</p>
+              <h2 className="font-light" style={SECTION_HEADING}>If I built VISN today</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>VISN won the Rutgers senior capstone competition among 60 engineering teams.</p>
-              <p>The judges weren't just evaluating whether the technology worked. They were evaluating whether the idea was worth building in the first place — whether the team understood the problem, made thoughtful decisions, and built something with a real future. We did.</p>
-              <p>Winning validated something I'd been carrying for a while: that my instinct for which problems to chase, and my ability to pull a team toward a working answer, was real. That combination — technical background, product thinking, design instinct — isn't common. I've been building on it ever since.</p>
+              <p>Here's what I didn't know at the time: product design existed as a discipline. I was the project manager and the engineer on this team, and I thought that was the whole job. The fanny pack call, the audio-first interface, the decision to build around dignity — those came from instinct, not training.</p>
+              <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical — the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: sit with visually impaired users first, learn how they already navigate, and design around that — not around what the hardware can do.</p>
             </div>
           </div>
+
+          <figure className="flex flex-col gap-4">
+            <ZoomableImage
+              src="/visn/visn-hero1.png"
+              alt="VISN hero image"
+              width={1272}
+              height={640}
+              aspectRatio="1272/640"
+              fit="contain"
+              sizes="(max-width: 1024px) 100vw, 896px"
+              background="var(--card)"
+            />
+          </figure>
+
         </section>
 
         {/* ── Footer ── */}

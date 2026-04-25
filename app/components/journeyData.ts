@@ -12,6 +12,7 @@ export interface JourneyNode {
   comingSoon?: boolean;
   type: NodeType;
   visual?: string;
+  visualImage?: string;
   cardBg?: string;
   cardBorder?: string;
 }
@@ -26,6 +27,7 @@ export const journeyNodes: JourneyNode[] = [
     pill: "CE Capstone",
     href: "/case-study/visn",
     type: "project",
+    visualImage: "/visn/visn-concept.png",
   },
   {
     id: "asc-swe",

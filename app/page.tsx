@@ -143,8 +143,8 @@ export default function Home() {
           <div
             className="absolute inset-0"
             style={{
-              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
             }}
           >
             <Image
@@ -162,14 +162,14 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Dark gradient overlay for copy legibility — fades back out at the very bottom to meet page bg */}
+        {/* Directional dark overlay — darkens lower-left where copy sits, leaves top-right clean */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             zIndex: 1,
             background:
-              "linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.4) 85%, transparent 100%)",
+              "linear-gradient(to bottom left, transparent 0%, transparent 40%, rgba(0,0,0,0.55) 100%)",
           }}
         />
 
@@ -227,8 +227,7 @@ export default function Home() {
 
             <div className="flex flex-col">
               {[
-                "I pay close attention, and I trust what I notice.",
-                "That's how I've found my way to the work that mattered most.",
+                "I choose problems that matter to people.",
               ].map((line, i) => (
                 <div key={i} style={{ overflow: "hidden" }}>
                   <motion.p
@@ -241,6 +240,7 @@ export default function Home() {
                       letterSpacing: "-0.02em",
                       lineHeight: 1.25,
                       color: "var(--background)",
+                      textShadow: "0 2px 20px rgba(0,0,0,0.3)",
                     }}
                   >
                     {line}
@@ -256,7 +256,7 @@ export default function Home() {
       <main className="relative flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={{ ...FONT, zIndex: 1 }}>
 
         {/* ── 01 WORK ── */}
-        <section id="work" className="-mt-[15vh] pt-16 sm:pt-24 pb-16 sm:pb-24 flex flex-col relative z-10">
+        <section id="work" className="-mt-[10vh] pt-16 sm:pt-24 pb-16 sm:pb-24 flex flex-col relative z-10">
           <SurferJourney />
         </section>
 

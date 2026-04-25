@@ -2,8 +2,58 @@
 
 import { motion, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
+
+function VisnPhoneVisual() {
+  const frameStyle: React.CSSProperties = {
+    width: 52,
+    height: 90,
+    borderRadius: 12,
+    background: "#171410",
+    padding: 3,
+    boxShadow: "0 8px 16px -8px rgba(0,0,0,0.35)",
+    flexShrink: 0,
+  };
+
+  const screenStyle: React.CSSProperties = {
+    width: "100%",
+    height: "100%",
+    borderRadius: 9,
+    background: "#FBF7F1",
+    border: "1px solid #E5DDD3",
+    position: "relative",
+    overflow: "hidden",
+  };
+
+  return (
+    <div className="flex items-end justify-center gap-2 w-full">
+      <div style={frameStyle}>
+        <div style={screenStyle}>
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
+          <div className="absolute left-1/2 top-8 -translate-x-1/2 w-5 h-5 rounded-full border-2 border-[var(--accent)]" />
+          <div className="absolute left-1/2 top-[46px] -translate-x-1/2 h-1 w-6 rounded-full bg-[#D8CFC3]" />
+        </div>
+      </div>
+      <div style={frameStyle}>
+        <div style={screenStyle}>
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
+          <div className="absolute left-1/2 top-7 -translate-x-1/2 w-8 h-8 rounded-full border border-[#D8CFC3]" />
+          <div className="absolute left-1/2 top-[31px] -translate-x-1/2 w-4 h-4 rounded-full border border-[var(--accent)]" />
+          <div className="absolute left-1/2 top-[45px] -translate-x-1/2 w-2 h-2 rounded-full bg-[var(--accent)]" />
+        </div>
+      </div>
+      <div style={frameStyle}>
+        <div style={screenStyle}>
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
+          <div className="absolute left-1/2 top-7 -translate-x-1/2 w-5 h-5 rounded-full bg-[var(--accent)]/20 border border-[var(--accent)]" />
+          <div className="absolute left-1/2 top-[47px] -translate-x-1/2 h-1 w-7 rounded-full bg-[#D8CFC3]" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function MobileCardSwitcher() {
   const [index, setIndex] = useState(0);
@@ -130,8 +180,8 @@ function MobileCardSwitcher() {
   );
 }
 
-const CARD_W = 210;
-const CARD_H = 185;
+const CARD_W = 248;
+const CARD_H = 220;
 const ZONE = 25;
 
 export default function SurferJourney() {
@@ -380,20 +430,60 @@ export default function SurferJourney() {
                 style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
               >
                 {/* Front face — visual + title + pill */}
-                <div style={{ ...cardStyle, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10 }}>
-                  <span style={{ fontSize: 44, lineHeight: 1 }}>{node.visual}</span>
-                  <p className="font-semibold" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.015em", textAlign: "center", lineHeight: 1.3 }}>
-                    {node.title}
-                  </p>
-                  {node.pill && (
-                    <span
-                      className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent" }}
-                    >
-                      {node.pill}
-                    </span>
-                  )}
-                </div>
+                {node.id === "visn" ? (
+                  <div style={{ ...cardStyle, display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div className="w-full flex items-center justify-center" style={{ flex: "0 0 90%", minHeight: 0 }}>
+                      <VisnPhoneVisual />
+                    </div>
+                    <div className="w-full flex items-start justify-between gap-2">
+                      <p className="font-semibold" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.015em", lineHeight: 1.3, flex: 1, textAlign: "left" }}>
+                        {node.title}
+                      </p>
+                      {node.pill && (
+                        <span
+                          className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                          style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", whiteSpace: "nowrap" }}
+                        >
+                          {node.pill}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ ...cardStyle, display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 10 }}>
+                    {node.visualImage ? (
+                      <div
+                        className="relative w-full rounded-xl overflow-hidden"
+                        style={{ height: 100, background: "rgba(255,255,255,0.45)" }}
+                      >
+                        <Image
+                          src={node.visualImage}
+                          alt={`${node.title ?? node.role ?? "Journey"} visual`}
+                          fill
+                          className="object-cover"
+                          sizes="248px"
+                        />
+                      </div>
+                    ) : node.visual ? (
+                      <div className="w-full flex items-center justify-center" style={{ minHeight: 100 }}>
+                        <span style={{ fontSize: 52, lineHeight: 1 }}>{node.visual}</span>
+                      </div>
+                    ) : null}
+                    <div className="w-full flex items-start justify-between gap-2">
+                      <p className="font-semibold" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.015em", lineHeight: 1.3, flex: 1, textAlign: "left" }}>
+                        {node.title}
+                      </p>
+                      {node.pill && (
+                        <span
+                          className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                          style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", whiteSpace: "nowrap" }}
+                        >
+                          {node.pill}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Back face — details */}
                 <div style={{ ...cardStyle, transform: "rotateY(180deg)", display: "flex", flexDirection: "column", gap: 6 }}>
