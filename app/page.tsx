@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SurferJourney from "./components/SurferJourney";
@@ -12,29 +12,17 @@ const skills = [
 ];
 
 export default function Home() {
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   const [navVisible, setNavVisible] = useState(false);
-  const [viewportH, setViewportH] = useState(900);
   useEffect(() => {
     const onScroll = () => setNavVisible(window.scrollY > window.innerHeight * 0.7);
-    const onResize = () => setViewportH(window.innerHeight);
-    onResize();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
     };
   }, []);
-
-  const prefersReducedMotion = useReducedMotion();
-  const parallaxY = useTransform(
-    scrollY,
-    [0, viewportH],
-    prefersReducedMotion ? [0, 0] : [0, viewportH * 0.15]
-  );
 
   return (
     <>
@@ -123,61 +111,42 @@ export default function Home() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[85dvh] overflow-hidden" style={{ ...FONT, zIndex: 1, backgroundColor: "var(--background)" }}>
+      <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
-        {/* Full-bleed photo with parallax + bottom fade-out */}
+        {/* Left: narrow photo column */}
         <motion.div
-          style={{
-            y: parallaxY,
-            position: "absolute",
-            top: "-15vh",
-            left: 0,
-            right: 0,
-            height: "calc(100% + 15vh)",
-            zIndex: 0,
-          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
+          className="hidden md:block relative flex-shrink-0"
+          style={{ width: "clamp(180px, 22vw, 280px)" }}
         >
-          <div
-            className="absolute inset-0"
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 0%, black 60%, transparent 100%)",
-            }}
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.3, ease: EASE }}
+            className="absolute top-8 left-5 z-20 text-[10px] tabular-nums tracking-[0.18em] text-white/40 select-none"
           >
-            <Image
-              src="/nikki.jpg"
-              alt="Niharika Mishra"
-              fill
-              priority
-              sizes="100vw"
-              style={{
-                objectFit: "cover",
-                objectPosition: "center 40%",
-                filter: "grayscale(1) contrast(1.1) brightness(1.02)",
-              }}
-            />
-          </div>
+            001
+          </motion.span>
+
+          <Image
+            src="/nikki.jpg"
+            alt="Niharika Mishra"
+            fill
+            priority
+            style={{ objectFit: "cover", objectPosition: "center 15%", filter: "grayscale(1) contrast(1.1) brightness(1.02)" }}
+          />
+
+          <div
+            className="absolute inset-y-0 right-0 w-20 pointer-events-none"
+            style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
+          />
+
         </motion.div>
 
-        {/* Directional dark overlay — darkens lower-left where copy sits, leaves top-right clean */}
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            zIndex: 1,
-            background:
-              "linear-gradient(to bottom left, transparent 0%, transparent 40%, rgba(0,0,0,0.55) 100%)",
-          }}
-        />
-
-        {/* Copy container */}
-        <div
-          className="relative flex flex-col justify-between min-h-[85dvh] px-6 md:px-14 py-10 md:py-12"
-          style={{ zIndex: 2 }}
-        >
+        {/* Right: editorial text */}
+        <div className="flex-1 flex flex-col justify-between px-6 md:px-14 py-10 md:py-12 min-w-0">
 
           {/* Top row: nav + date */}
           <motion.div
@@ -196,59 +165,52 @@ export default function Home() {
                   key={label}
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="text-[11px] font-normal tracking-[0.2em] uppercase transition-colors duration-200 hover:text-white"
-                  style={{ color: "rgba(245,241,235,0.75)" }}
+                  className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
                 >
                   {label}
                 </a>
               ))}
             </div>
             <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
-              <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em", color: "var(--background)" }}>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
                 {String(new Date().getMonth() + 1).padStart(2, "0")}
               </p>
-              <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em", color: "var(--background)" }}>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
                 {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
               </p>
             </div>
           </motion.div>
 
-          {/* Bottom: eyebrow + main copy */}
-          <div className="flex flex-col max-w-3xl">
+          {/* Name block */}
+          <div className="flex flex-col">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
-              className="text-[10px] tracking-[0.22em] uppercase mb-5"
-              style={{ color: "rgba(245,241,235,0.7)" }}
+              className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
             >
               Niharika Mishra · Experience Design · Capital One
             </motion.p>
 
             <div className="flex flex-col">
-              {[
-                "I choose problems that matter to people.",
-              ].map((line, i) => (
+              {["I choose problems", "that matter to people."].map((line, i) => (
                 <div key={i} style={{ overflow: "hidden" }}>
                   <motion.p
                     initial={{ y: "106%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1, delay: 1.15 + i * 0.1, ease: EASE }}
-                    className="font-light"
-                    style={{
-                      fontSize: "clamp(22px, 3.2vw, 40px)",
-                      letterSpacing: "-0.02em",
-                      lineHeight: 1.25,
-                      color: "var(--background)",
-                      textShadow: "0 2px 20px rgba(0,0,0,0.3)",
-                    }}
+                    className="font-light text-[var(--foreground)]"
+                    style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                   >
-                    {line}
+                    {line}{i === 1 && <span style={{ color: "var(--accent)" }}></span>}
                   </motion.p>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Spacer to preserve justify-between layout */}
+          <div />
         </div>
       </section>
 
