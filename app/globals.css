@@ -8,6 +8,7 @@
   --border: #DDD6CC;
   --accent: #C17B5A;
   --green: #6B8C66;
+  --font-poppins: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
@@ -27,6 +28,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  position: relative;
 }
 
 .prose p {

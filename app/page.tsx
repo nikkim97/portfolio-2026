@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SurferJourney from "./components/SurferJourney";
+import YogaCycle from "./components/YogaCycle";
 import { EASE, FadeIn, FONT, SkillPill } from "./components/ui";
 
 const skills = [
@@ -11,18 +12,83 @@ const skills = [
   "Design Systems", "Prototyping & Wireframing", "Figma", "UX Research", "AWS", "Python",
 ];
 
+type NavItem = { label: string; href: string; section?: string; external?: boolean };
+const NAV_ITEMS: NavItem[] = [
+  { label: "Work", href: "#work", section: "work" },
+  { label: "About", href: "#about", section: "about" },
+  { label: "Résumé ↗", href: "/resume.pdf", external: true },
+];
+
+function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
+  return (
+    <a
+      href={item.href}
+      onClick={onClick}
+      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`group relative text-[11px] font-normal tracking-[0.2em] uppercase transition-colors duration-200 hover:text-[var(--foreground)] ${active ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
+    >
+      {item.label}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute left-0 -bottom-1 h-px bg-current transition-[width] duration-300 ease-out ${active ? "w-full" : "w-0 group-hover:w-full"}`}
+      />
+    </a>
+  );
+}
+
+function Hamburger({ open, onClick }: { open: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={open ? "Close menu" : "Open menu"}
+      aria-expanded={open}
+      className="sm:hidden relative w-6 h-6 flex flex-col items-center justify-center gap-1.5"
+    >
+      <span
+        className="block h-px w-5 bg-[var(--foreground)] transition-transform duration-300"
+        style={{ transform: open ? "translateY(3px) rotate(45deg)" : "none" }}
+      />
+      <span
+        className="block h-px w-5 bg-[var(--foreground)] transition-transform duration-300"
+        style={{ transform: open ? "translateY(-3px) rotate(-45deg)" : "none" }}
+      />
+    </button>
+  );
+}
+
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   const [navVisible, setNavVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setNavVisible(window.scrollY > window.innerHeight * 0.7);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setNavVisible(window.scrollY > window.innerHeight * 0.7);
+      const center = window.innerHeight / 2;
+      let active: string | null = null;
+      for (const id of ["work", "about"]) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= center && rect.bottom >= center) {
+          active = id;
+          break;
+        }
+      }
+      setActiveSection(active);
     };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -43,29 +109,41 @@ export default function Home() {
             className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
             style={{ backgroundColor: "rgba(250,248,245,0.92)", backdropFilter: "blur(12px)", ...FONT }}
           >
-            <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
-              <a href="#" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">NM</a>
-              <div className="flex items-center gap-6 sm:gap-8">
-                {[
-                  { label: "Work", href: "#work" },
-                  { label: "About", href: "#about" },
-                  { label: "Contact", href: "#contact" },
-                ].map(({ label, href }) => (
-                  <a key={label} href={href} className="hidden sm:block text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
-                    {label}
-                  </a>
+            <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-end">
+              <div className="hidden sm:flex items-center gap-8">
+                {NAV_ITEMS.map(item => (
+                  <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
                 ))}
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--background)] bg-[var(--foreground)] px-4 py-1.5 hover:bg-[var(--accent)] transition-colors duration-200"
-                >
-                  Résumé
-                </a>
               </div>
+              <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
             </div>
           </motion.nav>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="fixed inset-0 z-[55] flex flex-col items-center justify-center gap-10"
+            style={{ background: "var(--background)", ...FONT }}
+          >
+            {NAV_ITEMS.map(item => (
+              <a
+                key={item.label}
+                href={item.href}
+                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-base tracking-[0.2em] uppercase transition-colors duration-200 ${item.section && item.section === activeSection ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -135,6 +213,7 @@ export default function Home() {
             alt="Niharika Mishra"
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 280px"
             style={{ objectFit: "cover", objectPosition: "center 15%", filter: "grayscale(1) contrast(1.1) brightness(1.02)" }}
           />
 
@@ -155,30 +234,13 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
             className="flex items-start justify-between"
           >
-            <div className="flex items-center gap-6 sm:gap-8">
-              {[
-                { label: "Work", href: "#work" },
-                { label: "About", href: "#about" },
-                { label: "Résumé ↗", href: "/resume.pdf", external: true },
-              ].map(({ label, href, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
-                >
-                  {label}
-                </a>
+            <div className="hidden sm:flex items-center gap-8">
+              {NAV_ITEMS.map(item => (
+                <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
               ))}
             </div>
-            <div className="flex flex-col items-end" style={{ lineHeight: 1 }}>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
-                {String(new Date().getMonth() + 1).padStart(2, "0")}
-              </p>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
-                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
-              </p>
-            </div>
+            <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
+            <YogaCycle size={100} />
           </motion.div>
 
           {/* Name block */}
@@ -226,7 +288,7 @@ export default function Home() {
         <section id="about" className="py-12 sm:py-16 flex flex-col gap-20">
 
 
-          <div className="grid md:grid-cols-2 gap-16 md:gap-24">
+          <div className="flex flex-col gap-10 md:gap-12">
             <FadeIn>
               <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}>
                 The choices weren't accidental.
@@ -234,10 +296,8 @@ export default function Home() {
             </FadeIn>
             <div className="flex flex-col gap-5 text-sm font-light leading-[1.9]" style={{ color: "#3A3530" }}>
               {[
-                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural; I wanted to get closer to the why behind how people think, struggle, and make decisions.",
-                "I'm drawn to messy, human problems. The kind where the problem statement is still being written. That's what pulled me into HR tech at Capital One, where I spent years rethinking how performance management could actually serve people, not just process them.",
-                "Now I build too. Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. I think in systems, design for humans, and build to ship.",
-                "Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
+                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural — I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
+                "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
               ].map((p, i) => (
                 <FadeIn key={i} delay={i * 0.08} distance={12}>
                   <p>{p}</p>

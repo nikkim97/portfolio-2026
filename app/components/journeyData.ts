@@ -15,6 +15,8 @@ export interface JourneyNode {
   visualImage?: string;
   cardBg?: string;
   cardBorder?: string;
+  tags?: string[];
+  accolade?: string;
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -23,11 +25,13 @@ export const journeyNodes: JourneyNode[] = [
     period: "2019",
     role: "PM & Designer",
     title: "VISN",
-    brief: "A wearable navigation system for visually impaired people — hardware and software, end to end. Won the capstone among 60 engineering teams.",
+    brief: "A wearable navigation system for visually impaired people — hardware and software.",
     pill: "CE Capstone",
     href: "/case-study/visn",
     type: "project",
     visualImage: "/visn/visn-concept.png",
+    tags: ["Hardware", "End-to-End"],
+    accolade: "✦ Won among 60 engineering teams",
   },
   {
     id: "asc-swe",
@@ -48,22 +52,24 @@ export const journeyNodes: JourneyNode[] = [
   {
     id: "sa-xd",
     period: "2022–23",
-    role: "Senior Associate, Experience Design",
+    role: "Sr. Associate, Experience Design",
     title: "Performance Platform",
-    brief: "I moved to design deliberately, joining HR tech to rethink how employees receive feedback so it could finally be fair, consistent, and useful.",
+    brief: "Rethinking feedback so it could finally be fair, consistent, and useful.",
     pill: "Capital One",
     href: "/case-study/sa-xd",
     type: "project",
+    tags: ["HR Tech", "Enterprise"],
   },
   {
     id: "path-360",
     period: "2023–25",
     role: "Principal Associate, Experience Design",
     title: "Calibrations Ecosystem",
-    brief: "I helped launch PATH — Capital One's first enterprise performance platform — scaling from an 800-person pilot to 70,000+ employees.",
+    brief: "Scaling PATH from 800 to 70,000+ employees.",
     pill: "Capital One",
     href: "/case-study/path-360",
     type: "project",
+    tags: ["Scale", "70K+ Employees"],
   },
   {
     id: "path-people",
@@ -78,10 +84,11 @@ export const journeyNodes: JourneyNode[] = [
     id: "bloom",
     period: "2026",
     title: "Bloom",
-    brief: "I build with code to close the gap between what I design and what I can ship — Bloom came first, with more on the way.",
+    brief: "From insight to working product — built with Claude Code.",
     pill: "Vibe Coded",
     href: "/case-study/bloom",
     type: "horizon",
+    tags: ["Claude Code", "Shipped"],
   },
   {
     id: "time-tracker",
@@ -91,41 +98,47 @@ export const journeyNodes: JourneyNode[] = [
     pill: "Vibe Coded",
     comingSoon: true,
     type: "horizon",
+    tags: ["Claude Code", "Coming Soon"],
   },
 ];
 
 export const WAVE_PATH_D = [
   "M 80,130",
-  // VISN — path starts here
-  // Career nodes — tight, quick zigzag
-  "C 80,190 490,240 490,280",   // → node 2 right (x=490)
-  "C 490,340 80,375 80,410",    // → node 3 left  (x=80)
-  "C 80,460 550,490 550,520",   // → node 4 right (x=550)
-  // Loop / teardrop between SA XD and PATH
-  "C 550,590 460,640 400,650",  // ease down-left
-  "C 300,660 220,650 200,605",  // swing left and up
-  "C 180,560 320,540 390,580",  // curve back right (loop starts)
-  "C 460,620 460,690 380,710",  // cross back down — loop closes
-  "C 300,740 160,775 50,780",   // sweep left → node 5 (x=50)
-  // Condensed curve: PA XD → Manager
-  "C 50,860 490,930 490,990",   // → node 6 right (x=490)
-  // Curves: Manager → Bloom → Time Tracking
-  "C 490,1080 200,1130 75,1160",  // → node 7 left  (x=75)
-  "C 75,1230 530,1260 530,1310", // → node 8 right (x=530)
-  // Tail — surfer rides to "still riding"
-  "C 530,1350 300,1390 300,1410",
+  // Career zigzag: VISN → asc-swe → sr-swe
+  "C 80,190 490,240 490,280",
+  "C 490,340 80,375 80,410",
+  // LOOP 1: sr-swe → sa-xd (engineer → designer pivot, mirrored from loop 2)
+  "C 80,480 170,550 230,560",
+  "C 290,570 400,562 420,517",
+  "C 440,472 320,450 250,490",
+  "C 180,530 180,615 260,635",
+  "C 340,655 550,690 550,720",
+  // sa-xd → path-360 (direct)
+  "C 550,790 50,850 50,880",
+  // path-360 → path-people (direct)
+  "C 50,960 490,1010 490,1080",
+  // LOOP 2: path-people → bloom (manager → vibe coding)
+  "C 490,1150 430,1210 370,1220",
+  "C 310,1230 200,1225 180,1180",
+  "C 160,1135 280,1115 350,1155",
+  "C 420,1195 420,1270 340,1290",
+  "C 260,1310 75,1340 75,1370",
+  // bloom → time-tracker (direct)
+  "C 75,1430 530,1450 530,1490",
+  // tail
+  "C 530,1530 300,1560 300,1580",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 1410;
+export const SVG_H = 1580;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
   { x: 80,  y: 130,  side: "left"  }, // VISN
   { x: 490, y: 280,  side: "right" }, // asc-swe
   { x: 80,  y: 410,  side: "left"  }, // sr-swe
-  { x: 550, y: 520,  side: "right" }, // sa-xd
-  { x: 50,  y: 780,  side: "left"  }, // path-360
-  { x: 490, y: 990,  side: "right" }, // path-people
-  { x: 75,  y: 1160, side: "left"  }, // bloom
-  { x: 530, y: 1310, side: "right" }, // time-tracker
+  { x: 550, y: 720,  side: "right" }, // sa-xd
+  { x: 50,  y: 880,  side: "left"  }, // path-360
+  { x: 490, y: 1080, side: "right" }, // path-people
+  { x: 75,  y: 1370, side: "left"  }, // bloom
+  { x: 530, y: 1490, side: "right" }, // time-tracker
 ];

@@ -2,58 +2,8 @@
 
 import { motion, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
-
-function VisnPhoneVisual() {
-  const frameStyle: React.CSSProperties = {
-    width: 52,
-    height: 90,
-    borderRadius: 12,
-    background: "#171410",
-    padding: 3,
-    boxShadow: "0 8px 16px -8px rgba(0,0,0,0.35)",
-    flexShrink: 0,
-  };
-
-  const screenStyle: React.CSSProperties = {
-    width: "100%",
-    height: "100%",
-    borderRadius: 9,
-    background: "#FBF7F1",
-    border: "1px solid #E5DDD3",
-    position: "relative",
-    overflow: "hidden",
-  };
-
-  return (
-    <div className="flex items-end justify-center gap-2 w-full">
-      <div style={frameStyle}>
-        <div style={screenStyle}>
-          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
-          <div className="absolute left-1/2 top-8 -translate-x-1/2 w-5 h-5 rounded-full border-2 border-[var(--accent)]" />
-          <div className="absolute left-1/2 top-[46px] -translate-x-1/2 h-1 w-6 rounded-full bg-[#D8CFC3]" />
-        </div>
-      </div>
-      <div style={frameStyle}>
-        <div style={screenStyle}>
-          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
-          <div className="absolute left-1/2 top-7 -translate-x-1/2 w-8 h-8 rounded-full border border-[#D8CFC3]" />
-          <div className="absolute left-1/2 top-[31px] -translate-x-1/2 w-4 h-4 rounded-full border border-[var(--accent)]" />
-          <div className="absolute left-1/2 top-[45px] -translate-x-1/2 w-2 h-2 rounded-full bg-[var(--accent)]" />
-        </div>
-      </div>
-      <div style={frameStyle}>
-        <div style={screenStyle}>
-          <div className="absolute inset-x-0 top-0 h-1.5 bg-[#1A1814]" />
-          <div className="absolute left-1/2 top-7 -translate-x-1/2 w-5 h-5 rounded-full bg-[var(--accent)]/20 border border-[var(--accent)]" />
-          <div className="absolute left-1/2 top-[47px] -translate-x-1/2 h-1 w-7 rounded-full bg-[#D8CFC3]" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function MobileCardSwitcher() {
   const [index, setIndex] = useState(0);
@@ -180,9 +130,7 @@ function MobileCardSwitcher() {
   );
 }
 
-const CARD_W = 248;
-const CARD_H = 220;
-const ZONE = 25;
+const CARD_W = 268;
 
 export default function SurferJourney() {
   const [isMobile, setIsMobile] = useState(false);
@@ -199,13 +147,11 @@ export default function SurferJourney() {
   const [pathLen, setPathLen] = useState(0);
   const surferRef = useRef<HTMLDivElement>(null);
   const [surferY, setSurferY] = useState(50);
-
-  const [flippedSet, setFlippedSet] = useState<Set<number>>(new Set());
-  const inZoneRef = useRef<boolean[]>(journeyNodes.map(() => false));
+  const everPassedRef = useRef<Set<number>>(new Set());
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 50%", "end 100%"],
+    offset: ["start 70%", "end 70%"],
   });
 
   useEffect(() => {
@@ -228,24 +174,19 @@ export default function SurferJourney() {
       d.style.strokeDashoffset = `${pathLen - len}`;
 
       const pt = p.getPointAtLength(len);
-      const pt2 = p.getPointAtLength(Math.min(len + 10, pathLen));
-      const angle = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * (180 / Math.PI);
-      const displayAngle = v > 0.98 ? 180 : angle;
+      const eps = 5;
+      const ptA = p.getPointAtLength(Math.min(len + eps, pathLen));
+      const ptB = p.getPointAtLength(Math.max(len - eps, 0));
+      const angle = Math.atan2(ptA.y - ptB.y, ptA.x - ptB.x) * (180 / Math.PI);
       s.style.left = `calc(50% - ${SVG_W / 2}px + ${pt.x}px)`;
       s.style.top = `${pt.y}px`;
-      s.style.transform = `translate(-50%, -50%) rotate(${displayAngle - 90}deg)`;
+      s.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
 
-      const newY = pt.y;
-      WAVE_ANCHORS.forEach((anchor, i) => {
-        if (journeyNodes[i].type === "career") return;
-        const inZone = Math.abs(newY - anchor.y) <= ZONE;
-        if (inZone && !inZoneRef.current[i]) {
-          setFlippedSet(prev => { const next = new Set(prev); if (next.has(i)) next.delete(i); else next.add(i); return next; });
-        }
-        inZoneRef.current[i] = inZone;
+      WAVE_ANCHORS.forEach((anchor, idx) => {
+        if (pt.y >= anchor.y) everPassedRef.current.add(idx);
       });
 
-      setSurferY(newY);
+      setSurferY(pt.y);
     });
   }, [scrollYProgress, pathLen]);
 
@@ -330,7 +271,7 @@ export default function SurferJourney() {
           left: `calc(50% - ${SVG_W / 2}px + 300px)`,
           top: 20,
           transform: "translate(-50%, -50%) rotate(0deg)",
-          fontSize: 20,
+          fontSize: 28,
           lineHeight: 1,
         }}
       >
@@ -342,7 +283,8 @@ export default function SurferJourney() {
         const a = WAVE_ANCHORS[i];
         const isRight = a.side === "right";
         const isCareer = node.type === "career";
-        const isHorizon = node.type === "horizon";
+        const everPassed = everPassedRef.current.has(i);
+        const inZone = Math.abs(surferY - a.y) <= 70;
         const GAP = 20;
 
         const posLeft = isRight ? `calc(50% - ${SVG_W / 2}px + ${a.x + GAP}px)` : undefined;
@@ -392,20 +334,10 @@ export default function SurferJourney() {
           );
         }
 
-        // Project / horizon nodes — flip card
+        // Project / horizon nodes — editorial two-section card
         const isActionable = !!node.href && !node.comingSoon;
-        const isFlipped = flippedSet.has(i);
         const CardLink = isActionable ? "a" : "div";
-        const cardStyle: React.CSSProperties = {
-          position: "absolute",
-          inset: 0,
-          borderRadius: 18,
-          padding: "14px 16px",
-          ...GLASS,
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
-          overflow: "hidden",
-        };
+        const tags = node.tags ?? [];
 
         return (
           <CardLink
@@ -417,108 +349,104 @@ export default function SurferJourney() {
               transform: "translateY(-50%)",
               textDecoration: "none",
               cursor: isActionable ? "pointer" : "default",
+              width: CARD_W,
+              position: "absolute",
             }}
           >
             <motion.div
+              initial={false}
+              animate={{ opacity: everPassed ? 1 : 0.5, scale: inZone ? 1.05 : 1 }}
               whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 280, damping: 22 }}
-              style={{ perspective: 900, width: CARD_W, height: CARD_H }}
+              transition={{ duration: 0.5, ease: EASE }}
+              style={{
+                width: "100%",
+                border: "1px solid var(--border)",
+                borderRadius: 12,
+                background: "var(--background)",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+              }}
             >
-              <motion.div
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.55, ease: EASE }}
-                style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
+              {/* Top section — placeholder block (color TBD) */}
+              <div
+                style={{
+                  background: "#C9C2B6",
+                  minHeight: 130,
+                  padding: "16px 18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  color: "rgba(255,255,255,0.92)",
+                }}
               >
-                {/* Front face — visual + title + pill */}
-                {node.id === "visn" ? (
-                  <div style={{ ...cardStyle, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <div className="w-full flex items-center justify-center" style={{ flex: "0 0 90%", minHeight: 0 }}>
-                      <VisnPhoneVisual />
-                    </div>
-                    <div className="w-full flex items-start justify-between gap-2">
-                      <p className="font-semibold" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.015em", lineHeight: 1.3, flex: 1, textAlign: "left" }}>
-                        {node.title}
-                      </p>
-                      {node.pill && (
-                        <span
-                          className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                          style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", whiteSpace: "nowrap" }}
-                        >
-                          {node.pill}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ ...cardStyle, display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 10 }}>
-                    {node.visualImage ? (
-                      <div
-                        className="relative w-full rounded-xl overflow-hidden"
-                        style={{ height: 100, background: "rgba(255,255,255,0.45)" }}
+                {node.role ? (
+                  <p style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", fontSize: 13, letterSpacing: 0, opacity: 0.95 }}>
+                    {node.role}
+                  </p>
+                ) : <span />}
+                {node.accolade && (
+                  <p style={{ fontSize: 9, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 500 }}>
+                    {node.accolade}
+                  </p>
+                )}
+              </div>
+
+              {/* Bottom section — content */}
+              <div
+                style={{
+                  padding: "14px 18px 16px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 10,
+                  background: "var(--background)",
+                }}
+              >
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {tags.map(t => (
+                      <span
+                        key={t}
+                        style={{
+                          fontSize: 9,
+                          letterSpacing: "0.18em",
+                          textTransform: "uppercase",
+                          padding: "3px 8px",
+                          border: "1px solid var(--border)",
+                          color: "var(--midtone)",
+                          fontWeight: 500,
+                        }}
                       >
-                        <Image
-                          src={node.visualImage}
-                          alt={`${node.title ?? node.role ?? "Journey"} visual`}
-                          fill
-                          className="object-cover"
-                          sizes="248px"
-                        />
-                      </div>
-                    ) : node.visual ? (
-                      <div className="w-full flex items-center justify-center" style={{ minHeight: 100 }}>
-                        <span style={{ fontSize: 52, lineHeight: 1 }}>{node.visual}</span>
-                      </div>
-                    ) : null}
-                    <div className="w-full flex items-start justify-between gap-2">
-                      <p className="font-semibold" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.015em", lineHeight: 1.3, flex: 1, textAlign: "left" }}>
-                        {node.title}
-                      </p>
-                      {node.pill && (
-                        <span
-                          className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                          style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", whiteSpace: "nowrap" }}
-                        >
-                          {node.pill}
-                        </span>
-                      )}
-                    </div>
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 )}
-
-                {/* Back face — details */}
-                <div style={{ ...cardStyle, transform: "rotateY(180deg)", display: "flex", flexDirection: "column", gap: 6 }}>
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)" }}>
-                      {node.period}
-                    </span>
-                    {node.pill && (
-                      <span
-                        className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                        style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent" }}
-                      >
-                        {node.pill}
-                      </span>
-                    )}
-                  </div>
-                  {node.role && (
-                    <p className="font-semibold leading-snug" style={{ fontSize: 10, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
-                      {node.role}
-                    </p>
-                  )}
-                  <p className="font-light leading-relaxed" style={{ fontSize: 10, color: "var(--midtone)", flex: 1 }}>
-                    {node.brief}
+                {node.title && (
+                  <p style={{
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                    fontSize: 22,
+                    fontWeight: 400,
+                    color: "var(--foreground)",
+                    letterSpacing: "-0.01em",
+                    lineHeight: 1.15,
+                  }}>
+                    {node.title}
                   </p>
-                  {node.comingSoon ? (
-                    <span className="text-[9px] tracking-[0.14em] uppercase" style={{ color: "var(--midtone)" }}>Coming Soon</span>
-                  ) : isHorizon ? (
-                    <span className="text-[9px] tracking-[0.14em] uppercase" style={{ color: "var(--midtone)" }}>Built with Claude Code</span>
-                  ) : (
-                    <span className="text-[9px] tracking-[0.14em] uppercase opacity-50 group-hover:opacity-100 transition-opacity duration-300" style={{ color: "var(--foreground)" }}>
-                      View case study ↗
-                    </span>
-                  )}
-                </div>
-              </motion.div>
+                )}
+                <p style={{ fontSize: 11, color: "var(--midtone)", lineHeight: 1.55, fontWeight: 300 }}>
+                  {node.brief}
+                </p>
+                {node.comingSoon ? (
+                  <span style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                    Coming Soon
+                  </span>
+                ) : isActionable ? (
+                  <span style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                    View Case Study ↗
+                  </span>
+                ) : null}
+              </div>
             </motion.div>
           </CardLink>
         );
@@ -527,7 +455,7 @@ export default function SurferJourney() {
       {/* Tail label */}
       <div
         className="absolute"
-        style={{ top: 1375, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}
+        style={{ top: 1545, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}
       >
         <p className="text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)]">
           still riding
