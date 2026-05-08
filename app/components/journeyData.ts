@@ -6,8 +6,7 @@ export interface JourneyNode {
   role?: string;
   title?: string;
   brief: string;
-  pill?: string;
-  pillColor?: string;
+  pills?: string[];
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
@@ -15,30 +14,26 @@ export interface JourneyNode {
   visualImage?: string;
   cardBg?: string;
   cardBorder?: string;
-  tags?: string[];
-  accolade?: string;
 }
 
 export const journeyNodes: JourneyNode[] = [
   {
     id: "visn",
     period: "2019",
-    role: "PM & Designer",
+    role: "Engineering Student",
     title: "VISN",
-    brief: "A wearable navigation system for visually impaired people — hardware and software.",
-    pill: "CE Capstone",
+    brief: "How can we help someone navigate a world they can't see?",
+    pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
     visualImage: "/visn/visn-concept.png",
-    tags: ["Hardware", "End-to-End"],
-    accolade: "✦ Won among 60 engineering teams",
   },
   {
     id: "asc-swe",
     period: "2019–20",
     role: "Associate, Software Engineer",
     brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
-    pill: "Capital One",
+    pills: ["Capital One"],
     type: "career",
   },
   {
@@ -46,30 +41,28 @@ export const journeyNodes: JourneyNode[] = [
     period: "2020–22",
     role: "Senior Associate, Software Engineer",
     brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
-    pill: "Capital One",
+    pills: ["Capital One"],
     type: "career",
   },
   {
     id: "sa-xd",
     period: "2022–23",
     role: "Sr. Associate, Experience Design",
-    title: "Performance Platform",
-    brief: "Rethinking feedback so it could finally be fair, consistent, and useful.",
-    pill: "Capital One",
+    title: "360 Feedback",
+    brief: "How do you design feedback that people trust enough to act on?",
+    pills: ["Capital One", "Research"],
     href: "/case-study/sa-xd",
     type: "project",
-    tags: ["HR Tech", "Enterprise"],
   },
   {
     id: "path-360",
     period: "2023–25",
     role: "Principal Associate, Experience Design",
     title: "Calibrations Ecosystem",
-    brief: "Scaling PATH from 800 to 70,000+ employees.",
-    pill: "Capital One",
+    brief: "How do you give people leaders the clarity they need to have real talent conversations?",
+    pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    tags: ["Scale", "70K+ Employees"],
   },
   {
     id: "path-people",
@@ -77,28 +70,26 @@ export const journeyNodes: JourneyNode[] = [
     role: "Manager, Experience Design",
     title: "Discover Migration",
     brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
-    pill: "Capital One",
+    pills: ["Capital One"],
     type: "career",
   },
   {
     id: "bloom",
     period: "2026",
     title: "Bloom",
-    brief: "From insight to working product — built with Claude Code.",
-    pill: "Vibe Coded",
+    brief: "How may we build something real while learning a new tool?",
+    pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
     type: "horizon",
-    tags: ["Claude Code", "Shipped"],
   },
   {
     id: "time-tracker",
     period: "2026",
     title: "Time Tracking Dashboard",
-    brief: "How do you help people see where their time is actually going?",
-    pill: "Vibe Coded",
+    brief: "How can we help people see where their time is actually going?",
+    pills: ["Vibe Coded", "Claude"],
     comingSoon: true,
     type: "horizon",
-    tags: ["Claude Code", "Coming Soon"],
   },
 ];
 

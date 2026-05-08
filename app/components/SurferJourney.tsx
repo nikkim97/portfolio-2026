@@ -59,24 +59,40 @@ function MobileCardSwitcher() {
               <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: hasCard ? 1 : 0.7 }}>
                 {node.period}
               </span>
-              {node.pill && (
+              {node.pills?.map((p) => (
                 <span
+                  key={p}
                   className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
                   style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", opacity: hasCard ? 1 : 0.7 }}
                 >
-                  {node.pill}
+                  {p}
                 </span>
-              )}
+              ))}
             </div>
-            {node.role && (
-              <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
-                {node.role}
-              </p>
-            )}
             {node.title && (
-              <p className="font-semibold leading-snug" style={{ fontSize: 14, color: "var(--foreground)", letterSpacing: "-0.015em" }}>
+              <p
+                className="leading-snug"
+                style={{
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                  fontStyle: "italic",
+                  fontSize: 16,
+                  color: "var(--foreground)",
+                  letterSpacing: 0,
+                }}
+              >
                 {node.title}
               </p>
+            )}
+            {node.role && (
+              node.title ? (
+                <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.005em" }}>
+                  {node.role}
+                </p>
+              ) : (
+                <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.015em" }}>
+                  {node.role}
+                </p>
+              )
             )}
             <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
               {node.brief}
@@ -312,17 +328,18 @@ export default function SurferJourney() {
                   <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: 0.7 }}>
                     {node.period}
                   </span>
-                  {node.pill && (
+                  {node.pills?.map((p) => (
                     <span
+                      key={p}
                       className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
                       style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", opacity: 0.7 }}
                     >
-                      {node.pill}
+                      {p}
                     </span>
-                  )}
+                  ))}
                 </div>
                 {node.role && (
-                  <p className="font-semibold leading-snug" style={{ fontSize: 11, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
+                  <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
                     {node.role}
                   </p>
                 )}
@@ -337,7 +354,6 @@ export default function SurferJourney() {
         // Project / horizon nodes — editorial two-section card
         const isActionable = !!node.href && !node.comingSoon;
         const CardLink = isActionable ? "a" : "div";
-        const tags = node.tags ?? [];
 
         return (
           <CardLink
@@ -368,29 +384,8 @@ export default function SurferJourney() {
                 flexDirection: "column",
               }}
             >
-              {/* Top section — placeholder block (color TBD) */}
-              <div
-                style={{
-                  background: "#C9C2B6",
-                  minHeight: 130,
-                  padding: "16px 18px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  color: "rgba(255,255,255,0.92)",
-                }}
-              >
-                {node.role ? (
-                  <p style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", fontSize: 13, letterSpacing: 0, opacity: 0.95 }}>
-                    {node.role}
-                  </p>
-                ) : <span />}
-                {node.accolade && (
-                  <p style={{ fontSize: 9, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: 500 }}>
-                    {node.accolade}
-                  </p>
-                )}
-              </div>
+              {/* Top section — image placeholder */}
+              <div style={{ background: "#C9C2B6", minHeight: 130 }} />
 
               {/* Bottom section — content */}
               <div
@@ -398,51 +393,50 @@ export default function SurferJourney() {
                   padding: "14px 18px 16px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 10,
+                  gap: 8,
                   background: "var(--background)",
                 }}
               >
-                {tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
-                    {tags.map(t => (
-                      <span
-                        key={t}
-                        style={{
-                          fontSize: 9,
-                          letterSpacing: "0.18em",
-                          textTransform: "uppercase",
-                          padding: "3px 8px",
-                          border: "1px solid var(--border)",
-                          color: "var(--midtone)",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)" }}>
+                    {node.period}
+                  </span>
+                  {node.pills?.map((p) => (
+                    <span
+                      key={p}
+                      className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent" }}
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
                 {node.title && (
                   <p style={{
                     fontFamily: "Georgia, 'Times New Roman', serif",
-                    fontSize: 22,
-                    fontWeight: 400,
+                    fontStyle: "italic",
+                    fontSize: 16,
                     color: "var(--foreground)",
-                    letterSpacing: "-0.01em",
-                    lineHeight: 1.15,
+                    letterSpacing: 0,
+                    lineHeight: 1.25,
                   }}>
                     {node.title}
                   </p>
                 )}
-                <p style={{ fontSize: 11, color: "var(--midtone)", lineHeight: 1.55, fontWeight: 300 }}>
+                {node.role && (
+                  <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.005em" }}>
+                    {node.role}
+                  </p>
+                )}
+                <p style={{ fontSize: 11, color: "var(--midtone)", lineHeight: 1.55, fontWeight: 300, marginTop: 2 }}>
                   {node.brief}
                 </p>
                 {node.comingSoon ? (
-                  <span style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                  <span className="mt-1" style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
                     Coming Soon
                   </span>
                 ) : isActionable ? (
-                  <span style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                  <span className="mt-1" style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
                     View Case Study ↗
                   </span>
                 ) : null}

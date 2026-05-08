@@ -2,9 +2,7 @@
 
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import SurferJourney from "./components/SurferJourney";
-import YogaCycle from "./components/YogaCycle";
 import { EASE, FadeIn, FONT, SkillPill } from "./components/ui";
 
 const skills = [
@@ -191,56 +189,30 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
 
-        {/* Left: narrow photo column */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
-          className="hidden md:block relative flex-shrink-0"
-          style={{ width: "clamp(180px, 22vw, 280px)" }}
-        >
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.3, ease: EASE }}
-            className="absolute top-8 left-5 z-20 text-[10px] tabular-nums tracking-[0.18em] text-white/40 select-none"
-          >
-            001
-          </motion.span>
+        {/* Editorial text */}
+        <div className="flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
 
-          <Image
-            src="/nikki.jpg"
-            alt="Niharika Mishra"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 280px"
-            style={{ objectFit: "cover", objectPosition: "center 15%", filter: "grayscale(1) contrast(1.1) brightness(1.02)" }}
-          />
-
-          <div
-            className="absolute inset-y-0 right-0 w-20 pointer-events-none"
-            style={{ background: "linear-gradient(to right, transparent, var(--background))" }}
-          />
-
-        </motion.div>
-
-        {/* Right: editorial text */}
-        <div className="flex-1 flex flex-col justify-between px-6 md:px-14 py-10 md:py-12 min-w-0">
-
-          {/* Top row: nav + date */}
+          {/* Top row: date + nav */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
             className="flex items-start justify-between"
           >
+            <div className="flex flex-col items-start" style={{ lineHeight: 1 }}>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                {String(new Date().getMonth() + 1).padStart(2, "0")}
+              </p>
+              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
+              </p>
+            </div>
             <div className="hidden sm:flex items-center gap-8">
               {NAV_ITEMS.map(item => (
                 <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
               ))}
             </div>
             <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
-            <YogaCycle size={100} />
           </motion.div>
 
           {/* Name block */}
@@ -314,6 +286,47 @@ export default function Home() {
               {skills.map((s, i) => <SkillPill key={s} skill={s} delay={i * 0.04} />)}
             </div>
           </div>
+
+          {/* Off the clock — three pillars (hidden — flip to true to bring back) */}
+          {false && (
+          <div className="flex flex-col gap-10">
+            <FadeIn>
+              <div className="flex flex-col gap-3">
+                <p className="text-[10px] font-normal tracking-[0.28em] uppercase text-[var(--midtone)]">Off the clock</p>
+                <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em", lineHeight: 1.5 }}>
+                  <span className="italic">&ldquo;A renaissance woman,&rdquo;</span> my fiancé once called me — <span style={{ color: "var(--accent)" }}>reflection</span>, <span style={{ color: "var(--accent)" }}>movement</span>, and <span style={{ color: "var(--accent)" }}>exploration</span>, each surfacing in its own season.
+                </p>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+              {[
+                { num: "01", pillar: "Reflection", activities: ["Meditation", "Yoga", "Tea with a book"] },
+                { num: "02", pillar: "Movement", activities: ["Surfing", "Dancing", "Concerts"] },
+                { num: "03", pillar: "Exploration", activities: ["Deep dives", "Immersive travel"] },
+              ].map((col, i) => (
+                <FadeIn key={col.pillar} delay={i * 0.08}>
+                  <div className="flex flex-col gap-4">
+                    <span className="text-[10px] tabular-nums tracking-[0.18em] text-[var(--midtone)]">{col.num}</span>
+                    {/* Image placeholder + floating activity pills — drop photos in later */}
+                    <div className="relative w-full aspect-[4/5] rounded-sm overflow-hidden">
+                      <div
+                        aria-hidden
+                        className="absolute inset-0"
+                        style={{ background: "linear-gradient(180deg, rgba(58,53,48,0.10) 0%, rgba(58,53,48,0.04) 100%)" }}
+                      />
+                      <div className="absolute inset-0 p-4 flex flex-col justify-end items-start gap-1.5">
+                        {col.activities.map((a, j) => (
+                          <SkillPill key={a} skill={a} delay={i * 0.08 + j * 0.06} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+          )}
         </section>
 
         {/* ── 03 CONTACT ── */}
@@ -331,7 +344,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-8">
                 {[
                   { label: "Email", href: "mailto:niharika@example.com" },
-                  { label: "LinkedIn", href: "https://linkedin.com/in/niharikamishra", external: true },
+                  { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
                   { label: "GitHub", href: "https://github.com/niharikamishra", external: true },
                   { label: "Résumé", href: "/resume.pdf", external: true },
                 ].map(({ label, href, external }) => (

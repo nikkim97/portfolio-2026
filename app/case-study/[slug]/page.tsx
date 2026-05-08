@@ -28,7 +28,7 @@ export default async function CaseStudyPage({
       <main className="min-h-screen flex flex-col" style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
         <div className="w-full border-b border-[var(--border)] px-6 sm:px-16 h-12 flex items-center justify-between max-w-5xl mx-auto">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">{node.pill}</span>
+          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">{node.pills?.join(" · ")}</span>
         </div>
         <div className="flex-1 flex flex-col justify-center max-w-5xl mx-auto w-full px-6 sm:px-16 py-24 gap-8">
           <h1 className="font-semibold" style={{ fontSize: "clamp(40px, 6vw, 80px)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 
@@ -5,13 +6,19 @@ const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
-function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
+function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover" }) {
   return (
     <div
-      className="w-full overflow-hidden rounded-xl flex items-center justify-center"
-      style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
+      className="relative w-full overflow-hidden rounded-xl"
+      style={{ aspectRatio: aspect, background: "var(--card)" }}
     >
-      <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        style={{ objectFit: fit }}
+      />
     </div>
   );
 }
@@ -32,25 +39,20 @@ export default function SaXdCaseStudy() {
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pt-16 pb-12 flex flex-col gap-6">
         <p className={`${LABEL} text-[var(--midtone)]`}>Design & Research Lead · PM Pilots</p>
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
-          Performance Platform<span style={{ color: "var(--accent)" }}>.</span>
+          360 Feedback<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
         <p className="font-light leading-relaxed max-w-[58ch]" style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "#3A3530" }}>
           The performance management system at Capital One was broken in a specific way — leaders and associates both had low trust in 360 feedback results. Before we built anything, we needed to understand why. This is the story of a pilot that became the foundation for an enterprise platform.
         </p>
       </div>
 
-      {/* ── Hero image ── */}
+      {/* ── Hero image — before / after composite ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <Placeholder label="Hero — 360 feedback form UI showing competency-based rating interface" aspect="4/3" />
-      </div>
-
-      {/* ── Full-bleed HMW ── */}
-      <div className="mt-16 w-full">
-        <Placeholder label="Full-bleed — HMW slide: How do we design a 360° feedback experience that ensures high-quality, actionable insights?" aspect="16/7" />
+        <Img src="/case-study/sa-xd/hero-before-after.png" alt="Before and after — the original 360 feedback experience and the redesigned version" aspect="1908/800" />
       </div>
 
       {/* ── The Problem ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-5xl mx-auto px-6 sm:px-16 mt-16">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -65,7 +67,7 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Experience map — showing where 360 feedback broke down across the performance cycle" aspect="16/9" />
+            <Img src="/case-study/sa-xd/sa-xd-10.png" alt="Experience map — showing where 360 feedback broke down across the performance cycle" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with — feedback wasn't designed around how leaders actually used it.</figcaption>
           </figure>
         </section>
@@ -85,9 +87,6 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
-            <Placeholder label="Foundation principles slide — Quant & Qual data, Psychological Safety, Comparative Context" aspect="16/9" />
-          </figure>
         </section>
 
         {/* ── Key Experience Decisions ── */}
@@ -103,13 +102,13 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <figure className="flex flex-col gap-2 sm:w-[60%]">
-              <Placeholder label="Feedback form — competency-based ratings, required qualitative comments, fully anonymous" aspect="4/3" />
+          <div className="flex flex-col gap-10">
+            <figure className="flex flex-col gap-3">
+              <Img src="/case-study/sa-xd/sa-xd-12.png" alt="Feedback form — competency-based ratings, required qualitative comments, fully anonymous" aspect="16/9" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form — competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
-            <figure className="flex flex-col gap-2 sm:w-[40%]">
-              <Placeholder label="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" aspect="4/3" />
+            <figure className="flex flex-col gap-3">
+              <Img src="/case-study/sa-xd/sa-xd-13.png" alt="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" aspect="16/9" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager — feedback as a first-class input, not an afterthought</figcaption>
             </figure>
           </div>
@@ -129,15 +128,10 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Measurement framework — data triangulation across system data, live observations, and milestone surveys" aspect="16/9" />
+            <Img src="/case-study/sa-xd/sa-xd-14.png" alt="Measurement framework — data triangulation across system data, live observations, and milestone surveys" aspect="16/9" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation — measuring clarity, consistency, quality, and actionability throughout the pilot</figcaption>
           </figure>
         </section>
-      </div>
-
-      {/* ── Full-bleed Impact stats ── */}
-      <div className="w-full my-4">
-        <Placeholder label="Full-bleed — impact stats: 65% clarity & consistency, 58% quality, 52% actionability" aspect="16/7" />
       </div>
 
       {/* ── Outcome ── */}
@@ -175,9 +169,6 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
-            <Placeholder label="Growth slide — strategic foundations, cross-functional leadership, evidence-driven design" aspect="16/9" />
-          </figure>
         </section>
 
         {/* ── Footer ── */}
