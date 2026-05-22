@@ -10,6 +10,7 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
+  image?: { src: string; alt: string };
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -22,6 +23,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
+    image: { src: "/visn/Intro-pic.png", alt: "VISN intro" },
   },
   {
     id: "asc-swe",
