@@ -65,36 +65,39 @@ export function WordStaggerLine({
   duration?: number;
 }) {
   const words = text.split(" ");
+  const wrapperRef = useRef<HTMLSpanElement>(null);
+  const [visible, setVisible] = useState(trigger === "mount");
+
+  useEffect(() => {
+    if (trigger === "mount") return;
+    const el = wrapperRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } },
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [trigger]);
+
   return (
-    <>
+    <span ref={wrapperRef}>
       {words.map((word, i) => (
         <React.Fragment key={i}>
           <span style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}>
-            {trigger === "mount" ? (
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration, delay: startDelay + i * perWord, ease: EASE }}
-                style={{ display: "inline-block" }}
-              >
-                {word}
-              </motion.span>
-            ) : (
-              <motion.span
-                initial={{ y: "110%" }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration, delay: startDelay + i * perWord, ease: EASE }}
-                style={{ display: "inline-block" }}
-              >
-                {word}
-              </motion.span>
-            )}
+            <motion.span
+              initial={{ y: "110%" }}
+              animate={visible ? { y: 0 } : { y: "110%" }}
+              transition={{ duration, delay: startDelay + i * perWord, ease: EASE }}
+              style={{ display: "inline-block" }}
+            >
+              {word}
+            </motion.span>
           </span>
           {i < words.length - 1 && " "}
         </React.Fragment>
       ))}
-    </>
+    </span>
   );
 }
 
@@ -105,7 +108,7 @@ export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay, ease: EASE }}
-      className="text-[11px] px-3 py-1.5 cursor-default tracking-wide font-light"
+      className="text-[13px] px-3.5 py-2 cursor-default tracking-wide font-light"
       style={{ color: "var(--foreground)", borderRadius: "18px", ...GLASS }}
     >
       {skill}

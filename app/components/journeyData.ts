@@ -10,10 +10,6 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
-  visual?: string;
-  visualImage?: string;
-  cardBg?: string;
-  cardBorder?: string;
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -26,7 +22,6 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
-    visualImage: "/visn/visn-concept.png",
   },
   {
     id: "asc-swe",
@@ -76,6 +71,7 @@ export const journeyNodes: JourneyNode[] = [
   {
     id: "bloom",
     period: "2026",
+    role: "Student",
     title: "Bloom",
     brief: "How may we build something real while learning a new tool?",
     pills: ["Vibe Coded", "Claude"],
@@ -85,6 +81,7 @@ export const journeyNodes: JourneyNode[] = [
   {
     id: "time-tracker",
     period: "2026",
+    role: "Student",
     title: "Time Tracking Dashboard",
     brief: "How can we help people see where their time is actually going?",
     pills: ["Vibe Coded", "Claude"],

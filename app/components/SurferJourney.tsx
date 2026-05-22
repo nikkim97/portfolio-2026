@@ -69,7 +69,19 @@ function MobileCardSwitcher() {
                 </span>
               ))}
             </div>
-            {node.title && (
+            {(node.role || node.title) && (
+              <p
+                className="font-semibold leading-snug"
+                style={{
+                  fontSize: 12,
+                  color: "var(--foreground)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {node.role ?? node.title}
+              </p>
+            )}
+            {node.role && node.title && (
               <p
                 className="leading-snug"
                 style={{
@@ -82,17 +94,6 @@ function MobileCardSwitcher() {
               >
                 {node.title}
               </p>
-            )}
-            {node.role && (
-              node.title ? (
-                <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.005em" }}>
-                  {node.role}
-                </p>
-              ) : (
-                <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.015em" }}>
-                  {node.role}
-                </p>
-              )
             )}
             <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
               {node.brief}
@@ -161,7 +162,6 @@ export default function SurferJourney() {
   const pathRef = useRef<SVGPathElement>(null);
   const drawPathRef = useRef<SVGPathElement>(null);
   const [pathLen, setPathLen] = useState(0);
-  const surferRef = useRef<HTMLDivElement>(null);
   const [surferY, setSurferY] = useState(50);
   const everPassedRef = useRef<Set<number>>(new Set());
 
@@ -183,20 +183,12 @@ export default function SurferJourney() {
     return scrollYProgress.on("change", (v) => {
       const p = pathRef.current;
       const d = drawPathRef.current;
-      const s = surferRef.current;
-      if (!p || !d || !s) return;
+      if (!p || !d) return;
       const len = Math.max(0, Math.min(v * pathLen, pathLen));
 
       d.style.strokeDashoffset = `${pathLen - len}`;
 
       const pt = p.getPointAtLength(len);
-      const eps = 5;
-      const ptA = p.getPointAtLength(Math.min(len + eps, pathLen));
-      const ptB = p.getPointAtLength(Math.max(len - eps, 0));
-      const angle = Math.atan2(ptA.y - ptB.y, ptA.x - ptB.x) * (180 / Math.PI);
-      s.style.left = `calc(50% - ${SVG_W / 2}px + ${pt.x}px)`;
-      s.style.top = `${pt.y}px`;
-      s.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
 
       WAVE_ANCHORS.forEach((anchor, idx) => {
         if (pt.y >= anchor.y) everPassedRef.current.add(idx);
@@ -277,22 +269,6 @@ export default function SurferJourney() {
           );
         })}
       </svg>
-
-      {/* Surfer */}
-      <div
-        ref={surferRef}
-        aria-hidden
-        className="absolute z-10 pointer-events-none select-none"
-        style={{
-          left: `calc(50% - ${SVG_W / 2}px + 300px)`,
-          top: 20,
-          transform: "translate(-50%, -50%) rotate(0deg)",
-          fontSize: 28,
-          lineHeight: 1,
-        }}
-      >
-        🏄🏾‍♀️
-      </div>
 
       {/* Node cards */}
       {journeyNodes.map((node, i) => {
@@ -411,21 +387,25 @@ export default function SurferJourney() {
                     </span>
                   ))}
                 </div>
-                {node.title && (
+                {(node.role || node.title) && (
+                  <p className="font-semibold leading-snug" style={{
+                    fontSize: 12,
+                    color: "var(--foreground)",
+                    letterSpacing: "-0.01em",
+                  }}>
+                    {node.role ?? node.title}
+                  </p>
+                )}
+                {node.role && node.title && (
                   <p style={{
                     fontFamily: "Georgia, 'Times New Roman', serif",
                     fontStyle: "italic",
                     fontSize: 16,
                     color: "var(--foreground)",
                     letterSpacing: 0,
-                    lineHeight: 1.25,
+                    lineHeight: 1.35,
                   }}>
                     {node.title}
-                  </p>
-                )}
-                {node.role && (
-                  <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.005em" }}>
-                    {node.role}
                   </p>
                 )}
                 <p style={{ fontSize: 11, color: "var(--midtone)", lineHeight: 1.55, fontWeight: 300, marginTop: 2 }}>
@@ -446,15 +426,6 @@ export default function SurferJourney() {
         );
       })}
 
-      {/* Tail label */}
-      <div
-        className="absolute"
-        style={{ top: 1545, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}
-      >
-        <p className="text-[9px] tracking-[0.22em] uppercase text-[var(--midtone)]">
-          still riding
-        </p>
-      </div>
     </div>
   );
 }

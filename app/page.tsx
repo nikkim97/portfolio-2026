@@ -181,7 +181,7 @@ export default function Home() {
       />
 
       {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
-      <section className="relative h-[200vh]" style={{ ...FONT, zIndex: 1 }}>
+      <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
         <div className="sticky top-0 h-screen flex overflow-hidden">
           <div className="flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
 
@@ -224,13 +224,13 @@ export default function Home() {
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="coming up with a creative" startDelay={1.15} perWord={0.06} duration={0.8} />
+                  <WordStaggerLine text="still working on a" startDelay={1.15} perWord={0.07} duration={0.9} />
                 </p>
                 <p
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="intro.." startDelay={1.45} perWord={0.06} duration={0.8} />
+                  <WordStaggerLine text="creative intro.." startDelay={1.45} perWord={0.07} duration={0.9} />
                 </p>
               </div>
             </div>
@@ -242,27 +242,26 @@ export default function Home() {
       </section>
 
       {/* ── INTERSTITIAL ── pinned chapter card ── */}
-      <section className="relative h-[200vh]" style={{ ...FONT, zIndex: 2 }}>
+      <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 2 }}>
         <div className="sticky top-0 h-screen flex">
           <div className="flex-1 flex flex-col justify-center w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12">
             <div className="flex flex-col">
-              {["let me show you what my journey", "as a builder has been so far"].map((line, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.9, delay: i * 0.12, ease: EASE }}
-                  className="font-light text-[var(--foreground)]"
-                  style={{
-                    fontSize: "clamp(28px, 4vw, 52px)",
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  {line}
-                </motion.p>
-              ))}
+              {["here's what my journey", "as a builder looks like"].map((line, i) => {
+                const wordsBefore = i === 0 ? 0 : "here's what my journey".split(" ").length;
+                return (
+                  <p
+                    key={i}
+                    className="font-light text-[var(--foreground)]"
+                    style={{
+                      fontSize: "clamp(28px, 4vw, 52px)",
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1.15,
+                    }}
+                  >
+                    <WordStaggerLine text={line} trigger="inView" startDelay={wordsBefore * 0.07} perWord={0.07} duration={0.9} />
+                  </p>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -272,7 +271,7 @@ export default function Home() {
       <main className="relative flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={{ ...FONT, zIndex: 1 }}>
 
         {/* ── 01 WORK ── */}
-        <section id="work" className="pt-16 sm:pt-24 pb-16 sm:pb-24 flex flex-col relative z-10">
+        <section id="work" className="pt-10 sm:pt-14 pb-12 sm:pb-16 flex flex-col relative z-10">
           <SurferJourney />
         </section>
 
@@ -281,12 +280,10 @@ export default function Home() {
 
 
           <div className="flex flex-col gap-10 md:gap-12">
-            <FadeIn>
-              <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}>
-                The choices weren't accidental.
-              </p>
-            </FadeIn>
-            <div className="flex flex-col gap-5 text-sm font-light leading-[1.9]" style={{ color: "#3A3530" }}>
+            <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
+              <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
+            </p>
+            <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "#3A3530" }}>
               {[
                 "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural — I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
                 "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
@@ -307,46 +304,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Off the clock — three pillars (hidden — flip to true to bring back) */}
-          {false && (
-          <div className="flex flex-col gap-10">
-            <FadeIn>
-              <div className="flex flex-col gap-3">
-                <p className="text-[10px] font-normal tracking-[0.28em] uppercase text-[var(--midtone)]">Off the clock</p>
-                <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em", lineHeight: 1.5 }}>
-                  <span className="italic">&ldquo;A renaissance woman,&rdquo;</span> my fiancé once called me — <span style={{ color: "var(--accent)" }}>reflection</span>, <span style={{ color: "var(--accent)" }}>movement</span>, and <span style={{ color: "var(--accent)" }}>exploration</span>, each surfacing in its own season.
-                </p>
-              </div>
-            </FadeIn>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-              {[
-                { num: "01", pillar: "Reflection", activities: ["Meditation", "Yoga", "Tea with a book"] },
-                { num: "02", pillar: "Movement", activities: ["Surfing", "Dancing", "Concerts"] },
-                { num: "03", pillar: "Exploration", activities: ["Deep dives", "Immersive travel"] },
-              ].map((col, i) => (
-                <FadeIn key={col.pillar} delay={i * 0.08}>
-                  <div className="flex flex-col gap-4">
-                    <span className="text-[10px] tabular-nums tracking-[0.18em] text-[var(--midtone)]">{col.num}</span>
-                    {/* Image placeholder + floating activity pills — drop photos in later */}
-                    <div className="relative w-full aspect-[4/5] rounded-sm overflow-hidden">
-                      <div
-                        aria-hidden
-                        className="absolute inset-0"
-                        style={{ background: "linear-gradient(180deg, rgba(58,53,48,0.10) 0%, rgba(58,53,48,0.04) 100%)" }}
-                      />
-                      <div className="absolute inset-0 p-4 flex flex-col justify-end items-start gap-1.5">
-                        {col.activities.map((a, j) => (
-                          <SkillPill key={a} skill={a} delay={i * 0.08 + j * 0.06} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-          )}
         </section>
 
         {/* ── 03 CONTACT ── */}
@@ -354,11 +311,9 @@ export default function Home() {
 
 
           <div className="flex flex-col gap-12">
-            <FadeIn>
-              <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "-0.01em" }}>
-                If the problem matters to people, I want in.
-              </p>
-            </FadeIn>
+            <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
+              <WordStaggerLine text="Ownership, impact and building things that last — if that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
+            </p>
 
             <FadeIn delay={0.4}>
               <div className="flex flex-wrap gap-8">
