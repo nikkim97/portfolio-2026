@@ -312,7 +312,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-12">
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
-              <WordStaggerLine text="Ownership, impact and building things that last — if that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
+              <WordStaggerLine text="Ownership, impact and things that last — if that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
             </p>
 
             <FadeIn delay={0.4}>
