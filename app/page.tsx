@@ -224,45 +224,19 @@ export default function Home() {
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="still working on a" startDelay={1.15} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="still working on a creative intro," startDelay={1.15} perWord={0.07} duration={0.9} />
                 </p>
                 <p
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="creative intro.." startDelay={1.45} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="but let me take you on my journey as a builder in the meantime" startDelay={1.57} perWord={0.07} duration={0.9} />
                 </p>
               </div>
             </div>
 
             {/* Spacer to preserve justify-between layout */}
             <div />
-          </div>
-        </div>
-      </section>
-
-      {/* ── INTERSTITIAL ── pinned chapter card ── */}
-      <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 2 }}>
-        <div className="sticky top-0 h-screen flex">
-          <div className="flex-1 flex flex-col justify-center w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12">
-            <div className="flex flex-col">
-              {["here's what my journey", "as a builder looks like"].map((line, i) => {
-                const wordsBefore = i === 0 ? 0 : "here's what my journey".split(" ").length;
-                return (
-                  <p
-                    key={i}
-                    className="font-light text-[var(--foreground)]"
-                    style={{
-                      fontSize: "clamp(28px, 4vw, 52px)",
-                      letterSpacing: "-0.02em",
-                      lineHeight: 1.15,
-                    }}
-                  >
-                    <WordStaggerLine text={line} trigger="inView" startDelay={wordsBefore * 0.07} perWord={0.07} duration={0.9} />
-                  </p>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>

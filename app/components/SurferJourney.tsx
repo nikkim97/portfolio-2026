@@ -162,6 +162,7 @@ export default function SurferJourney() {
   const pathRef = useRef<SVGPathElement>(null);
   const drawPathRef = useRef<SVGPathElement>(null);
   const [pathLen, setPathLen] = useState(0);
+  const surferRef = useRef<HTMLDivElement>(null);
   const [surferY, setSurferY] = useState(50);
   const everPassedRef = useRef<Set<number>>(new Set());
 
@@ -180,15 +181,36 @@ export default function SurferJourney() {
       drawPathRef.current.style.strokeDasharray = `${pathLen}`;
       drawPathRef.current.style.strokeDashoffset = `${pathLen}`;
     }
+    // Snap surfer to path start on mount so it doesn't render off-path
+    // before the first scroll event fires.
+    if (pathRef.current && surferRef.current) {
+      const start = pathRef.current.getPointAtLength(0);
+      const eps = 5;
+      const ptA = pathRef.current.getPointAtLength(eps);
+      const angle = Math.atan2(ptA.y - start.y, ptA.x - start.x) * (180 / Math.PI);
+      surferRef.current.style.left = `calc(50% - ${SVG_W / 2}px + ${start.x}px)`;
+      surferRef.current.style.top = `${start.y}px`;
+      surferRef.current.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
+    }
     return scrollYProgress.on("change", (v) => {
       const p = pathRef.current;
       const d = drawPathRef.current;
+      const s = surferRef.current;
       if (!p || !d) return;
       const len = Math.max(0, Math.min(v * pathLen, pathLen));
 
       d.style.strokeDashoffset = `${pathLen - len}`;
 
       const pt = p.getPointAtLength(len);
+      if (s) {
+        const eps = 5;
+        const ptA = p.getPointAtLength(Math.min(len + eps, pathLen));
+        const ptB = p.getPointAtLength(Math.max(len - eps, 0));
+        const angle = Math.atan2(ptA.y - ptB.y, ptA.x - ptB.x) * (180 / Math.PI);
+        s.style.left = `calc(50% - ${SVG_W / 2}px + ${pt.x}px)`;
+        s.style.top = `${pt.y}px`;
+        s.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
+      }
 
       WAVE_ANCHORS.forEach((anchor, idx) => {
         if (pt.y >= anchor.y) everPassedRef.current.add(idx);
@@ -269,6 +291,23 @@ export default function SurferJourney() {
           );
         })}
       </svg>
+
+      {/* Surfer */}
+      <div
+        ref={surferRef}
+        aria-hidden
+        className="absolute z-10 pointer-events-none select-none"
+        style={{
+          left: 0,
+          top: 0,
+          transform: "translate(-50%, -50%)",
+          fontSize: 28,
+          lineHeight: 1,
+          visibility: pathLen === 0 ? "hidden" : "visible",
+        }}
+      >
+        🏄🏾‍♀️
+      </div>
 
       {/* Node cards */}
       {journeyNodes.map((node, i) => {
