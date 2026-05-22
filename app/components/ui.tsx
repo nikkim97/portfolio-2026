@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -47,6 +47,54 @@ export function FadeIn({
         {children}
       </motion.div>
     </div>
+  );
+}
+
+// Word-by-word mask reveal — each word slides up from below its own clip box, staggered.
+export function WordStaggerLine({
+  text,
+  trigger = "mount",
+  startDelay = 0,
+  perWord = 0.06,
+  duration = 0.8,
+}: {
+  text: string;
+  trigger?: "mount" | "inView";
+  startDelay?: number;
+  perWord?: number;
+  duration?: number;
+}) {
+  const words = text.split(" ");
+  return (
+    <>
+      {words.map((word, i) => (
+        <React.Fragment key={i}>
+          <span style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}>
+            {trigger === "mount" ? (
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration, delay: startDelay + i * perWord, ease: EASE }}
+                style={{ display: "inline-block" }}
+              >
+                {word}
+              </motion.span>
+            ) : (
+              <motion.span
+                initial={{ y: "110%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration, delay: startDelay + i * perWord, ease: EASE }}
+                style={{ display: "inline-block" }}
+              >
+                {word}
+              </motion.span>
+            )}
+          </span>
+          {i < words.length - 1 && " "}
+        </React.Fragment>
+      ))}
+    </>
   );
 }
 

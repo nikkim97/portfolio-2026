@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import SurferJourney from "./components/SurferJourney";
-import { EASE, FadeIn, FONT, SkillPill } from "./components/ui";
+import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
 
 const skills = [
   "Product Strategy", "Claude Code", "Interaction Design", "UX Design",
@@ -57,6 +57,11 @@ function Hamburger({ open, onClick }: { open: boolean; onClick: () => void }) {
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+
+  // Terracotta warm counterpoint — emerges as Work begins, quiet during the pinned scenes.
+  const blobTerraY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
+  const blobTerraX = useTransform(scrollYProgress, [0, 1], ["0vw", "20vw"]);
+  const blobTerraOpacity = useTransform(scrollYProgress, [0.63, 0.72, 0.88, 1], [0, 0.20, 0.16, 0.08]);
 
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -145,7 +150,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* ── Page-level background blobs (fixed so they persist across all sections) ── */}
+      {/* ── Page-level background blobs ── */}
       <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Hero — yellow orb top-right */}
         <div style={{
@@ -154,27 +159,16 @@ export default function Home() {
           background: "radial-gradient(circle, rgba(228,210,80,0.36) 0%, transparent 68%)",
           filter: "blur(14px)",
         }} />
-        {/* Hero — terracotta mid */}
-        <div style={{
-          position: "absolute", top: "45vh", right: "22%",
-          width: 320, height: 320, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(193,123,90,0.16) 0%, transparent 70%)",
-          filter: "blur(18px)",
-        }} />
-        {/* Work section — yellow orb left */}
-        <div style={{
-          position: "absolute", top: "110vh", left: "2%",
-          width: 480, height: 480, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(228,210,80,0.28) 0%, transparent 68%)",
-          filter: "blur(16px)",
-        }} />
-        {/* Work section — terracotta right */}
-        <div style={{
-          position: "absolute", top: "180vh", right: "0%",
-          width: 400, height: 400, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(193,123,90,0.14) 0%, transparent 70%)",
-          filter: "blur(20px)",
-        }} />
+        {/* Terracotta warm counterpoint — emerges in Work */}
+        <motion.div
+          style={{
+            position: "absolute", top: "45vh", right: "22%",
+            width: 380, height: 380, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(193,123,90,1) 0%, transparent 70%)",
+            filter: "blur(18px)",
+            x: blobTerraX, y: blobTerraY, opacity: blobTerraOpacity,
+          }}
+        />
       </div>
 
       {/* ── Curtain ── */}
@@ -186,65 +180,91 @@ export default function Home() {
         style={{ background: "var(--background)" }}
       />
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-[100dvh] flex overflow-hidden" style={{ ...FONT, zIndex: 1 }}>
+      {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
+      <section className="relative h-[200vh]" style={{ ...FONT, zIndex: 1 }}>
+        <div className="sticky top-0 h-screen flex overflow-hidden">
+          <div className="flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
 
-        {/* Editorial text */}
-        <div className="flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
-
-          {/* Top row: date + nav */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
-            className="flex items-start justify-between"
-          >
-            <div className="flex flex-col items-start" style={{ lineHeight: 1 }}>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
-                {String(new Date().getMonth() + 1).padStart(2, "0")}
-              </p>
-              <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
-                {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
-              </p>
-            </div>
-            <div className="hidden sm:flex items-center gap-8">
-              {NAV_ITEMS.map(item => (
-                <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
-              ))}
-            </div>
-            <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
-          </motion.div>
-
-          {/* Name block */}
-          <div className="flex flex-col">
-            <motion.p
+            {/* Top row: date + nav */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
-              className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
+              transition={{ duration: 0.6, delay: 0.85, ease: EASE }}
+              className="flex items-start justify-between"
             >
-              Niharika Mishra · Experience Design · Capital One
-            </motion.p>
+              <div className="flex flex-col items-start" style={{ lineHeight: 1 }}>
+                <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                  {String(new Date().getMonth() + 1).padStart(2, "0")}
+                </p>
+                <p className="font-semibold tabular-nums text-[var(--foreground)]" style={{ fontSize: "clamp(20px, 2.5vw, 30px)", letterSpacing: "-0.02em" }}>
+                  {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-8">
+                {NAV_ITEMS.map(item => (
+                  <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
+                ))}
+              </div>
+              <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
+            </motion.div>
 
+            {/* Name block */}
             <div className="flex flex-col">
-              {["I choose problems", "that matter to people."].map((line, i) => (
-                <div key={i} style={{ overflow: "hidden" }}>
-                  <motion.p
-                    initial={{ y: "106%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 1.15 + i * 0.1, ease: EASE }}
-                    className="font-light text-[var(--foreground)]"
-                    style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
-                  >
-                    {line}{i === 1 && <span style={{ color: "var(--accent)" }}></span>}
-                  </motion.p>
-                </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
+                className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
+              >
+                Niharika Mishra · Experience Design · Capital One
+              </motion.p>
+
+              <div className="flex flex-col">
+                <p
+                  className="font-light text-[var(--foreground)]"
+                  style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
+                >
+                  <WordStaggerLine text="coming up with a creative" startDelay={1.15} perWord={0.06} duration={0.8} />
+                </p>
+                <p
+                  className="font-light text-[var(--foreground)]"
+                  style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
+                >
+                  <WordStaggerLine text="intro.." startDelay={1.45} perWord={0.06} duration={0.8} />
+                </p>
+              </div>
+            </div>
+
+            {/* Spacer to preserve justify-between layout */}
+            <div />
+          </div>
+        </div>
+      </section>
+
+      {/* ── INTERSTITIAL ── pinned chapter card ── */}
+      <section className="relative h-[200vh]" style={{ ...FONT, zIndex: 2 }}>
+        <div className="sticky top-0 h-screen flex">
+          <div className="flex-1 flex flex-col justify-center w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12">
+            <div className="flex flex-col">
+              {["let me show you what my journey", "as a builder has been so far"].map((line, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.9, delay: i * 0.12, ease: EASE }}
+                  className="font-light text-[var(--foreground)]"
+                  style={{
+                    fontSize: "clamp(28px, 4vw, 52px)",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.15,
+                  }}
+                >
+                  {line}
+                </motion.p>
               ))}
             </div>
           </div>
-
-          {/* Spacer to preserve justify-between layout */}
-          <div />
         </div>
       </section>
 
@@ -252,7 +272,7 @@ export default function Home() {
       <main className="relative flex flex-col w-full max-w-5xl mx-auto px-8 sm:px-16" style={{ ...FONT, zIndex: 1 }}>
 
         {/* ── 01 WORK ── */}
-        <section id="work" className="-mt-[10vh] pt-16 sm:pt-24 pb-16 sm:pb-24 flex flex-col relative z-10">
+        <section id="work" className="pt-16 sm:pt-24 pb-16 sm:pb-24 flex flex-col relative z-10">
           <SurferJourney />
         </section>
 
