@@ -416,7 +416,7 @@ export default function SurferJourney() {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
+                      objectFit: node.image.fit ?? "cover",
                       display: "block",
                     }}
                   />

@@ -10,7 +10,7 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; fit?: "cover" | "contain" };
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -73,17 +73,18 @@ export const journeyNodes: JourneyNode[] = [
   {
     id: "bloom",
     period: "2026",
-    role: "Student",
+    role: "Builder",
     title: "Bloom",
     brief: "How may we build something real while learning a new tool?",
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
+    image: { src: "/case-study/bloom/option 2.png", alt: "Bloom" },
     type: "horizon",
   },
   {
     id: "time-tracker",
     period: "2026",
-    role: "Student",
+    role: "Builder",
     title: "Time Tracking Dashboard",
     brief: "How can we help people see where their time is actually going?",
     pills: ["Vibe Coded", "Claude"],
