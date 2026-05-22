@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
-import { PhoneSequence, SystemDiagram } from "./_components/AppMockup";
+import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
@@ -33,12 +33,15 @@ export default function VisnCaseStudy() {
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
         <figure className="flex flex-col gap-4">
-          <div
-            className="rounded-2xl px-6 sm:px-10 py-12 sm:py-16"
-            style={{ background: "var(--card)" }}
-          >
-            <PhoneSequence />
-          </div>
+          <ZoomableImage
+            src="/visn/hero-image-2.png"
+            alt="VISN hero image"
+            width={1772}
+            height={784}
+            aspectRatio="1772/784"
+            fit="contain"
+            sizes="(max-width: 1024px) 100vw, 896px"
+          />
         </figure>
       </div>
 

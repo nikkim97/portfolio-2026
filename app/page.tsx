@@ -314,7 +314,6 @@ export default function Home() {
         {/* ── FOOTER ── */}
         <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
-          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Built with intention. Built with <span style={{ color: "var(--accent)" }}>Claude Code</span>.</p>
         </footer>
       </main>
     </>
