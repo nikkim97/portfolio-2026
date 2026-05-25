@@ -88,7 +88,7 @@ export const journeyNodes: JourneyNode[] = [
     title: "Time Tracking Dashboard",
     brief: "How can we help people see where their time is actually going?",
     pills: ["Vibe Coded", "Claude"],
-    comingSoon: true,
+    href: "/case-study/time-tracker",
     type: "horizon",
   },
 ];
