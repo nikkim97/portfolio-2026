@@ -1,11 +1,27 @@
 import Link from "next/link";
-import { FONT } from "../../components/ui";
+import { FONT, GLASS } from "../../components/ui";
 import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+
+function Metrics({ label = "Outcomes", stats }: { label?: string; stats: { value: string; label: string }[] }) {
+  return (
+    <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
+      <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
+      <div className="flex flex-wrap gap-8">
+        {stats.map((s) => (
+          <div key={s.label} className="flex flex-col gap-1">
+            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
+            <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function VisnCaseStudy() {
   return (
@@ -25,9 +41,33 @@ export default function VisnCaseStudy() {
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           VISN<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        <p className="font-light leading-relaxed max-w-[58ch]" style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "#3A3530" }}>
-          A wearable navigation system for visually impaired people — hardware and software, end to end. Built as a Rutgers senior capstone, where we won our capstone competition. The project that confirmed my instinct: when I back an idea that matters, I can make it real.
-        </p>
+        {/* Context card — problem statement / role | platform / timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
+          <div className="flex flex-col gap-5 p-6">
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                No single wearable combined real-time object proximity, directional awareness, and turn-by-turn navigation in one accessible package. Could we tell someone who is visually impaired where they're going and what's in the way — all through their ears?
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                PM & designer on a team of 4 — led product direction, owned the UX and interface design, and shaped the hardware and system design of the wearable.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Platform</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Wearable hardware + software</p>
+            </div>
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Rutgers University · Jan – May 2019</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Hero image ── */}
@@ -53,10 +93,16 @@ export default function VisnCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>The problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Navigation without sight is a design problem</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford — canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
-              <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout could detect nearby objects or read aloud what a camera saw. But no single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
-              <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing — all through your ears, hands-free.</p>
+            <div className="flex flex-col gap-8">
+              <Metrics stats={[
+                { value: "1st", label: "Rutgers capstone competition" },
+                { value: "—", label: "obstacle-detection range (TBD)" },
+              ]} />
+              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+                <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford — canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
+                <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout could detect nearby objects or read aloud what a camera saw. But no single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
+                <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing — all through your ears, hands-free.</p>
+              </div>
             </div>
           </div>
 

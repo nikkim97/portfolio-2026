@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FONT } from "../../components/ui";
+import { FONT, GLASS } from "../../components/ui";
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
@@ -23,6 +23,22 @@ function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt:
   );
 }
 
+function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string; stats: { value: string; label: string }[] }) {
+  return (
+    <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
+      <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
+      <div className="flex flex-wrap gap-8">
+        {stats.map((s) => (
+          <div key={s.label} className="flex flex-col gap-1">
+            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
+            <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function SaXdCaseStudy() {
   return (
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
@@ -41,9 +57,33 @@ export default function SaXdCaseStudy() {
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           360 Feedback<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        <p className="font-light leading-relaxed max-w-[58ch]" style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "#3A3530" }}>
-          The performance management system at Capital One was broken in a specific way — leaders and associates both had low trust in 360 feedback results. Before we built anything, we needed to understand why. This is the story of a pilot that became the foundation for an enterprise platform.
-        </p>
+        {/* Context card — problem statement / role | platform / timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
+          <div className="flex flex-col gap-5 p-6">
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                Leaders and associates both distrusted 360 feedback — templates varied by team, responses skewed positive, and no one knew how results would be used. Why was a system meant to help people grow just producing noise?
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                Design & research lead — improved the quality and actionability of 360 feedback during the performance cycle, delivering validated insights to de-risk the product roadmap.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Platform</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Internal web tool</p>
+            </div>
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
+              <p className="font-light text-sm" style={{ color: "var(--accent)" }}>TBD — add dates</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Hero image — before / after composite ── */}
@@ -59,10 +99,16 @@ export default function SaXdCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>The Problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive — not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
-              <p>People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
-              <p>My job: improve the quality and actionability of 360 feedback during the performance cycle — and provide validated, evidence-based insights that could de-risk and define the foundation for a product roadmap.</p>
+            <div className="flex flex-col gap-8">
+              <Metrics stats={[
+                { value: "↑ —", label: "feedback quality / specificity (TBD)" },
+                { value: "↓ —", label: "escalations post-cycle (TBD)" },
+              ]} />
+              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+                <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive — not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
+                <p>People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
+                <p>My job: improve the quality and actionability of 360 feedback during the performance cycle — and provide validated, evidence-based insights that could de-risk and define the foundation for a product roadmap.</p>
+              </div>
             </div>
           </div>
 

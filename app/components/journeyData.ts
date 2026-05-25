@@ -10,7 +10,7 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
-  image?: { src: string; alt: string; fit?: "cover" | "contain" };
+  image?: { src: string; alt: string; fit?: "cover" | "contain"; position?: string };
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -23,7 +23,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
-    image: { src: "/visn/Intro-pic.png", alt: "VISN intro" },
+    image: { src: "/visn/Intro-pic.png", alt: "VISN — wearable navigation system for visually impaired people", position: "38% top" },
   },
   {
     id: "asc-swe",
@@ -50,6 +50,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Research"],
     href: "/case-study/sa-xd",
     type: "project",
+    image: { src: "/case-study/sa-xd/sa-xd-09.png", alt: "360 feedback — many raters giving feedback on one person" },
   },
   {
     id: "path-360",
@@ -60,15 +61,17 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
+    image: { src: "/case-study/pa-xd/hero-image.png", alt: "Calibrations Ecosystem — PATH calibration distribution and decision UI", position: "10% center" },
   },
   {
     id: "path-people",
-    period: "Jun 2025–",
+    period: "Jan 2025 – Present",
     role: "Manager, Experience Design",
-    title: "Discover Migration",
-    brief: "I now lead design for the Discover-to-Capital One migration, designing the onboarding experience for millions of customers with one chance to get it right.",
-    pills: ["Capital One"],
-    type: "career",
+    title: "Discover Integration Experience",
+    brief: "How do you turn a cashback debit customer into a full-time banking customer?",
+    pills: ["Capital One", "Visual UI"],
+    href: "/case-study/discover-integration",
+    type: "project",
   },
   {
     id: "bloom",
@@ -78,7 +81,7 @@ export const journeyNodes: JourneyNode[] = [
     brief: "How may we build something real while learning a new tool?",
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
-    image: { src: "/case-study/bloom/option 2.png", alt: "Bloom" },
+    image: { src: "/case-study/bloom/option3.png", alt: "Bloom — every relationship has a nature" },
     type: "horizon",
   },
   {
@@ -93,43 +96,47 @@ export const journeyNodes: JourneyNode[] = [
   },
 ];
 
+// The wave is hand-tuned. Spacing accommodates the expanded (~455px) project/horizon
+// cards: each anchor sits exactly on the path so the surfer tracks it, with enough
+// vertical room between same-side cards that they never collide. SVG_H leaves top and
+// bottom breathing room for the first and last cards.
 export const WAVE_PATH_D = [
-  "M 80,130",
+  "M 80,290",
   // Career zigzag: VISN → asc-swe → sr-swe
-  "C 80,190 490,240 490,280",
-  "C 490,340 80,375 80,410",
-  // LOOP 1: sr-swe → sa-xd (engineer → designer pivot, mirrored from loop 2)
-  "C 80,480 170,550 230,560",
-  "C 290,570 400,562 420,517",
-  "C 440,472 320,450 250,490",
-  "C 180,530 180,615 260,635",
-  "C 340,655 550,690 550,720",
+  "C 80,359 490,417 490,463",
+  "C 490,532 80,572 80,612",
+  // LOOP 1: sr-swe → sa-xd (engineer → designer pivot)
+  "C 80,693 170,773 230,785",
+  "C 290,796 400,787 420,735",
+  "C 440,683 320,658 250,704",
+  "C 180,750 180,848 260,871",
+  "C 340,894 550,934 550,969",
   // sa-xd → path-360 (direct)
-  "C 550,790 50,850 50,880",
-  // path-360 → path-people (direct)
-  "C 50,960 490,1010 490,1080",
-  // LOOP 2: path-people → bloom (manager → vibe coding)
-  "C 490,1150 430,1210 370,1220",
-  "C 310,1230 200,1225 180,1180",
-  "C 160,1135 280,1115 350,1155",
-  "C 420,1195 420,1270 340,1290",
-  "C 260,1310 75,1340 75,1370",
+  "C 550,1049 50,1118 50,1153",
+  // path-360 → PIX / Manager (direct)
+  "C 50,1260 490,1360 490,1480",
+  // LOOP 2: PIX → bloom (project → vibe coding)
+  "C 490,1560 430,1629 370,1641",
+  "C 310,1652 200,1646 180,1595",
+  "C 160,1543 280,1520 350,1566",
+  "C 420,1612 420,1698 340,1721",
+  "C 260,1744 75,1779 75,1813",
   // bloom → time-tracker (direct)
-  "C 75,1430 530,1450 530,1490",
+  "C 75,1880 530,1930 530,1990",
   // tail
-  "C 530,1530 300,1560 300,1580",
+  "C 530,2040 300,2075 300,2100",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 1580;
+export const SVG_H = 2280;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 80,  y: 130,  side: "left"  }, // VISN
-  { x: 490, y: 280,  side: "right" }, // asc-swe
-  { x: 80,  y: 410,  side: "left"  }, // sr-swe
-  { x: 550, y: 720,  side: "right" }, // sa-xd
-  { x: 50,  y: 880,  side: "left"  }, // path-360
-  { x: 490, y: 1080, side: "right" }, // path-people
-  { x: 75,  y: 1370, side: "left"  }, // bloom
-  { x: 530, y: 1490, side: "right" }, // time-tracker
+  { x: 80,  y: 290,  side: "left"  }, // VISN
+  { x: 490, y: 463,  side: "right" }, // asc-swe
+  { x: 80,  y: 612,  side: "left"  }, // sr-swe
+  { x: 550, y: 969,  side: "right" }, // sa-xd
+  { x: 50,  y: 1153, side: "left"  }, // path-360
+  { x: 490, y: 1480, side: "right" }, // PIX Project (Manager, Experience Design)
+  { x: 75,  y: 1813, side: "left"  }, // bloom
+  { x: 530, y: 1990, side: "right" }, // time-tracker
 ];

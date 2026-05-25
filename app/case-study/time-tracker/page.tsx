@@ -1,100 +1,6 @@
 import Link from "next/link";
 import { FONT, GLASS } from "../../components/ui";
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">
-      {children}
-    </p>
-  );
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="font-light"
-      style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
-    >
-      {children}
-    </h2>
-  );
-}
-
-function Screenshot({
-  label,
-  caption,
-  aspect = "16/9",
-}: {
-  label: string;
-  caption?: string;
-  aspect?: string;
-}) {
-  return (
-    <figure className="flex flex-col gap-2">
-      <div
-        className="w-full rounded-xl overflow-hidden flex items-center justify-center"
-        style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
-      >
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
-      </div>
-      {caption && (
-        <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
-
-function Prose({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="flex flex-col gap-4 font-light text-sm leading-[1.85]"
-      style={{ color: "#3A3530" }}
-    >
-      {children}
-    </div>
-  );
-}
-
-function PullQuote({ children }: { children: React.ReactNode }) {
-  return (
-    <blockquote
-      className="font-light"
-      style={{
-        fontSize: "clamp(16px, 1.6vw, 20px)",
-        letterSpacing: "-0.01em",
-        lineHeight: 1.5,
-        color: "var(--foreground)",
-        borderLeft: "2px solid var(--accent)",
-        paddingLeft: "1.25em",
-        margin: "0",
-      }}
-    >
-      {children}
-    </blockquote>
-  );
-}
-
-function StatRow({ stats }: { stats: { value: string; label: string }[] }) {
-  return (
-    <div className="flex flex-wrap gap-8">
-      {stats.map((s) => (
-        <div key={s.label} className="flex flex-col gap-1">
-          <p
-            className="font-light tabular-nums"
-            style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--foreground)" }}
-          >
-            {s.value}
-          </p>
-          <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>
-            {s.label}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
+import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
 
 // Tiny swatch + label, used to introduce the four pillars inline.
 function PillarKey() {
@@ -157,14 +63,33 @@ export default function TimeTrackerCaseStudy() {
           >
             Time Tracker<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          <p
-            className="font-light leading-relaxed"
-            style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "var(--midtone)", maxWidth: "58ch" }}
-          >
-            We track money obsessively — budgets, categories, where every dollar goes. But{" "}
-            <em>time is money</em> is the oldest cliché there is, and almost no one budgets it.
-            Time Tracker answers one question: where did my time actually go?
-          </p>
+          {/* Context card — problem statement / role | platform / timeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
+            <div className="flex flex-col gap-5 p-6">
+              <div className="flex flex-col gap-2">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
+                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                  We budget money down to the dollar but almost no one budgets time. Where does your time actually go — and can you see it clearly enough to spend it on what matters?
+                </p>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
+                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                  Product partner — set the concept, the four life pillars, and the "spec first" approach; Claude Code built to the spec.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
+              <div className="flex flex-col gap-1">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Platform</p>
+                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Web app</p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
+                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026 — spec first, then built to it</p>
+              </div>
+            </div>
+          </div>
           <StatRow stats={[
             { value: "4", label: "life pillars" },
             { value: "1", label: "categorization rule" },
@@ -330,8 +255,6 @@ export default function TimeTrackerCaseStudy() {
             <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
               Claude Code · Next.js 14 · TypeScript · Tailwind CSS · Recharts · shadcn/ui
             </p>
-            <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)] mt-2">Timeline</p>
-            <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026 — spec first, then built to it</p>
           </div>
         </section>
 

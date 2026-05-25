@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { FONT } from "../../components/ui";
+import { FONT, GLASS } from "../../components/ui";
 
 const PROSE = "prose text-sm font-light leading-[1.85]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
@@ -12,6 +13,33 @@ function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: strin
       style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
     >
       <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
+    </div>
+  );
+}
+
+function Img({ src, alt, aspect = "16/9", fit = "cover" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover" }) {
+  return (
+    <div
+      className="relative w-full overflow-hidden rounded-xl"
+      style={{ aspectRatio: aspect, background: "var(--card)" }}
+    >
+      <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1024px" style={{ objectFit: fit }} />
+    </div>
+  );
+}
+
+function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string; stats: { value: string; label: string }[] }) {
+  return (
+    <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
+      <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
+      <div className="flex flex-wrap gap-8">
+        {stats.map((s) => (
+          <div key={s.label} className="flex flex-col gap-1">
+            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
+            <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -34,19 +62,38 @@ export default function Path360CaseStudy() {
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           Calibrations Ecosystem<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        <p className="font-light leading-relaxed max-w-[58ch]" style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "#3A3530" }}>
-          The pilot proved the concept. Now we had to build for 70,000 people. PATH became Capital One's first enterprise performance platform — and the calibrations ecosystem was the hardest part to get right.
-        </p>
+        {/* Context card — problem statement / role | platform / timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
+          <div className="flex flex-col gap-5 p-6">
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                The pilot proved better feedback inputs led to better calibration conversations. Could that quality hold at 70,000-person scale — across business lines, seniority levels, and calibration models that looked nothing alike?
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
+              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
+                Lead designer — owned the end-to-end calibration experience, from how sessions are created and managed to what leaders see in the room when decisions get made.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Platform</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Enterprise web · PATH performance platform</p>
+            </div>
+            <div className="flex flex-col gap-1">
+              <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
+              <p className="font-light text-sm" style={{ color: "var(--accent)" }}>TBD — add dates</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
         <Placeholder label="Hero — PATH calibrations distribution UI showing rating distribution view" aspect="4/3" />
-      </div>
-
-      {/* ── Full-bleed HMW ── */}
-      <div className="mt-16 w-full">
-        <Placeholder label="Full-bleed — HMW slide: How do we design a calibration experience that gives every leader what they need to make fair, confident decisions?" aspect="16/7" />
       </div>
 
       {/* ── The Challenge ── */}
@@ -57,15 +104,21 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>The Challenge</p>
               <h2 className="font-light" style={SECTION_HEADING}>Scaling something human</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Calibration is where performance decisions actually get made. Leaders gather — sometimes with a room full of peers — to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
-              <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale — across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
-              <p>My role: lead design for the end-to-end calibration experience within PATH — from how sessions are created and managed, to what leaders see in the room when decisions are being made.</p>
+            <div className="flex flex-col gap-8">
+              <Metrics stats={[
+                { value: "—", label: "employees reached at scale (TBD)" },
+                { value: "↑ —", label: "leader confidence in calibration (TBD)" },
+              ]} />
+              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+                <p>Calibration is where performance decisions actually get made. Leaders gather — sometimes with a room full of peers — to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
+                <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale — across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
+                <p>My role: lead design for the end-to-end calibration experience within PATH — from how sessions are created and managed, to what leaders see in the room when decisions are being made.</p>
+              </div>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Early brainstorm — whiteboard mapping the end-to-end calibration workflow" aspect="16/9" />
+            <Img src="/case-study/pa-xd/image2.png" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early whiteboard sessions helped us map the full calibration journey — far messier than the pilot suggested.</figcaption>
           </figure>
         </section>
@@ -83,16 +136,15 @@ export default function Path360CaseStudy() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <figure className="flex flex-col gap-2 sm:w-[55%]">
-              <Placeholder label="Personas — people leaders, senior leaders, HR partners each with a different relationship to calibration" aspect="4/3" />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas — each role had a fundamentally different relationship to calibration</figcaption>
-            </figure>
-            <figure className="flex flex-col gap-2 sm:w-[45%]">
-              <Placeholder label="Jobs-to-be-done framework — the same calibration session, five different goals" aspect="4/3" />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Jobs-to-be-done — the same session, five different goals</figcaption>
-            </figure>
-          </div>
+          <figure className="flex flex-col gap-2">
+            <Img src="/case-study/pa-xd/gemini.png" alt="Live calibration session UI — associates distributed across rating buckets for a Directors, PM group, with distribution guidance" aspect="1128/928" fit="contain" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">A calibration session in progress — associates distributed across rating buckets, with guidance for shaping the final curve</figcaption>
+          </figure>
+
+          <figure className="flex flex-col gap-2">
+            <Img src="/case-study/pa-xd/image3.png" alt="Persona journey map — people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas mapped across the calibration journey — each role's jobs-to-be-done at every phase</figcaption>
+          </figure>
         </section>
 
         {/* ── Designing the System ── */}
@@ -134,11 +186,6 @@ export default function Path360CaseStudy() {
         </section>
       </div>
 
-      {/* ── Full-bleed live states ── */}
-      <div className="w-full my-4">
-        <Placeholder label="Full-bleed — three states of the live calibration: distribution view, individual view, completed state" aspect="16/5" />
-      </div>
-
       {/* ── Feedback + Scale ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
@@ -158,11 +205,6 @@ export default function Path360CaseStudy() {
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field — leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>
-      </div>
-
-      {/* ── Full-bleed scale stat ── */}
-      <div className="w-full my-4">
-        <Placeholder label="Full-bleed — scale stat: PATH reached 20,000+ employees in year one of enterprise rollout" aspect="16/7" />
       </div>
 
       {/* ── Outcome + Growth ── */}

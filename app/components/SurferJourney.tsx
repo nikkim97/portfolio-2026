@@ -148,6 +148,8 @@ function MobileCardSwitcher() {
 }
 
 const CARD_W = 310;
+// Uniform image-band height for all project/horizon cards (image or placeholder).
+const CARD_IMG_H = 280;
 
 export default function SurferJourney() {
   const [isMobile, setIsMobile] = useState(false);
@@ -403,8 +405,8 @@ export default function SurferJourney() {
               <div
                 style={{
                   background: "#C9C2B6",
-                  minHeight: 130,
-                  height: 130,
+                  minHeight: CARD_IMG_H,
+                  height: CARD_IMG_H,
                   overflow: "hidden",
                   position: "relative",
                 }}
@@ -417,6 +419,7 @@ export default function SurferJourney() {
                       width: "100%",
                       height: "100%",
                       objectFit: node.image.fit ?? "cover",
+                      objectPosition: node.image.position ?? "center",
                       display: "block",
                     }}
                   />
