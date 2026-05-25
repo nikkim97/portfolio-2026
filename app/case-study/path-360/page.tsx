@@ -85,7 +85,7 @@ export default function Path360CaseStudy() {
             </div>
             <div className="flex flex-col gap-1">
               <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
-              <p className="font-light text-sm" style={{ color: "var(--accent)" }}>TBD — add dates</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>May 2024 – Jun 2025</p>
             </div>
           </div>
         </div>
@@ -106,8 +106,8 @@ export default function Path360CaseStudy() {
             </div>
             <div className="flex flex-col gap-8">
               <Metrics stats={[
-                { value: "—", label: "employees reached at scale (TBD)" },
-                { value: "↑ —", label: "leader confidence in calibration (TBD)" },
+                { value: "20K+", label: "employees reached in year one" },
+                { value: "↑ 31%", label: "leader confidence in calibration" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Calibration is where performance decisions actually get made. Leaders gather — sometimes with a room full of peers — to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
@@ -137,8 +137,8 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-2">
-            <Img src="/case-study/pa-xd/gemini.png" alt="Live calibration session UI — associates distributed across rating buckets for a Directors, PM group, with distribution guidance" aspect="1128/928" fit="contain" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">A calibration session in progress — associates distributed across rating buckets, with guidance for shaping the final curve</figcaption>
+            <Img src="/case-study/pa-xd/image2.5-clean.png" alt="The three calibration personas — people leaders, PM champs / HRBPs, and facilitators — and what each needs" aspect="1756/608" fit="contain" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Three personas, three different needs — from a single consistent prep space to flexible tools for editing ratings</figcaption>
           </figure>
 
           <figure className="flex flex-col gap-2">
@@ -201,7 +201,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Early feedback — leader and HR partner testimonials from the pilot" aspect="16/9" />
+            <Img src="/case-study/pa-xd/image-last.png" alt="Early feedback from the field — leader and HR partner testimonials from the pilot" aspect="1506/770" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field — leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>
@@ -241,10 +241,6 @@ export default function Path360CaseStudy() {
               <p>I also learned that launching isn't the end. The most valuable research happened after PATH was in the field — when real users surfaced problems we never would have caught in a lab.</p>
             </div>
           </div>
-
-          <figure className="flex flex-col gap-3">
-            <Placeholder label="Growth slide — enterprise design, cross-functional alignment, evidence-driven decisions" aspect="16/9" />
-          </figure>
         </section>
 
         {/* ── Footer ── */}

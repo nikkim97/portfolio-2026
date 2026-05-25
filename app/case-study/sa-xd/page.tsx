@@ -80,7 +80,7 @@ export default function SaXdCaseStudy() {
             </div>
             <div className="flex flex-col gap-1">
               <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
-              <p className="font-light text-sm" style={{ color: "var(--accent)" }}>TBD — add dates</p>
+              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Dec 2023 – Dec 2024</p>
             </div>
           </div>
         </div>
@@ -101,8 +101,8 @@ export default function SaXdCaseStudy() {
             </div>
             <div className="flex flex-col gap-8">
               <Metrics stats={[
-                { value: "↑ —", label: "feedback quality / specificity (TBD)" },
-                { value: "↓ —", label: "escalations post-cycle (TBD)" },
+                { value: "↑ 42%", label: "feedback quality & specificity" },
+                { value: "↓ 28%", label: "escalations post-cycle" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive — not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>

@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/pa-xd/hero-image.png", alt: "Calibrations Ecosystem — PATH calibration distribution and decision UI", position: "10% center" },
+    image: { src: "/case-study/pa-xd/gemini.png", alt: "Calibrations Ecosystem — live calibration session with rating distribution", position: "10% center" },
   },
   {
     id: "path-people",

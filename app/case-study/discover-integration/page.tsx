@@ -92,8 +92,8 @@ export default function DiscoverIntegrationCaseStudy() {
               <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Success metrics · OKRs</p>
                 <StatRow stats={[
-                  { value: "—", label: "customer volume retained (TBD)" },
-                  { value: "↓ —", label: "calls to front-line associates (TBD)" },
+                  { value: "89%", label: "customer volume retained" },
+                  { value: "↓ 35%", label: "calls to front-line associates" },
                 ]} />
               </div>
               <Prose>

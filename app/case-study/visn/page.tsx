@@ -74,11 +74,11 @@ export default function VisnCaseStudy() {
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
         <figure className="flex flex-col gap-4">
           <ZoomableImage
-            src="/visn/hero-image-2.png"
+            src="/visn/hero-image.png"
             alt="VISN hero image"
-            width={1772}
-            height={784}
-            aspectRatio="1772/784"
+            width={1818}
+            height={794}
+            aspectRatio="1818/794"
             fit="contain"
             sizes="(max-width: 1024px) 100vw, 896px"
           />
@@ -95,8 +95,8 @@ export default function VisnCaseStudy() {
             </div>
             <div className="flex flex-col gap-8">
               <Metrics stats={[
-                { value: "1st", label: "Rutgers capstone competition" },
-                { value: "—", label: "obstacle-detection range (TBD)" },
+                { value: "2nd", label: "of 60 teams · capstone competition" },
+                { value: "5m", label: "obstacle-detection range" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford — canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
