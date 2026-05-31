@@ -10,7 +10,7 @@ function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: strin
   return (
     <div
       className="w-full overflow-hidden rounded-xl flex items-center justify-center"
-      style={{ aspectRatio: aspect, background: "var(--card)", border: "1px dashed var(--border)" }}
+      style={{ aspectRatio: aspect, background: "var(--card)" }}
     >
       <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
     </div>
@@ -161,7 +161,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="16/9" />
+            <Img src="/case-study/pa-xd/image4.png" alt="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="1760/704" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management — giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
         </section>

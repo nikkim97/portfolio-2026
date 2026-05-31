@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { FONT, GLASS } from "../../components/ui";
-import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+import { SectionLabel, SectionHeading, Screenshot, PhoneFrame, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+
+// Phone screenshots are portrait (~1:2) with the device frame baked in.
+const PHONE_ASPECT = "1/2";
 
 // Tiny swatch + label, used to introduce the four pillars inline.
 function PillarKey() {
@@ -97,11 +100,13 @@ export default function TimeTrackerCaseStudy() {
           ]} />
         </section>
 
-        {/* ── Hero image ── */}
-        <Screenshot
-          label="Hero — Time Tracker dashboard: a week of time broken into Family, Self-Care, Socialization, and Career"
-          caption="The dashboard — a week of time, budgeted across four life pillars"
-        />
+        {/* ── Hero image (placeholder — to fill later) ── */}
+        <PhoneFrame maxWidth={300}>
+          <Screenshot
+            aspect={PHONE_ASPECT}
+            label="Hero image — to come"
+          />
+        </PhoneFrame>
 
         {/* ── The concept ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
@@ -115,7 +120,7 @@ export default function TimeTrackerCaseStudy() {
                 A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your week. Four life pillars — Family, Self-Care, Socialization, Career — each with a target share of your time. The app shows you the actual breakdown next to the one you intended.
               </p>
               <p>
-                The primary view is a donut: the shape of your week at a glance. Flip it and the same data becomes a goal-versus-actual bar — where you went over, where you came up short — exactly like a budget flags the category you blew past. The point isn&apos;t to track for tracking&apos;s sake. It&apos;s to make an invisible thing visible enough to act on.
+                The primary view puts each pillar next to its target as a bar — where you went over, where you came up short — exactly like a budget flags the category you blew past. On top of it sits a plain-English balance read: <em>Balanced, On track, Drifting,</em> or <em>Off balance</em>, so the numbers resolve into a single judgment. And you can drop into any week to see the actual sessions that filled it. The point isn&apos;t to track for tracking&apos;s sake — it&apos;s to make an invisible thing visible enough to act on.
               </p>
               <p>
                 Each pillar carries its own target, so the dashboard always has something to measure against:
@@ -123,15 +128,32 @@ export default function TimeTrackerCaseStudy() {
               <PillarKey />
             </Prose>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Screenshot
-              label="Donut breakdown — the shape of the week across the four pillars, with hours and share per slice"
-              caption="The donut — the shape of your week at a glance"
-            />
-            <Screenshot
-              label="Goal vs. actual — the bar view comparing where your time went against where you meant it to go"
-              caption="Flip the view: goal vs. actual, the way a budget flags an over-spent category"
-            />
+          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2">
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v2.1.png"
+                aspect={PHONE_ASPECT}
+                priority
+                label="V2 dashboard — a week of time across Family, Self-Care, Socialization, and Career, each measured against its target"
+                caption="The dashboard — each pillar next to its target"
+              />
+            </PhoneFrame>
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v2.3.png"
+                aspect={PHONE_ASPECT}
+                label="Balance states — Balanced, On track, Drifting, Off balance — the plain-English read on the week"
+                caption="The balance read: where you land, in one word"
+              />
+            </PhoneFrame>
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v2.2.png"
+                aspect={PHONE_ASPECT}
+                label="Where your time went — the calendar and the actual sessions behind a week, sorted by most time or most frequent"
+                caption="Drill into any week to see the sessions that filled it"
+              />
+            </PhoneFrame>
           </div>
         </section>
 
@@ -156,77 +178,87 @@ export default function TimeTrackerCaseStudy() {
             &ldquo;Who you&apos;re with determines the pillar. A hike with your kids is Family, not Self-Care. Self-Care is strictly solo time.&rdquo;
           </PullQuote>
 
-          <Screenshot
-            label="Onboarding — choosing pillars, with sensible defaults pre-selected and a 'use defaults and skip' option"
-            caption="Onboarding: pick your pillars, or skip with defaults — every step has a sensible default"
-          />
+          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2">
+            <div className="flex-none w-[232px]">
+              <Screenshot
+                src="/case-study/time-track/onboard.png"
+                aspect={PHONE_ASPECT}
+                label="Onboarding step 1 — intro and setup framing"
+                caption="Onboarding · intro"
+              />
+            </div>
+            <div className="flex-none w-[232px]">
+              <Screenshot
+                src="/case-study/time-track/onboard-2.1.png"
+                aspect={PHONE_ASPECT}
+                label="Onboarding step 2 — configuring preferences"
+                caption="Onboarding · setup"
+              />
+            </div>
+            <div className="flex-none w-[232px]">
+              <Screenshot
+                src="/case-study/time-track/onboard-2.2.png"
+                aspect={PHONE_ASPECT}
+                label="Onboarding step 3 — pillar defaults and confirmation"
+                caption="Onboarding · defaults"
+              />
+            </div>
+            <div className="flex-none w-[232px]">
+              <Screenshot
+                src="/case-study/time-track/onbaord3.png"
+                aspect={PHONE_ASPECT}
+                label="Onboarding step 4 — completion"
+                caption="Onboarding · complete"
+              />
+            </div>
+          </div>
         </section>
 
-        {/* ── The build ── */}
+        {/* ── Evolution: V1 → V2 ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The build</SectionLabel>
-              <SectionHeading>This time, I wrote the spec first</SectionHeading>
+              <SectionLabel>Evolution</SectionLabel>
+              <SectionHeading>The donut was the first cut, not the final one</SectionHeading>
             </div>
             <Prose>
               <p>
-                Bloom taught me one thing the hard way: I&apos;d let the visual design emerge reactively instead of deciding it up front. My note to myself afterward was literally to spec the system <em>before</em> the first build command. Time Tracker is that lesson applied.
+                V1 proved the concept on a realistic fake week — deep work blocks, a family hike, coffee with a friend, morning runs — all local, all dummy data, no account and no backend. The bet: if the dashboard doesn&apos;t feel useful with clean hand-made data, real calendar data won&apos;t save it.
               </p>
               <p>
-                Before I opened a terminal, I wrote a brief for Claude Code to build against — not just a feature list, but the pillars and their definitions, the categorization rule, the design language (calm, editorial, muted and warm — &ldquo;editorial over dashboard&rdquo;), and a hard line on scope. V1 validates the concept with dummy data and localStorage. No Google Calendar, no database, no auth — none of it until the dummy-data version proves the idea is worth the infrastructure.
+                It led with a donut. Pretty, and good at answering <em>&ldquo;what was the shape of my week&rdquo;</em> — but weak at the question that actually matters: <em>am I on target?</em> Comparing a slice to a goal means eyeballing two arcs. The one thing V1 nailed was the plain-English read — <em>&ldquo;Career led the way… Self-Care was a little quieter than you&apos;d hoped&rdquo;</em> — because a number is information but a sentence is a nudge.
               </p>
               <p>
-                Same collaboration model as Bloom — I&apos;m the product partner, Claude Code is the developer — but this time the product thinking existed on paper before a single file did. Claude built to the spec; I reviewed on localhost and redirected.
+                V2 kept the sentence and promoted the goal-versus-actual bar to the primary view, then added an explicit balance state on top. Same data, a read you don&apos;t have to decode. Here&apos;s where it started:
               </p>
             </Prose>
           </div>
 
-          <PullQuote>
-            &ldquo;Don&apos;t add infrastructure for unvalidated features. Build the simplest thing that tests the idea first.&rdquo;
-          </PullQuote>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Screenshot
-              label="The spec — a product brief written before any code: pillars, the categorization rule, design language, and V1-vs-V2 scope"
-              caption="The brief, written first — pillars, the rule, the design language, and a hard line on scope"
-            />
-            <Screenshot
-              label="Claude Code building the dashboard to spec — Next.js, a custom Recharts donut, the onboarding flow"
-              caption="Claude Code building to the spec — donut chart, pillar cards, onboarding, in one pass"
-            />
-          </div>
-        </section>
-
-        {/* ── V1 ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>V1</SectionLabel>
-              <SectionHeading>Prove it with perfect dummy data first</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                The whole V1 bet: if the dashboard doesn&apos;t feel useful with clean, hand-made data, real calendar data won&apos;t save it. So I built the full experience on a realistic fake week — deep work blocks, a family hike, coffee with a friend, morning runs — and judged whether the picture it painted actually told me something.
-              </p>
-              <p>
-                The dashboard does a few quiet things well. A weekly-or-monthly toggle. Pillar cards showing hours and share. A donut you can flip to goal-versus-actual. And a one-line plain-English read on the week — <em>&ldquo;Career led the way… Self-Care was a little quieter than you&apos;d hoped&rdquo;</em> — generated from the data, because a number is information but a sentence is a nudge.
-              </p>
-              <p>
-                It&apos;s all local. localStorage holds your setup; there&apos;s no account and no backend. On purpose — the simplest thing that could test the idea.
-              </p>
-            </Prose>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Screenshot
-              label="Weekly dashboard — pillar cards with hours and share, donut breakdown, week/month toggle"
-              caption="The weekly view running on a realistic dummy week"
-            />
-            <Screenshot
-              label="The generated insight line — a plain-English read on the week, written from the underlying data"
-              caption="A number is information; a sentence is a nudge — the insight line is generated from the data"
-            />
+          <div className="flex flex-wrap gap-6 justify-center">
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v1.1.png"
+                aspect={PHONE_ASPECT}
+                label="V1 dashboard — the donut breakdown with pillar cards and the generated insight line"
+                caption="V1 · the donut — shape of the week, weak on 'am I on target'"
+              />
+            </PhoneFrame>
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v1.3.png"
+                aspect={PHONE_ASPECT}
+                label="V1 goal vs. reality — paired goal and actual bars per pillar with plus/minus deltas"
+                caption="V1 · goal vs. reality lived behind a flip — V2 made it the front door"
+              />
+            </PhoneFrame>
+            <PhoneFrame maxWidth={232}>
+              <Screenshot
+                src="/case-study/time-track/v1.2.png"
+                aspect={PHONE_ASPECT}
+                label="V1 calendar — a month grid with a colored dot per pillar logged each day"
+                caption="V1 · the calendar — a dot per pillar, per day"
+              />
+            </PhoneFrame>
           </div>
         </section>
 
@@ -242,7 +274,7 @@ export default function TimeTrackerCaseStudy() {
                 Writing the spec first changed the whole build. The time I spent wasn&apos;t on implementation — Claude handled that. It was on the decisions: what counts as Self-Care, whether to split events across pillars (no), what to refuse to build yet. Vibe coding&apos;s bottleneck isn&apos;t typing. It&apos;s judgment — and judgment is easier to apply consistently when you&apos;ve written it down.
               </p>
               <p>
-                What&apos;s next is the part I deliberately didn&apos;t build: Google Calendar integration, auto-categorizing real events into pillars — with a manual override for the calls the algorithm gets wrong — and a real database to replace localStorage. But only now, because the dummy-data version earned it.
+                V2 earned its way to more surface area — the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown — by proving the core read first. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only now, because the dummy-data version earned it.
               </p>
             </Prose>
           </div>

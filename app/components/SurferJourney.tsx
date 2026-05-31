@@ -393,7 +393,6 @@ export default function SurferJourney() {
               transition={{ duration: 0.5, ease: EASE }}
               style={{
                 width: "100%",
-                border: "1px solid var(--border)",
                 borderRadius: 12,
                 background: "var(--background)",
                 overflow: "hidden",

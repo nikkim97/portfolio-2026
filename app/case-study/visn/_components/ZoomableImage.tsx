@@ -97,7 +97,7 @@ export default function ZoomableImage({
               <button type="button" onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-md text-xs bg-white/10 text-white border border-white/20 hover:bg-white/20">Close</button>
             </div>
 
-            <div className="w-[min(94vw,1200px)] max-h-[84vh] overflow-auto rounded-xl border border-white/15 bg-[#111]">
+            <div className="w-[min(94vw,1200px)] max-h-[84vh] overflow-auto rounded-xl bg-[#111]">
               <div className="flex justify-center p-4 min-w-full">
                 <Image
                   src={src}
