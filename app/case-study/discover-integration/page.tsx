@@ -2,12 +2,14 @@ import Link from "next/link";
 import { FONT, GLASS } from "../../components/ui";
 import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
 
-// A row of phone-shaped placeholder slots for native mobile screens.
-function MobileShots({ shots }: { shots: { label: string; caption?: string }[] }) {
+// A row of native mobile screens. Each shot carries its own aspect ratio since
+// the source captures range from full device frames to cropped bottom sheets.
+function MobileShots({ shots, cols = 3 }: { shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[]; cols?: 3 | 4 }) {
+  const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
+    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start`}>
       {shots.map((s, i) => (
-        <Screenshot key={i} aspect="390 / 844" label={s.label} caption={s.caption} />
+        <Screenshot key={i} src={s.src} aspect={s.aspect ?? "390 / 844"} priority={s.priority} label={s.label} caption={s.caption} />
       ))}
     </div>
   );
@@ -74,12 +76,13 @@ export default function DiscoverIntegrationCaseStudy() {
           </div>
         </section>
 
-        {/* ── Hero image ── */}
-        <Screenshot
-          aspect="16/9"
-          label="Hero — the welcome moment a Discover customer sees on first sign-in to Capital One (native mobile)"
-          caption="First sign-in: the moment a Discover customer becomes a Capital One customer"
-        />
+        {/* ── Hero image — the welcome animation, frame by frame ── */}
+        <MobileShots cols={4} shots={[
+          { src: "/case-study/manager/welcome3.png", aspect: "806 / 1724", priority: true, label: "Welcome animation — starts on the Discover card the customer knows", caption: "Starts on what they know" },
+          { src: "/case-study/manager/welcome4.png", aspect: "806 / 1724", priority: true, label: "Welcome animation — the Discover and Capital One cards mid-morph", caption: "The cards morph" },
+          { src: "/case-study/manager/welcome1.png", aspect: "806 / 1724", priority: true, label: "Welcome animation — resolves on the Capital One card", caption: "Now Capital One" },
+          { src: "/case-study/manager/welcome2.png", aspect: "806 / 1724", priority: true, label: "Welcome animation — the welcome message that lands the moment", caption: "We're happy you're here" },
+        ]} />
 
         {/* ── The problem ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
@@ -146,9 +149,9 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { label: "FTX — welcome animation", caption: "The welcome moment" },
-            { label: "FTX — what's changed, at a glance", caption: "Everything new, in one screen" },
-            { label: "FTX — hand-off into the home screen", caption: "Into the app" },
+            { src: "/case-study/manager/welcome4.png", aspect: "806 / 1724", label: "FTX — the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
+            { src: "/case-study/manager/ftux.png", aspect: "403 / 862", label: "FTX — your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
+            { src: "/case-study/manager/checking-l1.png", aspect: "403 / 955", label: "FTX — hand-off into the home screen, with what still needs setup flagged", caption: "Into the app — with what's left to set up flagged" },
           ]} />
         </section>
 
@@ -169,9 +172,9 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { label: "L2 — checklist overview", caption: "Direct deposit · autopay · activate card" },
-            { label: "L2 — set up direct deposit", caption: "The stickiest step" },
-            { label: "L2 — progress / completion state", caption: "Momentum + payoff" },
+            { src: "/case-study/manager/mma-checklist-default.png", aspect: "403 / 1217", label: "L2 — the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
+            { src: "/case-study/manager/l2-account-summary.png", aspect: "403 / 862", label: "L2 — what's different and what's the same about this account", caption: "Each step explains what changed — and what didn't" },
+            { src: "/case-study/manager/checklist-debit.png", aspect: "403 / 1474", label: "L2 — finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
           ]} />
         </section>
 
@@ -192,9 +195,8 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { label: "Wayfinding — icons + text in context (annotated)", caption: "The system, annotated" },
-            { label: "Before — a screen without wayfinding", caption: "Before: easy to feel lost" },
-            { label: "After — the same screen with wayfinding", caption: "After: what changed + what to do, made obvious" },
+            { src: "/case-study/manager/l2-mma.png", aspect: "806 / 2088", label: "Wayfinding — the wrench icon and 'finish setting up' text mark where action is needed", caption: "Needs action: the wrench signals what's not done yet" },
+            { src: "/case-study/manager/checklist-bill-pay.png", aspect: "403 / 1195", label: "Wayfinding — the resolved state, with green checks confirming each step", caption: "Resolved: green confirms what's complete" },
           ]} />
         </section>
 

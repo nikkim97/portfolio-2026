@@ -388,16 +388,16 @@ export default function SurferJourney() {
           >
             <motion.div
               initial={false}
-              animate={{ opacity: everPassed ? 1 : 0.5, scale: inZone ? 1.05 : 1 }}
+              animate={{ opacity: 1, scale: inZone ? 1.05 : 1 }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.5, ease: EASE }}
               style={{
                 width: "100%",
                 borderRadius: 12,
-                background: "var(--background)",
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
+                ...GLASS,
               }}
             >
               {/* Top section — image or placeholder */}
@@ -432,7 +432,6 @@ export default function SurferJourney() {
                   display: "flex",
                   flexDirection: "column",
                   gap: 8,
-                  background: "var(--background)",
                 }}
               >
                 <div className="flex items-center gap-1.5 flex-wrap">

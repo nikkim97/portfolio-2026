@@ -72,6 +72,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/discover-integration",
     type: "project",
+    image: { src: "/case-study/manager/hero2.png", alt: "Discover Integration — the welcome flow, account summary, and new Capital One home screen", position: "center" },
   },
   {
     id: "bloom",
