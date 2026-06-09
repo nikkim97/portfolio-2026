@@ -44,6 +44,28 @@ function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string;
   );
 }
 
+// A grid of outcome stat cards — big accent number over a short description.
+// Mirrors the sa-xd outcome treatment so the headline results read as a scannable
+// set of cards rather than a flat bulleted list.
+function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+      {stats.map((s) => (
+        <div
+          key={s.label}
+          className="flex flex-col gap-2 rounded-xl p-5"
+          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+        >
+          <p className="font-light tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--accent)" }}>
+            {s.value}
+          </p>
+          <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Path360CaseStudy() {
   return (
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
@@ -93,7 +115,7 @@ export default function Path360CaseStudy() {
 
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <Placeholder label="Hero — PATH calibrations distribution UI showing rating distribution view" aspect="4/3" />
+        <Img src="/case-study/pa-xd/hero.png" alt="PATH calibrations — rating distribution view with an individual deep-dive panel showing 360 feedback and performance data" aspect="1200/896" fit="cover" />
       </div>
 
       {/* ── The Challenge ── */}
@@ -161,7 +183,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image4.png" alt="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="1760/704" fit="cover" />
+            <Img src="/case-study/pa-xd/image4.1.png" alt="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management — giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
         </section>
@@ -201,7 +223,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image-last.png" alt="Early feedback from the field — leader and HR partner testimonials from the pilot" aspect="1506/770" fit="cover" />
+            <Img src="/case-study/pa-xd/image-last2.png" alt="Early feedback from the field — leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field — leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>
@@ -218,14 +240,17 @@ export default function Path360CaseStudy() {
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>PATH launched as Capital One's first enterprise performance management platform — built on the foundation the pilot established.</p>
               <ul>
-                <li>Scaled from an <strong>800-person pilot</strong> to <strong>70,000+ employees</strong> across Capital One</li>
-                <li>Reached <strong>20,000+ employees</strong> in year one of the enterprise rollout</li>
                 <li>Calibration sessions reported fewer disputes and stronger post-session alignment</li>
                 <li>360 feedback became a standard, structured input into every calibration — not an afterthought</li>
                 <li>HR partners reported reduced escalations and cleaner outcomes in sessions using PATH</li>
               </ul>
             </div>
           </div>
+          <StatCards stats={[
+            { value: "1st", label: "enterprise performance management platform at Capital One" },
+            { value: "70,000+", label: "employees across Capital One — scaled from an 800-person pilot" },
+            { value: "20,000+", label: "employees reached in year one of the enterprise rollout" },
+          ]} />
         </section>
 
         {/* ── Growth ── */}

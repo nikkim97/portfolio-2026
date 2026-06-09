@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/pa-xd/gemini.png", alt: "Calibrations Ecosystem — live calibration session with rating distribution", position: "10% center" },
+    image: { src: "/case-study/pa-xd/hero.png", alt: "Calibrations Ecosystem — PATH rating distribution view with an individual deep-dive panel", position: "center" },
   },
   {
     id: "path-people",
@@ -94,6 +94,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/time-tracker",
     type: "horizon",
+    image: { src: "/case-study/time-track/hero2.png", alt: "Time Tracking Dashboard — the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
   },
 ];
 
@@ -105,39 +106,39 @@ export const WAVE_PATH_D = [
   "M 80,290",
   // Career zigzag: VISN → asc-swe → sr-swe
   "C 80,359 490,417 490,463",
-  "C 490,532 80,572 80,612",
+  "C 490,532 80,642 80,682",
   // LOOP 1: sr-swe → sa-xd (engineer → designer pivot)
-  "C 80,693 170,773 230,785",
-  "C 290,796 400,787 420,735",
-  "C 440,683 320,658 250,704",
-  "C 180,750 180,848 260,871",
-  "C 340,894 550,934 550,969",
+  "C 80,763 170,843 230,855",
+  "C 290,866 400,857 420,805",
+  "C 440,753 320,728 250,774",
+  "C 180,820 180,918 260,941",
+  "C 340,964 550,1004 550,1039",
   // sa-xd → path-360 (direct)
-  "C 550,1049 50,1118 50,1153",
+  "C 550,1119 50,1188 50,1223",
   // path-360 → PIX / Manager (direct)
-  "C 50,1260 490,1360 490,1480",
+  "C 50,1330 490,1430 490,1550",
   // LOOP 2: PIX → bloom (project → vibe coding)
-  "C 490,1560 430,1629 370,1641",
-  "C 310,1652 200,1646 180,1595",
-  "C 160,1543 280,1520 350,1566",
-  "C 420,1612 420,1698 340,1721",
-  "C 260,1744 75,1779 75,1813",
+  "C 490,1630 430,1699 370,1711",
+  "C 310,1722 200,1716 180,1665",
+  "C 160,1613 280,1590 350,1636",
+  "C 420,1682 420,1768 340,1791",
+  "C 260,1814 75,1849 75,1883",
   // bloom → time-tracker (direct)
-  "C 75,1880 530,1930 530,1990",
+  "C 75,1950 530,2000 530,2060",
   // tail
-  "C 530,2040 300,2075 300,2100",
+  "C 530,2110 300,2145 300,2170",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 2280;
+export const SVG_H = 2350;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
   { x: 80,  y: 290,  side: "left"  }, // VISN
   { x: 490, y: 463,  side: "right" }, // asc-swe
-  { x: 80,  y: 612,  side: "left"  }, // sr-swe
-  { x: 550, y: 969,  side: "right" }, // sa-xd
-  { x: 50,  y: 1153, side: "left"  }, // path-360
-  { x: 490, y: 1480, side: "right" }, // PIX Project (Manager, Experience Design)
-  { x: 75,  y: 1813, side: "left"  }, // bloom
-  { x: 530, y: 1990, side: "right" }, // time-tracker
+  { x: 80,  y: 682,  side: "left"  }, // sr-swe
+  { x: 550, y: 1039, side: "right" }, // sa-xd
+  { x: 50,  y: 1223, side: "left"  }, // path-360
+  { x: 490, y: 1550, side: "right" }, // PIX Project (Manager, Experience Design)
+  { x: 75,  y: 1883, side: "left"  }, // bloom
+  { x: 530, y: 2060, side: "right" }, // time-tracker
 ];

@@ -23,11 +23,52 @@ function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt:
   );
 }
 
+// Dense, oversized reference images (annotated one-pagers, FigJam boards) that
+// can't stay legible when shrunk to fit. Locks the image to a fixed viewport
+// height so it fills the container with no letterbox, then lets it overflow
+// horizontally with a scroll so the full detail can be reviewed.
+function ScrollImg({ src, alt, w, h, height = 520 }: { src: string; alt: string; w: number; h: number; height?: number }) {
+  return (
+    <div className="w-full overflow-x-auto overflow-y-hidden rounded-xl" style={{ background: "var(--card)" }}>
+      <Image
+        src={src}
+        alt={alt}
+        width={w}
+        height={h}
+        sizes="100vw"
+        className="block max-w-none"
+        style={{ height, width: "auto" }}
+      />
+    </div>
+  );
+}
+
+// A grid of outcome stat cards — big accent number over a short description.
+// Used where a flat bulleted list of results would read as undifferentiated copy.
+function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+      {stats.map((s) => (
+        <div
+          key={s.label}
+          className="flex flex-col gap-2 rounded-xl p-5"
+          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+        >
+          <p className="font-light tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--accent)" }}>
+            {s.value}
+          </p>
+          <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string; stats: { value: string; label: string }[] }) {
   return (
     <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
       <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
-      <div className="flex flex-wrap gap-8">
+      <div className="grid grid-cols-2 gap-6 sm:gap-8">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col gap-1">
             <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
@@ -100,9 +141,9 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <Metrics stats={[
-                { value: "↑ 42%", label: "feedback quality & specificity" },
-                { value: "↓ 28%", label: "escalations post-cycle" },
+              <Metrics label="Outcomes" stats={[
+                { value: "58%", label: "gained clarity on development opportunities" },
+                { value: "73%", label: "more feedback leveraged in performance management" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive — not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
@@ -113,8 +154,8 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/sa-xd/sa-xd-10.png" alt="Experience map — showing where 360 feedback broke down across the performance cycle" aspect="16/9" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with — feedback wasn't designed around how leaders actually used it.</figcaption>
+            <ScrollImg src="/case-study/sa-xd/group-10.png" alt="Experience map — emotion curve and phase breakdown showing where 360 feedback broke down across the performance cycle" w={1354} h={630} />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with — feedback wasn&apos;t designed around how leaders actually used it. · scroll to explore →</figcaption>
           </figure>
         </section>
 
@@ -154,8 +195,8 @@ export default function SaXdCaseStudy() {
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form — competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
             <figure className="flex flex-col gap-3">
-              <Img src="/case-study/sa-xd/sa-xd-13.png" alt="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" aspect="16/9" />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager — feedback as a first-class input, not an afterthought</figcaption>
+              <ScrollImg src="/case-study/sa-xd/sa-xd-13.1.png" alt="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" w={1308} h={687} />
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager — feedback as a first-class input, not an afterthought · scroll to explore →</figcaption>
             </figure>
           </div>
         </section>
@@ -174,8 +215,8 @@ export default function SaXdCaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/sa-xd/sa-xd-14.png" alt="Measurement framework — data triangulation across system data, live observations, and milestone surveys" aspect="16/9" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation — measuring clarity, consistency, quality, and actionability throughout the pilot</figcaption>
+            <ScrollImg src="/case-study/sa-xd/sa-xd-14.1.png" alt="Measurement framework — data triangulation across system data, live observations, and milestone surveys" w={1345} h={576} />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation — measuring clarity, consistency, quality, and actionability throughout the pilot · scroll to explore →</figcaption>
           </figure>
         </section>
       </div>
@@ -190,15 +231,13 @@ export default function SaXdCaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>The results were strong enough to convince our partners to use 360-feedback as the foundation for the new enterprise performance platform, PATH.</p>
-              <ul>
-                <li><strong>65%</strong> improvement in clarity & consistency of feedback received</li>
-                <li><strong>58%</strong> improvement in feedback quality — anonymity made a measurable difference</li>
-                <li><strong>52%</strong> improvement in actionability — feedback was more actively used during live calibrations</li>
-                <li><strong>58%</strong> of pilot associates reported having clarity on their development opportunities</li>
-                <li>Feedback was <strong>73% more leveraged</strong> in the overall performance management process</li>
-              </ul>
             </div>
           </div>
+          <StatCards stats={[
+            { value: "65%", label: "improvement in clarity & consistency of feedback received" },
+            { value: "58%", label: "improvement in feedback quality — anonymity made a measurable difference" },
+            { value: "52%", label: "improvement in actionability — feedback used more actively in live calibrations" },
+          ]} />
         </section>
 
         {/* ── Growth ── */}

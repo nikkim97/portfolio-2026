@@ -3,6 +3,7 @@
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import SurferJourney from "./components/SurferJourney";
+import AboutCarousel from "./components/AboutCarousel";
 import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
 
 const skills = [
@@ -62,6 +63,7 @@ export default function Home() {
   const blobTerraY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
   const blobTerraX = useTransform(scrollYProgress, [0, 1], ["0vw", "20vw"]);
   const blobTerraOpacity = useTransform(scrollYProgress, [0.63, 0.72, 0.88, 1], [0, 0.20, 0.16, 0.08]);
+
 
   const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -152,13 +154,6 @@ export default function Home() {
 
       {/* ── Page-level background blobs ── */}
       <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Hero — yellow orb top-right */}
-        <div style={{
-          position: "absolute", top: "-5vh", right: "5%",
-          width: 560, height: 560, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(228,210,80,0.36) 0%, transparent 68%)",
-          filter: "blur(14px)",
-        }} />
         {/* Terracotta warm counterpoint — emerges in Work */}
         <motion.div
           style={{
@@ -183,7 +178,22 @@ export default function Home() {
       {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
       <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
         <div className="sticky top-0 h-screen flex overflow-hidden">
-          <div className="flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
+          {/* Editorial surf portrait — right-aligned, desaturated, low emphasis, fades into the page on its left edge */}
+          <div aria-hidden className="hidden md:block absolute inset-y-0 right-0 w-[45%] pointer-events-none" style={{ zIndex: 0 }}>
+            <img
+              src="/nikki.jpg"
+              alt=""
+              className="w-full h-full object-cover"
+              style={{
+                filter: "grayscale(1) contrast(1.05)",
+                opacity: 0.26,
+                objectPosition: "35% center",
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 62%, black 100%)",
+                maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 62%, black 100%)",
+              }}
+            />
+          </div>
+          <div className="relative z-10 flex-1 flex flex-col justify-between w-full max-w-5xl mx-auto px-8 sm:px-16 py-10 md:py-12 min-w-0">
 
             {/* Top row: date + nav */}
             <motion.div
@@ -224,13 +234,15 @@ export default function Home() {
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="still working on a creative intro," startDelay={1.15} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="Hi, I'm Nikki — a builder" startDelay={1.15} perWord={0.07} duration={0.9} />
+                  <span style={{ color: "var(--accent)" }}>.</span>
                 </p>
                 <p
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="but let me take you on my journey as a builder in the meantime" startDelay={1.57} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="Let me take you on my journey so far" startDelay={1.6} perWord={0.07} duration={0.9} />
+                  <span style={{ color: "var(--accent)" }}>.</span>
                 </p>
               </div>
             </div>
@@ -268,6 +280,10 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <FadeIn>
+            <AboutCarousel />
+          </FadeIn>
 
           <div className="flex flex-col gap-6">
             <FadeIn>

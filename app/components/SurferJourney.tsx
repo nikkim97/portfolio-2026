@@ -342,13 +342,13 @@ export default function SurferJourney() {
                 }}
               >
                 <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
-                  <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: 0.7 }}>
+                  <span className="text-[10px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: 0.7 }}>
                     {node.period}
                   </span>
                   {node.pills?.map((p) => (
                     <span
                       key={p}
-                      className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                      className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
                       style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", opacity: 0.7 }}
                     >
                       {p}
@@ -356,11 +356,11 @@ export default function SurferJourney() {
                   ))}
                 </div>
                 {node.role && (
-                  <p className="font-semibold leading-snug" style={{ fontSize: 12, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
+                  <p className="font-semibold leading-snug" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
                     {node.role}
                   </p>
                 )}
-                <p className="font-light leading-relaxed" style={{ fontSize: 11, color: "var(--midtone)" }}>
+                <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
                   {node.brief}
                 </p>
               </div>
