@@ -3,7 +3,7 @@ import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Niharika Mishra — Designer who builds.",
+  title: "Niharika Mishra, Designer who builds.",
   description:
     "Designer with an engineering background. I think in systems, design for humans, and build to ship.",
 };

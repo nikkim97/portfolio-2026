@@ -44,7 +44,7 @@ function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string;
   );
 }
 
-// A grid of outcome stat cards — big accent number over a short description.
+// A grid of outcome stat cards: big accent number over a short description.
 // Mirrors the sa-xd outcome treatment so the headline results read as a scannable
 // set of cards rather than a flat bulleted list.
 function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
@@ -84,19 +84,19 @@ export default function Path360CaseStudy() {
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           Calibrations Ecosystem<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        {/* Context card — problem statement / role | platform / timeline */}
+        {/* Context card: problem statement / role | platform / timeline */}
         <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
           <div className="flex flex-col gap-5 p-6">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
               <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                The pilot proved better feedback inputs led to better calibration conversations. Could that quality hold at 70,000-person scale — across business lines, seniority levels, and calibration models that looked nothing alike?
+                The pilot proved better feedback inputs led to better calibration conversations. Could that quality hold at 70,000-person scale, across business lines, seniority levels, and calibration models that looked nothing alike?
               </p>
             </div>
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
               <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                Lead designer — owned the end-to-end calibration experience, from how sessions are created and managed to what leaders see in the room when decisions get made.
+                Lead designer: owned the end-to-end calibration experience, from how sessions are created and managed to what leaders see in the room when decisions get made.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function Path360CaseStudy() {
 
       {/* ── Hero image ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <Img src="/case-study/pa-xd/hero.png" alt="PATH calibrations — rating distribution view with an individual deep-dive panel showing 360 feedback and performance data" aspect="1200/896" fit="cover" />
+        <Img src="/case-study/pa-xd/hero.png" alt="PATH calibrations: rating distribution view with an individual deep-dive panel showing 360 feedback and performance data" aspect="1200/896" fit="cover" />
       </div>
 
       {/* ── The Challenge ── */}
@@ -128,20 +128,20 @@ export default function Path360CaseStudy() {
             </div>
             <div className="flex flex-col gap-8">
               <Metrics stats={[
-                { value: "20K+", label: "employees reached in year one" },
-                { value: "↑ 31%", label: "leader confidence in calibration" },
+                { value: "70%", label: "PLs satisfied with the PM experience" },
+                { value: ">70%", label: "PLs confident in final ratings" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-                <p>Calibration is where performance decisions actually get made. Leaders gather — sometimes with a room full of peers — to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
-                <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale — across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
-                <p>My role: lead design for the end-to-end calibration experience within PATH — from how sessions are created and managed, to what leaders see in the room when decisions are being made.</p>
+                <p>Calibration is where performance decisions actually get made. Leaders gather, sometimes with a room full of peers, to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
+                <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale, across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
+                <p>My role: lead design for the end-to-end calibration experience within PATH, from how sessions are created and managed, to what leaders see in the room when decisions are being made.</p>
               </div>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
             <Img src="/case-study/pa-xd/image2.png" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early whiteboard sessions helped us map the full calibration journey — far messier than the pilot suggested.</figcaption>
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early whiteboard sessions helped us map the full calibration journey, far messier than the pilot suggested.</figcaption>
           </figure>
         </section>
 
@@ -153,19 +153,19 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Who's actually in the room</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We started with deep discovery — not just on the calibration session itself, but on all the people moving through it. The experience looked radically different depending on whether you were a first-time people leader, a senior VP running a large org, or an HR partner facilitating the session.</p>
-              <p>We built out personas and jobs-to-be-done frameworks that let us design for the full range — without trying to make one interface do everything for everyone.</p>
+              <p>We started with deep discovery, not just on the calibration session itself, but on all the people moving through it. The experience looked radically different depending on whether you were a first-time people leader, a senior VP running a large org, or an HR partner facilitating the session.</p>
+              <p>We built out personas and jobs-to-be-done frameworks that let us design for the full range, without trying to make one interface do everything for everyone.</p>
             </div>
           </div>
 
           <figure className="flex flex-col gap-2">
-            <Img src="/case-study/pa-xd/image2.5-clean.png" alt="The three calibration personas — people leaders, PM champs / HRBPs, and facilitators — and what each needs" aspect="1756/608" fit="contain" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Three personas, three different needs — from a single consistent prep space to flexible tools for editing ratings</figcaption>
+            <Img src="/case-study/pa-xd/image2.5-clean.png" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Three personas, three different needs: from a single consistent prep space to flexible tools for editing ratings</figcaption>
           </figure>
 
           <figure className="flex flex-col gap-2">
-            <Img src="/case-study/pa-xd/image3.png" alt="Persona journey map — people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas mapped across the calibration journey — each role's jobs-to-be-done at every phase</figcaption>
+            <Img src="/case-study/pa-xd/image3.png" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas mapped across the calibration journey: each role's jobs-to-be-done at every phase</figcaption>
           </figure>
         </section>
 
@@ -177,14 +177,14 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Before the room: managing sessions</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>The calibration experience starts long before anyone walks into a session. Leaders need to see who's been nominated, understand the rating distribution across their team, flag concerns, and prepare talking points — all without the full picture that only comes together in the room.</p>
+              <p>The calibration experience starts long before anyone walks into a session. Leaders need to see who's been nominated, understand the rating distribution across their team, flag concerns, and prepare talking points, all without the full picture that only comes together in the room.</p>
               <p>We designed the session management experience to give leaders exactly what they needed ahead of time: clear visibility into team standing, easy ways to surface edge cases, and a prep experience that reduced the cognitive load in the session itself.</p>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image4.1.png" alt="Session management UI — pre-calibration team view, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management — giving leaders a clear picture before the conversation begins</figcaption>
+            <Img src="/case-study/pa-xd/image4.1.png" alt="Session management UI: pre-calibration team view, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management: giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
         </section>
 
@@ -202,8 +202,8 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Placeholder label="Live calibration UI — distribution view with individual deep-dive panel showing 360 feedback + performance data" aspect="4/3" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Live calibrations — 360 feedback and performance data surfaced together, in the moment decisions are made</figcaption>
+            <Placeholder label="Live calibration UI: distribution view with individual deep-dive panel showing 360 feedback + performance data" aspect="4/3" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Live calibrations: 360 feedback and performance data surfaced together, in the moment decisions are made</figcaption>
           </figure>
         </section>
       </div>
@@ -217,14 +217,14 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Early signal from the field</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We ran iterative research throughout the build — not just usability studies, but ongoing conversations with people leaders and HR partners as the experience took shape. The early feedback validated our core bets and surfaced edge cases we hadn't anticipated.</p>
-              <p>Leaders described calibrations as feeling "more grounded" — less debate about facts, more real conversation about development. HR partners noted fewer escalations post-session. The signal was clear enough to accelerate the enterprise rollout.</p>
+              <p>We ran iterative research throughout the build, not just usability studies, but ongoing conversations with people leaders and HR partners as the experience took shape. The early feedback validated our core bets and surfaced edge cases we hadn't anticipated.</p>
+              <p>Leaders described calibrations as feeling "more grounded": less debate about facts, more real conversation about development. HR partners noted fewer escalations post-session. The signal was clear enough to accelerate the enterprise rollout.</p>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image-last2.png" alt="Early feedback from the field — leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field — leaders felt more prepared, conversations felt more fair</figcaption>
+            <Img src="/case-study/pa-xd/image-last2.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field: leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>
       </div>
@@ -238,17 +238,17 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>From pilot to platform</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>PATH launched as Capital One's first enterprise performance management platform — built on the foundation the pilot established.</p>
+              <p>PATH launched as Capital One's first enterprise performance management platform, built on the foundation the pilot established.</p>
               <ul>
                 <li>Calibration sessions reported fewer disputes and stronger post-session alignment</li>
-                <li>360 feedback became a standard, structured input into every calibration — not an afterthought</li>
+                <li>360 feedback became a standard, structured input into every calibration, not an afterthought</li>
                 <li>HR partners reported reduced escalations and cleaner outcomes in sessions using PATH</li>
               </ul>
             </div>
           </div>
           <StatCards stats={[
             { value: "1st", label: "enterprise performance management platform at Capital One" },
-            { value: "70,000+", label: "employees across Capital One — scaled from an 800-person pilot" },
+            { value: "70,000+", label: "employees across Capital One, scaled from an 800-person pilot" },
             { value: "20,000+", label: "employees reached in year one of the enterprise rollout" },
           ]} />
         </section>
@@ -261,9 +261,9 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a leader</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Building PATH taught me what it means to design at enterprise scale — where the system has to hold for every edge case, not just the happy path.</p>
-              <p>The work that mattered most wasn't the interface. It was the alignment work — getting HR, engineering, product, and business stakeholders onto the same model of what calibration should do and for whom. Design was the medium for that conversation.</p>
-              <p>I also learned that launching isn't the end. The most valuable research happened after PATH was in the field — when real users surfaced problems we never would have caught in a lab.</p>
+              <p>Building PATH taught me what it means to design at enterprise scale, where the system has to hold for every edge case, not just the happy path.</p>
+              <p>The work that mattered most wasn't the interface. It was the alignment work: getting HR, engineering, product, and business stakeholders onto the same model of what calibration should do and for whom. Design was the medium for that conversation.</p>
+              <p>I also learned that launching isn't the end. The most valuable research happened after PATH was in the field, when real users surfaced problems we never would have caught in a lab.</p>
             </div>
           </div>
         </section>

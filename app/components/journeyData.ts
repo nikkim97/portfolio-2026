@@ -10,7 +10,7 @@ export interface JourneyNode {
   href?: string;
   comingSoon?: boolean;
   type: NodeType;
-  image?: { src: string; alt: string; fit?: "cover" | "contain"; position?: string };
+  image?: { src: string; alt: string; fit?: "cover" | "contain"; position?: string; scale?: number };
 }
 
 export const journeyNodes: JourneyNode[] = [
@@ -23,13 +23,13 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
-    image: { src: "/visn/Intro-pic.png", alt: "VISN — wearable navigation system for visually impaired people", position: "38% top" },
+    image: { src: "/visn/Intro-pic.png", alt: "VISN: wearable navigation system for visually impaired people", position: "38% top" },
   },
   {
     id: "asc-swe",
     period: "2019–20",
     role: "Associate, Software Engineer",
-    brief: "My first end-to-end build — and my first real taste of what it means to ship something people actually touch.",
+    brief: "My first end-to-end build, and my first real taste of what it means to ship something people actually touch.",
     pills: ["Capital One"],
     type: "career",
   },
@@ -50,7 +50,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Research"],
     href: "/case-study/sa-xd",
     type: "project",
-    image: { src: "/case-study/sa-xd/sa-xd-09.png", alt: "360 feedback — many raters giving feedback on one person" },
+    image: { src: "/case-study/sa-xd/sa-xd-09.png", alt: "360 feedback: many raters giving feedback on one person" },
   },
   {
     id: "path-360",
@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/pa-xd/hero.png", alt: "Calibrations Ecosystem — PATH rating distribution view with an individual deep-dive panel", position: "center" },
+    image: { src: "/case-study/pa-xd/hero-new.png", alt: "Calibrations Ecosystem: PATH rating distribution view shown on a laptop", position: "left center" },
   },
   {
     id: "path-people",
@@ -72,7 +72,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/discover-integration",
     type: "project",
-    image: { src: "/case-study/manager/hero2.png", alt: "Discover Integration — the welcome flow, account summary, and new Capital One home screen", position: "center" },
+    image: { src: "/case-study/manager/hero2.png", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
   },
   {
     id: "bloom",
@@ -82,7 +82,7 @@ export const journeyNodes: JourneyNode[] = [
     brief: "How may we build something real while learning a new tool?",
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
-    image: { src: "/case-study/bloom/option3.png", alt: "Bloom — every relationship has a nature" },
+    image: { src: "/case-study/bloom/hero-new.png", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
     type: "horizon",
   },
   {
@@ -94,7 +94,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/time-tracker",
     type: "horizon",
-    image: { src: "/case-study/time-track/hero2.png", alt: "Time Tracking Dashboard — the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
+    image: { src: "/case-study/time-track/hero2.png", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
   },
 ];
 

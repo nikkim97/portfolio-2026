@@ -59,7 +59,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
-  // Terracotta warm counterpoint — emerges as Work begins, quiet during the pinned scenes.
+  // Terracotta warm counterpoint: emerges as Work begins, quiet during the pinned scenes.
   const blobTerraY = useTransform(scrollYProgress, [0, 1], ["0vh", "-20vh"]);
   const blobTerraX = useTransform(scrollYProgress, [0, 1], ["0vw", "20vw"]);
   const blobTerraOpacity = useTransform(scrollYProgress, [0.63, 0.72, 0.88, 1], [0, 0.20, 0.16, 0.08]);
@@ -154,7 +154,7 @@ export default function Home() {
 
       {/* ── Page-level background blobs ── */}
       <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        {/* Terracotta warm counterpoint — emerges in Work */}
+        {/* Terracotta warm counterpoint: emerges in Work */}
         <motion.div
           style={{
             position: "absolute", top: "45vh", right: "22%",
@@ -178,7 +178,7 @@ export default function Home() {
       {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
       <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
         <div className="sticky top-0 h-screen flex overflow-hidden">
-          {/* Editorial surf portrait — right-aligned, desaturated, low emphasis, fades into the page on its left edge */}
+          {/* Editorial surf portrait: right-aligned, desaturated, low emphasis, fades into the page on its left edge */}
           <div aria-hidden className="hidden md:block absolute inset-y-0 right-0 w-[45%] pointer-events-none" style={{ zIndex: 0 }}>
             <img
               src="/nikki.jpg"
@@ -234,7 +234,7 @@ export default function Home() {
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="Hi, I'm Nikki — a builder" startDelay={1.15} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="Hi, I'm Nikki, a builder" startDelay={1.15} perWord={0.07} duration={0.9} />
                   <span style={{ color: "var(--accent)" }}>.</span>
                 </p>
                 <p
@@ -271,7 +271,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "#3A3530" }}>
               {[
-                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural — I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
+                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
                 "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
               ].map((p, i) => (
                 <FadeIn key={i} delay={i * 0.08} distance={12}>
@@ -302,7 +302,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-12">
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
-              <WordStaggerLine text="Ownership, impact and things that last — if that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
+              <WordStaggerLine text="Ownership, impact and things that last. If that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
             </p>
 
             <FadeIn delay={0.4}>

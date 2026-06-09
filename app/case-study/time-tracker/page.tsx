@@ -66,19 +66,19 @@ export default function TimeTrackerCaseStudy() {
           >
             Time Tracker<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          {/* Context card — problem statement / role | platform / timeline */}
+          {/* Context card: problem statement / role | platform / timeline */}
           <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
             <div className="flex flex-col gap-5 p-6">
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
                 <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  We budget money down to the dollar but almost no one budgets time. Where does your time actually go — and can you see it clearly enough to spend it on what matters?
+                  We budget money down to the dollar but almost no one budgets time. Where does your time actually go, and can you see it clearly enough to spend it on what matters?
                 </p>
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
                 <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Product partner — set the concept, the four life pillars, and the "spec first" approach; Claude Code built to the spec.
+                  Product partner: set the concept, the four life pillars, and the "spec first" approach; Claude Code built to the spec.
                 </p>
               </div>
             </div>
@@ -89,22 +89,22 @@ export default function TimeTrackerCaseStudy() {
               </div>
               <div className="flex flex-col gap-1">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026 — spec first, then built to it</p>
+                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026: spec first, then built to it</p>
               </div>
             </div>
           </div>
           <StatRow stats={[
             { value: "4", label: "life pillars" },
             { value: "1", label: "categorization rule" },
-            { value: "0", label: "databases in V1 — on purpose" },
+            { value: "0", label: "databases in V1, on purpose" },
           ]} />
         </section>
 
-        {/* ── Hero image (placeholder — to fill later) ── */}
+        {/* ── Hero image (placeholder: to fill later) ── */}
         <PhoneFrame maxWidth={300}>
           <Screenshot
             aspect={PHONE_ASPECT}
-            label="Hero image — to come"
+            label="Hero image: to come"
           />
         </PhoneFrame>
 
@@ -117,10 +117,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your week. Four life pillars — Family, Self-Care, Socialization, Career — each with a target share of your time. The app shows you the actual breakdown next to the one you intended.
+                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your week. Four life pillars, Family, Self-Care, Socialization, Career, each with a target share of your time. The app shows you the actual breakdown next to the one you intended.
               </p>
               <p>
-                The primary view puts each pillar next to its target as a bar — where you went over, where you came up short — exactly like a budget flags the category you blew past. On top of it sits a plain-English balance read: <em>Balanced, On track, Drifting,</em> or <em>Off balance</em>, so the numbers resolve into a single judgment. And you can drop into any week to see the actual sessions that filled it. The point isn&apos;t to track for tracking&apos;s sake — it&apos;s to make an invisible thing visible enough to act on.
+                The primary view puts each pillar next to its target as a bar, where you went over, where you came up short, exactly like a budget flags the category you blew past. On top of it sits a plain-English balance read: <em>Balanced, On track, Drifting,</em> or <em>Off balance</em>, so the numbers resolve into a single judgment. And you can drop into any week to see the actual sessions that filled it. The point isn&apos;t to track for tracking&apos;s sake: it&apos;s to make an invisible thing visible enough to act on.
               </p>
               <p>
                 Each pillar carries its own target, so the dashboard always has something to measure against:
@@ -134,15 +134,15 @@ export default function TimeTrackerCaseStudy() {
                 src="/case-study/time-track/v2.1.png"
                 aspect={PHONE_ASPECT}
                 priority
-                label="V2 dashboard — a week of time across Family, Self-Care, Socialization, and Career, each measured against its target"
-                caption="The dashboard — each pillar next to its target"
+                label="V2 dashboard: a week of time across Family, Self-Care, Socialization, and Career, each measured against its target"
+                caption="The dashboard: each pillar next to its target"
               />
             </PhoneFrame>
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v2.3.png"
                 aspect={PHONE_ASPECT}
-                label="Balance states — Balanced, On track, Drifting, Off balance — the plain-English read on the week"
+                label="Balance states: Balanced, On track, Drifting, Off balance, the plain-English read on the week"
                 caption="The balance read: where you land, in one word"
               />
             </PhoneFrame>
@@ -150,7 +150,7 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/v2.2.png"
                 aspect={PHONE_ASPECT}
-                label="Where your time went — the calendar and the actual sessions behind a week, sorted by most time or most frequent"
+                label="Where your time went: the calendar and the actual sessions behind a week, sorted by most time or most frequent"
                 caption="Drill into any week to see the sessions that filled it"
               />
             </PhoneFrame>
@@ -166,10 +166,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                The hardest part of any tracker isn&apos;t the chart — it&apos;s categorization. The moment one event is allowed to count toward two things, the data turns to mush and the donut stops meaning anything. So I made a single rule and held it: <em>who you&apos;re with decides the pillar.</em>
+                The hardest part of any tracker isn&apos;t the chart: it&apos;s categorization. The moment one event is allowed to count toward two things, the data turns to mush and the donut stops meaning anything. So I made a single rule and held it: <em>who you&apos;re with decides the pillar.</em>
               </p>
               <p>
-                A hike with your kids is Family, not Self-Care — even though it&apos;s good for you. Self-Care is strictly solo: just you, recharging. One event, one pillar, no splitting. It sounds almost too simple, but that constraint <em>is</em> the product. It&apos;s what makes the breakdown trustworthy instead of negotiable.
+                A hike with your kids is Family, not Self-Care, even though it&apos;s good for you. Self-Care is strictly solo: just you, recharging. One event, one pillar, no splitting. It sounds almost too simple, but that constraint <em>is</em> the product. It&apos;s what makes the breakdown trustworthy instead of negotiable.
               </p>
             </Prose>
           </div>
@@ -183,7 +183,7 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/onboard.png"
                 aspect={PHONE_ASPECT}
-                label="Onboarding step 1 — intro and setup framing"
+                label="Onboarding step 1: intro and setup framing"
                 caption="Onboarding · intro"
               />
             </div>
@@ -191,7 +191,7 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/onboard-2.1.png"
                 aspect={PHONE_ASPECT}
-                label="Onboarding step 2 — configuring preferences"
+                label="Onboarding step 2: configuring preferences"
                 caption="Onboarding · setup"
               />
             </div>
@@ -199,7 +199,7 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/onboard-2.2.png"
                 aspect={PHONE_ASPECT}
-                label="Onboarding step 3 — pillar defaults and confirmation"
+                label="Onboarding step 3: pillar defaults and confirmation"
                 caption="Onboarding · defaults"
               />
             </div>
@@ -207,7 +207,7 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/onbaord3.png"
                 aspect={PHONE_ASPECT}
-                label="Onboarding step 4 — completion"
+                label="Onboarding step 4: completion"
                 caption="Onboarding · complete"
               />
             </div>
@@ -223,10 +223,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                V1 proved the concept on a realistic fake week — deep work blocks, a family hike, coffee with a friend, morning runs — all local, all dummy data, no account and no backend. The bet: if the dashboard doesn&apos;t feel useful with clean hand-made data, real calendar data won&apos;t save it.
+                V1 proved the concept on a realistic fake week: deep work blocks, a family hike, coffee with a friend, morning runs, all local, all dummy data, no account and no backend. The bet: if the dashboard doesn&apos;t feel useful with clean hand-made data, real calendar data won&apos;t save it.
               </p>
               <p>
-                It led with a donut. Pretty, and good at answering <em>&ldquo;what was the shape of my week&rdquo;</em> — but weak at the question that actually matters: <em>am I on target?</em> Comparing a slice to a goal means eyeballing two arcs. The one thing V1 nailed was the plain-English read — <em>&ldquo;Career led the way… Self-Care was a little quieter than you&apos;d hoped&rdquo;</em> — because a number is information but a sentence is a nudge.
+                It led with a donut. Pretty, and good at answering <em>&ldquo;what was the shape of my week&rdquo;</em>, but weak at the question that actually matters: <em>am I on target?</em> Comparing a slice to a goal means eyeballing two arcs. The one thing V1 nailed was the plain-English read: <em>&ldquo;Career led the way… Self-Care was a little quieter than you&apos;d hoped&rdquo;</em>, because a number is information but a sentence is a nudge.
               </p>
               <p>
                 V2 kept the sentence and promoted the goal-versus-actual bar to the primary view, then added an explicit balance state on top. Same data, a read you don&apos;t have to decode. Here&apos;s where it started:
@@ -239,24 +239,24 @@ export default function TimeTrackerCaseStudy() {
               <Screenshot
                 src="/case-study/time-track/v1.1.png"
                 aspect={PHONE_ASPECT}
-                label="V1 dashboard — the donut breakdown with pillar cards and the generated insight line"
-                caption="V1 · the donut — shape of the week, weak on 'am I on target'"
+                label="V1 dashboard: the donut breakdown with pillar cards and the generated insight line"
+                caption="V1 · the donut: shape of the week, weak on 'am I on target'"
               />
             </PhoneFrame>
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v1.3.png"
                 aspect={PHONE_ASPECT}
-                label="V1 goal vs. reality — paired goal and actual bars per pillar with plus/minus deltas"
-                caption="V1 · goal vs. reality lived behind a flip — V2 made it the front door"
+                label="V1 goal vs. reality: paired goal and actual bars per pillar with plus/minus deltas"
+                caption="V1 · goal vs. reality lived behind a flip. V2 made it the front door"
               />
             </PhoneFrame>
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v1.2.png"
                 aspect={PHONE_ASPECT}
-                label="V1 calendar — a month grid with a colored dot per pillar logged each day"
-                caption="V1 · the calendar — a dot per pillar, per day"
+                label="V1 calendar: a month grid with a colored dot per pillar logged each day"
+                caption="V1 · the calendar: a dot per pillar, per day"
               />
             </PhoneFrame>
           </div>
@@ -271,10 +271,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                Writing the spec first changed the whole build. The time I spent wasn&apos;t on implementation — Claude handled that. It was on the decisions: what counts as Self-Care, whether to split events across pillars (no), what to refuse to build yet. Vibe coding&apos;s bottleneck isn&apos;t typing. It&apos;s judgment — and judgment is easier to apply consistently when you&apos;ve written it down.
+                Writing the spec first changed the whole build. The time I spent wasn&apos;t on implementation: Claude handled that. It was on the decisions: what counts as Self-Care, whether to split events across pillars (no), what to refuse to build yet. Vibe coding&apos;s bottleneck isn&apos;t typing. It&apos;s judgment, and judgment is easier to apply consistently when you&apos;ve written it down.
               </p>
               <p>
-                V2 earned its way to more surface area — the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown — by proving the core read first. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only now, because the dummy-data version earned it.
+                V2 earned its way to more surface area: the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown, by proving the core read first. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only now, because the dummy-data version earned it.
               </p>
             </Prose>
           </div>

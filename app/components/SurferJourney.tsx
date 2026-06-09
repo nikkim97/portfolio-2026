@@ -323,7 +323,7 @@ export default function SurferJourney() {
         const posLeft = isRight ? `calc(50% - ${SVG_W / 2}px + ${a.x + GAP}px)` : undefined;
         const posRight = !isRight ? `calc(50% - ${SVG_W / 2}px + ${SVG_W - a.x + GAP}px)` : undefined;
 
-        // Career nodes — simple left-border text style
+        // Career nodes: simple left-border text style
         if (isCareer) {
           return (
             <div
@@ -368,7 +368,7 @@ export default function SurferJourney() {
           );
         }
 
-        // Project / horizon nodes — editorial two-section card
+        // Project / horizon nodes: editorial two-section card
         const isActionable = !!node.href && !node.comingSoon;
         const CardLink = isActionable ? "a" : "div";
 
@@ -400,7 +400,7 @@ export default function SurferJourney() {
                 ...GLASS,
               }}
             >
-              {/* Top section — image or placeholder */}
+              {/* Top section: image or placeholder */}
               <div
                 style={{
                   background: "#C9C2B6",
@@ -419,13 +419,14 @@ export default function SurferJourney() {
                       height: "100%",
                       objectFit: node.image.fit ?? "cover",
                       objectPosition: node.image.position ?? "center",
+                      transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
                       display: "block",
                     }}
                   />
                 )}
               </div>
 
-              {/* Bottom section — content */}
+              {/* Bottom section: content */}
               <div
                 style={{
                   padding: "14px 18px 16px",

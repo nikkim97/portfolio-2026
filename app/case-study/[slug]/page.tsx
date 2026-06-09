@@ -37,7 +37,7 @@ export default async function CaseStudyPage({
           <p className="font-light leading-relaxed max-w-lg" style={{ fontSize: "clamp(14px, 1.4vw, 18px)", color: "var(--midtone)" }}>{node.brief}</p>
           <div className="flex flex-col gap-3 mt-4" style={{ borderLeft: "2px solid var(--accent)", paddingLeft: 20 }}>
             <p className="font-semibold" style={{ fontSize: 13, letterSpacing: "-0.01em" }}>Case study in progress</p>
-            <p className="font-light leading-relaxed" style={{ fontSize: 13, color: "var(--midtone)" }}>The full write-up is on its way — check back soon.</p>
+            <p className="font-light leading-relaxed" style={{ fontSize: 13, color: "var(--midtone)" }}>The full write-up is on its way. Check back soon.</p>
           </div>
           <Link href="/" className="text-[11px] font-normal tracking-[0.2em] uppercase mt-4 self-start border-b border-[var(--border)] pb-0.5 hover:border-[var(--foreground)] hover:text-[var(--foreground)] text-[var(--midtone)] transition-colors duration-200">
             Back to portfolio

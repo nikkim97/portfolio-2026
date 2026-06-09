@@ -50,7 +50,7 @@ export function FadeIn({
   );
 }
 
-// Word-by-word mask reveal — each word slides up from below its own clip box, staggered.
+// Word-by-word mask reveal: each word slides up from below its own clip box, staggered.
 export function WordStaggerLine({
   text,
   trigger = "mount",

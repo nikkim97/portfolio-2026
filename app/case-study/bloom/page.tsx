@@ -34,19 +34,19 @@ export default function BloomCaseStudy() {
           >
             Bloom<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          {/* Context card — problem statement / role | platform / timeline */}
+          {/* Context card: problem statement / role | platform / timeline */}
           <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
             <div className="flex flex-col gap-5 p-6">
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
                 <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Most compatibility tools ask about values or love languages. Could plant care needs — water, light, roots — be a more honest metaphor for how two people actually function day to day?
+                  Most compatibility tools ask about values or love languages. Could plant care needs, water, light, roots, be a more honest metaphor for how two people actually function day to day?
                 </p>
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
                 <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Product partner — directed the concept, trait framework, question design, and copy tone; Claude Code built and iterated.
+                  Product partner: directed the concept, trait framework, question design, and copy tone; Claude Code built and iterated.
                 </p>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function BloomCaseStudy() {
               </div>
               <div className="flex flex-col gap-1">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026 — two sessions, three days apart</p>
+                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026: two sessions, three days apart</p>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function BloomCaseStudy() {
 
         {/* ── Hero image ── */}
         <Screenshot
-          label="Hero — Bloom V1 homepage: 'Every relationship has a nature'"
+          label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
           caption="V1 homepage running on localhost:3000, March 23 2026"
         />
 
@@ -83,24 +83,24 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                A Monstera needs full sun and constant water. A Cactus thrives on neglect. Most compatibility tools ask about values or love languages. Bloom asks about emotional metabolism — how you actually function day to day, not how you'd like to.
+                A Monstera needs full sun and constant water. A Cactus thrives on neglect. Most compatibility tools ask about values or love languages. Bloom asks about emotional metabolism: how you actually function day to day, not how you'd like to.
               </p>
               <p>
-                Six plant traits map to six human ones. Water frequency becomes how often someone needs quality time and connection. Light needs map to social energy — full sun is extrovert, low light is introvert. Root retention is how much alone time you need before you can show up for others. Temperature sensitivity is your need for stability versus capacity to handle change.
+                Six plant traits map to six human ones. Water frequency becomes how often someone needs quality time and connection. Light needs map to social energy: full sun is extrovert, low light is introvert. Root retention is how much alone time you need before you can show up for others. Temperature sensitivity is your need for stability versus capacity to handle change.
               </p>
               <p>
-                You answer 13 questions. The algorithm scores you against 8 plant archetypes and finds your closest match. Then your partner does the same. The result is a pairing — <em>Monstera meets Chinese Elephant Ear</em> — with a breakdown of where you align and where you're different, and what to do about it.
+                You answer 13 questions. The algorithm scores you against 8 plant archetypes and finds your closest match. Then your partner does the same. The result is a pairing, <em>Monstera meets Chinese Elephant Ear</em>, with a breakdown of where you align and where you're different, and what to do about it.
               </p>
             </Prose>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              label="Trait map — plant care needs (water, light, roots, humidity, temp, growth) mapped to human personality equivalents"
-              caption="The trait framework — plant care needs mapped to human personality"
+              label="Trait map: plant care needs (water, light, roots, humidity, temp, growth) mapped to human personality equivalents"
+              caption="The trait framework: plant care needs mapped to human personality"
             />
             <Screenshot
-              label="Question design — Claude conversation rebuilding the quiz questions in a warm, non-clinical voice"
-              caption="Asking Claude to rebuild the question set in my voice — warm and non-clinical"
+              label="Question design: Claude conversation rebuilding the quiz questions in a warm, non-clinical voice"
+              caption="Asking Claude to rebuild the question set in my voice: warm and non-clinical"
             />
           </div>
         </section>
@@ -114,10 +114,10 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                I established the collaboration model in the first conversation. I handled the product thinking — the concept, the trait framework, the question design, the copy tone. Claude built everything.
+                I established the collaboration model in the first conversation. I handled the product thinking: the concept, the trait framework, the question design, the copy tone. Claude built everything.
               </p>
               <p>
-                The concept came out of a live chat where I brought the plant analogy and Claude helped map it to human behavior, asked sharper questions about what the quiz was really measuring, and pushed the product thinking further than I'd taken it alone — surfacing real relationship friction points like after-work energy management and social calendar negotiation that I hadn't articulated yet.
+                The concept came out of a live chat where I brought the plant analogy and Claude helped map it to human behavior, asked sharper questions about what the quiz was really measuring, and pushed the product thinking further than I'd taken it alone, surfacing real relationship friction points like after-work energy management and social calendar negotiation that I hadn't articulated yet.
               </p>
               <p>
                 Then I opened a terminal. Claude wrote the entire app in one pass: quiz data, 8 plant profiles, scoring logic, 24 suggestion cards, quiz flow, results page, homepage. Watching the file list appear one by one is a particular kind of strange.
@@ -131,12 +131,12 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              label="Collaboration model — Claude establishing 'I'm the product partner, Claude Code is the developer'"
+              label="Collaboration model: Claude establishing 'I'm the product partner, Claude Code is the developer'"
               caption="The collaboration model, established in the first session"
             />
             <Screenshot
-              label="Terminal build — Claude Code writing the full app (quiz data, scoring, UI) in one pass"
-              caption="Claude Code building the full app — quiz data, scoring, UI — in one terminal session"
+              label="Terminal build: Claude Code writing the full app (quiz data, scoring, UI) in one pass"
+              caption="Claude Code building the full app, quiz data, scoring, UI, in one terminal session"
             />
           </div>
 
@@ -151,31 +151,31 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                V1 worked. The homepage was clean and editorial — <em>"Every relationship has a nature."</em> The quiz flowed. The results page paired you with another plant and showed trait bar charts side by side.
+                V1 worked. The homepage was clean and editorial: <em>"Every relationship has a nature."</em> The quiz flowed. The results page paired you with another plant and showed trait bar charts side by side.
               </p>
               <p>
-                But the results felt surface-level. The trait bars were accurate — they were doing the right job — but they didn't tell you anything meaningful about <em>who you were</em> as that plant. You got data. You didn't get a mirror.
+                But the results felt surface-level. The trait bars were accurate, they were doing the right job, but they didn't tell you anything meaningful about <em>who you were</em> as that plant. You got data. You didn't get a mirror.
               </p>
               <p>
-                There was also a moment that looked like a bug but wasn't. Claude debugged why two plants were showing no differences: <em>"It's not a bug — it's the data. Look at their trait matrices side by side."</em> Monstera and Chinese Elephant Ear scored within one point on seven out of seven traits. They really were almost identical. Claude offered to handle it gracefully. I directed how.
+                There was also a moment that looked like a bug but wasn't. Claude debugged why two plants were showing no differences: <em>"It's not a bug, it's the data. Look at their trait matrices side by side."</em> Monstera and Chinese Elephant Ear scored within one point on seven out of seven traits. They really were almost identical. Claude offered to handle it gracefully. I directed how.
               </p>
             </Prose>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              label="V1 results page — Monstera meets Chinese Elephant Ear with trait bar charts side by side"
-              caption="V1 results page — correct, but more data display than emotional resonance"
+              label="V1 results page: Monstera meets Chinese Elephant Ear with trait bar charts side by side"
+              caption="V1 results page: correct, but more data display than emotional resonance"
             />
             <Screenshot
-              label="V1 results with plant cards flipped — descriptions visible but writing still surface-level"
-              caption="Cards flipped to reveal descriptions — the writing needed to be richer"
+              label="V1 results with plant cards flipped: descriptions visible but writing still surface-level"
+              caption="Cards flipped to reveal descriptions: the writing needed to be richer"
             />
           </div>
 
           <Screenshot
-            label="Debug moment — Claude identifying that two plants scoring identically isn't a bug, it's the data"
-            caption="'It's not a bug — it's the data.' Claude acting like a product partner, not just a code executor"
+            label="Debug moment: Claude identifying that two plants scoring identically isn't a bug, it's the data"
+            caption="'It's not a bug, it's the data.' Claude acting like a product partner, not just a code executor"
           />
 
         </section>
@@ -189,13 +189,13 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                I came back with a clear list of what felt off. The plant cards needed to feel like portraits, not profiles. And the compatibility section needed to do actual interpretive work — not just surface the data, but tell you what it meant.
+                I came back with a clear list of what felt off. The plant cards needed to feel like portraits, not profiles. And the compatibility section needed to do actual interpretive work, not just surface the data, but tell you what it meant.
               </p>
               <p>
                 Plant descriptions became character studies. <em>"You don't open up for just anyone, and that's not a flaw, it's discernment. When the conditions are right you are one of the most loving, attentive partners there is. The person who takes the time to understand you gets something truly rare."</em> That's a different thing to read than a bar chart.
               </p>
               <p>
-                The compatibility breakdown split into <em>Where you align</em> and <em>Where you're different.</em> Not just which traits matched — but what that means in practice, with practical pull quotes as advice. <em>"Keep checking in even when things are good. The couples who stay emotionally close aren't the ones who talk when things are hard. They're the ones who never fully stop talking."</em>
+                The compatibility breakdown split into <em>Where you align</em> and <em>Where you're different.</em> Not just which traits matched, but what that means in practice, with practical pull quotes as advice. <em>"Keep checking in even when things are good. The couples who stay emotionally close aren't the ones who talk when things are hard. They're the ones who never fully stop talking."</em>
               </p>
               <p>
                 The iteration loop: Claude built, I reviewed on localhost, I redirected or approved. Three files. Fifty seconds of thinking. Meaningfully better.
@@ -205,18 +205,18 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              label="Evolved plant cards — descriptions rewritten as character portraits, not trait profiles"
-              caption="Plant cards after iteration — descriptions that read like portraits, not profiles"
+              label="Evolved plant cards: descriptions rewritten as character portraits, not trait profiles"
+              caption="Plant cards after iteration: descriptions that read like portraits, not profiles"
             />
             <Screenshot
               label="'Where you align / Where you're different' compatibility breakdown with practical pull-quote advice"
-              caption="'Where you align / Where you're different' — interpretation, not just data"
+              caption="'Where you align / Where you're different': interpretation, not just data"
             />
           </div>
 
           <Screenshot
-            label="Terminal — Claude confirming iteration complete: 'Check localhost:3000 — run a quiz and see if the results feel more nuanced'"
-            caption="'All three files updated. Check localhost:3000 — run a quiz and see if the results feel more nuanced.'"
+            label="Terminal: Claude confirming iteration complete: 'Check localhost:3000, run a quiz and see if the results feel more nuanced'"
+            caption="'All three files updated. Check localhost:3000, run a quiz and see if the results feel more nuanced.'"
           />
 
         </section>
@@ -230,13 +230,13 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                Vibe coding isn't about typing less code. It's a different kind of creative work — you're directing rather than building, which means the bottleneck shifts from implementation to decision-making.
+                Vibe coding isn't about typing less code. It's a different kind of creative work: you're directing rather than building, which means the bottleneck shifts from implementation to decision-making.
               </p>
               <p>
                 The places I spent real time: the concept, the trait framework, the question design, the copy tone. Not scaffolding. Claude can build scaffolding. What it can't tell you is whether the quiz questions feel like an interrogation or a conversation, or whether the results page earns the emotional weight it's asking for. That judgment is still yours.
               </p>
               <p>
-                What surprised me most was the debugging moment. <em>"It's not a bug — it's the data."</em> Claude looked at the trait matrices, identified the real issue, and offered a solution that was actually better than what I'd have reached for. That was Claude acting like a product partner. I didn't fully expect it, and it's changed how I think about what these tools are actually good at.
+                What surprised me most was the debugging moment. <em>"It's not a bug, it's the data."</em> Claude looked at the trait matrices, identified the real issue, and offered a solution that was actually better than what I'd have reached for. That was Claude acting like a product partner. I didn't fully expect it, and it's changed how I think about what these tools are actually good at.
               </p>
               <p>
                 If I were doing it again: I'd define the visual design more intentionally upfront. The aesthetic emerged fine, but I made reactionary decisions rather than intentional ones. Next time I'd spec the design system before the first build command.

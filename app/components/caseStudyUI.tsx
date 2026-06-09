@@ -1,5 +1,5 @@
 // Shared presentational primitives for case-study pages (Bloom, Time Tracker).
-// Server-component safe — no client hooks.
+// Server-component safe. No client hooks.
 import type { ReactNode } from "react";
 import Image from "next/image";
 

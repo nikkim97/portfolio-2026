@@ -43,7 +43,7 @@ function ScrollImg({ src, alt, w, h, height = 520 }: { src: string; alt: string;
   );
 }
 
-// A grid of outcome stat cards — big accent number over a short description.
+// A grid of outcome stat cards: big accent number over a short description.
 // Used where a flat bulleted list of results would read as undifferentiated copy.
 function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
   return (
@@ -98,19 +98,19 @@ export default function SaXdCaseStudy() {
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           360 Feedback<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        {/* Context card — problem statement / role | platform / timeline */}
+        {/* Context card: problem statement / role | platform / timeline */}
         <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
           <div className="flex flex-col gap-5 p-6">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
               <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                Leaders and associates both distrusted 360 feedback — templates varied by team, responses skewed positive, and no one knew how results would be used. Why was a system meant to help people grow just producing noise?
+                Leaders and associates both distrusted 360 feedback: templates varied by team, responses skewed positive, and no one knew how results would be used. Why was a system meant to help people grow just producing noise?
               </p>
             </div>
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
               <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                Design & research lead — improved the quality and actionability of 360 feedback during the performance cycle, delivering validated insights to de-risk the product roadmap.
+                Design & research lead: improved the quality and actionability of 360 feedback during the performance cycle, delivering validated insights to de-risk the product roadmap.
               </p>
             </div>
           </div>
@@ -127,9 +127,9 @@ export default function SaXdCaseStudy() {
         </div>
       </div>
 
-      {/* ── Hero image — before / after composite ── */}
+      {/* ── Hero image: before / after composite ── */}
       <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <Img src="/case-study/sa-xd/hero-before-after.png" alt="Before and after — the original 360 feedback experience and the redesigned version" aspect="1908/800" />
+        <Img src="/case-study/sa-xd/hero-before-after.png" alt="Before and after: the original 360 feedback experience and the redesigned version" aspect="1908/800" />
       </div>
 
       {/* ── The Problem ── */}
@@ -146,16 +146,16 @@ export default function SaXdCaseStudy() {
                 { value: "73%", label: "more feedback leveraged in performance management" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-                <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive — not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
+                <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive, not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
                 <p>People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
-                <p>My job: improve the quality and actionability of 360 feedback during the performance cycle — and provide validated, evidence-based insights that could de-risk and define the foundation for a product roadmap.</p>
+                <p>My job: improve the quality and actionability of 360 feedback during the performance cycle, and provide validated, evidence-based insights that could de-risk and define the foundation for a product roadmap.</p>
               </div>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
-            <ScrollImg src="/case-study/sa-xd/group-10.png" alt="Experience map — emotion curve and phase breakdown showing where 360 feedback broke down across the performance cycle" w={1354} h={630} />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with — feedback wasn&apos;t designed around how leaders actually used it. · scroll to explore →</figcaption>
+            <ScrollImg src="/case-study/sa-xd/group-10.png" alt="Experience map: emotion curve and phase breakdown showing where 360 feedback broke down across the performance cycle" w={1354} h={630} />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with. Feedback wasn&apos;t designed around how leaders actually used it. · scroll to explore →</figcaption>
           </figure>
         </section>
 
@@ -184,19 +184,19 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We partnered with PwC to build the feedback system on these foundations — grounding every question in Capital One's competency framework, making the entire process anonymous by design.</p>
-              <p>The key decision: making 360 feedback a first-class input in calibration, not an afterthought. We redesigned the calibration one-pager to surface feedback directly alongside performance data. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side — something managers could actually reference mid-conversation.</p>
+              <p>We partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One's competency framework, making the entire process anonymous by design.</p>
+              <p>The key decision: making 360 feedback a first-class input in calibration, not an afterthought. We redesigned the calibration one-pager to surface feedback directly alongside performance data. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, something managers could actually reference mid-conversation.</p>
             </div>
           </div>
 
           <div className="flex flex-col gap-10">
             <figure className="flex flex-col gap-3">
-              <Img src="/case-study/sa-xd/sa-xd-12.png" alt="Feedback form — competency-based ratings, required qualitative comments, fully anonymous" aspect="16/9" />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form — competency-based ratings, required qualitative comments, fully anonymous</figcaption>
+              <Img src="/case-study/sa-xd/sa-xd-12.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="16/9" />
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
             <figure className="flex flex-col gap-3">
-              <ScrollImg src="/case-study/sa-xd/sa-xd-13.1.png" alt="Calibration one-pager — 360 feedback as first-class input with peer comparison graph and written feedback" w={1308} h={687} />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager — feedback as a first-class input, not an afterthought · scroll to explore →</figcaption>
+              <ScrollImg src="/case-study/sa-xd/sa-xd-13.1.png" alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback" w={1308} h={687} />
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager: feedback as a first-class input, not an afterthought · scroll to explore →</figcaption>
             </figure>
           </div>
         </section>
@@ -209,14 +209,14 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We measured impact by triangulating three data sources: raw system data, live calibration observations, and milestone surveys. Tracking clarity, consistency, quality, and actionability throughout the pilot — not just at the end.</p>
+              <p>We measured impact by triangulating three data sources: raw system data, live calibration observations, and milestone surveys. Tracking clarity, consistency, quality, and actionability throughout the pilot, not just at the end.</p>
               <p>This wasn't a post-launch audit. It was how we built the case for the next phase.</p>
             </div>
           </div>
 
           <figure className="flex flex-col gap-3">
-            <ScrollImg src="/case-study/sa-xd/sa-xd-14.1.png" alt="Measurement framework — data triangulation across system data, live observations, and milestone surveys" w={1345} h={576} />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation — measuring clarity, consistency, quality, and actionability throughout the pilot · scroll to explore →</figcaption>
+            <ScrollImg src="/case-study/sa-xd/sa-xd-14.1.png" alt="Measurement framework: data triangulation across system data, live observations, and milestone surveys" w={1345} h={576} />
+            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation: measuring clarity, consistency, quality, and actionability throughout the pilot · scroll to explore →</figcaption>
           </figure>
         </section>
       </div>
@@ -235,8 +235,8 @@ export default function SaXdCaseStudy() {
           </div>
           <StatCards stats={[
             { value: "65%", label: "improvement in clarity & consistency of feedback received" },
-            { value: "58%", label: "improvement in feedback quality — anonymity made a measurable difference" },
-            { value: "52%", label: "improvement in actionability — feedback used more actively in live calibrations" },
+            { value: "58%", label: "improvement in feedback quality: anonymity made a measurable difference" },
+            { value: "52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
           ]} />
         </section>
 
@@ -249,7 +249,7 @@ export default function SaXdCaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>This was my first major lead effort. It shaped how I think about product and strategy design.</p>
-              <p>Cross-functional alignment — pulled in early — creates shared ownership that carries a project through. And measurement isn't a post-launch activity. It's how you earn the next phase.</p>
+              <p>Cross-functional alignment, pulled in early, creates shared ownership that carries a project through. And measurement isn't a post-launch activity. It's how you earn the next phase.</p>
               <p>Next time I'd manage scope more intentionally. We took on too many changes at once. Being more deliberate about thin-slicing and sequencing big bets would help maximize impact.</p>
             </div>
           </div>

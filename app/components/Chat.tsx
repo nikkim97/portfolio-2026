@@ -122,7 +122,7 @@ export default function Chat() {
                   className="font-light leading-relaxed text-[13px] mt-2"
                   style={{ color: "var(--midtone)" }}
                 >
-                  Hey — ask me anything about my work, process, or what I'm building next.
+                  Hey, ask me anything about my work, process, or what I'm building next.
                 </p>
               )}
               {messages.map((m, i) => (
