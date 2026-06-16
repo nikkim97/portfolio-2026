@@ -64,6 +64,17 @@ export const journeyNodes: JourneyNode[] = [
     image: { src: "/case-study/pa-xd/hero-new.png", alt: "Calibrations Ecosystem: PATH rating distribution view shown on a laptop", position: "left center" },
   },
   {
+    id: "people-leader-redesign",
+    period: "Sept 2024 – Jan 2025",
+    role: "Manager, Experience Design",
+    title: "People Leader Redesign",
+    brief: "How do we reduce 20 disconnected screens to a 4-screen flow?",
+    pills: ["Capital One", "Visual UI"],
+    href: "/case-study/people-leader-redesign",
+    type: "project",
+    // No image yet — card renders the built-in placeholder band.
+  },
+  {
     id: "path-people",
     period: "Jan 2025 – Present",
     role: "Manager, Experience Design",
@@ -115,22 +126,24 @@ export const WAVE_PATH_D = [
   "C 340,964 550,1004 550,1039",
   // sa-xd → path-360 (direct)
   "C 550,1119 50,1188 50,1223",
-  // path-360 → PIX / Manager (direct)
-  "C 50,1330 490,1430 490,1550",
-  // LOOP 2: PIX → bloom (project → vibe coding)
-  "C 490,1630 430,1699 370,1711",
-  "C 310,1722 200,1716 180,1665",
-  "C 160,1613 280,1590 350,1636",
-  "C 420,1682 420,1768 340,1791",
-  "C 260,1814 75,1849 75,1883",
-  // bloom → time-tracker (direct)
-  "C 75,1950 530,2000 530,2060",
+  // path-360 → people-leader-redesign (cross to the right)
+  "C 50,1340 510,1430 510,1520",
+  // people-leader-redesign (right) → Discover (cross to the left)
+  "C 510,1620 110,1860 110,1990",
+  // LOOP 2: Discover → bloom (project → vibe coding), loops left then crosses to the right
+  "C 110,2070 170,2139 230,2151",
+  "C 290,2162 400,2156 420,2105",
+  "C 440,2053 320,2030 250,2076",
+  "C 180,2122 180,2208 260,2231",
+  "C 340,2254 525,2289 525,2323",
+  // bloom (right) → time-tracker (cross to the left)
+  "C 525,2390 75,2440 75,2500",
   // tail
-  "C 530,2110 300,2145 300,2170",
+  "C 75,2550 300,2585 300,2610",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 2350;
+export const SVG_H = 2790;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
   { x: 80,  y: 290,  side: "left"  }, // VISN
@@ -138,7 +151,8 @@ export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = 
   { x: 80,  y: 682,  side: "left"  }, // sr-swe
   { x: 550, y: 1039, side: "right" }, // sa-xd
   { x: 50,  y: 1223, side: "left"  }, // path-360
-  { x: 490, y: 1550, side: "right" }, // PIX Project (Manager, Experience Design)
-  { x: 75,  y: 1883, side: "left"  }, // bloom
-  { x: 530, y: 2060, side: "right" }, // time-tracker
+  { x: 510, y: 1520, side: "right" }, // people-leader-redesign
+  { x: 110, y: 1990, side: "left"  }, // Discover Integration (Manager, Experience Design)
+  { x: 525, y: 2323, side: "right" }, // bloom
+  { x: 75,  y: 2500, side: "left"  }, // time-tracker
 ];

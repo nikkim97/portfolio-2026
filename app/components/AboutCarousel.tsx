@@ -2,23 +2,29 @@
 
 import { useRef, useState } from "react";
 
-// "Life outside work" carousel. Each item points at an image path under
-// /public/about/. Until that file exists the card shows a minimal placeholder
-// box, so dropping in a real photo (matching the `src` filename) is all it takes
-// to replace it later.
-type Item = { src: string; caption: string; note: string };
+// "Life outside work" — all photos in a single horizontal carousel, each with
+// its own one-line caption. Order is hand-set so categories interleave rather
+// than clustering. To add/remove a photo, drop the file in /public/about/ and
+// edit the PHOTOS array below.
+type Photo = { src: string; caption: string };
 
-const ITEMS: Item[] = [
-  { src: "/about/surfing.jpg", caption: "Surfing", note: "Catching the next set" },
-  { src: "/about/travel.jpg", caption: "Travel", note: "Always somewhere new" },
-  { src: "/about/kitchen.jpg", caption: "In the kitchen", note: "Cooking for my people" },
-  { src: "/about/reading.jpg", caption: "Reading", note: "Systems, design, sci-fi" },
-  { src: "/about/outdoors.jpg", caption: "Outdoors", note: "Trading screens for trails" },
-  { src: "/about/music.jpg", caption: "Music", note: "Always on in the background" },
+const PHOTOS: Photo[] = [
+  { src: "/about/active.jpg", caption: "Where I learned to trust my body and breathe." },        // you
+  { src: "/about/vegan.jpg", caption: "Vegan eats at a Tokyo hole-in-the-wall." },                // food
+  { src: "/about/music-2.jpg", caption: "My first solo concert — just me and Dylan." },           // scene
+  { src: "/about/active-3.jpg", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." }, // you
+  { src: "/about/tea.jpg", caption: "A tea ceremony in a Kyoto garden." },                        // food
+  { src: "/about/culture-3.jpg", caption: "Mindfully taking in Japan's temples." },               // scene
+  { src: "/about/vegan-2.jpg", caption: "More vegan adventures on the road." },                   // food
+  { src: "/about/active-2.png", caption: "Eighty feet down a Costa Rican waterfall." },           // scene
+  { src: "/about/tea-2.jpg", caption: "Hiding in a Manhattan tea shop with a book." },            // food
+  { src: "/about/music-3.jpg", caption: "My sixth time seeing my favorite, Quinn XCII." },        // scene
+  { src: "/about/vegan-4.jpg", caption: "The best vegan sushi, from two grandmothers in Kamakura." }, // food
+  { src: "/about/culture-2.jpg", caption: "Wandering into the Sahara." },                         // you
 ];
 
-function CarouselCard({ item }: { item: Item }) {
-  const [errored, setErrored] = useState(!item.src);
+function CarouselCard({ photo }: { photo: Photo }) {
+  const [errored, setErrored] = useState(false);
   return (
     <div className="snap-start flex-none w-[244px] sm:w-[288px] flex flex-col gap-3">
       <div
@@ -28,8 +34,8 @@ function CarouselCard({ item }: { item: Item }) {
         {!errored ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={item.src}
-            alt={item.caption}
+            src={photo.src}
+            alt={photo.caption}
             draggable={false}
             onError={() => setErrored(true)}
             className="w-full h-full object-cover select-none"
@@ -42,14 +48,18 @@ function CarouselCard({ item }: { item: Item }) {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-0.5 px-0.5">
-        <p style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic", fontSize: 16, color: "var(--foreground)", lineHeight: 1.3 }}>
-          {item.caption}
-        </p>
-        <p className="text-[9px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)" }}>
-          {item.note}
-        </p>
-      </div>
+      <p
+        className="px-0.5"
+        style={{
+          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontStyle: "italic",
+          fontSize: 14,
+          color: "var(--foreground)",
+          lineHeight: 1.45,
+        }}
+      >
+        {photo.caption}
+      </p>
     </div>
   );
 }
@@ -105,6 +115,16 @@ export default function AboutCarousel() {
         </div>
       </div>
 
+      <p
+        className="text-base font-light leading-[1.9]"
+        style={{ color: "#3A3530" }}
+      >
+        Travel is how I feed my curiosity. I&apos;m wired to ask questions, and getting out into the
+        world helps me expand my perspective and continue evolving. I&apos;m happiest
+        when I&apos;m growing — so I chase side quests that stretch me, like hiking volcanoes or
+        surfing despite not having grown up athletic.
+      </p>
+
       <div
         ref={scrollerRef}
         onPointerDown={onPointerDown}
@@ -114,8 +134,8 @@ export default function AboutCarousel() {
         className="flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden pb-1 -mx-1 px-1"
         style={{ scrollbarWidth: "none", touchAction: "pan-y" }}
       >
-        {ITEMS.map((item) => (
-          <CarouselCard key={item.src} item={item} />
+        {PHOTOS.map((photo) => (
+          <CarouselCard key={photo.src} photo={photo} />
         ))}
       </div>
     </div>

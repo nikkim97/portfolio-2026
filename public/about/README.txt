@@ -1,14 +1,12 @@
-About-section "Life outside work" carousel images.
+About-section "Life outside work" photos.
 
-Drop photos here using these exact filenames to replace the placeholders
-(portrait orientation looks best — cards are cropped to a 4:5 ratio):
+All photos render in a single horizontal drag-scroll carousel (with prev/next
+arrows), each card showing the photo above its own one-line caption.
 
-  surfing.jpg     → "Surfing"
-  travel.jpg      → "Travel"
-  kitchen.jpg     → "In the kitchen"
-  reading.jpg     → "Reading"
-  outdoors.jpg    → "Outdoors"
-  music.jpg       → "Music"
+Notes:
+  - Use jpg/png/webp only (browsers can't render .heic or .DNG).
+  - Portrait orientation looks best — cards are cropped to a 4:5 ratio.
+  - Order is hand-set so categories interleave rather than cluster.
 
-To change captions, filenames, or add/remove cards, edit the ITEMS array in
+To change captions, the photo list, or the order, edit the PHOTOS array in
 app/components/AboutCarousel.tsx.

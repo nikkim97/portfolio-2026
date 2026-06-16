@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
@@ -165,64 +165,142 @@ export default function SurferJourney() {
   const drawPathRef = useRef<SVGPathElement>(null);
   const [pathLen, setPathLen] = useState(0);
   const surferRef = useRef<HTMLDivElement>(null);
-  const [surferY, setSurferY] = useState(50);
   const everPassedRef = useRef<Set<number>>(new Set());
+  // Re-render only when these change — never per scroll frame. Both are keyed off
+  // the surfer's monotonic progress (`best.len`), so they don't flicker in loops.
+  const [passed, setPassed] = useState<boolean[]>(() => WAVE_ANCHORS.map(() => false));
+  const [activeIdx, setActiveIdx] = useState(-1);
+  const passedCountRef = useRef(0);
+  const lastActiveRef = useRef(-1);
+  // Sampled points along the path. `screenY` is a strictly-increasing version of
+  // the path's y: loops (which curl back upward) are flattened into a small ramp
+  // so one scroll position maps to exactly one point — no branch flipping.
+  const samplesRef = useRef<{ len: number; x: number; y: number; screenY: number }[]>([]);
+  // Path length at which each node's anchor sits, so we can tell which card the
+  // surfer is currently riding by (monotonic, unlike raw y).
+  const anchorLenRef = useRef<number[]>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 70%", "end 70%"],
-  });
-
+  // Sample the path once it's measurable.
   useEffect(() => {
-    if (pathRef.current) setPathLen(pathRef.current.getTotalLength());
+    const p = pathRef.current;
+    if (!p) return;
+    const total = p.getTotalLength();
+    setPathLen(total);
+    const N = 900;
+    // Minimum monotonic rise per sample. Big enough to keep loops single-valued,
+    // small enough that straight runs still track the real y closely.
+    const MIN_STEP = 0.6;
+    const arr: { len: number; x: number; y: number; screenY: number }[] = [];
+    let prevScreenY = -Infinity;
+    for (let i = 0; i <= N; i++) {
+      const len = (total * i) / N;
+      const pt = p.getPointAtLength(len);
+      const screenY = Math.max(prevScreenY + MIN_STEP, pt.y);
+      prevScreenY = screenY;
+      arr.push({ len, x: pt.x, y: pt.y, screenY });
+    }
+    samplesRef.current = arr;
+    // Map each anchor to the path length nearest it.
+    anchorLenRef.current = WAVE_ANCHORS.map((a) => {
+      let bestLen = 0;
+      let bestCost = Infinity;
+      for (const s of arr) {
+        const c = (s.x - a.x) ** 2 + (s.y - a.y) ** 2;
+        if (c < bestCost) { bestCost = c; bestLen = s.len; }
+      }
+      return bestLen;
+    });
   }, []);
 
   useEffect(() => {
     if (pathLen === 0) return;
-    if (drawPathRef.current) {
-      drawPathRef.current.style.strokeDasharray = `${pathLen}`;
-      drawPathRef.current.style.strokeDashoffset = `${pathLen}`;
+    const d = drawPathRef.current;
+    if (d) {
+      d.style.strokeDasharray = `${pathLen}`;
+      d.style.strokeDashoffset = `${pathLen}`;
     }
-    // Snap surfer to path start on mount so it doesn't render off-path
-    // before the first scroll event fires.
-    if (pathRef.current && surferRef.current) {
-      const start = pathRef.current.getPointAtLength(0);
-      const eps = 5;
-      const ptA = pathRef.current.getPointAtLength(eps);
-      const angle = Math.atan2(ptA.y - start.y, ptA.x - start.x) * (180 / Math.PI);
-      surferRef.current.style.left = `calc(50% - ${SVG_W / 2}px + ${start.x}px)`;
-      surferRef.current.style.top = `${start.y}px`;
-      surferRef.current.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
-    }
-    return scrollYProgress.on("change", (v) => {
+
+    let raf = 0;
+    const render = () => {
+      raf = 0;
+      const container = containerRef.current;
       const p = pathRef.current;
-      const d = drawPathRef.current;
-      const s = surferRef.current;
-      if (!p || !d) return;
-      const len = Math.max(0, Math.min(v * pathLen, pathLen));
+      const samples = samplesRef.current;
+      if (!container || !p || !d || samples.length === 0) return;
 
-      d.style.strokeDashoffset = `${pathLen - len}`;
+      const rect = container.getBoundingClientRect();
+      // The surfer rides whichever path point is currently at the viewport's
+      // vertical center. Container height === SVG height, so container-local Y
+      // maps 1:1 to the path's Y. This keeps the surfer in tune with the scroll
+      // instead of racing ahead.
+      const focusY = window.innerHeight * 0.5 - rect.top;
 
-      const pt = p.getPointAtLength(len);
-      if (s) {
-        const eps = 5;
-        const ptA = p.getPointAtLength(Math.min(len + eps, pathLen));
-        const ptB = p.getPointAtLength(Math.max(len - eps, 0));
-        const angle = Math.atan2(ptA.y - ptB.y, ptA.x - ptB.x) * (180 / Math.PI);
-        s.style.left = `calc(50% - ${SVG_W / 2}px + ${pt.x}px)`;
-        s.style.top = `${pt.y}px`;
-        s.style.transform = `translate(-50%, -50%) rotate(${angle - 90}deg)`;
+      // `screenY` is strictly increasing, so this maps the focus line to exactly
+      // one point on the path — smooth through loops, no branch flipping.
+      let best = samples[0];
+      let bestCost = Infinity;
+      for (const sg of samples) {
+        const cost = Math.abs(sg.screenY - focusY);
+        if (cost < bestCost) { bestCost = cost; best = sg; }
       }
 
-      WAVE_ANCHORS.forEach((anchor, idx) => {
-        if (pt.y >= anchor.y) everPassedRef.current.add(idx);
+      d.style.strokeDashoffset = `${pathLen - best.len}`;
+
+      const s = surferRef.current;
+      if (s) {
+        const eps = 5;
+        const ptA = p.getPointAtLength(Math.min(best.len + eps, pathLen));
+        const ptB = p.getPointAtLength(Math.max(best.len - eps, 0));
+        const dx = ptA.x - ptB.x;
+        const dy = ptA.y - ptB.y;
+        // Tilt to the path's slope but never flip upside down: mirror
+        // horizontally for leftward travel and keep the tilt within ±90°.
+        const flipX = dx < 0 ? -1 : 1;
+        const tilt = Math.atan2(dy, Math.abs(dx)) * (180 / Math.PI);
+        s.style.left = `calc(50% - ${SVG_W / 2}px + ${best.x}px)`;
+        s.style.top = `${best.y}px`;
+        s.style.transform = `translate(-50%, -50%) scaleX(${flipX}) rotate(${tilt}deg)`;
+      }
+
+      // Passed set only grows (monotonic) — once the surfer reaches an anchor's
+      // length it stays passed, even when a loop curls back up.
+      anchorLenRef.current.forEach((aLen, idx) => {
+        if (best.len >= aLen) everPassedRef.current.add(idx);
       });
+      if (everPassedRef.current.size !== passedCountRef.current) {
+        passedCountRef.current = everPassedRef.current.size;
+        setPassed(WAVE_ANCHORS.map((_, idx) => everPassedRef.current.has(idx)));
+      }
 
-      setSurferY(pt.y);
-    });
-  }, [scrollYProgress, pathLen]);
+      // Card the surfer is currently riding by (within a small length window).
+      let nearIdx = -1;
+      let nearCost = Infinity;
+      anchorLenRef.current.forEach((aLen, idx) => {
+        const c = Math.abs(best.len - aLen);
+        if (c < nearCost) { nearCost = c; nearIdx = idx; }
+      });
+      if (nearCost > 80) nearIdx = -1;
+      if (nearIdx !== lastActiveRef.current) {
+        lastActiveRef.current = nearIdx;
+        setActiveIdx(nearIdx);
+      }
+    };
 
-  const isPassed = WAVE_ANCHORS.map(a => surferY >= a.y);
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(render);
+    };
+
+    render();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [pathLen]);
+
+  const isPassed = passed;
 
   if (isMobile) return <MobileCardSwitcher />;
 
@@ -316,8 +394,7 @@ export default function SurferJourney() {
         const a = WAVE_ANCHORS[i];
         const isRight = a.side === "right";
         const isCareer = node.type === "career";
-        const everPassed = everPassedRef.current.has(i);
-        const inZone = Math.abs(surferY - a.y) <= 70;
+        const inZone = activeIdx === i;
         const GAP = 20;
 
         const posLeft = isRight ? `calc(50% - ${SVG_W / 2}px + ${a.x + GAP}px)` : undefined;

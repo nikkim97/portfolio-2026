@@ -88,14 +88,16 @@ export default async function CaseStudyPage({
 
         {/* ── Main image ── */}
         <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-          <Image
-            src={cs.mainImage.src}
-            alt={cs.mainImage.alt}
-            width={1280}
-            height={720}
-            className="w-full h-full object-cover"
-            priority
-          />
+          {cs.mainImage.src && (
+            <Image
+              src={cs.mainImage.src}
+              alt={cs.mainImage.alt}
+              width={1280}
+              height={720}
+              className="w-full h-full object-cover"
+              priority
+            />
+          )}
         </div>
 
         {/* ── Problem ── */}
@@ -118,13 +120,15 @@ export default async function CaseStudyPage({
           </div>
           {cs.problem.image && (
             <div className="w-full rounded-xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              <Image
-                src={cs.problem.image.src}
-                alt={cs.problem.image.alt}
-                width={1280}
-                height={720}
-                className="w-full h-full object-cover"
-              />
+              {cs.problem.image.src && (
+                <Image
+                  src={cs.problem.image.src}
+                  alt={cs.problem.image.alt}
+                  width={1280}
+                  height={720}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
           )}
         </section>
@@ -154,13 +158,15 @@ export default async function CaseStudyPage({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {step.images.map((img, j) => (
                   <div key={j} className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={800}
-                      height={600}
-                      className="w-full h-full object-cover"
-                    />
+                    {img.src && (
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                 ))}
               </div>
@@ -189,13 +195,15 @@ export default async function CaseStudyPage({
           <div className="grid grid-cols-2 gap-4">
             {cs.outcome.images.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={800}
-                  height={600}
-                  className="w-full h-full object-cover"
-                />
+                {img.src && (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={800}
+                    height={600}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
             ))}
           </div>
