@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5F1EB;
-  --foreground: #1A1814;
-  --midtone: #4A4440;
-  --card: #EDE8E1;
-  --border: #DDD6CC;
-  --accent: #C17B5A;
-  --green: #6B8C66;
+  --background: #DAD4C6;
+  --foreground: #242117;
+  --midtone: #5C5646;
+  --card: #D0C9BA;
+  --border: #BEB7A5;
+  --accent: #A87A4F;
+  --green: #5E6647;
   --font-poppins: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -24,6 +24,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+/* Paper grain: a subtle fixed noise overlay across the whole site. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
 }
 
 html {
