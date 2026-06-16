@@ -155,49 +155,4 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
   },
-
-  // SCAFFOLD — draft content based on the card brief. Replace TODO copy and the
-  // placeholder pa-xd images with the real write-up and screens.
-  {
-    slug: "people-leader-redesign",
-    title: "People Leader Redesign",
-    role: "Manager, Experience Design",
-    timeline: "Sept 2024 – Jan 2025",
-    company: "Capital One",
-    intro: `People leaders were navigating performance work across 20 disconnected screens — context scattered, steps unclear, and no single place to do the job. I led the redesign that collapsed that sprawl into a focused 4-screen flow. TODO: tighten this intro with the real framing and stakes.`,
-    mainImage: { src: "", alt: "TODO: hero image for People Leader Redesign" },
-    problem: {
-      title: "20 disconnected screens, one overwhelmed people leader",
-      body: `<p>TODO: describe what the 20-screen experience actually looked like, why it sprawled that way, and the cost to people leaders (time lost, dropped context, low confidence).</p>
-<p>TODO: state the success metrics you were designing against.</p>
-<p>The design question: <em>How do we reduce 20 disconnected screens to a 4-screen flow?</em></p>`,
-      image: { src: "", alt: "TODO: before-state map of the 20-screen experience" },
-    },
-    process: [
-      {
-        title: "Auditing the 20 screens",
-        body: `<p>TODO: how you inventoried the existing screens, grouped the jobs to be done, and found what was redundant vs. essential.</p>`,
-        images: [
-          { src: "", alt: "TODO: audit / screen inventory" },
-          { src: "", alt: "TODO: grouping jobs to be done" },
-        ],
-      },
-      {
-        title: "Collapsing to four screens",
-        body: `<p>TODO: the logic behind the 4-screen flow — what each screen owns and what you cut or merged to get there.</p>`,
-        images: [
-          { src: "", alt: "TODO: the 4-screen flow" },
-          { src: "", alt: "TODO: key screen detail" },
-        ],
-      },
-    ],
-    outcome: {
-      title: "From 20 screens to 4",
-      body: `<p>TODO: the result — adoption, time saved, leader confidence, and what you learned.</p>`,
-      images: [
-        { src: "", alt: "TODO: outcome / final flow" },
-        { src: "", alt: "TODO: outcome detail" },
-      ],
-    },
-  },
 ];

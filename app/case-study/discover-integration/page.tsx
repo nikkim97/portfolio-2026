@@ -7,7 +7,7 @@ import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } f
 function MobileShots({ shots, cols = 3 }: { shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[]; cols?: 3 | 4 }) {
   const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
-    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start`}>
+    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start sm:-mx-14`}>
       {shots.map((s, i) => (
         <Screenshot key={i} src={s.src} aspect={s.aspect ?? "390 / 844"} priority={s.priority} label={s.label} caption={s.caption} />
       ))}
@@ -24,7 +24,7 @@ export default function DiscoverIntegrationCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -34,7 +34,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto w-full px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
@@ -95,7 +95,7 @@ export default function DiscoverIntegrationCaseStudy() {
               <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
                 <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Success metrics · OKRs</p>
                 <StatRow stats={[
-                  { value: "89%", label: "customer volume retained" },
+                  { value: "↑ 89%", label: "customer volume retained" },
                   { value: "↓ 35%", label: "calls to front-line associates" },
                 ]} />
               </div>

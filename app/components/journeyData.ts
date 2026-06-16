@@ -68,7 +68,7 @@ export const journeyNodes: JourneyNode[] = [
     period: "Sept 2024 – Jan 2025",
     role: "Manager, Experience Design",
     title: "People Leader Redesign",
-    brief: "How do we reduce 20 disconnected screens to a 4-screen flow?",
+    brief: "How do you align the experience with how leaders actually assess their people?",
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/people-leader-redesign",
     type: "project",

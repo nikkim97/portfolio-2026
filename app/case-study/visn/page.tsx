@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { FONT, GLASS } from "../../components/ui";
+import AnimatedStat from "../../components/AnimatedStat";
 import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
-const PROSE = "prose text-sm font-light leading-[1.85]";
+const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
@@ -14,7 +15,7 @@ function Metrics({ label = "Outcomes", stats }: { label?: string; stats: { value
       <div className="flex flex-wrap gap-8">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col gap-1">
-            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
+            <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--pop)" }}><AnimatedStat value={s.value} /></p>
             <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
           </div>
         ))}
@@ -29,14 +30,14 @@ export default function VisnCaseStudy() {
 
       {/* ── Top bar ── */}
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Rutgers University · Jan – May 2019</span>
         </div>
       </div>
 
       {/* ── Hero text ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pt-16 pb-12 flex flex-col gap-6">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pt-16 pb-12 flex flex-col gap-6">
         <p className={`${LABEL} text-[var(--accent)]`}>PM & Designer · Rutgers Capstone · Team of 4</p>
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           VISN<span style={{ color: "var(--accent)" }}>.</span>
@@ -71,8 +72,8 @@ export default function VisnCaseStudy() {
       </div>
 
       {/* ── Hero image ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
-        <figure className="flex flex-col gap-4">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pb-0">
+        <figure className="flex flex-col gap-4 sm:-mx-14">
           <ZoomableImage
             src="/visn/hero-image.png"
             alt="VISN hero image"
@@ -86,7 +87,7 @@ export default function VisnCaseStudy() {
       </div>
 
       {/* ── The Problem ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -106,7 +107,7 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
+          <figure className="flex flex-col gap-3 sm:-mx-14">
             <ZoomableImage
               src="/visn/visn-poster.png"
               alt="VISN project poster presentation"
@@ -134,7 +135,7 @@ export default function VisnCaseStudy() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <figure className="flex flex-col gap-2">
+            <figure className="flex flex-col gap-2 sm:-mx-14">
               <ZoomableImage
                 src="/visn/visn-circuit.png"
                 alt="VISN circuit diagram with Arduino Nano and sensors"
@@ -220,7 +221,7 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-4">
+          <figure className="flex flex-col gap-4 sm:-mx-14">
             <ZoomableImage
               src="/visn/visn-hero1.png"
               alt="VISN hero image"

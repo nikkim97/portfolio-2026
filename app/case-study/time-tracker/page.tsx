@@ -43,7 +43,7 @@ export default function TimeTrackerCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -53,7 +53,7 @@ export default function TimeTrackerCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto w-full px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
@@ -128,7 +128,7 @@ export default function TimeTrackerCaseStudy() {
               <PillarKey />
             </Prose>
           </div>
-          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2">
+          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2 sm:-mx-14">
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v2.1.png"
@@ -178,7 +178,7 @@ export default function TimeTrackerCaseStudy() {
             &ldquo;Who you&apos;re with determines the pillar. A hike with your kids is Family, not Self-Care. Self-Care is strictly solo time.&rdquo;
           </PullQuote>
 
-          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2">
+          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2 sm:-mx-14">
             <div className="flex-none w-[232px]">
               <Screenshot
                 src="/case-study/time-track/onboard.png"
@@ -234,7 +234,7 @@ export default function TimeTrackerCaseStudy() {
             </Prose>
           </div>
 
-          <div className="flex flex-wrap gap-6 justify-center">
+          <div className="flex flex-wrap gap-6 justify-center sm:-mx-14">
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v1.1.png"
@@ -277,16 +277,6 @@ export default function TimeTrackerCaseStudy() {
                 V2 earned its way to more surface area: the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown, by proving the core read first. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only now, because the dummy-data version earned it.
               </p>
             </Prose>
-          </div>
-
-          <div
-            className="flex flex-col gap-4 p-6 rounded-2xl"
-            style={GLASS}
-          >
-            <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Built with</p>
-            <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-              Claude Code · Next.js 14 · TypeScript · Tailwind CSS · Recharts · shadcn/ui
-            </p>
           </div>
         </section>
 

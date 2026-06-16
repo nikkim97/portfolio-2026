@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
+import { FONT } from "../../components/ui";
+import AnimatedStat from "../../components/AnimatedStat";
+import MeasureCarousel from "./MeasureCarousel";
 
-const PROSE = "prose text-sm font-light leading-[1.85]";
+const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
@@ -23,26 +25,6 @@ function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt:
   );
 }
 
-// Dense, oversized reference images (annotated one-pagers, FigJam boards) that
-// can't stay legible when shrunk to fit. Locks the image to a fixed viewport
-// height so it fills the container with no letterbox, then lets it overflow
-// horizontally with a scroll so the full detail can be reviewed.
-function ScrollImg({ src, alt, w, h, height = 520 }: { src: string; alt: string; w: number; h: number; height?: number }) {
-  return (
-    <div className="w-full overflow-x-auto overflow-y-hidden rounded-xl" style={{ background: "var(--card)" }}>
-      <Image
-        src={src}
-        alt={alt}
-        width={w}
-        height={h}
-        sizes="100vw"
-        className="block max-w-none"
-        style={{ height, width: "auto" }}
-      />
-    </div>
-  );
-}
-
 // A grid of outcome stat cards: big accent number over a short description.
 // Used where a flat bulleted list of results would read as undifferentiated copy.
 function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
@@ -54,28 +36,12 @@ function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
           className="flex flex-col gap-2 rounded-xl p-5"
           style={{ background: "var(--card)", border: "1px solid var(--border)" }}
         >
-          <p className="font-light tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--accent)" }}>
-            {s.value}
+          <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
+            <AnimatedStat value={s.value} />
           </p>
           <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
         </div>
       ))}
-    </div>
-  );
-}
-
-function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string; stats: { value: string; label: string }[] }) {
-  return (
-    <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
-      <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
-      <div className="grid grid-cols-2 gap-6 sm:gap-8">
-        {stats.map((s) => (
-          <div key={s.label} className="flex flex-col gap-1">
-            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
-            <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
@@ -86,54 +52,43 @@ export default function SaXdCaseStudy() {
 
       {/* ── Top bar ── */}
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Capital One · Oct 2023 – Jun 2024</span>
         </div>
       </div>
 
       {/* ── Hero text ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pt-16 pb-12 flex flex-col gap-6">
-        <p className={`${LABEL} text-[var(--midtone)]`}>Design & Research Lead · PM Pilots</p>
-        <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
-          360 Feedback<span style={{ color: "var(--accent)" }}>.</span>
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pt-20 pb-14 flex flex-col gap-16">
+        <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 66px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
+          Leaders and associates both distrusted 360 feedback. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        {/* Context card: problem statement / role | platform / timeline */}
-        <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-          <div className="flex flex-col gap-5 p-6">
-            <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
-              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                Leaders and associates both distrusted 360 feedback: templates varied by team, responses skewed positive, and no one knew how results would be used. Why was a system meant to help people grow just producing noise?
-              </p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
-              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                Design & research lead: improved the quality and actionability of 360 feedback during the performance cycle, delivering validated insights to de-risk the product roadmap.
-              </p>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-24">
+          <div className="flex flex-col gap-4">
+            <p className="text-[18px] font-normal" style={{ color: "var(--foreground)" }}>My role</p>
+            <div className="flex flex-col gap-3 text-[16px] sm:text-[18px] font-light leading-relaxed" style={{ color: "#3A3530" }}>
+              <p>Design and research lead</p>
+              <p>Research synthesis and product strategy</p>
+              <p>Evidence-based roadmap foundations</p>
             </div>
           </div>
-          <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-            <div className="flex flex-col gap-1">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Platform</p>
-              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Internal web tool</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
-              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Dec 2023 – Dec 2024</p>
+          <div className="flex flex-col gap-4">
+            <p className="text-[18px] font-normal" style={{ color: "var(--foreground)" }}>Results</p>
+            <div className="flex flex-col gap-3 text-[16px] sm:text-[18px] font-light leading-relaxed" style={{ color: "#3A3530" }}>
+              <p><span className="font-semibold tabular-nums" style={{ color: "var(--pop)", fontSize: "22px" }}>↑ 58%</span> gained clarity on development opportunities</p>
+              <p><span className="font-semibold tabular-nums" style={{ color: "var(--pop)", fontSize: "22px" }}>↑ 73%</span> more feedback leveraged in performance management</p>
+              <p>Internal web tool for performance calibration</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* ── Hero image: before / after composite ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
         <Img src="/case-study/sa-xd/hero-before-after.png" alt="Before and after: the original 360 feedback experience and the redesigned version" aspect="1908/800" />
       </div>
 
       {/* ── The Problem ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 mt-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 mt-16">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -141,10 +96,6 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <Metrics label="Outcomes" stats={[
-                { value: "58%", label: "gained clarity on development opportunities" },
-                { value: "73%", label: "more feedback leveraged in performance management" },
-              ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive, not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest.</p>
                 <p>People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
@@ -153,25 +104,74 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
-            <ScrollImg src="/case-study/sa-xd/group-10.png" alt="Experience map: emotion curve and phase breakdown showing where 360 feedback broke down across the performance cycle" w={1354} h={630} />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The experience map made the gaps visible in a way that was hard to argue with. Feedback wasn&apos;t designed around how leaders actually used it. · scroll to explore →</figcaption>
-          </figure>
+          <div className="flex flex-col gap-4 sm:-mx-14">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/case-study/sa-xd/xd-1.png"
+              alt="Where the 360 feedback experience broke down across the performance cycle"
+              className="block w-full h-auto rounded-xl select-none"
+              draggable={false}
+            />
+            <div className="w-full overflow-hidden rounded-xl aspect-[1946/740]" style={{ background: "var(--card)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/case-study/sa-xd/xd-1.1.png"
+                alt="Detail of the 360 feedback experience breakdown"
+                className="block w-full h-full object-cover object-top select-none"
+                draggable={false}
+              />
+            </div>
+          </div>
         </section>
 
         {/* ── Foundation Principles ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>01</p>
-              <h2 className="font-light" style={SECTION_HEADING}>Building on three foundation principles</h2>
-            </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Rather than jump to solutions, we used research to define the principles the system had to be built on. These shaped every design decision that followed.</p>
-              <p><strong>Quant & qual data together.</strong> Standardized, competency-based ratings paired with required qualitative comments. Ratings without context were too easy to dismiss.</p>
-              <p><strong>Psychological safety through anonymity.</strong> Complete anonymity consistently produced more candid, constructive responses. Without it, people optimized for relationships, not honesty.</p>
-              <p><strong>Comparative context to reduce bias.</strong> A "compared to peers" scale reduced subjective ratings and gave calibration conversations something concrete to anchor to.</p>
-            </div>
+          <div className="flex flex-col gap-2">
+            <p className={`${LABEL} text-[var(--midtone)]`}>01</p>
+            <h2 className="font-light" style={{ ...SECTION_HEADING, maxWidth: "54ch" }}>Rather than jump to solutions, we used research to define the principles the system had to be built on.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-20 sm:-mx-14">
+            {[
+              {
+                visual: "/case-study/sa-xd/principle-1-quant-qual.png",
+                title: "Quant & qual data together",
+                body: "Standardized, competency-based ratings paired with required qualitative comments so leaders had both structure and context.",
+                imageClass: "md:aspect-[4/3]",
+              },
+              {
+                visual: "/case-study/sa-xd/principle-2-anonymity.png",
+                title: "Psychological safety through anonymity",
+                body: "Complete anonymity encouraged more candid and constructive responses, especially when feedback had to move into calibration.",
+                imageClass: "md:aspect-[5/4]",
+                cardClass: "md:mt-28",
+              },
+              {
+                visual: "/case-study/sa-xd/principle-3-comparative.png",
+                title: "Comparative context to reduce bias",
+                body: "A compared-to-peers scale gave calibration conversations a clearer anchor and reduced subjective interpretation.",
+                imageClass: "md:aspect-[4/3]",
+                cardClass: "md:col-span-2 md:max-w-[58%]",
+              },
+            ].map((p) => (
+              <article key={p.visual} className={`flex flex-col gap-5 ${p.cardClass ?? ""}`}>
+                <div
+                  className={`w-full overflow-hidden rounded-xl aspect-[16/10] ${p.imageClass}`}
+                  style={{ background: "var(--card)" }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.visual} alt={p.title} className="w-full h-full object-cover object-top select-none" draggable={false} />
+                </div>
+                <div className="flex flex-col gap-3">
+                  <h3 className="font-light" style={{ fontSize: "clamp(18px, 2.2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.18 }}>
+                    {p.title}<span style={{ color: "var(--accent)" }}>.</span>
+                  </h3>
+                  <p className="max-w-[28rem] text-[13px] sm:text-[15px] font-light leading-[1.6]" style={{ color: "var(--midtone)" }}>
+                    {p.body}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
 
         </section>
@@ -189,14 +189,20 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 sm:-mx-14">
             <figure className="flex flex-col gap-3">
-              <Img src="/case-study/sa-xd/sa-xd-12.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="16/9" />
+              <Img src="/case-study/sa-xd/sa-xd-12-2.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
             <figure className="flex flex-col gap-3">
-              <ScrollImg src="/case-study/sa-xd/sa-xd-13.1.png" alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback" w={1308} h={687} />
-              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager: feedback as a first-class input, not an afterthought · scroll to explore →</figcaption>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/case-study/sa-xd/sa-xd-13-2.png"
+                alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback"
+                className="block w-full h-auto rounded-xl select-none"
+                draggable={false}
+              />
+              <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager: feedback as a first-class input, not an afterthought</figcaption>
             </figure>
           </div>
         </section>
@@ -214,15 +220,14 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3">
-            <ScrollImg src="/case-study/sa-xd/sa-xd-14.1.png" alt="Measurement framework: data triangulation across system data, live observations, and milestone surveys" w={1345} h={576} />
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Data triangulation: measuring clarity, consistency, quality, and actionability throughout the pilot · scroll to explore →</figcaption>
-          </figure>
+          <div className="sm:-mx-14">
+            <MeasureCarousel />
+          </div>
         </section>
       </div>
 
       {/* ── Outcome ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -234,9 +239,9 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
           <StatCards stats={[
-            { value: "65%", label: "improvement in clarity & consistency of feedback received" },
-            { value: "58%", label: "improvement in feedback quality: anonymity made a measurable difference" },
-            { value: "52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
+            { value: "↑ 65%", label: "improvement in clarity & consistency of feedback received" },
+            { value: "↑ 58%", label: "improvement in feedback quality: anonymity made a measurable difference" },
+            { value: "↑ 52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
           ]} />
         </section>
 

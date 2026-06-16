@@ -50,6 +50,18 @@ function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) 
             <span className="text-[9px] tracking-[0.2em] uppercase" style={{ opacity: 0.55 }}>Add photo</span>
           </div>
         )}
+        {/* Film grain over the photo */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='photoNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23photoNoise)' opacity='0.6'/%3E%3C/svg%3E\")",
+            backgroundSize: "180px 180px",
+            opacity: 0.15,
+            mixBlendMode: "overlay",
+          }}
+        />
       </div>
       <p
         className="px-0.5"

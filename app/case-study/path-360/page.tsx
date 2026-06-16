@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FONT, GLASS } from "../../components/ui";
+import AnimatedStat from "../../components/AnimatedStat";
 
-const PROSE = "prose text-sm font-light leading-[1.85]";
+const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
 function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
   return (
     <div
-      className="w-full overflow-hidden rounded-xl flex items-center justify-center"
+      className="overflow-hidden rounded-xl flex items-center justify-center sm:-mx-14"
       style={{ aspectRatio: aspect, background: "var(--card)" }}
     >
       <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
@@ -20,10 +21,10 @@ function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: strin
 function Img({ src, alt, aspect = "16/9", fit = "cover" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover" }) {
   return (
     <div
-      className="relative w-full overflow-hidden rounded-xl"
+      className="relative overflow-hidden rounded-xl sm:-mx-14"
       style={{ aspectRatio: aspect, background: "var(--card)" }}
     >
-      <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1024px" style={{ objectFit: fit }} />
+      <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit }} />
     </div>
   );
 }
@@ -35,7 +36,7 @@ function Metrics({ label = "Success metrics · OKRs", stats }: { label?: string;
       <div className="flex flex-wrap gap-8">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col gap-1">
-            <p className="font-light tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--accent)" }}>{s.value}</p>
+            <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--pop)" }}><AnimatedStat value={s.value} /></p>
             <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
           </div>
         ))}
@@ -56,8 +57,8 @@ function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
           className="flex flex-col gap-2 rounded-xl p-5"
           style={{ background: "var(--card)", border: "1px solid var(--border)" }}
         >
-          <p className="font-light tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--accent)" }}>
-            {s.value}
+          <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
+            <AnimatedStat value={s.value} />
           </p>
           <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
         </div>
@@ -72,14 +73,14 @@ export default function Path360CaseStudy() {
 
       {/* ── Top bar ── */}
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Capital One · 2023 – 2025</span>
         </div>
       </div>
 
       {/* ── Hero text ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pt-16 pb-12 flex flex-col gap-6">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pt-16 pb-12 flex flex-col gap-6">
         <p className={`${LABEL} text-[var(--midtone)]`}>Principal Associate, Experience Design · PATH</p>
         <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
           Calibrations Ecosystem<span style={{ color: "var(--accent)" }}>.</span>
@@ -114,12 +115,12 @@ export default function Path360CaseStudy() {
       </div>
 
       {/* ── Hero image ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16 pb-0">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pb-0">
         <Img src="/case-study/pa-xd/hero.png" alt="PATH calibrations: rating distribution view with an individual deep-dive panel showing 360 feedback and performance data" aspect="1200/896" fit="cover" />
       </div>
 
       {/* ── The Challenge ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -128,8 +129,8 @@ export default function Path360CaseStudy() {
             </div>
             <div className="flex flex-col gap-8">
               <Metrics stats={[
-                { value: "70%", label: "PLs satisfied with the PM experience" },
-                { value: ">70%", label: "PLs confident in final ratings" },
+                { value: "↑ 70%", label: "PLs satisfied with the PM experience" },
+                { value: "↑ >70%", label: "PLs confident in final ratings" },
               ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Calibration is where performance decisions actually get made. Leaders gather, sometimes with a room full of peers, to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
@@ -209,7 +210,7 @@ export default function Path360CaseStudy() {
       </div>
 
       {/* ── Feedback + Scale ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
@@ -230,7 +231,7 @@ export default function Path360CaseStudy() {
       </div>
 
       {/* ── Outcome + Growth ── */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">

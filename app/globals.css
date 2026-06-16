@@ -7,6 +7,7 @@
   --card: #D0C9BA;
   --border: #BEB7A5;
   --accent: #A87A4F;
+  --pop: #BC4A1F;
   --green: #5E6647;
   --font-poppins: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
@@ -18,6 +19,7 @@
   --color-card: var(--card);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-pop: var(--pop);
 }
 
 body {

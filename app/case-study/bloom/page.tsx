@@ -11,7 +11,7 @@ export default function BloomCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -21,7 +21,7 @@ export default function BloomCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto w-full px-6 sm:px-16">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
@@ -69,10 +69,12 @@ export default function BloomCaseStudy() {
         </section>
 
         {/* ── Hero image ── */}
-        <Screenshot
-          label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
-          caption="V1 homepage running on localhost:3000, March 23 2026"
-        />
+        <div className="sm:-mx-14">
+          <Screenshot
+            label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
+            caption="V1 homepage running on localhost:3000, March 23 2026"
+          />
+        </div>
 
         {/* ── The concept ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
@@ -93,7 +95,7 @@ export default function BloomCaseStudy() {
               </p>
             </Prose>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
             <Screenshot
               label="Trait map: plant care needs (water, light, roots, humidity, temp, growth) mapped to human personality equivalents"
               caption="The trait framework: plant care needs mapped to human personality"
@@ -129,7 +131,7 @@ export default function BloomCaseStudy() {
             "Think of it like: I'm the product partner, Claude Code is the developer. You're the founder talking to both."
           </PullQuote>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
             <Screenshot
               label="Collaboration model: Claude establishing 'I'm the product partner, Claude Code is the developer'"
               caption="The collaboration model, established in the first session"
@@ -162,7 +164,7 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
             <Screenshot
               label="V1 results page: Monstera meets Chinese Elephant Ear with trait bar charts side by side"
               caption="V1 results page: correct, but more data display than emotional resonance"
@@ -173,10 +175,12 @@ export default function BloomCaseStudy() {
             />
           </div>
 
-          <Screenshot
-            label="Debug moment: Claude identifying that two plants scoring identically isn't a bug, it's the data"
-            caption="'It's not a bug, it's the data.' Claude acting like a product partner, not just a code executor"
-          />
+          <div className="sm:-mx-14">
+            <Screenshot
+              label="Debug moment: Claude identifying that two plants scoring identically isn't a bug, it's the data"
+              caption="'It's not a bug, it's the data.' Claude acting like a product partner, not just a code executor"
+            />
+          </div>
 
         </section>
 
@@ -203,7 +207,7 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
             <Screenshot
               label="Evolved plant cards: descriptions rewritten as character portraits, not trait profiles"
               caption="Plant cards after iteration: descriptions that read like portraits, not profiles"
@@ -214,10 +218,12 @@ export default function BloomCaseStudy() {
             />
           </div>
 
-          <Screenshot
-            label="Terminal: Claude confirming iteration complete: 'Check localhost:3000, run a quiz and see if the results feel more nuanced'"
-            caption="'All three files updated. Check localhost:3000, run a quiz and see if the results feel more nuanced.'"
-          />
+          <div className="sm:-mx-14">
+            <Screenshot
+              label="Terminal: Claude confirming iteration complete: 'Check localhost:3000, run a quiz and see if the results feel more nuanced'"
+              caption="'All three files updated. Check localhost:3000, run a quiz and see if the results feel more nuanced.'"
+            />
+          </div>
 
         </section>
 
@@ -242,16 +248,6 @@ export default function BloomCaseStudy() {
                 If I were doing it again: I'd define the visual design more intentionally upfront. The aesthetic emerged fine, but I made reactionary decisions rather than intentional ones. Next time I'd spec the design system before the first build command.
               </p>
             </Prose>
-          </div>
-
-          <div
-            className="flex flex-col gap-4 p-6 rounded-2xl"
-            style={GLASS}
-          >
-            <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Built with</p>
-            <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-              Claude Code · Next.js · TypeScript · Tailwind CSS
-            </p>
           </div>
         </section>
 

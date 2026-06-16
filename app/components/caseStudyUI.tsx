@@ -2,6 +2,7 @@
 // Server-component safe. No client hooks.
 import type { ReactNode } from "react";
 import Image from "next/image";
+import AnimatedStat from "./AnimatedStat";
 
 export function SectionLabel({ children }: { children: ReactNode }) {
   return (
@@ -83,7 +84,7 @@ export function PhoneFrame({ children, maxWidth = 300 }: { children: ReactNode; 
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div
-      className="flex flex-col gap-4 font-light text-sm leading-[1.85]"
+      className="flex flex-col gap-5 font-light text-[16px] sm:text-[18px] leading-[1.8]"
       style={{ color: "#3A3530" }}
     >
       {children}
@@ -110,16 +111,35 @@ export function PullQuote({ children }: { children: ReactNode }) {
   );
 }
 
+// Big, bold, pop-colored metric row for the intro — sits above the hero image.
+export function IntroMetrics({ stats }: { stats: { value: string; label: string }[] }) {
+  return (
+    <div className="flex flex-wrap gap-x-12 sm:gap-x-16 gap-y-6">
+      {stats.map((s) => (
+        <div key={s.label} className="flex flex-col gap-1.5" style={{ maxWidth: "26ch" }}>
+          <p
+            className="font-semibold tabular-nums"
+            style={{ fontSize: "clamp(36px, 5vw, 56px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}
+          >
+            <AnimatedStat value={s.value} />
+          </p>
+          <p className="text-[12px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function StatRow({ stats }: { stats: { value: string; label: string }[] }) {
   return (
     <div className="flex flex-wrap gap-8">
       {stats.map((s) => (
         <div key={s.label} className="flex flex-col gap-1">
           <p
-            className="font-light tabular-nums"
-            style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--foreground)" }}
+            className="font-semibold tabular-nums"
+            style={{ fontSize: "clamp(30px, 3.6vw, 46px)", letterSpacing: "-0.03em", color: "var(--pop)" }}
           >
-            {s.value}
+            <AnimatedStat value={s.value} />
           </p>
           <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>
             {s.label}
