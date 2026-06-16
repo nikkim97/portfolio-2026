@@ -185,8 +185,8 @@ export default function Home() {
               alt=""
               className="w-full h-full object-cover"
               style={{
-                filter: "grayscale(0) sepia(0.05) saturate(1.15) contrast(1.1) brightness(1.02)",
-                opacity: 0.58,
+                filter: "grayscale(0.7) saturate(0.9) contrast(1.06) brightness(1.0)",
+                opacity: 0.55,
                 objectPosition: "center",
                 transform: "scale(1.15) translate(20%, 6%)",
                 transformOrigin: "center",
