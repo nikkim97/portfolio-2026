@@ -178,18 +178,37 @@ export default function Home() {
       {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
       <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
         <div className="sticky top-0 h-screen flex overflow-hidden">
-          {/* Editorial surf portrait: right-aligned, desaturated, low emphasis, fades into the page on its left edge */}
-          <div aria-hidden className="hidden md:block absolute inset-y-0 right-0 w-[45%] pointer-events-none" style={{ zIndex: 0 }}>
+          {/* Full-width editorial surf backdrop: muted + warm, with a paper-grain overlay */}
+          <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
             <img
-              src="/nikki.jpg"
+              src="/nikki-3.png"
               alt=""
               className="w-full h-full object-cover"
               style={{
-                filter: "grayscale(1) contrast(1.05)",
-                opacity: 0.26,
-                objectPosition: "35% center",
-                WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 62%, black 100%)",
-                maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.8) 62%, black 100%)",
+                filter: "grayscale(0) sepia(0.05) saturate(1.15) contrast(1.1) brightness(1.02)",
+                opacity: 0.58,
+                objectPosition: "center",
+                transform: "scale(1.15) translate(20%, 6%)",
+                transformOrigin: "center",
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 28%)",
+                maskImage: "linear-gradient(to right, transparent 0%, black 28%)",
+              }}
+            />
+            {/* Warm paper wash to settle the photo into the page palette */}
+            <div className="absolute inset-0" style={{ background: "var(--background)", opacity: 0.4 }} />
+            {/* Soft top/bottom fade so the nav and name stay legible */}
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to bottom, var(--background) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 72%, var(--background) 100%)" }}
+            />
+            {/* Paper grain */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+                opacity: 0.3,
+                mixBlendMode: "multiply",
               }}
             />
           </div>
@@ -226,7 +245,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
                 className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
               >
-                Niharika Mishra · Experience Design · Capital One
+                Niharika Mishra · Design Leader
               </motion.p>
 
               <div className="flex flex-col">
@@ -234,15 +253,14 @@ export default function Home() {
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
-                  <WordStaggerLine text="Hi, I'm Nikki, a builder" startDelay={1.15} perWord={0.07} duration={0.9} />
+                  <WordStaggerLine text="Hi, I'm Nikki" startDelay={1.15} perWord={0.07} duration={0.9} />
                   <span style={{ color: "var(--accent)" }}>.</span>
                 </p>
                 <p
-                  className="font-light text-[var(--foreground)]"
-                  style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
+                  className="font-light"
+                  style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "#3A3530", marginTop: 20, textWrap: "balance" }}
                 >
-                  <WordStaggerLine text="Let me take you on my journey so far" startDelay={1.6} perWord={0.07} duration={0.9} />
-                  <span style={{ color: "var(--accent)" }}>.</span>
+                  <WordStaggerLine text={"I make complex things feel human. Let me take you on my journey so far."} startDelay={1.6} perWord={0.05} duration={0.9} />
                 </p>
               </div>
             </div>
@@ -266,12 +284,9 @@ export default function Home() {
 
 
           <div className="flex flex-col gap-10 md:gap-12">
-            <div className="flex flex-col gap-3">
-              <p className="text-[10px] font-normal tracking-[0.28em] uppercase text-[var(--midtone)]">About</p>
-              <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
-                <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
-              </p>
-            </div>
+            <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
+              <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
+            </p>
             <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "#3A3530" }}>
               {[
                 "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
@@ -284,9 +299,7 @@ export default function Home() {
             </div>
           </div>
 
-          <FadeIn>
-            <AboutCarousel />
-          </FadeIn>
+          <AboutCarousel />
 
           <div className="flex flex-col gap-6">
             <FadeIn>
@@ -305,7 +318,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-12">
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
-              <WordStaggerLine text="Ownership, impact and things that last. If that's what you're building, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
+              <WordStaggerLine text="If you're building for impact and appreciate real ownership, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
             </p>
 
             <FadeIn delay={0.4}>
