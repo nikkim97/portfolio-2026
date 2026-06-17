@@ -5,7 +5,6 @@ import AnimatedStat from "../../components/AnimatedStat";
 import MeasureCarousel from "./MeasureCarousel";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
-const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
 function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover" }) {
@@ -62,29 +61,55 @@ export default function SaXdCaseStudy() {
         <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 66px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
           Leaders and associates both distrusted 360 feedback. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-24">
-          <div className="flex flex-col gap-4">
-            <p className="text-[18px] font-normal" style={{ color: "var(--foreground)" }}>My role</p>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-24 md:gap-y-12">
+          <div className="flex flex-col gap-4 min-w-0">
+            <p className="text-[18px] font-normal" style={{ color: "var(--accent)" }}>My role</p>
             <div className="flex flex-col gap-3 text-[16px] sm:text-[18px] font-light leading-relaxed" style={{ color: "#3A3530" }}>
               <p>Design and research lead</p>
               <p>Research synthesis and product strategy</p>
               <p>Evidence-based roadmap foundations</p>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
-            <p className="text-[18px] font-normal" style={{ color: "var(--foreground)" }}>Results</p>
-            <div className="flex flex-col gap-3 text-[16px] sm:text-[18px] font-light leading-relaxed" style={{ color: "#3A3530" }}>
-              <p><span className="font-semibold tabular-nums" style={{ color: "var(--pop)", fontSize: "22px" }}>↑ 58%</span> gained clarity on development opportunities</p>
-              <p><span className="font-semibold tabular-nums" style={{ color: "var(--pop)", fontSize: "22px" }}>↑ 73%</span> more feedback leveraged in performance management</p>
-              <p>Internal web tool for performance calibration</p>
+          <div className="flex flex-col gap-4 min-w-0">
+            <p className="text-[18px] font-normal" style={{ color: "var(--accent)" }}>Timeline & platform</p>
+            <div className="flex flex-col gap-3 text-[16px] sm:text-[18px] font-light leading-relaxed break-words" style={{ color: "#3A3530" }}>
+              <p>2022–2023 pilot</p>
+              <p>Capital One performance management</p>
+              <p>360 feedback, calibration, and Workday inputs</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 md:col-span-2">
+            <p className="text-[18px] font-normal" style={{ color: "var(--accent)" }}>Results</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[
+                { value: "↑ 58%", label: "gained clarity on development opportunities" },
+                { value: "↑ 73%", label: "more feedback leveraged in performance management" },
+              ].map((result) => (
+                <div
+                  key={result.value}
+                  className="flex items-baseline gap-3"
+                >
+                  <span className="font-semibold tabular-nums shrink-0" style={{ color: "var(--pop)", fontSize: "clamp(22px, 3vw, 32px)", letterSpacing: "-0.03em" }}>
+                    <AnimatedStat value={result.value} />
+                  </span>
+                  <span className="text-[13px] sm:text-[15px] font-light leading-snug" style={{ color: "#3A3530" }}>
+                    {result.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Hero image: before / after composite ── */}
-      <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
-        <Img src="/case-study/sa-xd/hero-before-after.png" alt="Before and after: the original 360 feedback experience and the redesigned version" aspect="1908/800" />
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-10">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/case-study/sa-xd/xd-1.png"
+          alt="Where the 360 feedback experience broke down across the performance cycle"
+          className="block w-full h-auto rounded-xl select-none"
+          draggable={false}
+        />
       </div>
 
       {/* ── The Problem ── */}
@@ -92,7 +117,6 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The Problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
             <div className="flex flex-col gap-8">
@@ -105,14 +129,7 @@ export default function SaXdCaseStudy() {
           </div>
 
           <div className="flex flex-col gap-4 sm:-mx-14">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/case-study/sa-xd/xd-1.png"
-              alt="Where the 360 feedback experience broke down across the performance cycle"
-              className="block w-full h-auto rounded-xl select-none"
-              draggable={false}
-            />
-            <div className="w-full overflow-hidden rounded-xl aspect-[1946/740]" style={{ background: "var(--card)" }}>
+            <div className="w-full overflow-hidden rounded-xl aspect-[1505/732]" style={{ background: "var(--card)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/case-study/sa-xd/xd-1.1.png"
@@ -127,11 +144,10 @@ export default function SaXdCaseStudy() {
         {/* ── Foundation Principles ── */}
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-2">
-            <p className={`${LABEL} text-[var(--midtone)]`}>01</p>
             <h2 className="font-light" style={{ ...SECTION_HEADING, maxWidth: "54ch" }}>Rather than jump to solutions, we used research to define the principles the system had to be built on.</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-20 sm:-mx-14">
+          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-20 sm:-mx-14">
             {[
               {
                 visual: "/case-study/sa-xd/principle-1-quant-qual.png",
@@ -144,14 +160,12 @@ export default function SaXdCaseStudy() {
                 title: "Psychological safety through anonymity",
                 body: "Complete anonymity encouraged more candid and constructive responses, especially when feedback had to move into calibration.",
                 imageClass: "md:aspect-[5/4]",
-                cardClass: "md:mt-28",
               },
               {
                 visual: "/case-study/sa-xd/principle-3-comparative.png",
                 title: "Comparative context to reduce bias",
                 body: "A compared-to-peers scale gave calibration conversations a clearer anchor and reduced subjective interpretation.",
                 imageClass: "md:aspect-[4/3]",
-                cardClass: "md:col-span-2 md:max-w-[58%]",
               },
             ].map((p) => (
               <article key={p.visual} className={`flex flex-col gap-5 ${p.cardClass ?? ""}`}>
@@ -180,7 +194,6 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>02</p>
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
@@ -211,7 +224,6 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>03</p>
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
@@ -231,7 +243,6 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
               <h2 className="font-light" style={SECTION_HEADING}>The pilot made the case</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
@@ -249,7 +260,6 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>What I learned</p>
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a designer</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>

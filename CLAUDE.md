@@ -9,7 +9,6 @@
 - **React 19.2.4** — `use()`, `useOptimistic`, `useFormStatus` are stable. No need to import React for JSX.
 - **Tailwind CSS 4.x** — No `tailwind.config.js`. Config lives in CSS via `@theme {}`. Import is `@import "tailwindcss"` (not the old `@tailwind base/components/utilities` directives). Some utility names changed from v3.
 - **Framer Motion 12.x** — API is stable; no breaking changes from v11 for this project's usage.
-- **@anthropic-ai/sdk 0.86.x** — installed. Use `client.messages.stream()` for streaming responses.
 - **shadcn/ui** — not installed. If added, use the Tailwind v4 compatible init path.
 
 ## Stack Defaults

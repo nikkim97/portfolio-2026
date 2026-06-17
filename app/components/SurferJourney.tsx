@@ -25,7 +25,7 @@ function MobileCardSwitcher() {
     <div className="flex flex-col gap-5">
       <div
         className="relative overflow-hidden"
-        style={{ minHeight: 160 }}
+        style={{ minHeight: hasCard ? 500 : 170 }}
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           const dx = touchStartX.current - e.changedTouches[0].clientX;
@@ -42,28 +42,63 @@ function MobileCardSwitcher() {
         >
           <Wrapper
             {...(isActionable ? { href: node.href } : {})}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-2 overflow-hidden"
             style={{
               textDecoration: "none",
               ...(hasCard ? {
-                padding: "16px 20px",
-                borderRadius: "18px",
+                padding: 0,
+                borderRadius: "12px",
                 ...GLASS,
               } : {
                 paddingLeft: 16,
-                borderLeft: "2px solid var(--border)",
+                borderLeft: "2px solid var(--accent)",
               }),
             }}
           >
+            {hasCard && (
+              <div
+                style={{
+                  height: 260,
+                  background: "linear-gradient(135deg, #CFC7B7 0%, #BEB39E 100%)",
+                  overflow: "hidden",
+                  position: "relative",
+                }}
+              >
+                {node.image && (
+                  <img
+                    src={node.image.src}
+                    alt={node.image.alt}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: node.image.fit ?? "cover",
+                      objectPosition: node.image.position ?? "center",
+                      transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
+                      display: "block",
+                      filter: "saturate(0.95) contrast(1.02)",
+                    }}
+                  />
+                )}
+                <div
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    boxShadow: "inset 0 -34px 54px rgba(36,33,23,0.12)",
+                  }}
+                />
+              </div>
+            )}
+            <div className="flex flex-col gap-2" style={{ padding: hasCard ? "16px 20px 18px" : 0 }}>
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: hasCard ? 1 : 0.7 }}>
+              <span className="text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)", opacity: hasCard ? 1 : 0.9 }}>
                 {node.period}
               </span>
               {node.pills?.map((p) => (
                 <span
                   key={p}
-                  className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                  style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", opacity: hasCard ? 1 : 0.7 }}
+                  className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                  style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.22)", opacity: hasCard ? 1 : 0.9 }}
                 >
                   {p}
                 </span>
@@ -73,7 +108,7 @@ function MobileCardSwitcher() {
               <p
                 className="font-semibold leading-snug"
                 style={{
-                  fontSize: 12,
+                  fontSize: 13,
                   color: "var(--foreground)",
                   letterSpacing: "-0.01em",
                 }}
@@ -87,7 +122,7 @@ function MobileCardSwitcher() {
                 style={{
                   fontFamily: "Georgia, 'Times New Roman', serif",
                   fontStyle: "italic",
-                  fontSize: 16,
+                  fontSize: 18,
                   color: "var(--foreground)",
                   letterSpacing: 0,
                 }}
@@ -95,7 +130,7 @@ function MobileCardSwitcher() {
                 {node.title}
               </p>
             )}
-            <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
+            <p className="leading-relaxed" style={{ fontSize: 13, color: "#3A352B", fontWeight: 400 }}>
               {node.brief}
             </p>
             {node.type === "horizon" && !node.comingSoon && (
@@ -107,6 +142,7 @@ function MobileCardSwitcher() {
             {isActionable && !node.comingSoon && (
               <span className="text-[9px] tracking-[0.14em] uppercase mt-1" style={{ color: "var(--foreground)" }}>View case study ↗</span>
             )}
+            </div>
           </Wrapper>
         </motion.div>
       </div>
@@ -147,14 +183,14 @@ function MobileCardSwitcher() {
   );
 }
 
-const CARD_W = 310;
+const CARD_W = 320;
 // Uniform image-band height for all project/horizon cards (image or placeholder).
 const CARD_IMG_H = 280;
 
 export default function SurferJourney() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
+    const check = () => setIsCompact(window.innerWidth < 1240);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -302,7 +338,7 @@ export default function SurferJourney() {
 
   const isPassed = passed;
 
-  if (isMobile) return <MobileCardSwitcher />;
+  if (isCompact) return <MobileCardSwitcher />;
 
   return (
     <div ref={containerRef} className="relative w-full" style={{ height: SVG_H }}>
@@ -317,13 +353,13 @@ export default function SurferJourney() {
       >
         <path
           ref={pathRef as React.Ref<SVGPathElement>}
-          d={WAVE_PATH_D} stroke="var(--border)" strokeWidth="1" fill="none" strokeLinecap="round"
+          d={WAVE_PATH_D} stroke="var(--border)" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.72"
         />
         <path
           ref={drawPathRef}
           d={WAVE_PATH_D}
-          stroke="var(--foreground)"
-          strokeWidth="1.5"
+          stroke="var(--accent)"
+          strokeWidth="2"
           fill="none"
           strokeLinecap="round"
         />
@@ -414,30 +450,30 @@ export default function SurferJourney() {
                   textAlign: isRight ? "left" : "right",
                   paddingLeft: isRight ? 12 : 0,
                   paddingRight: isRight ? 0 : 12,
-                  borderLeft: isRight ? "2px solid var(--border)" : "none",
-                  borderRight: !isRight ? "2px solid var(--border)" : "none",
+                  borderLeft: isRight ? "2px solid var(--accent)" : "none",
+                  borderRight: !isRight ? "2px solid var(--accent)" : "none",
                 }}
               >
                 <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
-                  <span className="text-[10px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)", opacity: 0.7 }}>
+                  <span className="text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)", opacity: 0.9 }}>
                     {node.period}
                   </span>
                   {node.pills?.map((p) => (
                     <span
                       key={p}
                       className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent", opacity: 0.7 }}
+                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.2)", opacity: 0.9 }}
                     >
                       {p}
                     </span>
                   ))}
                 </div>
                 {node.role && (
-                  <p className="font-semibold leading-snug" style={{ fontSize: 13, color: "var(--foreground)", letterSpacing: "-0.01em" }}>
+                  <p className="font-semibold leading-snug" style={{ fontSize: 14, color: "var(--foreground)", letterSpacing: "-0.01em", marginTop: 4 }}>
                     {node.role}
                   </p>
                 )}
-                <p className="font-light leading-relaxed" style={{ fontSize: 12, color: "var(--midtone)" }}>
+                <p className="leading-relaxed" style={{ fontSize: 13, color: "#3A352B", fontWeight: 400, marginTop: 5 }}>
                   {node.brief}
                 </p>
               </div>
@@ -465,7 +501,7 @@ export default function SurferJourney() {
           >
             <motion.div
               initial={false}
-              animate={{ opacity: 1, scale: inZone ? 1.05 : 1 }}
+              animate={{ opacity: 1, scale: inZone ? 1.055 : 1 }}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.5, ease: EASE }}
               style={{
@@ -475,12 +511,16 @@ export default function SurferJourney() {
                 display: "flex",
                 flexDirection: "column",
                 ...GLASS,
+                border: inZone ? "1px solid rgba(155,101,57,0.58)" : GLASS.border,
+                boxShadow: inZone
+                  ? "0 18px 48px rgba(36,33,23,0.18), 0 0 0 6px rgba(155,101,57,0.09), inset 0 1px 0 rgba(255,255,255,0.86)"
+                  : GLASS.boxShadow,
               }}
             >
               {/* Top section: image or placeholder */}
               <div
                 style={{
-                  background: "#C9C2B6",
+                  background: "linear-gradient(135deg, #CFC7B7 0%, #BEB39E 100%)",
                   minHeight: CARD_IMG_H,
                   height: CARD_IMG_H,
                   overflow: "hidden",
@@ -498,9 +538,21 @@ export default function SurferJourney() {
                       objectPosition: node.image.position ?? "center",
                       transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
                       display: "block",
+                      filter: inZone ? "saturate(1.04) contrast(1.03)" : "saturate(0.9) contrast(0.98)",
+                      transition: "filter 0.4s ease",
                     }}
                   />
                 )}
+                <div
+                  aria-hidden
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    boxShadow: "inset 0 -36px 56px rgba(36,33,23,0.12)",
+                    opacity: inZone ? 0.65 : 0.35,
+                    transition: "opacity 0.4s ease",
+                  }}
+                />
               </div>
 
               {/* Bottom section: content */}
@@ -509,18 +561,18 @@ export default function SurferJourney() {
                   padding: "14px 18px 16px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 8,
+                  gap: 9,
                 }}
               >
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: "var(--midtone)" }}>
+                  <span className="text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)" }}>
                     {node.period}
                   </span>
                   {node.pills?.map((p) => (
                     <span
                       key={p}
-                      className="text-[9px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "transparent" }}
+                      className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
+                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.24)" }}
                     >
                       {p}
                     </span>
@@ -528,7 +580,7 @@ export default function SurferJourney() {
                 </div>
                 {(node.role || node.title) && (
                   <p className="font-semibold leading-snug" style={{
-                    fontSize: 12,
+                    fontSize: 13,
                     color: "var(--foreground)",
                     letterSpacing: "-0.01em",
                   }}>
@@ -539,7 +591,7 @@ export default function SurferJourney() {
                   <p style={{
                     fontFamily: "Georgia, 'Times New Roman', serif",
                     fontStyle: "italic",
-                    fontSize: 16,
+                    fontSize: 18,
                     color: "var(--foreground)",
                     letterSpacing: 0,
                     lineHeight: 1.35,
@@ -547,15 +599,15 @@ export default function SurferJourney() {
                     {node.title}
                   </p>
                 )}
-                <p style={{ fontSize: 11, color: "var(--midtone)", lineHeight: 1.55, fontWeight: 300, marginTop: 2 }}>
+                <p style={{ fontSize: 13, color: "#3A352B", lineHeight: 1.55, fontWeight: 400, marginTop: 2 }}>
                   {node.brief}
                 </p>
                 {node.comingSoon ? (
-                  <span className="mt-1" style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                  <span className="mt-1" style={{ fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--midtone)" }}>
                     Coming Soon
                   </span>
                 ) : isActionable ? (
-                  <span className="mt-1" style={{ fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--midtone)" }}>
+                  <span className="mt-1 transition-colors duration-200 group-hover:text-[var(--foreground)]" style={{ fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: inZone ? "var(--foreground)" : "var(--midtone)" }}>
                     View Case Study ↗
                   </span>
                 ) : null}

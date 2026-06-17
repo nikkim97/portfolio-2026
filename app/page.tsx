@@ -243,7 +243,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
-                className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)] mb-5"
+                className="text-[10px] tracking-[0.22em] uppercase text-[var(--foreground)] mb-5"
               >
                 Niharika Mishra · Design Leader
               </motion.p>
@@ -257,8 +257,8 @@ export default function Home() {
                   <span style={{ color: "var(--accent)" }}>.</span>
                 </p>
                 <p
-                  className="font-light"
-                  style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "#3A3530", marginTop: 20, textWrap: "balance" }}
+                  className="font-normal"
+                  style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "var(--foreground)", marginTop: 20, textWrap: "balance" }}
                 >
                   <WordStaggerLine text={"I make complex things feel human. Let me take you on my journey so far."} startDelay={1.6} perWord={0.05} duration={0.9} />
                 </p>
