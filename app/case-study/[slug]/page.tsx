@@ -4,6 +4,7 @@ import Image from "next/image";
 import { journeyNodes } from "../../components/journeyData";
 import { caseStudies } from "../../components/caseStudyData";
 import { FONT } from "../../components/ui";
+import { IntroMetadataSection } from "../../components/caseStudyUI";
 
 export function generateStaticParams() {
   return journeyNodes
@@ -69,21 +70,21 @@ export default async function CaseStudyPage({
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
             {cs.role}
           </p>
           <h1
-            className="font-light"
-            style={{ fontSize: "clamp(32px, 5vw, 68px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "14ch" }}
+            className="font-light max-w-[1100px]"
+            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            {cs.title}<span style={{ color: "var(--accent)" }}>.</span>
+            {cs.intro}<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          <p
-            className="font-light leading-relaxed"
-            style={{ fontSize: "clamp(14px, 1.3vw, 17px)", color: "var(--midtone)", maxWidth: "60ch" }}
-          >
-            {cs.intro}
-          </p>
+          <IntroMetadataSection
+            role={cs.role}
+            timeline={cs.timeline}
+            platform={cs.platform}
+            results={cs.outcomeStats}
+          />
         </section>
 
         {/* ── Main image ── */}
@@ -101,7 +102,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* ── Problem ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">The Problem</p>
@@ -135,10 +136,10 @@ export default async function CaseStudyPage({
 
         {/* ── Process sections ── */}
         {cs.process.map((step, i) => (
-          <section key={i} className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+          <section key={i} className="py-16 flex flex-col gap-10">
             <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
               <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">
                   0{i + 1}
                 </p>
                 <h2
@@ -210,7 +211,7 @@ export default async function CaseStudyPage({
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link
             href="/"

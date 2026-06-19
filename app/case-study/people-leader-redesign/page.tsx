@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
-import { SectionLabel, SectionHeading, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+import { FONT } from "../../components/ui";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Prose, PullQuote } from "../../components/caseStudyUI";
 
 // Standard image: shows at natural height, full column width.
 function Figure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
-    <figure className="flex flex-col gap-2 sm:-mx-14">
+    <figure className="flex flex-col gap-2">
       <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
@@ -19,7 +19,7 @@ function Figure({ src, alt, caption }: { src: string; alt: string; caption?: str
 // full natural height — as long as they need to be.
 function TallFigure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
-    <figure className="flex flex-col gap-2 sm:-mx-14">
+    <figure className="flex flex-col gap-2">
       <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
@@ -38,7 +38,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -48,53 +48,28 @@ export default function PeopleLeaderRedesignCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-10">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
             Manager, Experience Design · PATH
           </p>
           <h1
-            className="font-light"
-            style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "14ch" }}
+            className="font-light max-w-[1100px]"
+            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            People Leader 2.0<span style={{ color: "var(--accent)" }}>.</span>
+            Preparing for a single calibration meant moving through 18+ screens. I helped collapse the work into four connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          <p className="font-light leading-relaxed" style={{ fontSize: "clamp(15px, 1.6vw, 19px)", color: "#3A3530", maxWidth: "60ch" }}>
-            Preparing for a single calibration meant moving through 18+ screens. The redesign brought it down to four — every input a leader needs, side by side on one page.
-          </p>
-          {/* Context card */}
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-            <div className="flex flex-col gap-5 p-6">
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  To prepare for calibration, leaders moved through 18+ screens — a table-based team list, separate feedback and results flows, and a multi-page profile builder. The fragmentation clashed with how leaders actually assess: holistically, synthesizing the associate&apos;s self-evaluation, peer feedback, and their own perspective.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Co-design lead on a cross-functional venture sprint — drove the &ldquo;My Team&rdquo; framework and the holistic, 360-degree associate view.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Platform</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Enterprise web · PATH</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Customer</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>People Leaders</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>3-day venture sprint · 2024</p>
-              </div>
-            </div>
-          </div>
+          <IntroMetadataSection
+            role="Design Lead for team of 3"
+            timeline="Nov 2025 - Feb 2026"
+            platform="Enterprise web"
+            results={[
+              { value: "18+ → 4", label: "screens collapsed into the My Team experience" },
+              { value: "72 hrs", label: "from discovery to a high-fidelity prototype" },
+            ]}
+          />
         </section>
 
         {/* ── Hero image ── */}
@@ -105,20 +80,13 @@ export default function PeopleLeaderRedesignCaseStudy() {
         />
 
         {/* ── The problem ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The problem</SectionLabel>
               <SectionHeading>18+ screens to prepare for one conversation</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Success metrics · OKRs</p>
-                <StatRow stats={[
-                  { value: "↓ 50%", label: "target cut in time leaders spend identifying people insights" },
-                  { value: "↑ > 80%", label: "people leaders satisfied with the PM cycle (67% at YE25)" },
-                ]} />
-              </div>
               <Prose>
                 <p>
                   To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>five-step flow — Overview, Key results, Strengths, Opportunities, Preview</strong> — to assemble every calibration profile.
@@ -145,7 +113,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         </section>
 
         {/* ── The insight ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The insight · 01</SectionLabel>
@@ -166,7 +134,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         </section>
 
         {/* ── The solution ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The solution · 02</SectionLabel>
@@ -194,7 +162,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         </section>
 
         {/* ── The process ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The process · 03</SectionLabel>
@@ -224,10 +192,24 @@ export default function PeopleLeaderRedesignCaseStudy() {
               <SectionHeading>From 18+ screens to four</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
-              <StatRow stats={[
-                { value: "18+ → 4", label: "screens collapsed into the My Team experience" },
-                { value: "72 hrs", label: "from discovery to a high-fidelity prototype" },
-              ]} />
+              <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
+                <div className="flex flex-1 flex-col items-center gap-1 text-center">
+                  <div className="font-semibold text-[clamp(40px,7vw,72px)] tracking-tight text-[var(--accent)]">
+                    18+ → 4
+                  </div>
+                  <div className="max-w-[20ch] text-base text-[var(--muted)] sm:text-lg">
+                    screens collapsed into the My Team experience
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <div className="font-semibold text-[clamp(40px,7vw,72px)] tracking-tight text-[var(--accent)]">
+                    76%
+                  </div>
+                  <div className="max-w-[28ch] text-base text-[var(--muted)] sm:text-lg">
+                    efficiency increase for PLs
+                  </div>
+                </div>
+              </div>
               <Prose>
                 <p>
                   The redesign brought a leader&apos;s entire calibration prep onto a few connected screens, with the inputs for a fair assessment side by side instead of scattered. Delivered as a high-fidelity prototype in 72 hours — what typically takes weeks of fragmented virtual work — its impact carried well past the sprint:
@@ -248,7 +230,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link
             href="/"

@@ -6,11 +6,13 @@ export interface CaseStudy {
   role: string;
   timeline: string;
   company: string;
+  platform: string;
   intro: string;
   mainImage: { src: string; alt: string };
   problem: { title: string; body: string; image?: { src: string; alt: string } };
   process: Array<{ title: string; body: string; images: { src: string; alt: string }[] }>;
   outcome: { title: string; body: string; images: { src: string; alt: string }[] };
+  outcomeStats?: { value: string; label: string }[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -20,6 +22,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Design & Research Lead, PM Pilots",
     timeline: "Oct 2023 – Jun 2024",
     company: "Capital One",
+    platform: "Web platform",
     intro: `The performance management system at Capital One was broken in a specific way: leaders and associates both had low trust in 360 feedback results. Not because the intention was wrong, but because the experience was. Templates were too generic, feedback was too positive to be useful, and the whole thing was disconnected from how performance was actually evaluated. Before we built anything, we needed to understand why.`,
     mainImage: { src: v("sa-xd-hero"), alt: "Performance Management Pilots" },
     problem: {
@@ -88,6 +91,11 @@ export const caseStudies: CaseStudy[] = [
         { src: v("sa-xd-outcome-2"), alt: "Growth as a designer: strategic foundations, cross-functional leadership, evidence-driven design" },
       ],
     },
+    outcomeStats: [
+      { value: "↑ 65%", label: "improvement in clarity & consistency of feedback received" },
+      { value: "↑ 58%", label: "improvement in feedback quality" },
+      { value: "↑ 52%", label: "improvement in actionability during live calibrations" },
+    ],
   },
 
   {
@@ -96,6 +104,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Design Lead, PATH",
     timeline: "Feb – Aug 2025",
     company: "Capital One",
+    platform: "Enterprise web · PATH performance platform",
     intro: `Calibrations is one of the most painful, inconsistent parts of performance management. Every org had their own tools, structures, and norms, which meant wide variability in how ratings were discussed, and how much people trusted the outcomes. I led design for PATH's calibrations ecosystem: a platform that needed to serve three distinct personas across the full calibration lifecycle, and scale to 20,000+ leaders.`,
     mainImage: { src: v("path-hero"), alt: "PATH Calibrations Ecosystem: distribution view" },
     problem: {
@@ -154,5 +163,9 @@ export const caseStudies: CaseStudy[] = [
         { src: v("path-growth"), alt: "Growth as a leader: orchestrating work, intentional alignment, stakeholder management" },
       ],
     },
+    outcomeStats: [
+      { value: "↑ 70%", label: "PLs satisfied with the PM experience" },
+      { value: "↑ >70%", label: "PLs confident in final ratings" },
+    ],
   },
 ];

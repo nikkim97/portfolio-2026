@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
-import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+import { FONT } from "../../components/ui";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
 
 // A row of native mobile screens. Each shot carries its own aspect ratio since
 // the source captures range from full device frames to cropped bottom sheets.
 function MobileShots({ shots, cols = 3 }: { shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[]; cols?: 3 | 4 }) {
   const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
-    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start sm:-mx-14`}>
+    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start`}>
       {shots.map((s, i) => (
         <Screenshot key={i} src={s.src} aspect={s.aspect ?? "390 / 844"} priority={s.priority} label={s.label} caption={s.caption} />
       ))}
@@ -24,7 +24,7 @@ export default function DiscoverIntegrationCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -34,46 +34,28 @@ export default function DiscoverIntegrationCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-10">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
             Manager, Experience Design · Capital One
           </p>
           <h1
-            className="font-light"
-            style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}
+            className="font-light max-w-[1100px]"
+            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Discover Integration Experience<span style={{ color: "var(--accent)" }}>.</span>
+            Discover customers needed to become Capital One customers without feeling disrupted. I designed onboarding and setup flows that made the migration feel clear, familiar, and worth completing<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          {/* Context card: role / problem statement | platform / timeline */}
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-            <div className="flex flex-col gap-5 p-6">
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  A debit customer swipes and spends; a banking customer runs their financial life with you. How do you move spenders across that line, without losing them in the switch?
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  UI lead: owned the &ldquo;spender&rdquo; framing and the end-to-end experience across First Time Experience and L2 setup, managing 2–3 junior designers and a content partner.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Platform</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Native mobile · iOS + Android</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Jan 2025 – Present</p>
-              </div>
-            </div>
-          </div>
+          <IntroMetadataSection
+            role="UI lead: spender framing, First Time Experience, L2 setup, and junior designer direction"
+            timeline="Jan 2025 – Present"
+            platform="Native mobile · iOS + Android"
+            results={[
+              { value: "↑ 89%", label: "customer volume retained" },
+              { value: "↓ 35%", label: "calls to front-line associates" },
+            ]}
+          />
         </section>
 
         {/* ── Hero image: the welcome animation, frame by frame ── */}
@@ -85,20 +67,13 @@ export default function DiscoverIntegrationCaseStudy() {
         ]} />
 
         {/* ── The problem ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The problem</SectionLabel>
               <SectionHeading>Converting people who spend into people who bank</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Success metrics · OKRs</p>
-                <StatRow stats={[
-                  { value: "↑ 89%", label: "customer volume retained" },
-                  { value: "↓ 35%", label: "calls to front-line associates" },
-                ]} />
-              </div>
               <Prose>
                 <p>
                   Discover cashback customers came in with one relationship: a debit card they spend on. Capital One needed them to become <em>full-time</em> customers: checking, savings, the accounts people actually run their lives through. That conversion is where the value of the whole integration lives, and it&apos;s the hardest behavior to change.
@@ -112,7 +87,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── The insight ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The insight</SectionLabel>
@@ -133,7 +108,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── Experience layer 1 ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The experience · 01</SectionLabel>
@@ -156,7 +131,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── Experience layer 2 ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The experience · 02</SectionLabel>
@@ -179,7 +154,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── The design solution ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The solution</SectionLabel>
@@ -201,7 +176,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── The hard part ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The hard part</SectionLabel>
@@ -240,7 +215,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link
             href="/"

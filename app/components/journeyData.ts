@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/pa-xd/hero-new.png", alt: "Calibrations Ecosystem: PATH rating distribution view shown on a laptop", position: "left center" },
+    // No image yet — card renders the built-in placeholder band.
   },
   {
     id: "people-leader-redesign",
@@ -125,34 +125,34 @@ export const WAVE_PATH_D = [
   "C 180,820 180,918 260,941",
   "C 340,964 550,1004 550,1039",
   // sa-xd → path-360 (direct)
-  "C 550,1119 50,1188 50,1223",
+  "C 550,1195 50,1285 50,1350",
   // path-360 → people-leader-redesign (cross to the right)
-  "C 50,1340 510,1430 510,1520",
+  "C 50,1467 510,1557 510,1647",
   // people-leader-redesign (right) → Discover (cross to the left)
-  "C 510,1620 110,1860 110,1990",
+  "C 510,1747 110,1952 110,2077",
   // LOOP 2: Discover → bloom (project → vibe coding), loops left then crosses to the right
-  "C 110,2070 170,2139 230,2151",
-  "C 290,2162 400,2156 420,2105",
-  "C 440,2053 320,2030 250,2076",
-  "C 180,2122 180,2208 260,2231",
-  "C 340,2254 525,2289 525,2323",
+  "C 110,2157 170,2226 230,2238",
+  "C 290,2249 400,2243 420,2192",
+  "C 440,2140 320,2117 250,2163",
+  "C 180,2209 180,2295 260,2318",
+  "C 340,2341 525,2376 525,2410",
   // bloom (right) → time-tracker (cross to the left)
-  "C 525,2390 75,2440 75,2500",
+  "C 525,2477 75,2547 75,2612",
   // tail
-  "C 75,2550 300,2585 300,2610",
+  "C 75,2662 300,2697 300,2722",
 ].join(" ");
 
 export const SVG_W = 600;
-export const SVG_H = 2790;
+export const SVG_H = 2902;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
   { x: 80,  y: 290,  side: "left"  }, // VISN
   { x: 490, y: 463,  side: "right" }, // asc-swe
   { x: 80,  y: 682,  side: "left"  }, // sr-swe
   { x: 550, y: 1039, side: "right" }, // sa-xd
-  { x: 50,  y: 1223, side: "left"  }, // path-360
-  { x: 510, y: 1520, side: "right" }, // people-leader-redesign
-  { x: 110, y: 1990, side: "left"  }, // Discover Integration (Manager, Experience Design)
-  { x: 525, y: 2323, side: "right" }, // bloom
-  { x: 75,  y: 2500, side: "left"  }, // time-tracker
+  { x: 50,  y: 1350, side: "left"  }, // path-360
+  { x: 510, y: 1647, side: "right" }, // people-leader-redesign
+  { x: 110, y: 2077, side: "left"  }, // Discover Integration (Manager, Experience Design)
+  { x: 525, y: 2410, side: "right" }, // bloom
+  { x: 75,  y: 2612, side: "left"  }, // time-tracker
 ];

@@ -1,9 +1,5 @@
-"use client";
-
-import { useState } from "react";
-
-// "Measuring what mattered" gallery. Manual only — navigate with the side
-// arrows (or dots). Each image shows at its natural height.
+// "Measuring what mattered" gallery. The first image sits full-width in its
+// own row; the remaining images share a second row.
 const SLIDES: { src: string; alt: string }[] = [
   { src: "/case-study/sa-xd/data-1.png", alt: "Measurement data: results across clarity, consistency, quality, and actionability" },
   { src: "/case-study/sa-xd/data-2.png", alt: "Measurement data, detail 2" },
@@ -12,60 +8,32 @@ const SLIDES: { src: string; alt: string }[] = [
   { src: "/case-study/sa-xd/data-5.png", alt: "Measurement data, detail 5" },
 ];
 
-export default function MeasureCarousel() {
-  const [index, setIndex] = useState(0);
-  const go = (i: number) => setIndex((i + SLIDES.length) % SLIDES.length);
-
-  const arrowStyle: React.CSSProperties = {
-    background: "rgba(245,241,235,0.85)",
-    backdropFilter: "blur(4px)",
-    border: "1px solid var(--border)",
-  };
-
+function Frame({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="relative w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={SLIDES[index].src}
-          alt={SLIDES[index].alt}
-          className="block w-full h-auto rounded-xl select-none"
-          draggable={false}
-        />
+    <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="block w-full h-auto rounded-xl select-none" draggable={false} />
+    </div>
+  );
+}
 
-        {/* Side arrows */}
-        <button
-          onClick={() => go(index - 1)}
-          aria-label="Previous image"
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-[var(--foreground)] hover:opacity-100 opacity-80 transition-opacity"
-          style={arrowStyle}
-        >
-          ←
-        </button>
-        <button
-          onClick={() => go(index + 1)}
-          aria-label="Next image"
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-[var(--foreground)] hover:opacity-100 opacity-80 transition-opacity"
-          style={arrowStyle}
-        >
-          →
-        </button>
+export default function MeasureCarousel() {
+  return (
+    <div className="flex flex-col gap-3">
+      {/* Row 1: one picture */}
+      <Frame src={SLIDES[0].src} alt={SLIDES[0].alt} />
+
+      {/* Row 2: two pictures */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
+        {SLIDES.slice(1, 3).map((s) => (
+          <Frame key={s.src} src={s.src} alt={s.alt} />
+        ))}
       </div>
 
-      {/* Dots */}
-      <div className="flex items-center justify-center gap-1.5">
-        {SLIDES.map((s, i) => (
-          <button
-            key={s.src}
-            onClick={() => go(i)}
-            aria-label={`Go to image ${i + 1}`}
-            className="rounded-full transition-all duration-200"
-            style={{
-              width: i === index ? 16 : 5,
-              height: 5,
-              background: i === index ? "var(--foreground)" : "var(--border)",
-            }}
-          />
+      {/* Row 3: the other two pictures */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
+        {SLIDES.slice(3, 5).map((s) => (
+          <Frame key={s.src} src={s.src} alt={s.alt} />
         ))}
       </div>
     </div>

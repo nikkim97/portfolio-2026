@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
-import AnimatedStat from "../../components/AnimatedStat";
+import { FONT } from "../../components/ui";
+import { IntroMetadataSection } from "../../components/caseStudyUI";
 import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
@@ -8,72 +8,38 @@ const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
 const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
-function Metrics({ label = "Outcomes", stats }: { label?: string; stats: { value: string; label: string }[] }) {
-  return (
-    <div className="flex flex-col gap-4 pb-2 border-b border-[var(--border)]">
-      <p className={`${LABEL} text-[var(--midtone)]`}>{label}</p>
-      <div className="flex flex-wrap gap-8">
-        {stats.map((s) => (
-          <div key={s.label} className="flex flex-col gap-1">
-            <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", letterSpacing: "-0.03em", color: "var(--pop)" }}><AnimatedStat value={s.value} /></p>
-            <p className="text-[11px] font-light tracking-wide" style={{ color: "var(--midtone)" }}>{s.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function VisnCaseStudy() {
   return (
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Rutgers University · Jan – May 2019</span>
         </div>
       </div>
 
       {/* ── Hero text ── */}
-      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pt-16 pb-12 flex flex-col gap-6">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-16 pb-12 flex flex-col gap-6">
         <p className={`${LABEL} text-[var(--accent)]`}>PM & Designer · Rutgers Capstone · Team of 4</p>
-        <h1 className="font-light" style={{ fontSize: "clamp(32px, 5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "16ch" }}>
-          VISN<span style={{ color: "var(--accent)" }}>.</span>
+        <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
+          Navigation without sight depends on fragmented tools. I helped design a wearable system that combined obstacle detection, direction, and route guidance through audio<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
-        {/* Context card: problem statement / role | platform / timeline */}
-        <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-          <div className="flex flex-col gap-5 p-6">
-            <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Problem statement</p>
-              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                No single wearable combined real-time object proximity, directional awareness, and turn-by-turn navigation in one accessible package. Could we tell someone who is visually impaired where they're going and what's in the way, all through their ears?
-              </p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Role</p>
-              <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                PM & designer on a team of 4: led product direction, owned the UX and interface design, and shaped the hardware and system design of the wearable.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-            <div className="flex flex-col gap-1">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Platform</p>
-              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Wearable hardware + software</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className={`${LABEL} text-[var(--midtone)]`}>Timeline</p>
-              <p className="font-light text-sm" style={{ color: "#3A3530" }}>Rutgers University · Jan – May 2019</p>
-            </div>
-          </div>
-        </div>
+        <IntroMetadataSection
+          role="PM & designer on a team of 4"
+          timeline="Rutgers University · Jan – May 2019"
+          platform="Wearable hardware + software"
+          results={[
+            { value: "2nd", label: "of 60 teams · capstone competition" },
+            { value: "5m", label: "obstacle-detection range" },
+          ]}
+        />
       </div>
 
       {/* ── Hero image ── */}
-      <div className="max-w-[1260px] mx-auto px-6 sm:px-24 pb-0">
-        <figure className="flex flex-col gap-4 sm:-mx-14">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
+        <figure className="flex flex-col gap-4">
           <ZoomableImage
             src="/visn/hero-image.png"
             alt="VISN hero image"
@@ -87,18 +53,14 @@ export default function VisnCaseStudy() {
       </div>
 
       {/* ── The Problem ── */}
-      <div className="max-w-[1260px] mx-auto px-6 sm:px-24">
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+      <div className="max-w-[1260px] mx-auto px-6 sm:px-10">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--accent)]`}>The problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Navigation without sight is a design problem</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <Metrics stats={[
-                { value: "2nd", label: "of 60 teams · capstone competition" },
-                { value: "5m", label: "obstacle-detection range" },
-              ]} />
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford: canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
                 <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout could detect nearby objects or read aloud what a camera saw. But no single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
@@ -107,7 +69,7 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-3 sm:-mx-14">
+          <figure className="flex flex-col gap-3">
             <ZoomableImage
               src="/visn/visn-poster.png"
               alt="VISN project poster presentation"
@@ -121,7 +83,7 @@ export default function VisnCaseStudy() {
         </section>
 
         {/* ── The System ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--accent)]`}>The approach</p>
@@ -135,7 +97,7 @@ export default function VisnCaseStudy() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <figure className="flex flex-col gap-2 sm:-mx-14">
+            <figure className="flex flex-col gap-2">
               <ZoomableImage
                 src="/visn/visn-circuit.png"
                 alt="VISN circuit diagram with Arduino Nano and sensors"
@@ -152,7 +114,7 @@ export default function VisnCaseStudy() {
         </section>
 
         {/* ── The Form Factor ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--accent)]`}>The design</p>
@@ -194,7 +156,7 @@ export default function VisnCaseStudy() {
         </section>
 
         {/* ── What We Shipped ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
@@ -221,7 +183,7 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <figure className="flex flex-col gap-4 sm:-mx-14">
+          <figure className="flex flex-col gap-4">
             <ZoomableImage
               src="/visn/visn-hero1.png"
               alt="VISN hero image"
@@ -237,7 +199,7 @@ export default function VisnCaseStudy() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link href="/" className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--foreground)] transition-colors duration-200">
             ← Back to portfolio

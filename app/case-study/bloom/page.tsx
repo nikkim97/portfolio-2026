@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
-import { SectionLabel, SectionHeading, Screenshot, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+import { FONT } from "../../components/ui";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
 
 export default function BloomCaseStudy() {
   return (
@@ -11,7 +11,7 @@ export default function BloomCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -21,55 +21,33 @@ export default function BloomCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-10">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
             Product Design · Vibe Coding
           </p>
           <h1
-            className="font-light"
-            style={{ fontSize: "clamp(32px, 5vw, 68px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "12ch" }}
+            className="font-light max-w-[1100px]"
+            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Bloom<span style={{ color: "var(--accent)" }}>.</span>
+            Most compatibility tools flatten people into generic traits. I used plant care as a warmer metaphor for emotional needs, daily rhythms, and relationship fit<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          {/* Context card: problem statement / role | platform / timeline */}
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-            <div className="flex flex-col gap-5 p-6">
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Most compatibility tools ask about values or love languages. Could plant care needs, water, light, roots, be a more honest metaphor for how two people actually function day to day?
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Product partner: directed the concept, trait framework, question design, and copy tone; Claude Code built and iterated.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Platform</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Web app</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026: two sessions, three days apart</p>
-              </div>
-            </div>
-          </div>
-          <StatRow stats={[
-            { value: "1 day", label: "idea to working app" },
-            { value: "8", label: "plant archetypes" },
-            { value: "6", label: "personality traits" },
-          ]} />
+          <IntroMetadataSection
+            role="Product partner: concept, trait framework, question design, and copy tone"
+            timeline="March 2026: two sessions, three days apart"
+            platform="Web app"
+            results={[
+              { value: "1 day", label: "idea to working app" },
+              { value: "8", label: "plant archetypes" },
+              { value: "6", label: "personality traits" },
+            ]}
+          />
         </section>
 
         {/* ── Hero image ── */}
-        <div className="sm:-mx-14">
+        <div>
           <Screenshot
             label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
             caption="V1 homepage running on localhost:3000, March 23 2026"
@@ -77,7 +55,7 @@ export default function BloomCaseStudy() {
         </div>
 
         {/* ── The concept ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The concept</SectionLabel>
@@ -95,7 +73,7 @@ export default function BloomCaseStudy() {
               </p>
             </Prose>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
               label="Trait map: plant care needs (water, light, roots, humidity, temp, growth) mapped to human personality equivalents"
               caption="The trait framework: plant care needs mapped to human personality"
@@ -108,7 +86,7 @@ export default function BloomCaseStudy() {
         </section>
 
         {/* ── The build ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The build</SectionLabel>
@@ -131,7 +109,7 @@ export default function BloomCaseStudy() {
             "Think of it like: I'm the product partner, Claude Code is the developer. You're the founder talking to both."
           </PullQuote>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
               label="Collaboration model: Claude establishing 'I'm the product partner, Claude Code is the developer'"
               caption="The collaboration model, established in the first session"
@@ -145,7 +123,7 @@ export default function BloomCaseStudy() {
         </section>
 
         {/* ── V1 ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>V1</SectionLabel>
@@ -164,7 +142,7 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
               label="V1 results page: Monstera meets Chinese Elephant Ear with trait bar charts side by side"
               caption="V1 results page: correct, but more data display than emotional resonance"
@@ -175,7 +153,7 @@ export default function BloomCaseStudy() {
             />
           </div>
 
-          <div className="sm:-mx-14">
+          <div>
             <Screenshot
               label="Debug moment: Claude identifying that two plants scoring identically isn't a bug, it's the data"
               caption="'It's not a bug, it's the data.' Claude acting like a product partner, not just a code executor"
@@ -185,7 +163,7 @@ export default function BloomCaseStudy() {
         </section>
 
         {/* ── Evolution ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>Evolution</SectionLabel>
@@ -207,7 +185,7 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:-mx-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
               label="Evolved plant cards: descriptions rewritten as character portraits, not trait profiles"
               caption="Plant cards after iteration: descriptions that read like portraits, not profiles"
@@ -218,7 +196,7 @@ export default function BloomCaseStudy() {
             />
           </div>
 
-          <div className="sm:-mx-14">
+          <div>
             <Screenshot
               label="Terminal: Claude confirming iteration complete: 'Check localhost:3000, run a quiz and see if the results feel more nuanced'"
               caption="'All three files updated. Check localhost:3000, run a quiz and see if the results feel more nuanced.'"
@@ -252,7 +230,7 @@ export default function BloomCaseStudy() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link
             href="/"

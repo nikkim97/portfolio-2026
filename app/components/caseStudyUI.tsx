@@ -130,6 +130,65 @@ export function IntroMetrics({ stats }: { stats: { value: string; label: string 
   );
 }
 
+export function IntroMetadataSection({
+  role,
+  timeline,
+  platform,
+  results,
+}: {
+  role: ReactNode;
+  timeline: ReactNode;
+  platform: ReactNode;
+  results?: { value: string; label: string }[];
+}) {
+  const metadata = [
+    { label: "My role", value: role },
+    { label: "Timeline", value: timeline },
+    { label: "Platform", value: platform },
+  ];
+
+  return (
+    <div className="flex flex-col gap-[2px]">
+      <div className="grid grid-cols-1 gap-[2px] md:grid-cols-3">
+        {metadata.map((item) => (
+          <div
+            key={item.label}
+            className="rounded-xl px-6 sm:px-8 py-5 flex flex-col gap-1 min-w-0"
+            style={{ background: "var(--card)" }}
+          >
+            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>
+              {item.label}
+            </p>
+            <div className="flex flex-col gap-1.5 text-[15px] sm:text-[16px] font-light leading-snug break-words" style={{ color: "#3A3530" }}>
+              <p>{item.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {results && results.length > 0 && (
+        <div className="rounded-xl px-6 sm:px-8 py-5" style={{ background: "var(--card)" }}>
+          <div className="flex flex-col gap-3">
+            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>Results</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
+              {results.map((result) => (
+                <div key={`${result.value}-${result.label}`} className="flex items-baseline gap-3">
+                  <span className="font-semibold tabular-nums shrink-0" style={{ color: "var(--pop)", fontSize: "clamp(20px, 4vw, 36px)", letterSpacing: "-0.03em" }}>
+                    <AnimatedStat value={result.value} />
+                  </span>
+                  <span className="text-[13px] sm:text-[15px] font-light leading-snug" style={{ color: "#3A3530" }}>
+                    {result.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function StatRow({ stats }: { stats: { value: string; label: string }[] }) {
   return (
     <div className="flex flex-wrap gap-8">

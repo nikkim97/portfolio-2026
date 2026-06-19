@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FONT, GLASS } from "../../components/ui";
-import { SectionLabel, SectionHeading, Screenshot, PhoneFrame, Prose, PullQuote, StatRow } from "../../components/caseStudyUI";
+import { FONT } from "../../components/ui";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, PhoneFrame, Prose, PullQuote } from "../../components/caseStudyUI";
 
 // Phone screenshots are portrait (~1:2) with the device frame baked in.
 const PHONE_ASPECT = "1/2";
@@ -19,7 +19,7 @@ function PillarKey() {
         <div
           key={p.label}
           className="flex flex-col gap-1.5 rounded-xl p-4"
-          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          style={{ background: "var(--card)" }}
         >
           <span className="flex items-center gap-2">
             <span className="inline-block rounded-full" style={{ width: 9, height: 9, background: p.color }} />
@@ -43,7 +43,7 @@ export default function TimeTrackerCaseStudy() {
         className="sticky top-0 z-40 border-b border-[var(--border)]"
         style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
       >
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-24 h-12 flex items-center justify-between">
+        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
@@ -53,51 +53,29 @@ export default function TimeTrackerCaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-24">
+      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-10">
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--midtone)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
             Product Design · Vibe Coding
           </p>
           <h1
-            className="font-light"
-            style={{ fontSize: "clamp(32px, 5vw, 68px)", letterSpacing: "-0.03em", lineHeight: 1.05, maxWidth: "12ch" }}
+            className="font-light max-w-[1100px]"
+            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Time Tracker<span style={{ color: "var(--accent)" }}>.</span>
+            People budget money carefully but rarely see where their time goes. I designed a lightweight tracker that makes the shape of a week visible enough to act on<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          {/* Context card: problem statement / role | platform / timeline */}
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] rounded-2xl overflow-hidden" style={GLASS}>
-            <div className="flex flex-col gap-5 p-6">
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Problem statement</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  We budget money down to the dollar but almost no one budgets time. Where does your time actually go, and can you see it clearly enough to spend it on what matters?
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Role</p>
-                <p className="font-light text-sm leading-relaxed" style={{ color: "#3A3530" }}>
-                  Product partner: set the concept, the four life pillars, and the "spec first" approach; Claude Code built to the spec.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5 p-6 sm:border-l border-[var(--border)]">
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Platform</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>Web app</p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--midtone)]">Timeline</p>
-                <p className="font-light text-sm" style={{ color: "#3A3530" }}>March 2026: spec first, then built to it</p>
-              </div>
-            </div>
-          </div>
-          <StatRow stats={[
-            { value: "4", label: "life pillars" },
-            { value: "1", label: "categorization rule" },
-            { value: "0", label: "databases in V1, on purpose" },
-          ]} />
+          <IntroMetadataSection
+            role='Product partner: concept, four life pillars, and "spec first" approach'
+            timeline="March 2026: spec first, then built to it"
+            platform="Web app"
+            results={[
+              { value: "4", label: "life pillars" },
+              { value: "1", label: "categorization rule" },
+              { value: "0", label: "databases in V1, on purpose" },
+            ]}
+          />
         </section>
 
         {/* ── Hero image (placeholder: to fill later) ── */}
@@ -109,7 +87,7 @@ export default function TimeTrackerCaseStudy() {
         </PhoneFrame>
 
         {/* ── The concept ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The concept</SectionLabel>
@@ -128,7 +106,7 @@ export default function TimeTrackerCaseStudy() {
               <PillarKey />
             </Prose>
           </div>
-          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2 sm:-mx-14">
+          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2">
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v2.1.png"
@@ -158,7 +136,7 @@ export default function TimeTrackerCaseStudy() {
         </section>
 
         {/* ── The decision ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The decision</SectionLabel>
@@ -178,7 +156,7 @@ export default function TimeTrackerCaseStudy() {
             &ldquo;Who you&apos;re with determines the pillar. A hike with your kids is Family, not Self-Care. Self-Care is strictly solo time.&rdquo;
           </PullQuote>
 
-          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2 sm:-mx-14">
+          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2">
             <div className="flex-none w-[232px]">
               <Screenshot
                 src="/case-study/time-track/onboard.png"
@@ -215,7 +193,7 @@ export default function TimeTrackerCaseStudy() {
         </section>
 
         {/* ── Evolution: V1 → V2 ── */}
-        <section className="py-16 flex flex-col gap-10 border-b border-[var(--border)]">
+        <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>Evolution</SectionLabel>
@@ -234,7 +212,7 @@ export default function TimeTrackerCaseStudy() {
             </Prose>
           </div>
 
-          <div className="flex flex-wrap gap-6 justify-center sm:-mx-14">
+          <div className="flex flex-wrap gap-6 justify-center">
             <PhoneFrame maxWidth={232}>
               <Screenshot
                 src="/case-study/time-track/v1.1.png"
@@ -281,7 +259,7 @@ export default function TimeTrackerCaseStudy() {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="py-10 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
           <Link
             href="/"
