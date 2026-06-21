@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FONT } from "../../components/ui";
 import AnimatedStat from "../../components/AnimatedStat";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
+import LightboxFrame from "../../components/LightboxFrame";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
@@ -12,13 +14,6 @@ const LIVE_CALIBRATION_PRINCIPLES = [
   "Drag-and-drop movement so people leaders and facilitators could move associates during live conversation, instead of managing the room manually in Google Sheets.",
   "Distribution data that helped people leaders and session facilitators track each session by percentage and pie chart, making it clear whether the calibration met requirements set by senior org leaders.",
 ];
-const PREP_CALIBRATION_MARKERS = [
-  { label: "01", text: "Bulk select, create session, and combine session CTAs" },
-  { label: "02", text: "Session card title and role context" },
-  { label: "03", text: "Card-level edit, share, and delete actions" },
-  { label: "04", text: "Key roles card for assigned session responsibilities" },
-];
-
 type ImageMarker = {
   label: string;
   targetLeft: number;
@@ -40,65 +35,67 @@ function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: strin
 
 function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center", markers = [] }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string; markers?: ImageMarker[] }) {
   return (
-    <div className="relative" style={{ aspectRatio: aspect }}>
-      <div
-        className="relative overflow-hidden rounded-xl h-full"
-        style={{ background: "var(--card)" }}
-      >
-        <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit, objectPosition: position }} />
+    <LightboxFrame alt={alt}>
+      <div className="relative" style={{ aspectRatio: aspect }}>
+        <div
+          className="relative overflow-hidden rounded-xl h-full"
+          style={{ background: "var(--card)" }}
+        >
+          <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit, objectPosition: position }} />
+        </div>
+        {markers.length > 0 && (
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <marker
+                id={`arrow-${src.replace(/[^a-z0-9]/gi, "-")}`}
+                markerWidth="8"
+                markerHeight="8"
+                refX="6"
+                refY="4"
+                orient="auto"
+                markerUnits="strokeWidth"
+              >
+                <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+            {markers.map((marker) => (
+              <line
+                key={`${src}-line-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
+                x1={marker.badgeLeft}
+                y1={marker.badgeTop}
+                x2={marker.targetLeft}
+                y2={marker.targetTop}
+                stroke="var(--accent)"
+                strokeWidth="0.8"
+                markerEnd={`url(#arrow-${src.replace(/[^a-z0-9]/gi, "-")})`}
+              />
+            ))}
+          </svg>
+        )}
+        {markers.map((marker) => (
+          <span
+            key={`${src}-marker-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
+            aria-hidden
+            className="absolute pointer-events-none flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.08em]"
+            style={{
+              left: `${marker.badgeLeft}%`,
+              top: `${marker.badgeTop}%`,
+              color: "var(--background)",
+              background: "var(--accent)",
+              border: "2px solid rgba(255,255,255,0.94)",
+              boxShadow: "0 0 0 6px rgba(155,101,57,0.18), 0 12px 28px rgba(0,0,0,0.18)",
+            }}
+          >
+            {marker.label}
+          </span>
+        ))}
       </div>
-      {markers.length > 0 && (
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <marker
-              id={`arrow-${src.replace(/[^a-z0-9]/gi, "-")}`}
-              markerWidth="8"
-              markerHeight="8"
-              refX="6"
-              refY="4"
-              orient="auto"
-              markerUnits="strokeWidth"
-            >
-              <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)" />
-            </marker>
-          </defs>
-          {markers.map((marker) => (
-            <line
-              key={`${src}-line-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
-              x1={marker.badgeLeft}
-              y1={marker.badgeTop}
-              x2={marker.targetLeft}
-              y2={marker.targetTop}
-              stroke="var(--accent)"
-              strokeWidth="0.8"
-              markerEnd={`url(#arrow-${src.replace(/[^a-z0-9]/gi, "-")})`}
-            />
-          ))}
-        </svg>
-      )}
-      {markers.map((marker) => (
-        <span
-          key={`${src}-marker-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
-          aria-hidden
-          className="absolute pointer-events-none flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.08em]"
-          style={{
-            left: `${marker.badgeLeft}%`,
-            top: `${marker.badgeTop}%`,
-            color: "var(--background)",
-            background: "var(--accent)",
-            border: "2px solid rgba(255,255,255,0.94)",
-            boxShadow: "0 0 0 6px rgba(155,101,57,0.18), 0 12px 28px rgba(0,0,0,0.18)",
-          }}
-        >
-          {marker.label}
-        </span>
-      ))}
-    </div>
+    </LightboxFrame>
   );
 }
 
@@ -132,7 +129,8 @@ export default function Path360CaseStudy() {
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Capital One · 2023 – 2025</span>
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2023 – 2025</span>
+          <NextProjectLink currentHref="/case-study/path-360" />
         </div>
       </div>
 
@@ -144,7 +142,7 @@ export default function Path360CaseStudy() {
         </h1>
         <IntroMetadataSection
           role="Lead product designer"
-          timeline="May 2024 – Jun 2025"
+          timeline="Dec 2024 – June 2025"
           platform="Enterprise web platform"
           results={[
             { value: "↑ 70%", label: "PLs satisfied with the PM experience" },
@@ -170,7 +168,7 @@ export default function Path360CaseStudy() {
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Calibration is where performance decisions actually get made. Leaders gather, sometimes with a room full of peers, to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
                 <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale, across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
-                <p>My role: lead design for the end-to-end calibration experience within PATH, from how sessions are created and managed, to what leaders see in the room when decisions are being made.</p>
+                <p>My role: lead design for the end-to-end calibration ecosystem within PATH, our performance platform—from how sessions are created and managed to what leaders see in the room when decisions are being made.</p>
               </div>
             </div>
           </div>
@@ -230,35 +228,19 @@ export default function Path360CaseStudy() {
                 alt="Session management UI showing session details and setup controls"
                 aspect="1/1"
                 fit="cover"
-                markers={[
-                  { label: "01", targetLeft: 78, targetTop: 35.5, badgeLeft: 103, badgeTop: 16 },
-                  { label: "02", targetLeft: 49, targetTop: 46, badgeLeft: 50, badgeTop: -7 },
-                  { label: "03", targetLeft: 29, targetTop: 58.5, badgeLeft: -7, badgeTop: 72 },
-                ]}
               />
               <Img
                 src="/case-study/pa-xd/manage2.png"
                 alt="Session management UI showing rating distribution and calibration prep"
                 aspect="1/1"
                 fit="cover"
-                markers={[
-                  { label: "04", targetLeft: 76, targetTop: 62, badgeLeft: 104, badgeTop: 74 },
-                ]}
               />
-              <Img src="/case-study/pa-xd/manage3.png" alt="Session management UI showing manager preparation details" aspect="1/1" fit="cover" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
-              {PREP_CALIBRATION_MARKERS.map((marker) => (
-                <div key={marker.label} className="flex items-start gap-3 rounded-xl px-4 py-3" style={{ background: "var(--card)" }}>
-                  <span
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold tracking-[0.08em]"
-                    style={{ color: "var(--background)", background: "var(--accent)" }}
-                  >
-                    {marker.label}
-                  </span>
-                  <p className="m-0 text-[12px] leading-relaxed" style={{ color: "#3A3530" }}>{marker.text}</p>
-                </div>
-              ))}
+              <Img
+                src="/case-study/pa-xd/manage3.png"
+                alt="Session management UI showing manager preparation details"
+                aspect="1/1"
+                fit="cover"
+              />
             </div>
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management: giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
@@ -273,22 +255,6 @@ export default function Path360CaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>Live calibrations are the hard part. We built this experience for two core personas: people leaders making talent decisions and facilitators responsible for keeping the session structured, fair, and moving. The room has multiple leaders, one shared screen, limited time, and years of performance data that need to resolve into actionable decisions.</p>
-              <div className="not-prose flex flex-col gap-3 pt-1">
-                {LIVE_CALIBRATION_PRINCIPLES.map((principle, index) => (
-                  <div key={principle} className="flex gap-3">
-                    <span className="relative mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping" />
-                      <span
-                        className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold"
-                        style={{ background: "var(--accent)", color: "var(--background)" }}
-                      >
-                        {index + 1}
-                      </span>
-                    </span>
-                    <p className="m-0 text-[14px] sm:text-[15px] leading-relaxed" style={{ color: "#3A3530" }}>{principle}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -296,6 +262,23 @@ export default function Path360CaseStudy() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
               <div className="md:col-span-2">
                 <Img src="/case-study/pa-xd/image4.1.png" alt="Live calibration UI showing session management, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
+              </div>
+              <div className="grid grid-cols-1 gap-2 md:col-span-2 sm:grid-cols-2">
+                {LIVE_CALIBRATION_PRINCIPLES.map((principle, index) => (
+                  <div
+                    key={principle}
+                    className={`flex items-start gap-3 rounded-xl px-4 py-3 ${index === 2 ? "sm:col-span-2" : ""}`}
+                    style={{ background: "var(--card)" }}
+                  >
+                    <span
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                      style={{ background: "var(--accent)", color: "var(--background)" }}
+                    >
+                      {index + 1}
+                    </span>
+                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "#3A3530" }}>{principle}</p>
+                  </div>
+                ))}
               </div>
               <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "#3A3530" }}>
                 The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
@@ -389,12 +372,14 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a leader</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Building PATH taught me what it means to design at enterprise scale, where the system has to hold for every edge case, not just the happy path.</p>
+              <p>Building this ecosystem taught me what it means to design at enterprise scale, where the system has to hold for every edge case, not just the happy path.</p>
               <p>The work that mattered most wasn't the interface. It was the alignment work: getting HR, engineering, product, and business stakeholders onto the same model of what calibration should do and for whom. Design was the medium for that conversation.</p>
               <p>I also learned that launching isn't the end. The most valuable research happened after PATH was in the field, when real users surfaced problems we never would have caught in a lab.</p>
             </div>
           </div>
         </section>
+
+        <NextProjectCard currentHref="/case-study/path-360" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

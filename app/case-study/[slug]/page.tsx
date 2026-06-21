@@ -5,6 +5,8 @@ import { journeyNodes } from "../../components/journeyData";
 import { caseStudies } from "../../components/caseStudyData";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
+import LightboxFrame from "../../components/LightboxFrame";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 export function generateStaticParams() {
   return journeyNodes
@@ -29,7 +31,8 @@ export default async function CaseStudyPage({
       <main className="min-h-screen flex flex-col" style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
         <div className="w-full border-b border-[var(--border)] px-6 sm:px-16 h-12 flex items-center justify-between max-w-5xl mx-auto">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">{node.pills?.join(" · ")}</span>
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">{node.pills?.join(" · ")}</span>
+          <NextProjectLink currentHref={`/case-study/${slug}`} />
         </div>
         <div className="flex-1 flex flex-col justify-center max-w-5xl mx-auto w-full px-6 sm:px-16 py-24 gap-8">
           <h1 className="font-semibold" style={{ fontSize: "clamp(40px, 6vw, 80px)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>
@@ -43,6 +46,9 @@ export default async function CaseStudyPage({
           <Link href="/" className="text-[11px] font-normal tracking-[0.2em] uppercase mt-4 self-start border-b border-[var(--border)] pb-0.5 hover:border-[var(--foreground)] hover:text-[var(--foreground)] text-[var(--midtone)] transition-colors duration-200">
             Back to portfolio
           </Link>
+        </div>
+        <div className="max-w-5xl mx-auto w-full px-6 sm:px-16">
+          <NextProjectCard currentHref={`/case-study/${slug}`} />
         </div>
         <footer className="max-w-5xl mx-auto w-full px-6 sm:px-16 py-8 border-t border-[var(--border)]">
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
@@ -60,9 +66,10 @@ export default async function CaseStudyPage({
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
             {cs.company} · {cs.timeline}
           </span>
+          <NextProjectLink currentHref={`/case-study/${slug}`} />
         </div>
       </div>
 
@@ -88,18 +95,20 @@ export default async function CaseStudyPage({
         </section>
 
         {/* ── Main image ── */}
-        <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-          {cs.mainImage.src && (
-            <Image
-              src={cs.mainImage.src}
-              alt={cs.mainImage.alt}
-              width={1280}
-              height={720}
-              className="w-full h-full object-cover"
-              priority
-            />
-          )}
-        </div>
+        <LightboxFrame alt={cs.mainImage.alt}>
+          <div className="w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
+            {cs.mainImage.src && (
+              <Image
+                src={cs.mainImage.src}
+                alt={cs.mainImage.alt}
+                width={1280}
+                height={720}
+                className="w-full h-full object-cover"
+                priority
+              />
+            )}
+          </div>
+        </LightboxFrame>
 
         {/* ── Problem ── */}
         <section className="py-16 flex flex-col gap-10">
@@ -120,17 +129,19 @@ export default async function CaseStudyPage({
             />
           </div>
           {cs.problem.image && (
-            <div className="w-full rounded-xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
-              {cs.problem.image.src && (
-                <Image
-                  src={cs.problem.image.src}
-                  alt={cs.problem.image.alt}
-                  width={1280}
-                  height={720}
-                  className="w-full h-full object-cover"
-                />
-              )}
-            </div>
+            <LightboxFrame alt={cs.problem.image.alt}>
+              <div className="w-full rounded-xl overflow-hidden" style={{ aspectRatio: "16/9", background: "var(--card)" }}>
+                {cs.problem.image.src && (
+                  <Image
+                    src={cs.problem.image.src}
+                    alt={cs.problem.image.alt}
+                    width={1280}
+                    height={720}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+            </LightboxFrame>
           )}
         </section>
 
@@ -158,17 +169,19 @@ export default async function CaseStudyPage({
             {step.images.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {step.images.map((img, j) => (
-                  <div key={j} className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                    {img.src && (
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={800}
-                        height={600}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
-                  </div>
+                  <LightboxFrame key={j} alt={img.alt}>
+                    <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
+                      {img.src && (
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={800}
+                          height={600}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                    </div>
+                  </LightboxFrame>
                 ))}
               </div>
             )}
@@ -195,20 +208,24 @@ export default async function CaseStudyPage({
           </div>
           <div className="grid grid-cols-2 gap-4">
             {cs.outcome.images.map((img, i) => (
-              <div key={i} className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
-                {img.src && (
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
+              <LightboxFrame key={i} alt={img.alt}>
+                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "4/3", background: "var(--card)" }}>
+                  {img.src && (
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              </LightboxFrame>
             ))}
           </div>
         </section>
+
+        <NextProjectCard currentHref={`/case-study/${slug}`} />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

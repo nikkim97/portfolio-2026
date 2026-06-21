@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Prose, PullQuote } from "../../components/caseStudyUI";
+import LightboxFrame from "../../components/LightboxFrame";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 // Standard image: shows at natural height, full column width.
 function Figure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
     <figure className="flex flex-col gap-2">
-      <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
-      </div>
+      <LightboxFrame alt={alt}>
+        <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
+        </div>
+      </LightboxFrame>
       {caption && <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">{caption}</figcaption>}
     </figure>
   );
@@ -20,10 +24,12 @@ function Figure({ src, alt, caption }: { src: string; alt: string; caption?: str
 function TallFigure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
     <figure className="flex flex-col gap-2">
-      <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
-      </div>
+      <LightboxFrame alt={alt}>
+        <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
+        </div>
+      </LightboxFrame>
       {caption && <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">{caption}</figcaption>}
     </figure>
   );
@@ -42,9 +48,10 @@ export default function PeopleLeaderRedesignCaseStudy() {
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
             Capital One · 2024
           </span>
+          <NextProjectLink currentHref="/case-study/people-leader-redesign" />
         </div>
       </div>
 
@@ -72,18 +79,34 @@ export default function PeopleLeaderRedesignCaseStudy() {
           />
         </section>
 
-        {/* ── Hero image ── */}
-        <Figure
-          src="/case-study/pl-redesign/tab0.png"
-          alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
-          caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
-        />
+        {/* ── The process ── */}
+        <section className="py-16 flex flex-col gap-10">
+          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
+            <div className="flex flex-col gap-2">
+              <SectionLabel>The process · 01</SectionLabel>
+              <SectionHeading>A 3-day, in-person venture sprint</SectionHeading>
+            </div>
+            <Prose>
+              <p>
+                A cross-functional team ran a three-day, in-person discovery sprint with one goal: a high-fidelity prototype by day four. Two product partners kept the work anchored in real needs while another designer and I shaped the framework. I then led a team of four designers in translating that framework into an interactive prototype.
+              </p>
+              <p>
+                The format did the heavy lifting. Being in the same room collapsed weeks of fragmented virtual meetings into <strong>72 focused hours</strong> — discovery, framework, and a shared high-fidelity prototype, end to end.
+              </p>
+            </Prose>
+          </div>
+          <Figure
+            src="/case-study/pl-redesign/group.png"
+            alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
+            caption="Three days, in person: discovery → framework → high-fidelity prototype"
+          />
+        </section>
 
         {/* ── The problem ── */}
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The problem</SectionLabel>
+              <SectionLabel>The problem · 02</SectionLabel>
               <SectionHeading>18+ screens to prepare for one conversation</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
@@ -100,15 +123,32 @@ export default function PeopleLeaderRedesignCaseStudy() {
 
           <div className="flex flex-col gap-6">
             <Figure
+              src="/case-study/pl-redesign/tab0.png"
+              alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
+              caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
+            />
+            <Figure
               src="/case-study/pl-redesign/old-myteam-table.png"
               alt="The old table-based My Team: a row per associate, with feedback, results, and the calibration profile each behind a separate link"
               caption="Before: the table-based 'My Team' — a row per person, every input behind its own link"
             />
-            <TallFigure
-              src="/case-study/pl-redesign/old-profile-builder.png"
-              alt="The old calibration profile builder: a separate multi-step flow with Overview, Key results, Strengths, Opportunities, and Preview steps"
-              caption="Before: each calibration profile was assembled in a separate five-step flow"
-            />
+            <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
+              <TallFigure
+                src="/case-study/pl-redesign/old-1.png"
+                alt="Legacy calibration profile workflow, screen one"
+              />
+              <TallFigure
+                src="/case-study/pl-redesign/old-2.png"
+                alt="Legacy calibration profile workflow, screen two"
+              />
+              <TallFigure
+                src="/case-study/pl-redesign/old-3.png"
+                alt="Legacy calibration profile workflow, screen three"
+              />
+            </div>
+            <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
+              Before: each calibration profile was assembled across a separate multi-step flow
+            </p>
           </div>
         </section>
 
@@ -116,7 +156,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The insight · 01</SectionLabel>
+              <SectionLabel>The insight · 03</SectionLabel>
               <SectionHeading>Leaders assess people, not rows in a table</SectionHeading>
             </div>
             <Prose>
@@ -137,7 +177,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The solution · 02</SectionLabel>
+              <SectionLabel>The solution · 04</SectionLabel>
               <SectionHeading>Four screens, everything side by side</SectionHeading>
             </div>
             <Prose>
@@ -161,34 +201,11 @@ export default function PeopleLeaderRedesignCaseStudy() {
           />
         </section>
 
-        {/* ── The process ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>The process · 03</SectionLabel>
-              <SectionHeading>A 3-day, in-person venture sprint</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                A cross-functional team ran a three-day, in-person discovery sprint with one goal: a high-fidelity prototype by day four. Design leads Niharika Mishra and Marina Sheridan drove the framework, product partners Tyler Benjamin and Matt Oliver kept it anchored to real needs, and Sean Kelly translated the &ldquo;My Team&rdquo; framework into the interaction model and led the accessibility review.
-              </p>
-              <p>
-                The format did the heavy lifting. Being in the same room collapsed weeks of fragmented virtual meetings into <strong>72 focused hours</strong> — discovery, framework, and a shared high-fidelity prototype, end to end.
-              </p>
-            </Prose>
-          </div>
-          <Figure
-            src="/case-study/pl-redesign/group.png"
-            alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
-            caption="Three days, in person: discovery → framework → high-fidelity prototype"
-          />
-        </section>
-
         {/* ── Outcome ── */}
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Outcome</SectionLabel>
+              <SectionLabel>Outcome · 05</SectionLabel>
               <SectionHeading>From 18+ screens to four</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
@@ -228,6 +245,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
             caption="The redesigned calibration profile — assembled in the flow, not a separate five-step build"
           />
         </section>
+
+        <NextProjectCard currentHref="/case-study/people-leader-redesign" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

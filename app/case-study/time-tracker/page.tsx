@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, PhoneFrame, Prose, PullQuote } from "../../components/caseStudyUI";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 // Phone screenshots are portrait (~1:2) with the device frame baked in.
 const PHONE_ASPECT = "1/2";
@@ -47,9 +48,10 @@ export default function TimeTrackerCaseStudy() {
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
             Personal Project · 2026
           </span>
+          <NextProjectLink currentHref="/case-study/time-tracker" />
         </div>
       </div>
 
@@ -257,6 +259,8 @@ export default function TimeTrackerCaseStudy() {
             </Prose>
           </div>
         </section>
+
+        <NextProjectCard currentHref="/case-study/time-tracker" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

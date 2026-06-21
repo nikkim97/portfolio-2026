@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
@@ -16,18 +17,19 @@ export default function VisnCaseStudy() {
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">Rutgers University · Jan – May 2019</span>
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Rutgers University · Jan – May 2019</span>
+          <NextProjectLink currentHref="/case-study/visn" />
         </div>
       </div>
 
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-16 pb-12 flex flex-col gap-6">
-        <p className={`${LABEL} text-[var(--accent)]`}>PM & Designer · Rutgers Capstone · Team of 4</p>
+        <p className={`${LABEL} text-[var(--accent)]`}>PM & Engineer</p>
         <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
-          Navigation without sight depends on fragmented tools. I helped design a wearable system that combined obstacle detection, direction, and route guidance through audio<span style={{ color: "var(--accent)" }}>.</span>
+          Navigation without sight is a design problem. I designed a wearable tool that combined obstacle detection & route guidance through audio<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
         <IntroMetadataSection
-          role="PM & designer on a team of 4"
+          role="PM & Engineer"
           timeline="Rutgers University · Jan – May 2019"
           platform="Wearable hardware + software"
           results={[
@@ -63,7 +65,7 @@ export default function VisnCaseStudy() {
             <div className="flex flex-col gap-8">
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford: canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
-                <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout could detect nearby objects or read aloud what a camera saw. But no single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
+                <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout didn&apos;t exist back in 2019. No single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
                 <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing, all through your ears, hands-free.</p>
               </div>
             </div>
@@ -197,6 +199,8 @@ export default function VisnCaseStudy() {
           </figure>
 
         </section>
+
+        <NextProjectCard currentHref="/case-study/visn" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

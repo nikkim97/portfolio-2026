@@ -1,3 +1,5 @@
+import LightboxFrame from "../../components/LightboxFrame";
+
 // "Measuring what mattered" gallery. The first image sits full-width in its
 // own row; the remaining images share a second row.
 const SLIDES: { src: string; alt: string }[] = [
@@ -10,10 +12,12 @@ const SLIDES: { src: string; alt: string }[] = [
 
 function Frame({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="block w-full h-auto rounded-xl select-none" draggable={false} />
-    </div>
+    <LightboxFrame alt={alt}>
+      <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} className="block w-full h-auto rounded-xl select-none" draggable={false} />
+      </div>
+    </LightboxFrame>
   );
 }
 

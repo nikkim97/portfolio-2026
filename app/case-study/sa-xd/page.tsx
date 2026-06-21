@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FONT } from "../../components/ui";
 import AnimatedStat from "../../components/AnimatedStat";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
+import LightboxFrame from "../../components/LightboxFrame";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 import MeasureCarousel from "./MeasureCarousel";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
@@ -13,18 +15,20 @@ const CARD = {
 
 function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover" }) {
   return (
-    <div
-      className="relative w-full overflow-hidden rounded-xl"
-      style={{ aspectRatio: aspect, background: "var(--card)" }}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 1024px) 100vw, 1024px"
-        style={{ objectFit: fit }}
-      />
-    </div>
+    <LightboxFrame alt={alt}>
+      <div
+        className="relative w-full overflow-hidden rounded-xl"
+        style={{ aspectRatio: aspect, background: "var(--card)" }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 1024px"
+          style={{ objectFit: fit }}
+        />
+      </div>
+    </LightboxFrame>
   );
 }
 
@@ -57,17 +61,18 @@ export default function SaXdCaseStudy() {
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
+          <NextProjectLink currentHref="/case-study/sa-xd" />
         </div>
       </div>
 
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-20 pb-14 flex flex-col gap-10">
         <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
-          Leaders and associates both distrusted 360 feedback. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
+          Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
         <IntroMetadataSection
           role="Design and research lead"
-          timeline="2023–2024"
+          timeline="Dec 2023 – Sept 2024"
           platform="Web platform"
           results={[
             { value: "↑ 58%", label: "gained clarity on development opportunities" },
@@ -77,13 +82,20 @@ export default function SaXdCaseStudy() {
       </div>
 
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/case-study/sa-xd/xd-1.png"
-          alt="Where the 360 feedback experience broke down across the performance cycle"
-          className="block w-full h-auto rounded-xl select-none"
-          draggable={false}
-        />
+        <figure className="flex flex-col gap-3">
+          <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/case-study/sa-xd/xd-1.png"
+              alt="Where the 360 feedback experience broke down across the performance cycle"
+              className="block w-full h-auto rounded-xl select-none"
+              draggable={false}
+            />
+          </LightboxFrame>
+          <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
+            Performance management end-to-end process. Highlighted areas represent selected scope.
+          </figcaption>
+        </figure>
       </div>
 
       {/* ── The Problem ── */}
@@ -97,21 +109,23 @@ export default function SaXdCaseStudy() {
             <div className="flex flex-col gap-8">
               <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
                 <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive, not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest. People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
-                <p>We interviewed leaders and associates and looked closely at how feedback was actually being written and read. The same patterns kept surfacing: people discounted feedback they couldn&apos;t <em>put in context</em>, and they <em>softened their input</em> when they <em>weren&apos;t sure how it would be used</em> or who would see it.</p>
+                <p>We interviewed leaders and associates and looked closely at how feedback was actually being written and read. The same patterns kept surfacing: people discounted feedback they couldn&apos;t <strong>put in context</strong>, and they <strong>softened their input</strong> when they weren&apos;t sure <strong>how it would be used</strong> or who would see it.</p>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="w-full overflow-hidden rounded-xl aspect-[1422/652]" style={{ background: "var(--card)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/case-study/sa-xd/xd-1.1.png"
-                alt="Detail of the 360 feedback experience breakdown"
-                className="block w-full h-full object-cover object-top select-none"
-                draggable={false}
-              />
-            </div>
+            <LightboxFrame alt="Detail of the 360 feedback experience breakdown">
+              <div className="w-full overflow-hidden rounded-xl aspect-[1422/652]" style={{ background: "var(--card)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/case-study/sa-xd/xd-1.1.png"
+                  alt="Detail of the 360 feedback experience breakdown"
+                  className="block w-full h-full object-cover object-top select-none"
+                  draggable={false}
+                />
+              </div>
+            </LightboxFrame>
           </div>
         </section>
 
@@ -126,14 +140,19 @@ export default function SaXdCaseStudy() {
               <p>Rather than jump to solutions, we used research to define the principles the system had to be built on.</p>
               <div role="list" className="flex flex-col gap-4">
                 {[
-                  { title: "Quant & qual data together", body: "Standardized, competency-based ratings paired with required qualitative comments so leaders had both structure and context." },
-                  { title: "Psychological safety through anonymity", body: "Complete anonymity encouraged more candid and constructive responses, especially when feedback had to move into calibration." },
-                  { title: "Comparative context to reduce bias", body: "A compared-to-peers scale gave calibration conversations a clearer anchor and reduced subjective interpretation." },
-                ].map((p) => (
+                  { title: "Quant & qual data together", body: "Standardized, competency-based ratings paired with required qualitative comments improved consistency while gathering feedback." },
+                  { title: "Psychological safety through anonymity", body: "Complete anonymity encouraged more candid and constructive responses, improving the quality of feedback received by people leaders." },
+                  { title: "Comparative context to reduce bias", body: "Use of a comparative scale (e.g., “compared to peers”) reduced bias and subjective ratings, increasing actionability during live calibrations." },
+                ].map((p, index) => (
                   <div role="listitem" key={p.title} className="flex gap-3.5">
-                    <span className="relative mt-[0.55em] flex h-2.5 w-2.5 shrink-0" aria-hidden>
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-50 animate-ping"></span>
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]"></span>
+                    <span className="relative mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center" aria-hidden>
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
+                      <span
+                        className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold"
+                        style={{ background: "var(--accent)", color: "var(--background)" }}
+                      >
+                        {index + 1}
+                      </span>
                     </span>
                     <span><span className="italic font-normal" style={{ color: "#242117" }}>{p.title}<span style={{ color: "var(--accent)" }}>.</span></span> {p.body}</span>
                   </div>
@@ -156,15 +175,28 @@ export default function SaXdCaseStudy() {
                 visual: "/case-study/sa-xd/principle-3-comparative.png",
                 title: "Comparative context to reduce bias",
               },
-            ].map((p) => (
+            ].map((p, index) => (
               <article key={p.visual} className="flex flex-col gap-5">
-                <div
-                  className="w-full overflow-hidden rounded-xl"
-                  style={{ background: "var(--card)" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.visual} alt={p.title} className="block w-full h-auto select-none" draggable={false} />
-                </div>
+                <LightboxFrame alt={p.title}>
+                  <div
+                    className="relative w-full overflow-hidden rounded-xl"
+                    style={{ background: "var(--card)" }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.visual} alt={p.title} className="block w-full h-auto select-none" draggable={false} />
+                    {(index === 0 || index === 1 || index === 2) && (
+                      <span className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center" aria-hidden>
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
+                        <span
+                          className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold"
+                          style={{ background: "var(--accent)", color: "var(--background)" }}
+                        >
+                          {index + 1}
+                        </span>
+                      </span>
+                    )}
+                  </div>
+                </LightboxFrame>
               </article>
             ))}
           </div>
@@ -179,7 +211,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One's competency framework, making the entire process anonymous by design.</p>
+              <p>Before we built the system, we wanted to pilot our hypothesis with one of the 12 lines of business. So we partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One&apos;s competency framework and making the entire process anonymous by design.</p>
             </div>
           </div>
 
@@ -188,15 +220,17 @@ export default function SaXdCaseStudy() {
               <Img src="/case-study/sa-xd/sa-xd-12-2.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
-            <p className={`${PROSE}`} style={{ color: "#3A3530" }}>The key decision: <em>making 360 feedback a first-class input in calibration, not an afterthought</em>. We redesigned the calibration one-pager to surface feedback directly alongside performance data. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, something managers could actually reference mid-conversation.</p>
+            <p className={`${PROSE}`} style={{ color: "#3A3530" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
             <figure className="flex flex-col gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/case-study/sa-xd/sa-xd-13-2.png"
-                alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback"
-                className="block w-full h-auto rounded-xl select-none"
-                draggable={false}
-              />
+              <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/case-study/sa-xd/sa-xd-13-2.png"
+                  alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback"
+                  className="block w-full h-auto rounded-xl select-none"
+                  draggable={false}
+                />
+              </LightboxFrame>
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Calibration one-pager: feedback as a first-class input, not an afterthought</figcaption>
             </figure>
           </div>
@@ -210,7 +244,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>We measured impact by triangulating three data sources: raw system data, live calibration observations, and milestone surveys. Tracking clarity, consistency, quality, and actionability throughout the pilot, not just at the end.</p>
+              <p>After the performance cycle, we measured impact by surveying, observing, and interviewing different participating user groups, then triangulating those data sources. This helped us understand what was resonating with users at each step of the performance cycle, how meaningful the leverage was, and how it shaped performance conversations.</p>
             </div>
           </div>
 
@@ -229,7 +263,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>The pilot made the case</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>The results were strong enough to convince our partners to use 360-feedback as the foundation for the new enterprise performance platform, PATH.</p>
+              <p>The results were strong enough to convince our HR stakeholders to discontinue using Workday as the primary tool for performance and talent, and invest in building an in-house performance system that understood Capital One&apos;s internal performance process and was grounded in 360 feedback as the foundation.</p>
             </div>
           </div>
           <StatCards stats={[
@@ -247,13 +281,15 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a designer</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>This was my first major lead effort. It shaped how I think about product and strategy design.</p>
-              <p>Cross-functional alignment, pulled in early, creates shared ownership that carries a project through. And measurement isn't a post-launch activity. It's how you earn the next phase.</p>
-              <p>Next time I'd manage scope more intentionally. We took on too many changes at once. Being more deliberate about thin-slicing and sequencing big bets would help maximize impact.</p>
+              <p>This was my first major lead effort, and it changed the way I think about product and strategy design.</p>
+              <p>What stayed with me most was how much stronger the work became when alignment happened early. Bringing cross-functional partners in from the beginning didn&apos;t just improve the solution — it created a shared sense of ownership that carried the project forward. It also taught me that measurement isn&apos;t something you do after launch; it&apos;s how you understand whether the work is resonating, and how you earn the next phase.</p>
+              <p>It also gave me a clearer sense of where I&apos;d grow next. We took on a lot of change at once, and in hindsight I&apos;d be more intentional about managing scope, thin-slicing the problem, and sequencing bigger bets so the impact of each decision can be seen more clearly.</p>
             </div>
           </div>
 
         </section>
+
+        <NextProjectCard currentHref="/case-study/sa-xd" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

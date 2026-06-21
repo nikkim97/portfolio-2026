@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    // No image yet — card renders the built-in placeholder band.
+    image: { src: "/case-study/pa-xd/hero1.png", alt: "PATH calibrations ecosystem interface" },
   },
   {
     id: "people-leader-redesign",
@@ -76,7 +76,7 @@ export const journeyNodes: JourneyNode[] = [
   },
   {
     id: "path-people",
-    period: "Jan 2025 – Present",
+    period: "Jan 2026 – Present",
     role: "Manager, Experience Design",
     title: "Discover Integration Experience",
     brief: "How do you turn a cashback debit customer into a full-time banking customer?",

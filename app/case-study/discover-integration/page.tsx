@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 // A row of native mobile screens. Each shot carries its own aspect ratio since
 // the source captures range from full device frames to cropped bottom sheets.
@@ -28,9 +29,10 @@ export default function DiscoverIntegrationCaseStudy() {
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">
-            Capital One · Jan 2025 – Present
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
+            Capital One · Jan 2026 – Present
           </span>
+          <NextProjectLink currentHref="/case-study/discover-integration" />
         </div>
       </div>
 
@@ -45,12 +47,12 @@ export default function DiscoverIntegrationCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Discover customers needed to become Capital One customers without feeling disrupted. I designed onboarding and setup flows that made the migration feel clear, familiar, and worth completing<span style={{ color: "var(--accent)" }}>.</span>
+            Discover banking customers needed to become Capital One customers without feeling disrupted. I designed onboarding flows that turned a complex migration strategy into a clear, familiar customer experience<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
-            role="UI lead: spender framing, First Time Experience, L2 setup, and junior designer direction"
-            timeline="Jan 2025 – Present"
-            platform="Native mobile · iOS + Android"
+            role="Design & Strategy Lead"
+            timeline="Jan 2026 – Present"
+            platform="Native (iOS, Android), Web, Mobile Web"
             results={[
               { value: "↑ 89%", label: "customer volume retained" },
               { value: "↓ 35%", label: "calls to front-line associates" },
@@ -76,10 +78,7 @@ export default function DiscoverIntegrationCaseStudy() {
             <div className="flex flex-col gap-8">
               <Prose>
                 <p>
-                  Discover cashback customers came in with one relationship: a debit card they spend on. Capital One needed them to become <em>full-time</em> customers: checking, savings, the accounts people actually run their lives through. That conversion is where the value of the whole integration lives, and it&apos;s the hardest behavior to change.
-                </p>
-                <p>
-                  The risk cuts both ways. Every screen is a chance to deepen the relationship, or to confuse someone whose familiar Discover experience just changed underneath them, and watch them quietly drop off. The goal was retention: bring as many people across as possible, and make the switch feel like an upgrade, not a disruption.
+                  We focused on &ldquo;spenders&rdquo;: customers who primarily used a Discover debit card, sometimes alongside multiple debit or credit cards. Beneath that simple behavior were complex migration paths. Most customers had one checking and one savings account; others held Discover money market accounts, a product Capital One did not offer. The challenge was creating one clear transition that handled each variation without disrupting familiar habits—or losing customers whose accounts had no direct equivalent.
                 </p>
               </Prose>
             </div>
@@ -105,6 +104,23 @@ export default function DiscoverIntegrationCaseStudy() {
           <PullQuote>
             &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them what else is here.&rdquo;
           </PullQuote>
+          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-3">
+            <Screenshot
+              src="/case-study/manager/plan1.JPG"
+              aspect="4 / 3"
+              label="Planning the spender experience, artifact one"
+            />
+            <Screenshot
+              src="/case-study/manager/plan2.JPG"
+              aspect="4 / 3"
+              label="Planning the spender experience, artifact two"
+            />
+            <Screenshot
+              src="/case-study/manager/plan3.JPG"
+              aspect="4 / 3"
+              label="Planning the spender experience, artifact three"
+            />
+          </div>
         </section>
 
         {/* ── Experience layer 1 ── */}
@@ -119,7 +135,7 @@ export default function DiscoverIntegrationCaseStudy() {
                 The first thing a Discover customer sees is the First Time Experience: a welcome animation, followed by a single screen that lays out everything changing for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place, here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
               </p>
               <p>
-                The animation does the emotional work, it marks the moment as a welcome, not a disruption, and the glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place so the question never has to become a phone call. Get this layer wrong and everything downstream inherits the confusion.
+                The animation does the emotional work, marking the moment as a welcome rather than a disruption. The glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place. To preserve that continuity into the landing page, we reused familiar language and a wrench icon in the mudflap, clearly signaling which accounts still needed setup to keep customers&apos; existing routines intact.
               </p>
             </Prose>
           </div>
@@ -135,14 +151,17 @@ export default function DiscoverIntegrationCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The experience · 02</SectionLabel>
-              <SectionHeading>L2: the setup checklist</SectionHeading>
+              <SectionHeading>L2: setup and wayfinding</SectionHeading>
             </div>
             <Prose>
               <p>
                 The second layer (L2) is where intent turns into action: a checklist of the things that actually make Capital One someone&apos;s primary bank: <strong>setting up direct deposit, moving autopay and recurring payments, and activating the new card</strong>. Each completed step is both a setup task and a small proof that the switch was worth making.
               </p>
               <p>
-                These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so sequencing the checklist around them meant the steps that took the most effort also carried the most retention payoff.
+                These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff. &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too specific for FTUX, while the recurring wrench icon acted as wayfinding—showing exactly where setup was still required.
+              </p>
+              <p>
+                Across FTUX and L2, consistent icons and supporting text answered the customer&apos;s running questions: &ldquo;what changed, where am I, and what do I do next?&rdquo; That clarity was also a call-deflection strategy—every screen that explained itself prevented an avoidable call to a front-line associate.
               </p>
             </Prose>
           </div>
@@ -150,28 +169,6 @@ export default function DiscoverIntegrationCaseStudy() {
             { src: "/case-study/manager/mma-checklist-default.png", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
             { src: "/case-study/manager/l2-account-summary.png", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
             { src: "/case-study/manager/checklist-debit.png", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
-          ]} />
-        </section>
-
-        {/* ── The design solution ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>The solution</SectionLabel>
-              <SectionHeading>Wayfinding: telling people what changed, and where they are</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                Across both layers, the core design move was <strong>wayfinding</strong>: a consistent system of icons and supporting text that orients a switching customer and, above all, signals <em>where action is needed</em>. It answers the running question, &ldquo;what&apos;s going on, and what do I do next?&rdquo;, right at the point where someone would otherwise hesitate.
-              </p>
-              <p>
-                This is native mobile work, so the system had to hold up across real iOS and Android patterns, and it was as much a call-deflection strategy as a clarity one: every avoidable &ldquo;what happened to my account?&rdquo; is a call to a front-line associate, so a screen that explains itself is a screen that doesn&apos;t generate a support call.
-              </p>
-            </Prose>
-          </div>
-          <MobileShots shots={[
-            { src: "/case-study/manager/l2-mma.png", aspect: "806 / 2088", label: "Wayfinding: the wrench icon and 'finish setting up' text mark where action is needed", caption: "Needs action: the wrench signals what's not done yet" },
-            { src: "/case-study/manager/checklist-bill-pay.png", aspect: "403 / 1195", label: "Wayfinding: the resolved state, with green checks confirming each step", caption: "Resolved: green confirms what's complete" },
           ]} />
         </section>
 
@@ -205,14 +202,13 @@ export default function DiscoverIntegrationCaseStudy() {
             </div>
             <Prose>
               <p>
-                Success was measured on two things: the <strong>customer volume retained</strong> through the switch, and <strong>how few calls</strong> the change drove to front-line associates. The second is the quieter win: clarity at the experience layer means fewer confused customers reaching for the phone. [Placeholder: drop in the OKR targets and any directional results once you share them.]
-              </p>
-              <p>
-                [Placeholder: what you learned / what you&apos;d do differently.]
+                Success will be measured on two things: the <strong>customer volume retained</strong> through the switch and <strong>how few calls</strong> the change drives to front-line associates. The experience is scheduled to launch and enter testing in late 2026, so results are still to come. I&apos;ll update this case study as retention and call-volume data become available.
               </p>
             </Prose>
           </div>
         </section>
+
+        <NextProjectCard currentHref="/case-study/discover-integration" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

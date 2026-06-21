@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
+import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 export default function BloomCaseStudy() {
   return (
@@ -15,9 +16,10 @@ export default function BloomCaseStudy() {
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
             ← Back
           </Link>
-          <span className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)]">
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
             Personal Project · 2026
           </span>
+          <NextProjectLink currentHref="/case-study/bloom" />
         </div>
       </div>
 
@@ -228,6 +230,8 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
         </section>
+
+        <NextProjectCard currentHref="/case-study/bloom" />
 
         {/* ── Footer ── */}
         <footer className="py-10 flex flex-wrap items-center justify-between gap-2">

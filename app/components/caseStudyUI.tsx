@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import AnimatedStat from "./AnimatedStat";
+import LightboxFrame from "./LightboxFrame";
 
 export function SectionLabel({ children }: { children: ReactNode }) {
   return (
@@ -41,27 +42,38 @@ export function Screenshot({
 }) {
   return (
     <figure className="flex flex-col gap-2">
-      <div
-        className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
-        style={{
-          aspectRatio: aspect,
-          background: src ? "transparent" : "var(--card)",
-          border: "none",
-        }}
-      >
-        {src ? (
-          <Image
-            src={src}
-            alt={label}
-            fill
-            className="object-contain"
-            sizes="(max-width: 640px) 90vw, 45vw"
-            priority={priority}
-          />
-        ) : (
+      {src ? (
+        <LightboxFrame alt={label}>
+          <div
+            className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
+            style={{
+              aspectRatio: aspect,
+              background: "transparent",
+              border: "none",
+            }}
+          >
+            <Image
+              src={src}
+              alt={label}
+              fill
+              className="object-contain"
+              sizes="(max-width: 640px) 90vw, 45vw"
+              priority={priority}
+            />
+          </div>
+        </LightboxFrame>
+      ) : (
+        <div
+          className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
+          style={{
+            aspectRatio: aspect,
+            background: "var(--card)",
+            border: "none",
+          }}
+        >
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
-        )}
-      </div>
+        </div>
+      )}
       {caption && (
         <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
           {caption}
