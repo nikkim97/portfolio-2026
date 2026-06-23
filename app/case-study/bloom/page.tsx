@@ -37,13 +37,11 @@ export default function BloomCaseStudy() {
             Most compatibility tools flatten people into generic traits. I used plant care as a warmer metaphor for emotional needs, daily rhythms, and relationship fit<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
-            role="Product partner: concept, trait framework, question design, and copy tone"
+            role="Builder: concept, trait framework, question design, and copy tone"
             timeline="March 2026: two sessions, three days apart"
-            platform="Web app"
+            platform="Web mobile"
             results={[
               { value: "1 day", label: "idea to working app" },
-              { value: "8", label: "plant archetypes" },
-              { value: "6", label: "personality traits" },
             ]}
           />
         </section>

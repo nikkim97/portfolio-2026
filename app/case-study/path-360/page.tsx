@@ -14,14 +14,6 @@ const LIVE_CALIBRATION_PRINCIPLES = [
   "Drag-and-drop movement so people leaders and facilitators could move associates during live conversation, instead of managing the room manually in Google Sheets.",
   "Distribution data that helped people leaders and session facilitators track each session by percentage and pie chart, making it clear whether the calibration met requirements set by senior org leaders.",
 ];
-type ImageMarker = {
-  label: string;
-  targetLeft: number;
-  targetTop: number;
-  badgeLeft: number;
-  badgeTop: number;
-};
-
 function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
   return (
     <div
@@ -33,67 +25,14 @@ function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: strin
   );
 }
 
-function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center", markers = [] }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string; markers?: ImageMarker[] }) {
+function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string }) {
   return (
     <LightboxFrame alt={alt}>
-      <div className="relative" style={{ aspectRatio: aspect }}>
-        <div
-          className="relative overflow-hidden rounded-xl h-full"
-          style={{ background: "var(--card)" }}
-        >
-          <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit, objectPosition: position }} />
-        </div>
-        {markers.length > 0 && (
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <marker
-                id={`arrow-${src.replace(/[^a-z0-9]/gi, "-")}`}
-                markerWidth="8"
-                markerHeight="8"
-                refX="6"
-                refY="4"
-                orient="auto"
-                markerUnits="strokeWidth"
-              >
-                <path d="M0,0 L8,4 L0,8 z" fill="var(--accent)" />
-              </marker>
-            </defs>
-            {markers.map((marker) => (
-              <line
-                key={`${src}-line-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
-                x1={marker.badgeLeft}
-                y1={marker.badgeTop}
-                x2={marker.targetLeft}
-                y2={marker.targetTop}
-                stroke="var(--accent)"
-                strokeWidth="0.8"
-                markerEnd={`url(#arrow-${src.replace(/[^a-z0-9]/gi, "-")})`}
-              />
-            ))}
-          </svg>
-        )}
-        {markers.map((marker) => (
-          <span
-            key={`${src}-marker-${marker.label}-${marker.badgeLeft}-${marker.badgeTop}`}
-            aria-hidden
-            className="absolute pointer-events-none flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.08em]"
-            style={{
-              left: `${marker.badgeLeft}%`,
-              top: `${marker.badgeTop}%`,
-              color: "var(--background)",
-              background: "var(--accent)",
-              border: "2px solid rgba(255,255,255,0.94)",
-              boxShadow: "0 0 0 6px rgba(155,101,57,0.18), 0 12px 28px rgba(0,0,0,0.18)",
-            }}
-          >
-            {marker.label}
-          </span>
-        ))}
+      <div
+        className="relative overflow-hidden rounded-xl"
+        style={{ aspectRatio: aspect, background: "var(--card)" }}
+      >
+        <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit, objectPosition: position }} />
       </div>
     </LightboxFrame>
   );
@@ -280,18 +219,11 @@ export default function Path360CaseStudy() {
                   </div>
                 ))}
               </div>
-              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "#3A3530" }}>
-                The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
-              </p>
               <Img
                 src="/case-study/pa-xd/04-2.png"
                 alt="Live calibration UI showing an individual associate deep-dive panel"
                 aspect="1/1"
                 fit="cover"
-                markers={[
-                  { label: "3", targetLeft: 24, targetTop: 25, badgeLeft: -7, badgeTop: 15 },
-                  { label: "2", targetLeft: 45.5, targetTop: 52.5, badgeLeft: -7, badgeTop: 58 },
-                ]}
               />
               <Img
                 src="/case-study/pa-xd/04-3.png"
@@ -299,11 +231,10 @@ export default function Path360CaseStudy() {
                 aspect="1/1"
                 fit="cover"
                 position="left top"
-                markers={[
-                  { label: "1", targetLeft: 82, targetTop: 14, badgeLeft: 105, badgeTop: 8 },
-                  { label: "1", targetLeft: 43, targetTop: 40, badgeLeft: -7, badgeTop: 39 },
-                ]}
               />
+              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "#3A3530" }}>
+                The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
+              </p>
             </div>
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Live calibrations: 360 feedback and performance data surfaced together, in the moment decisions are made</figcaption>
           </figure>

@@ -104,10 +104,10 @@ export default function DiscoverIntegrationCaseStudy() {
           <PullQuote>
             &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them what else is here.&rdquo;
           </PullQuote>
-          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-2">
             <Screenshot
               src="/case-study/manager/plan1.JPG"
-              aspect="4 / 3"
+              aspect="3 / 4"
               label="Planning the spender experience, artifact one"
             />
             <Screenshot
@@ -115,11 +115,13 @@ export default function DiscoverIntegrationCaseStudy() {
               aspect="4 / 3"
               label="Planning the spender experience, artifact two"
             />
-            <Screenshot
-              src="/case-study/manager/plan3.JPG"
-              aspect="4 / 3"
-              label="Planning the spender experience, artifact three"
-            />
+            <div className="sm:col-span-2">
+              <Screenshot
+                src="/case-study/manager/plan3.JPG"
+                aspect="4 / 3"
+                label="Planning the spender experience, artifact three"
+              />
+            </div>
           </div>
         </section>
 

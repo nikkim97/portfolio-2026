@@ -66,17 +66,12 @@ export default function TimeTrackerCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            People budget money carefully but rarely see where their time goes. I designed a lightweight tracker that makes the shape of a week visible enough to act on<span style={{ color: "var(--accent)" }}>.</span>
+            People budget money carefully but rarely see where their time goes. I designed a lightweight tracker that makes the shape of a week visible enough to reflect on<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
-            role='Product partner: concept, four life pillars, and "spec first" approach'
-            timeline="March 2026: spec first, then built to it"
+            role='Builder: concept, four life pillars, and "spec first" approach'
+            timeline="April 2026"
             platform="Web app"
-            results={[
-              { value: "4", label: "life pillars" },
-              { value: "1", label: "categorization rule" },
-              { value: "0", label: "databases in V1, on purpose" },
-            ]}
           />
         </section>
 
