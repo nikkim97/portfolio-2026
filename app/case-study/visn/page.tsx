@@ -67,6 +67,7 @@ export default function VisnCaseStudy() {
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford: canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
                 <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout didn&apos;t exist back in 2019. No single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
                 <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing, all through your ears, hands-free.</p>
+                <p>At 21 I scoped this as a hardware gap — what the sensors could detect. What I&apos;d frame now is the user&apos;s gap: blind travelers navigate the familiar fluently; it&apos;s the unfamiliar that breaks down.</p>
               </div>
             </div>
           </div>
@@ -181,7 +182,7 @@ export default function VisnCaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Here's what I didn't know at the time: product design existed as a discipline. I was the project manager and the engineer on this team, and I thought that was the whole job. The fanny pack call, the audio-first interface, the decision to build around dignity, those came from instinct, not training.</p>
-              <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical: the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: sit with visually impaired users first, learn how they already navigate, and design around that, not around what the hardware can do.</p>
+              <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical: the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: I&apos;d shadow how blind travelers already move through a route they know by heart, then design only for the gap between that and an unfamiliar one — instead of scoping for &ldquo;navigation&rdquo; in the abstract and letting the hardware decide what the product was.</p>
             </div>
           </div>
 

@@ -231,6 +231,7 @@ export default function SaXdCaseStudy() {
               <Img src="/case-study/sa-xd/sa-xd-12-2.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
+            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em> — it&apos;s easy to dismiss a critique you can&apos;t attribute — and &ldquo;compared to peers&rdquo; framing risked turning a growth tool into a ranking. We were trading those risks for candor, and wouldn&apos;t know which way it broke until the pilot.</p>
             <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
             <figure className="flex flex-col gap-3">
               <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
@@ -287,6 +288,7 @@ export default function SaXdCaseStudy() {
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
             Directional figures from the pilot study — the signal that convinced HR to invest in an in-house platform.
           </p>
+          <p className={`${PROSE}`} style={{ color: "var(--body)" }}>That in-house platform became PATH — the next case study — where this pilot&apos;s bet got built for the whole enterprise.</p>
         </section>
 
         {/* ── Growth ── */}

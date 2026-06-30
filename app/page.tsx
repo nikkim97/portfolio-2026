@@ -167,7 +167,7 @@ export default function Home() {
           style={{
             position: "absolute", top: "45vh", right: "22%",
             width: 380, height: 380, borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(193,123,90,1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(155,101,57,1) 0%, transparent 70%)",
             filter: "blur(18px)",
             x: blobTerraX, y: blobTerraY, opacity: blobTerraOpacity,
           }}

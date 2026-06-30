@@ -68,6 +68,9 @@ export default function TimeTrackerCaseStudy() {
           >
             People budget money carefully but rarely see where their time goes. I designed a lightweight tracker that makes the shape of a week visible enough to reflect on<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
+          <p className="max-w-[760px] text-[15px] leading-relaxed" style={{ color: "var(--body)" }}>
+            I budget my money down to the category but had no idea where my weeks actually went — so I built myself the same view for time.
+          </p>
           <IntroMetadataSection
             role='Builder: concept, four life pillars, and "spec first" approach'
             timeline="April 2026"

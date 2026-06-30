@@ -101,7 +101,7 @@ export default function Path360CaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We started with deep discovery, not just on the calibration session itself, but on all the people moving through it. The experience looked radically different depending on whether you were a first-time people leader, a senior VP running a large org, or an HR partner facilitating the session.</p>
-              <p>We built out personas and jobs-to-be-done frameworks that let us design for the full range of needs, without forcing one interface to serve every persona equally. From there, we narrowed the scope to what was reasonably possible to build and validate in the first MVP.</p>
+              <p>We could have designed one calibration screen for &ldquo;the user&rdquo; — but calibration isn&apos;t one job. A people leader defending ratings, an HRBP coaching that leader, and a facilitator keeping the room fair each want different things from the same screen. So we split into three personas instead of averaging them into one, then narrowed scope to what a single MVP could actually serve.</p>
             </div>
           </div>
 
