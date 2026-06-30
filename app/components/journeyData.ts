@@ -72,7 +72,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/people-leader-redesign",
     type: "project",
-    // No image yet — card renders the built-in placeholder band.
+    image: { src: "/case-study/pl-redesign/hero.png", alt: "People Leader Redesign: aligning the experience with how leaders assess their people" },
   },
   {
     id: "path-people",

@@ -137,7 +137,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Foundational principles</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Rather than jump to solutions, we used research to define the principles the system had to be built on.</p>
+              <p>From research, we knew that we needed to improve the consistency, quality &amp; actionability of the feedback received for it to be useful during the performance process. Our hypotheses were:</p>
               <div role="list" className="flex flex-col gap-4">
                 {[
                   { title: "Quant & qual data together", body: "Standardized, competency-based ratings paired with required qualitative comments improved consistency while gathering feedback." },
@@ -211,7 +211,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
-              <p>Before we built the system, we wanted to pilot our hypothesis with one of the 12 lines of business. So we partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One&apos;s competency framework and making the entire process anonymous by design.</p>
+              <p>Before we built the system, we wanted to pilot our hypotheses. We partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One&apos;s competency framework and making the entire process anonymous by design.</p>
             </div>
           </div>
 
