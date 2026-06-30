@@ -90,7 +90,7 @@ export const journeyNodes: JourneyNode[] = [
     period: "2026",
     role: "Builder",
     title: "Bloom",
-    brief: "How may we build something real while learning a new tool?",
+    brief: "How do you make talking about your differences feel less personal?",
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
     image: { src: "/case-study/bloom/hero-new.png", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
