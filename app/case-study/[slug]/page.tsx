@@ -77,7 +77,7 @@ export default async function CaseStudyPage({
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
             {cs.role}
           </p>
           <h1
@@ -114,7 +114,7 @@ export default async function CaseStudyPage({
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">The Problem</p>
+              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent-text)]">The Problem</p>
               <h2
                 className="font-light"
                 style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
@@ -150,7 +150,7 @@ export default async function CaseStudyPage({
           <section key={i} className="py-16 flex flex-col gap-10">
             <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
               <div className="flex flex-col gap-2">
-                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent-text)]">
                   0{i + 1}
                 </p>
                 <h2
@@ -192,7 +192,7 @@ export default async function CaseStudyPage({
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">Outcome</p>
+              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent-text)]">Outcome</p>
               <h2
                 className="font-light"
                 style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}

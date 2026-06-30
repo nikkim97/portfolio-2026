@@ -69,7 +69,7 @@ export default function SaXdCaseStudy() {
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-20 pb-14 flex flex-col gap-10">
         <div className="flex flex-col gap-6">
-          <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>Design &amp; Research Lead · Capital One</p>
+          <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>Design &amp; Research Lead · Capital One</p>
           <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
             Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
@@ -110,7 +110,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>The Problem</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>The Problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
             <div className="flex flex-col gap-8">
@@ -141,7 +141,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>01</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>01</p>
               <h2 className="font-light" style={SECTION_HEADING}>Foundational principles</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -157,7 +157,7 @@ export default function SaXdCaseStudy() {
                       <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
                       <span
                         className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold"
-                        style={{ background: "var(--accent)", color: "var(--background)" }}
+                        style={{ background: "var(--accent-text)", color: "var(--background)" }}
                       >
                         {index + 1}
                       </span>
@@ -200,7 +200,7 @@ export default function SaXdCaseStudy() {
                         <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
                         <span
                           className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold"
-                          style={{ background: "var(--accent)", color: "var(--background)" }}
+                          style={{ background: "var(--accent-text)", color: "var(--background)" }}
                         >
                           {index + 1}
                         </span>
@@ -218,7 +218,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>02</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>02</p>
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -253,7 +253,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>03</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>03</p>
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -272,7 +272,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>04</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>04</p>
               <h2 className="font-light" style={SECTION_HEADING}>The pilot made the case</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -293,7 +293,7 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>05</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>05</p>
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a designer</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>

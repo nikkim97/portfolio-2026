@@ -39,7 +39,7 @@ export function NextProjectCard({ currentHref }: { currentHref: string }) {
         className="group flex flex-col gap-4 rounded-2xl px-6 py-7 transition-colors duration-200 sm:px-8 sm:py-9"
         style={{ background: "var(--card)" }}
       >
-        <p className="text-[10px] font-normal uppercase tracking-[0.22em] text-[var(--accent)]">
+        <p className="text-[10px] font-normal uppercase tracking-[0.22em] text-[var(--accent-text)]">
           Next project
         </p>
         <div className="flex items-end justify-between gap-6">
@@ -56,7 +56,7 @@ export function NextProjectCard({ currentHref }: { currentHref: string }) {
           </div>
           <span
             aria-hidden
-            className="shrink-0 text-3xl font-light text-[var(--accent)] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl"
+            className="shrink-0 text-3xl font-light text-[var(--accent-text)] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl"
           >
             →
           </span>

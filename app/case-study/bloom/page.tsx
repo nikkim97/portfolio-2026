@@ -28,14 +28,14 @@ export default function BloomCaseStudy() {
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
           <div className="flex items-center justify-between gap-4">
-            <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
+            <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
               Product Design · Vibe Coding
             </p>
             <a
               href="https://plantmatch-six.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-1.5 text-[10px] font-normal tracking-[0.22em] uppercase text-[var(--accent)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--accent)] transition-colors duration-200"
+              className="inline-flex w-fit items-center gap-1.5 text-[10px] font-normal tracking-[0.22em] uppercase text-[var(--accent-text)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--accent)] transition-colors duration-200"
             >
               Live prototype ↗
             </a>

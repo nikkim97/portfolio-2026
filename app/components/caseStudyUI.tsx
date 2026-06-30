@@ -7,7 +7,7 @@ import LightboxFrame from "./LightboxFrame";
 
 export function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">
+    <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent-text)]">
       {children}
     </p>
   );
@@ -207,7 +207,7 @@ export function IntroMetadataSection({
             className="rounded-xl px-6 sm:px-8 py-5 flex flex-col gap-1 min-w-0"
             style={{ background: "var(--card)" }}
           >
-            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>
+            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent-text)" }}>
               {item.label}
             </p>
             <div className="flex flex-col gap-1.5 text-[15px] sm:text-[16px] font-light leading-snug break-words" style={{ color: "var(--body)" }}>
@@ -220,7 +220,7 @@ export function IntroMetadataSection({
       {results && results.length > 0 && (
         <div className="rounded-xl px-6 sm:px-8 py-5" style={{ background: "var(--card)" }}>
           <div className="flex flex-col gap-3">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>{resultsLabel}</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent-text)" }}>{resultsLabel}</p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
               {results.map((result) => (
                 <div key={`${result.value}-${result.label}`} className="flex items-baseline gap-3">

@@ -48,7 +48,7 @@ export default function Path360CaseStudy() {
 
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-16 pb-12 flex flex-col gap-6">
-        <p className={`${LABEL} text-[var(--accent)]`}>Principal Associate, Experience Design · PATH</p>
+        <p className={`${LABEL} text-[var(--accent-text)]`}>Principal Associate, Experience Design · PATH</p>
         <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
           Calibration sessions were held inconsistently across the enterprise. I designed a scalable system that brought structure, trust, and shared context into the room<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
@@ -74,7 +74,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The problem</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>The problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Scaling something human</h2>
             </div>
             <div className="flex flex-col gap-8">
@@ -96,7 +96,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>01</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>01</p>
               <h2 className="font-light" style={SECTION_HEADING}>Who's actually in the room</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -124,7 +124,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>02</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>02</p>
               <h2 className="font-light" style={SECTION_HEADING}>Before the room: Prep for calibrations</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -153,7 +153,7 @@ export default function Path360CaseStudy() {
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
-                      style={{ background: "var(--accent)", color: "var(--background)" }}
+                      style={{ background: "var(--accent-text)", color: "var(--background)" }}
                     >
                       {index + 1}
                     </span>
@@ -186,7 +186,7 @@ export default function Path360CaseStudy() {
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
-                      style={{ background: "var(--accent)", color: "var(--background)" }}
+                      style={{ background: "var(--accent-text)", color: "var(--background)" }}
                     >
                       {index + 3}
                     </span>
@@ -203,7 +203,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>03</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>03</p>
               <h2 className="font-light" style={SECTION_HEADING}>In the room: live calibrations</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -225,7 +225,7 @@ export default function Path360CaseStudy() {
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
-                      style={{ background: "var(--accent)", color: "var(--background)" }}
+                      style={{ background: "var(--accent-text)", color: "var(--background)" }}
                     >
                       {index + 1}
                     </span>
@@ -259,7 +259,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>04</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>04</p>
               <h2 className="font-light" style={SECTION_HEADING}>Early signal from the field</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -280,7 +280,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>Outcome</p>
               <h2 className="font-light" style={SECTION_HEADING}>From pilot to platform</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -316,7 +316,7 @@ export default function Path360CaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>What I learned</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>What I learned</p>
               <h2 className="font-light" style={SECTION_HEADING}>What enterprise scale taught me</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>

@@ -24,7 +24,7 @@ export default function VisnCaseStudy() {
 
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-16 pb-12 flex flex-col gap-6">
-        <p className={`${LABEL} text-[var(--accent)]`}>PM & Engineer</p>
+        <p className={`${LABEL} text-[var(--accent-text)]`}>PM & Engineer</p>
         <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
           Navigation without sight is a design problem. I designed a wearable tool that combined obstacle detection & route guidance through audio<span style={{ color: "var(--accent)" }}>.</span>
         </h1>
@@ -59,7 +59,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The problem</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>The problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Navigation without sight is a design problem</h2>
             </div>
             <div className="flex flex-col gap-8">
@@ -88,7 +88,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The approach</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>The approach</p>
               <h2 className="font-light" style={SECTION_HEADING}>One system, two layers</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -119,7 +119,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>The design</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>The design</p>
               <h2 className="font-light" style={SECTION_HEADING}>The decision that mattered the most</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -161,7 +161,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>Outcome</p>
               <h2 className="font-light" style={SECTION_HEADING}>We won our capstone.</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
@@ -176,7 +176,7 @@ export default function VisnCaseStudy() {
         <section className="py-16 flex flex-col gap-12 border-b border-[var(--border)]">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className={`${LABEL} text-[var(--accent)]`}>Reflection</p>
+              <p className={`${LABEL} text-[var(--accent-text)]`}>Reflection</p>
               <h2 className="font-light" style={SECTION_HEADING}>If I built VISN today</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>

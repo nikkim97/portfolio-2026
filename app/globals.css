@@ -10,6 +10,7 @@
   --pop: #BC4A1F;
   --green: #5E6647;
   --body: #3A3530; /* primary body-copy ink: softer than --foreground, AA on bg + card */
+  --accent-text: #744B2A; /* darker accent for small uppercase labels — AA (4.5+) on bg + card */
   --font-poppins: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -22,6 +23,7 @@
   --color-accent: var(--accent);
   --color-pop: var(--pop);
   --color-body: var(--body);
+  --color-accent-text: var(--accent-text);
 }
 
 body {

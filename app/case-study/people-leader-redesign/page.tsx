@@ -55,7 +55,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent)]">
+          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
             Manager, Experience Design · PATH
           </p>
           <h1
