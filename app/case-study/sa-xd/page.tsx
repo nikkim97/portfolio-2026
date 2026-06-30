@@ -61,19 +61,24 @@ export default function SaXdCaseStudy() {
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgb(245,241,235)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2023 – 2024</span>
           <NextProjectLink currentHref="/case-study/sa-xd" />
         </div>
       </div>
 
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-20 pb-14 flex flex-col gap-10">
-        <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
-          Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
-        </h1>
+        <div className="flex flex-col gap-6">
+          <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>Design &amp; Research Lead · Capital One</p>
+          <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
+            Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
+          </h1>
+        </div>
         <IntroMetadataSection
           role="Design and research lead"
           timeline="Dec 2023 – Sept 2024"
           platform="Web platform"
+          resultsLabel="Directional signal"
           results={[
             { value: "↑ 58%", label: "gained clarity on development opportunities" },
             { value: "↑ 73%", label: "more feedback leveraged in performance management" },
@@ -279,6 +284,9 @@ export default function SaXdCaseStudy() {
             { value: "↑ 58%", label: "improvement in feedback quality: anonymity made a measurable difference" },
             { value: "↑ 52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
           ]} />
+          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
+            Directional figures from the pilot study — the signal that convinced HR to invest in an in-house platform.
+          </p>
         </section>
 
         {/* ── Growth ── */}
