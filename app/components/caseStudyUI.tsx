@@ -134,7 +134,7 @@ export function Prose({ children }: { children: ReactNode }) {
   return (
     <div
       className="flex flex-col gap-5 font-light text-[16px] sm:text-[18px] leading-[1.8] [&_strong]:font-bold [&_strong]:text-[var(--foreground)]"
-      style={{ color: "#3A3530" }}
+      style={{ color: "var(--body)" }}
     >
       {children}
     </div>
@@ -210,7 +210,7 @@ export function IntroMetadataSection({
             <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>
               {item.label}
             </p>
-            <div className="flex flex-col gap-1.5 text-[15px] sm:text-[16px] font-light leading-snug break-words" style={{ color: "#3A3530" }}>
+            <div className="flex flex-col gap-1.5 text-[15px] sm:text-[16px] font-light leading-snug break-words" style={{ color: "var(--body)" }}>
               <p>{item.value}</p>
             </div>
           </div>
@@ -227,7 +227,7 @@ export function IntroMetadataSection({
                   <span className="font-semibold tabular-nums shrink-0" style={{ color: "var(--pop)", fontSize: "clamp(20px, 4vw, 36px)", letterSpacing: "-0.03em" }}>
                     <AnimatedStat value={result.value} />
                   </span>
-                  <span className="text-[13px] sm:text-[15px] font-light leading-snug" style={{ color: "#3A3530" }}>
+                  <span className="text-[13px] sm:text-[15px] font-light leading-snug" style={{ color: "var(--body)" }}>
                     {result.label}
                   </span>
                 </div>

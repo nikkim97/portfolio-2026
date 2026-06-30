@@ -295,7 +295,7 @@ export default function Home() {
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
               <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
             </p>
-            <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "#3A3530" }}>
+            <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "var(--body)" }}>
               {[
                 "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
                 "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",

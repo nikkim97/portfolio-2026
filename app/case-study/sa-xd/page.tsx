@@ -8,7 +8,7 @@ import { NextProjectCard, NextProjectLink } from "../../components/ProjectNaviga
 import MeasureCarousel from "./MeasureCarousel";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
-const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+const SECTION_HEADING = { fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 const CARD = {
   background: "var(--card)",
 };
@@ -46,7 +46,7 @@ function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
           <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
             <AnimatedStat value={s.value} />
           </p>
-          <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
+          <p className="text-[12px] font-light leading-snug" style={{ color: "var(--body)" }}>{s.label}</p>
         </div>
       ))}
     </div>
@@ -69,7 +69,7 @@ export default function SaXdCaseStudy() {
       {/* ── Hero text ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pt-20 pb-14 flex flex-col gap-10">
         <div className="flex flex-col gap-6">
-          <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>Design &amp; Research Lead · Capital One</p>
+          <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>Design &amp; Research Lead · Capital One</p>
           <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
             Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
@@ -110,11 +110,11 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>The Problem</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>The Problem</p>
               <h2 className="font-light" style={SECTION_HEADING}>Low trust in a system that was supposed to help people grow</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+              <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
                 <p>360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly across teams. Responses skewed positive, not because everyone was performing exceptionally, but because the system gave people no reason to be specific or honest. People leaders lacked confidence in the feedback they received. Associates didn't know how it would be used. The result was a process that consumed time and produced noise.</p>
                 <p>We interviewed leaders and associates and looked closely at how feedback was actually being written and read. The same patterns kept surfacing: people discounted feedback they couldn&apos;t <strong>put in context</strong>, and they <strong>softened their input</strong> when they weren&apos;t sure <strong>how it would be used</strong> or who would see it.</p>
               </div>
@@ -141,10 +141,10 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>01</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>01</p>
               <h2 className="font-light" style={SECTION_HEADING}>Foundational principles</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>From research, we knew that we needed to improve the consistency, quality &amp; actionability of the feedback received for it to be useful during the performance process. Our hypotheses were:</p>
               <div role="list" className="flex flex-col gap-4">
                 {[
@@ -218,10 +218,10 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>02</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>02</p>
               <h2 className="font-light" style={SECTION_HEADING}>Connecting feedback to calibration</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Before we built the system, we wanted to pilot our hypotheses. We partnered with PwC to build the feedback system on these foundations, grounding every question in Capital One&apos;s competency framework and making the entire process anonymous by design.</p>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function SaXdCaseStudy() {
               <Img src="/case-study/sa-xd/sa-xd-12-2.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
-            <p className={`${PROSE}`} style={{ color: "#3A3530" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
+            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
             <figure className="flex flex-col gap-3">
               <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
                 <Image
@@ -253,10 +253,10 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>03</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>03</p>
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>After the performance cycle, we measured impact by surveying, observing, and interviewing different participating user groups, then triangulating those data sources. This helped us understand what was resonating with users at each step of the performance cycle, how meaningful the leverage was, and how it shaped performance conversations.</p>
             </div>
           </div>
@@ -272,10 +272,10 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>04</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>04</p>
               <h2 className="font-light" style={SECTION_HEADING}>The pilot made the case</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>The results were strong enough to convince our HR stakeholders to discontinue using Workday as the primary tool for performance and talent, and invest in building an in-house performance system that understood Capital One&apos;s internal performance process and was grounded in 360 feedback as the foundation.</p>
             </div>
           </div>
@@ -293,10 +293,10 @@ export default function SaXdCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>05</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent)" }}>05</p>
               <h2 className="font-light" style={SECTION_HEADING}>Growth as a designer</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>This was my first major lead effort, and it changed the way I think about product and strategy design.</p>
               <p>What stayed with me most was how much stronger the work became when alignment happened early. Bringing cross-functional partners in from the beginning didn&apos;t just improve the solution — it created a shared sense of ownership that carried the project forward. It also taught me that measurement isn&apos;t something you do after launch; it&apos;s how you understand whether the work is resonating, and how you earn the next phase.</p>
               <p>It also gave me a clearer sense of where I&apos;d grow next. We took on a lot of change at once, and in hindsight I&apos;d be more intentional about managing scope, thin-slicing the problem, and sequencing bigger bets so the impact of each decision can be seen more clearly.</p>

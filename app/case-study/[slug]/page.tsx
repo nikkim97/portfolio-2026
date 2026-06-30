@@ -117,14 +117,14 @@ export default async function CaseStudyPage({
               <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">The Problem</p>
               <h2
                 className="font-light"
-                style={{ fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
+                style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
               >
                 {cs.problem.title}
               </h2>
             </div>
             <div
               className="prose text-sm font-light"
-              style={{ color: "#3A3530" }}
+              style={{ color: "var(--body)" }}
               dangerouslySetInnerHTML={{ __html: cs.problem.body }}
             />
           </div>
@@ -155,14 +155,14 @@ export default async function CaseStudyPage({
                 </p>
                 <h2
                   className="font-light"
-                  style={{ fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
+                  style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
                 >
                   {step.title}
                 </h2>
               </div>
               <div
                 className="prose text-sm font-light"
-                style={{ color: "#3A3530" }}
+                style={{ color: "var(--body)" }}
                 dangerouslySetInnerHTML={{ __html: step.body }}
               />
             </div>
@@ -195,14 +195,14 @@ export default async function CaseStudyPage({
               <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent)]">Outcome</p>
               <h2
                 className="font-light"
-                style={{ fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
+                style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
               >
                 {cs.outcome.title}
               </h2>
             </div>
             <div
               className="prose text-sm font-light"
-              style={{ color: "#3A3530" }}
+              style={{ color: "var(--body)" }}
               dangerouslySetInnerHTML={{ __html: cs.outcome.body }}
             />
           </div>

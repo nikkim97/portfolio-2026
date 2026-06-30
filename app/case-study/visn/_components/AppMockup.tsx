@@ -7,7 +7,7 @@ function Phone({ children, tint = "#FBF7F1" }: { children: React.ReactNode; tint
       style={{
         width: 240,
         height: 480,
-        background: "#1A1814",
+        background: "var(--foreground)",
         boxShadow: "0 30px 60px -20px rgba(0,0,0,0.25), 0 10px 20px -10px rgba(0,0,0,0.15)",
       }}
     >
@@ -17,7 +17,7 @@ function Phone({ children, tint = "#FBF7F1" }: { children: React.ReactNode; tint
       >
         <div
           className="absolute top-2 left-1/2 -translate-x-1/2 rounded-full z-10"
-          style={{ width: 72, height: 18, background: "#1A1814" }}
+          style={{ width: 72, height: 18, background: "var(--foreground)" }}
         />
         {children}
       </div>
@@ -84,8 +84,8 @@ export function PhoneSequence() {
 function Node({ x, y, w, h, label, sub, accent }: { x: number; y: number; w: number; h: number; label: string; sub?: string; accent?: boolean }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={8} fill="#FBF7F1" stroke={accent ? "#C17B5A" : "#DDD6CC"} strokeWidth={accent ? 1.5 : 1} />
-      <text x={x + w / 2} y={y + 20} textAnchor="middle" fontSize="11" fill="#1A1814" fontWeight="300" letterSpacing="0.5">{label}</text>
+      <rect x={x} y={y} width={w} height={h} rx={8} fill="#FBF7F1" stroke={accent ? "var(--accent)" : "#DDD6CC"} strokeWidth={accent ? 1.5 : 1} />
+      <text x={x + w / 2} y={y + 20} textAnchor="middle" fontSize="11" fill="var(--foreground)" fontWeight="300" letterSpacing="0.5">{label}</text>
       {sub && <text x={x + w / 2} y={y + 36} textAnchor="middle" fontSize="8" fill="#4A4440" fontWeight="300">{sub}</text>}
     </g>
   );
@@ -109,7 +109,7 @@ export function SystemDiagram() {
         <line x1={160} y1={205} x2={230} y2={135} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
         <line x1={160} y1={205} x2={230} y2={205} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
 
-        <text x="240" y="30" fontSize="9" letterSpacing="3" fill="#C17B5A" fontWeight="300">APP LAYER</text>
+        <text x="240" y="30" fontSize="9" letterSpacing="3" fill="var(--accent)" fontWeight="300">APP LAYER</text>
         <Node x={240} y={40} w={130} h={50} label="Onboarding + Pairing" sub="voice-led setup" />
         <Node x={240} y={110} w={130} h={50} label="Guidance Core" sub="route + obstacle fusion" accent />
         <Node x={240} y={180} w={130} h={50} label="Map + Session State" sub="turn context + logs" />
@@ -127,7 +127,7 @@ export function SystemDiagram() {
         <Node x={460} y={180} w={120} h={50} label="Fallback Prompts" sub="recenter + recover" />
 
         <text x="300" y="260" textAnchor="middle" fontSize="9" letterSpacing="3" fill="#4A4440" fontWeight="300">CURRENT VISN STRUCTURE</text>
-        <text x="300" y="280" textAnchor="middle" fontSize="10" fill="#1A1814" fontWeight="300">Pairing-first onboarding · fused guidance loop · non-visual defaults with recovery states</text>
+        <text x="300" y="280" textAnchor="middle" fontSize="10" fill="var(--foreground)" fontWeight="300">Pairing-first onboarding · fused guidance loop · non-visual defaults with recovery states</text>
       </svg>
     </div>
   );

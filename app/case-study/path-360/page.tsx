@@ -8,7 +8,7 @@ import { NextProjectCard, NextProjectLink } from "../../components/ProjectNaviga
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
-const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+const SECTION_HEADING = { fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 const LIVE_CALIBRATION_PRINCIPLES = [
   "One consolidated place to view live calibration data, including associate calibration profiles and ratings in a pop-out drawer format.",
   "Drag-and-drop movement so people leaders and facilitators could move associates during live conversation, instead of managing the room manually in Google Sheets.",
@@ -78,7 +78,7 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Scaling something human</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+              <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
                 <p>Calibration is where performance decisions actually get made. Leaders gather, sometimes with a room full of peers, to align on ratings, surface standouts, and identify development gaps. It's high stakes, politically charged, and deeply dependent on the quality of information available in the room.</p>
                 <p>We'd proven with the pilot that better feedback inputs led to better calibration conversations. Now we needed to build a system that could hold that quality at 70,000-person scale, across business lines, seniority levels, and calibration models that looked very different from team to team.</p>
                 <p>My role: lead design for the end-to-end calibration ecosystem within PATH, our performance platform—from how sessions are created and managed to what leaders see in the room when decisions are being made.</p>
@@ -99,7 +99,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>01</p>
               <h2 className="font-light" style={SECTION_HEADING}>Who's actually in the room</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We started with deep discovery, not just on the calibration session itself, but on all the people moving through it. The experience looked radically different depending on whether you were a first-time people leader, a senior VP running a large org, or an HR partner facilitating the session.</p>
               <p>We built out personas and jobs-to-be-done frameworks that let us design for the full range of needs, without forcing one interface to serve every persona equally. From there, we narrowed the scope to what was reasonably possible to build and validate in the first MVP.</p>
             </div>
@@ -110,7 +110,7 @@ export default function Path360CaseStudy() {
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Three personas, three different needs: from a single consistent prep space to flexible tools for editing ratings</figcaption>
           </figure>
 
-          <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+          <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
             <p>Once the personas were clear, we mapped each job-to-be-done across the calibration phases: prep, live calibration, and post-calibration. That helped us decide which capabilities belonged in the first release and which needed to be descoped, so the MVP could focus on the moments where better structure would change the quality of the session.</p>
           </div>
 
@@ -127,7 +127,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>02</p>
               <h2 className="font-light" style={SECTION_HEADING}>Before the room: Prep for calibrations</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>The calibration experience starts long before anyone walks into a session. Leaders need to see who's been nominated, understand the rating distribution across their team, flag concerns, and prepare talking points, all without the full picture that only comes together in the room.</p>
               <p>We designed the session management experience to give leaders exactly what they needed ahead of time: clear visibility into team standing, easy ways to surface edge cases, and a prep experience that reduced the cognitive load in the session itself.</p>
             </div>
@@ -157,7 +157,7 @@ export default function Path360CaseStudy() {
                     >
                       {index + 1}
                     </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "#3A3530" }}>{principle}</p>
+                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
                   </div>
                 ))}
               </div>
@@ -190,7 +190,7 @@ export default function Path360CaseStudy() {
                     >
                       {index + 3}
                     </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "#3A3530" }}>{principle}</p>
+                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
                   </div>
                 ))}
               </div>
@@ -206,7 +206,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>03</p>
               <h2 className="font-light" style={SECTION_HEADING}>In the room: live calibrations</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Live calibrations are the hard part. We built this experience for two core personas: people leaders making talent decisions and facilitators responsible for keeping the session structured, fair, and moving. The room has multiple leaders, one shared screen, limited time, and years of performance data that need to resolve into actionable decisions.</p>
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function Path360CaseStudy() {
                     >
                       {index + 1}
                     </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "#3A3530" }}>{principle}</p>
+                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
                   </div>
                 ))}
               </div>
@@ -245,7 +245,7 @@ export default function Path360CaseStudy() {
                 aspect="1440/1779"
                 fit="contain"
               />
-              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "#3A3530" }}>
+              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "var(--body)" }}>
                 The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
               </p>
             </div>
@@ -262,7 +262,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>04</p>
               <h2 className="font-light" style={SECTION_HEADING}>Early signal from the field</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We ran iterative research throughout the build, not just usability studies, but ongoing conversations with people leaders and HR partners as the experience took shape. The early feedback validated our core bets and surfaced edge cases we hadn't anticipated.</p>
               <p>Leaders described calibrations as feeling "more grounded": less debate about facts, more real conversation about development. HR partners noted fewer escalations post-session. The signal was clear enough to accelerate the enterprise rollout.</p>
             </div>
@@ -283,7 +283,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
               <h2 className="font-light" style={SECTION_HEADING}>From pilot to platform</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>PATH launched as Capital One's first enterprise performance management platform, built on the foundation the pilot established.</p>
             </div>
           </div>
@@ -303,7 +303,7 @@ export default function Path360CaseStudy() {
                     <AnimatedStat value={outcome.value} />
                   </p>
                 )}
-                <p className="m-0 text-[13px] sm:text-[14px] leading-relaxed" style={{ color: "#3A3530" }}>{outcome.label}</p>
+                <p className="m-0 text-[13px] sm:text-[14px] leading-relaxed" style={{ color: "var(--body)" }}>{outcome.label}</p>
               </div>
             ))}
           </div>
@@ -319,7 +319,7 @@ export default function Path360CaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>What I learned</p>
               <h2 className="font-light" style={SECTION_HEADING}>What enterprise scale taught me</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Building this ecosystem taught me what it means to design at enterprise scale, where the system has to hold for every edge case, not just the happy path.</p>
               <p>The work that mattered most wasn't the interface. It was the alignment work: getting HR, engineering, product, and business stakeholders onto the same model of what calibration should do and for whom. Design was the medium for that conversation.</p>
               <p>I also learned that launching isn't the end. The most valuable research happened after PATH was in the field, when real users surfaced problems we never would have caught in a lab.</p>

@@ -7,7 +7,7 @@ import ZoomableImage from "./_components/ZoomableImage";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
-const SECTION_HEADING = { fontSize: "clamp(18px, 2vw, 26px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
+const SECTION_HEADING = { fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 };
 
 export default function VisnCaseStudy() {
   return (
@@ -63,7 +63,7 @@ export default function VisnCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Navigation without sight is a design problem</h2>
             </div>
             <div className="flex flex-col gap-8">
-              <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+              <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford: canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
                 <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout didn&apos;t exist back in 2019. No single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
                 <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing, all through your ears, hands-free.</p>
@@ -91,7 +91,7 @@ export default function VisnCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>The approach</p>
               <h2 className="font-light" style={SECTION_HEADING}>One system, two layers</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>VISN was a hardware-software system designed to work as one. The hardware lived on the body; the software ran on the user's phone; they communicated over Bluetooth in near real-time.</p>
               <p><strong>Hardware.</strong> An Arduino Nano, four Maxbotix ultrasonic sensors, a magnetometer (compass), and an HC-06 Bluetooth module, all wired into a breadboard circuit and enclosed in a fanny pack worn on the chest. The sensors measured the distance and angle to objects in the user's path. The compass tracked the direction they were facing. All of it streamed to the app.</p>
               <p><strong>Software.</strong> An Android app built in Android Studio. It pulled Google Maps data for turn-by-turn directions and layered in the live hardware stream, so as the user walked, they heard both their route and real-time obstacle alerts: "Object 3 feet ahead. Please move."</p>
@@ -122,7 +122,7 @@ export default function VisnCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>The design</p>
               <h2 className="font-light" style={SECTION_HEADING}>The decision that mattered the most</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We tried a harness first. It held the hardware well: good sensor angles, stable on the body. But it was heavy, conspicuous, and made people feel more disabled, not less. That wasn't acceptable.</p>
               <p>The fanny pack was the answer. Worn on the chest, it gave the sensors the right field of view without restricting movement. It was familiar, lightweight, and, critically, something a person might choose to wear anyway. It didn't announce that you needed help.</p>
               <p>That decision shaped how I think about assistive technology. The best tools disappear into the life of the person using them. Dignity is a design requirement.</p>
@@ -164,7 +164,7 @@ export default function VisnCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>Outcome</p>
               <h2 className="font-light" style={SECTION_HEADING}>We won our capstone.</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We shipped a working end-to-end system: real route guidance from the app, live obstacle detection from the wearable, and a reliable Bluetooth link between the two. In outdoor tests, the experience held together in real walking conditions.</p>
               <p>We were also explicit about what was incomplete. Directional left/right guidance from the magnetometer was not production-ready by demo day, indoor positioning remained unreliable, and moving-obstacle handling was out of scope for the capstone timeline.</p>
               <p>The outcome was clear: the project direction worked. For four people in four months, it was proof that the core system was valuable, feasible, and worth taking further.</p>
@@ -179,7 +179,7 @@ export default function VisnCaseStudy() {
               <p className={`${LABEL} text-[var(--accent)]`}>Reflection</p>
               <h2 className="font-light" style={SECTION_HEADING}>If I built VISN today</h2>
             </div>
-            <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
+            <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Here's what I didn't know at the time: product design existed as a discipline. I was the project manager and the engineer on this team, and I thought that was the whole job. The fanny pack call, the audio-first interface, the decision to build around dignity, those came from instinct, not training.</p>
               <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical: the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: sit with visually impaired users first, learn how they already navigate, and design around that, not around what the hardware can do.</p>
             </div>
