@@ -75,14 +75,15 @@ export default function TimeTrackerCaseStudy() {
           />
         </section>
 
-        {/* ── Hero video (looping screen recording of the real flow) ── */}
-        <HeroVideo
-          src="/case-study/time-track/regular-flow.mp4"
-          poster="/case-study/time-track/regular-flow-poster.jpg"
-          aspect="540/1110"
-          label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
-          maxWidth={420}
-        />
+        {/* ── Hero image ── */}
+        <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
+          <Screenshot
+            src="/case-study/time-track/hero2.png"
+            aspect="775/911"
+            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
+            priority
+          />
+        </div>
 
         {/* ── The concept ── */}
         <section className="py-16 flex flex-col gap-10">
@@ -257,13 +258,13 @@ export default function TimeTrackerCaseStudy() {
               </p>
             </Prose>
           </div>
-          <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
-            <Screenshot
-              src="/case-study/time-track/hero2.png"
-              aspect="775/911"
-              label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
-            />
-          </div>
+          <HeroVideo
+            src="/case-study/time-track/regular-flow.mp4"
+            poster="/case-study/time-track/regular-flow-poster.jpg"
+            aspect="540/1110"
+            label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
+            maxWidth={420}
+          />
         </section>
 
         <NextProjectCard currentHref="/case-study/time-tracker" />
