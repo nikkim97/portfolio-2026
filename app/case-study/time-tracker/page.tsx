@@ -146,7 +146,7 @@ export default function TimeTrackerCaseStudy() {
                 The hardest part of any tracker isn&apos;t the chart: it&apos;s categorization. The moment one event is allowed to count toward two things, the data turns to mush and the donut stops meaning anything. So I made a single rule and held it: <em>who you&apos;re with decides the pillar.</em>
               </p>
               <p>
-                A hike with your kids is Family, not Self-Care, even though it&apos;s good for you. Self-Care is strictly solo: just you, recharging. One event, one pillar, no splitting. It sounds almost too simple, but that constraint <em>is</em> the product. It&apos;s what makes the breakdown trustworthy instead of negotiable.
+                A hike with your kids is Family, not Self-Care, even though it&apos;s good for you. Self-Care is strictly solo: just you, recharging. One event, one pillar, no splitting. It sounds almost too simple, but that constraint <em>is</em>{" "}the product. It&apos;s what makes the breakdown trustworthy instead of negotiable.
               </p>
             </Prose>
           </div>

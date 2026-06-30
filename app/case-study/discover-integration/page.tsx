@@ -152,9 +152,9 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { src: "/case-study/manager/mma-checklist-default.png", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
-            { src: "/case-study/manager/l2-account-summary.png", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
             { src: "/case-study/manager/checklist-debit.png", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
+            { src: "/case-study/manager/l2-account-summary.png", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
+            { src: "/case-study/manager/mma-checklist-default.png", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
           ]} />
         </section>
 
@@ -167,13 +167,13 @@ export default function DiscoverIntegrationCaseStudy() {
             </div>
             <Prose>
               <p>
-                The biggest constraint wasn&apos;t the brief, it was the canvas. This lives inside the full Capital One app, which doesn&apos;t allow for many custom components, so the wayfinding system had to be built almost entirely from the existing toolkit, restructured and recomposed to do a new job. The creativity was in working <em>within</em> the system, not around it.
+                The biggest constraint wasn&apos;t the brief, it was the canvas. This lives inside the full Capital One app, which doesn&apos;t allow for many custom components, so the wayfinding system had to be built almost entirely from the existing toolkit, restructured and recomposed to do a new job. The creativity was in working <em>within</em>{" "}the system, not around it.
               </p>
               <p>
                 Layered on top: compliance requirements shaped the language, a hard brand-migration cutover meant narrow windows, and there&apos;s no second chance: you can&apos;t re-onboard someone, so the first impression had to land the first time.
               </p>
               <p>
-                The work that mattered most wasn&apos;t pixels, it was making the case to senior leadership that this layer of clarity deserved to be prioritized, and translating &ldquo;help people understand what changed&rdquo; into the terms leadership measures: retained volume, and fewer calls to front-line associates.
+                And the hardest constraint wasn&apos;t on the screen at all: getting a layer of pure clarity prioritized meant making the case for it to senior leadership.
               </p>
             </Prose>
           </div>
@@ -188,7 +188,7 @@ export default function DiscoverIntegrationCaseStudy() {
             </div>
             <Prose>
               <p>
-                Success will be measured on two things: the <strong>customer volume retained</strong> through the switch and <strong>how few calls</strong> the change drives to front-line associates. The experience is scheduled to launch and enter testing in late 2026, so results are still to come. I&apos;ll update this case study as retention and call-volume data become available.
+                Success will be measured on two things: the <strong>customer volume retained</strong>{" "}through the switch and <strong>how few calls</strong>{" "}the change drives to front-line associates. The experience is scheduled to launch and enter testing in late 2026, so results are still to come. I&apos;ll update this case study as retention and call-volume data become available.
               </p>
             </Prose>
           </div>
@@ -209,7 +209,7 @@ export default function DiscoverIntegrationCaseStudy() {
                 The work that actually moved the needle wasn&apos;t in the file. It was convincing senior leadership that a layer of clarity — telling people what changed, where they were, and what to do next — deserved to be prioritized against everything else competing for the release. That meant translating &ldquo;help customers understand&rdquo; into the only language the business measures: retained volume and fewer calls. At this level, the design isn&apos;t finished when the screens are right; it&apos;s finished when the people who fund the work believe in it.
               </p>
               <p>
-                I used to think of constraints as the enemy of good design. Here they <em>were</em> the brief. Building entirely within an existing system, for customers who only get one first impression, taught me that the judgment — what to fight for, how to frame its value, when the clearest thing is also the boldest thing — is the work. That&apos;s the part that travels with me, whatever I design next.
+                I used to think of constraints as the enemy of good design. Here they <em>were</em>{" "}the brief. Building entirely within an existing system, for customers who only get one first impression, taught me that the judgment — what to fight for, how to frame its value, when the clearest thing is also the boldest thing — is the work. That&apos;s the part that travels with me, whatever I design next.
               </p>
             </Prose>
           </div>
