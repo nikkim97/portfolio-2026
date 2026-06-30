@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large media files
+# large media files (raw source recordings stay out of the repo)
 *.mov
 *.mp4
+
+# ...but allow small, web-optimized hero videos so they deploy
+!public/case-study/**/regular-flow.mp4
