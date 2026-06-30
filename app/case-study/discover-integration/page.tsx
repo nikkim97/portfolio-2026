@@ -194,6 +194,24 @@ export default function DiscoverIntegrationCaseStudy() {
           </div>
         </section>
 
+        {/* ── Reflection ── */}
+        <section className="py-16 flex flex-col gap-10">
+          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
+            <div className="flex flex-col gap-2">
+              <SectionLabel>Reflection</SectionLabel>
+              <SectionHeading>The problem showed up less defined</SectionHeading>
+            </div>
+            <Prose>
+              <p>
+                Earlier in my career, someone handed me the problem—a feature gap, a broken flow, a brief. Here it arrived as a business strategy, and the design work started well before any screen: deciding that <em>clarity itself</em> was worth building, and drawing the edges around a problem nobody had scoped yet.
+              </p>
+              <p>
+                The further I go, the less of the problem comes pre-defined, and the more of it is mine to shape. That&apos;s the part I want to keep getting better at.
+              </p>
+            </Prose>
+          </div>
+        </section>
+
         <NextProjectCard currentHref="/case-study/discover-integration" />
 
         {/* ── Footer ── */}
