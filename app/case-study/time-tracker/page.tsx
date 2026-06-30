@@ -76,7 +76,7 @@ export default function TimeTrackerCaseStudy() {
         </section>
 
         {/* ── Hero image (static interim; looping video planned) ── */}
-        <div className="mx-auto w-full" style={{ maxWidth: 560 }}>
+        <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
           <Screenshot
             src="/case-study/time-track/hero2.png"
             aspect="775/911"
@@ -105,8 +105,8 @@ export default function TimeTrackerCaseStudy() {
               <PillarKey />
             </Prose>
           </div>
-          <div className="flex flex-nowrap gap-6 justify-center overflow-x-auto pb-2">
-            <PhoneFrame maxWidth={232}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v2.1.png"
                 aspect={PHONE_ASPECT}
@@ -115,7 +115,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="The dashboard: each pillar next to its target"
               />
             </PhoneFrame>
-            <PhoneFrame maxWidth={232}>
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v2.3.png"
                 aspect={PHONE_ASPECT}
@@ -123,7 +123,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="The balance read: where you land, in one word"
               />
             </PhoneFrame>
-            <PhoneFrame maxWidth={232}>
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v2.2.png"
                 aspect={PHONE_ASPECT}
@@ -155,8 +155,8 @@ export default function TimeTrackerCaseStudy() {
             &ldquo;Who you&apos;re with determines the pillar. A hike with your kids is Family, not Self-Care. Self-Care is strictly solo time.&rdquo;
           </PullQuote>
 
-          <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2">
-            <div className="flex-none w-[232px]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-start">
+            <div>
               <Screenshot
                 src="/case-study/time-track/onboard.png"
                 aspect={PHONE_ASPECT}
@@ -164,7 +164,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="Onboarding · intro"
               />
             </div>
-            <div className="flex-none w-[232px]">
+            <div>
               <Screenshot
                 src="/case-study/time-track/onboard-2.1.png"
                 aspect={PHONE_ASPECT}
@@ -172,7 +172,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="Onboarding · setup"
               />
             </div>
-            <div className="flex-none w-[232px]">
+            <div>
               <Screenshot
                 src="/case-study/time-track/onboard-2.2.png"
                 aspect={PHONE_ASPECT}
@@ -180,7 +180,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="Onboarding · defaults"
               />
             </div>
-            <div className="flex-none w-[232px]">
+            <div>
               <Screenshot
                 src="/case-study/time-track/onbaord3.png"
                 aspect={PHONE_ASPECT}
@@ -211,8 +211,8 @@ export default function TimeTrackerCaseStudy() {
             </Prose>
           </div>
 
-          <div className="flex flex-wrap gap-6 justify-center">
-            <PhoneFrame maxWidth={232}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v1.1.png"
                 aspect={PHONE_ASPECT}
@@ -220,7 +220,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="V1 · the donut: shape of the week, weak on 'am I on target'"
               />
             </PhoneFrame>
-            <PhoneFrame maxWidth={232}>
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v1.3.png"
                 aspect={PHONE_ASPECT}
@@ -228,7 +228,7 @@ export default function TimeTrackerCaseStudy() {
                 caption="V1 · goal vs. reality lived behind a flip. V2 made it the front door"
               />
             </PhoneFrame>
-            <PhoneFrame maxWidth={232}>
+            <PhoneFrame maxWidth={520}>
               <Screenshot
                 src="/case-study/time-track/v1.2.png"
                 aspect={PHONE_ASPECT}
