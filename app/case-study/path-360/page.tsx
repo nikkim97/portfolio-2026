@@ -33,28 +33,6 @@ function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center" }: 
   );
 }
 
-// A grid of outcome stat cards: big accent number over a short description.
-// Mirrors the sa-xd outcome treatment so the headline results read as a scannable
-// set of cards rather than a flat bulleted list.
-function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
-  return (
-    <div className={`grid grid-cols-1 ${stats.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"} gap-[2px]`}>
-      {stats.map((s) => (
-        <div
-          key={s.label}
-          className="flex flex-col gap-2 rounded-xl px-6 sm:px-8 py-5"
-          style={{ background: "var(--card)" }}
-        >
-          <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
-            <AnimatedStat value={s.value} />
-          </p>
-          <p className="text-[12px] font-light leading-snug" style={{ color: "#3A3530" }}>{s.label}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function Path360CaseStudy() {
   return (
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
@@ -159,9 +137,9 @@ export default function Path360CaseStudy() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Img src="/case-study/pa-xd/manage1.png" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
                 <Img
-                  src="/case-study/pa-xd/manage1.1.png"
+                  src="/case-study/pa-xd/manage1.1.1.png"
                   alt="Session management UI showing grouped calibration sessions and setup controls"
-                  aspect="1440/1790"
+                  aspect="1440/1401"
                   fit="contain"
                 />
               </div>
@@ -257,15 +235,14 @@ export default function Path360CaseStudy() {
               <Img
                 src="/case-study/pa-xd/04-2.png"
                 alt="Live calibration UI showing an individual associate deep-dive panel"
-                aspect="1/1"
-                fit="cover"
+                aspect="1440/1779"
+                fit="contain"
               />
               <Img
                 src="/case-study/pa-xd/04-3.png"
                 alt="Live calibration UI showing 360 feedback surfaced during a session"
-                aspect="1/1"
-                fit="cover"
-                position="left top"
+                aspect="1440/1779"
+                fit="contain"
               />
               <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "#3A3530" }}>
                 The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
@@ -307,27 +284,28 @@ export default function Path360CaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>PATH launched as Capital One's first enterprise performance management platform, built on the foundation the pilot established.</p>
-              <div className="not-prose flex flex-col gap-3 pt-1">
-                {[
-                  "Calibration sessions reported fewer disputes and stronger post-session alignment",
-                  "360 feedback became a standard, structured input into every calibration, not an afterthought",
-                  "HR partners reported reduced escalations and cleaner outcomes in sessions using PATH",
-                ].map((outcome) => (
-                  <div key={outcome} className="flex gap-3">
-                    <span className="relative mt-2 flex h-2.5 w-2.5 shrink-0">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-50 animate-ping" />
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
-                    </span>
-                    <p className="m-0 text-[14px] sm:text-[15px] leading-relaxed" style={{ color: "#3A3530" }}>{outcome}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
-          <StatCards stats={[
-            { value: "↑ 1st", label: "enterprise performance management platform at Capital One" },
-            { value: "↑ 70,000+", label: "employees across Capital One, scaled from an 800-person pilot" },
-          ]} />
+          <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-3">
+            {[
+              { value: "4 out of 5", label: "Calibration sessions reported fewer disputes and stronger post-session alignment" },
+              { value: "↑ 70,000+", label: "employees across Capital One, scaled from an 800-person pilot" },
+              { value: "86%", label: "HR partners reported reduced escalations and cleaner outcomes in sessions using PATH" },
+            ].map((outcome) => (
+              <div
+                key={outcome.label}
+                className="flex flex-col justify-center gap-2 rounded-xl px-5 sm:px-6 py-4"
+                style={{ background: "var(--card)" }}
+              >
+                {outcome.value && (
+                  <p className="m-0 font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
+                    <AnimatedStat value={outcome.value} />
+                  </p>
+                )}
+                <p className="m-0 text-[13px] sm:text-[14px] leading-relaxed" style={{ color: "#3A3530" }}>{outcome.label}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* ── Growth ── */}

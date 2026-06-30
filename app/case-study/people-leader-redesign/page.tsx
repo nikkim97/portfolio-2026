@@ -69,8 +69,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
             timeline="Nov 2025 - Feb 2026"
             platform="Enterprise web"
             results={[
-              { value: "18+ → 4", label: "screens collapsed into the My Team experience" },
-              { value: "72 hrs", label: "from discovery to a high-fidelity prototype" },
+              { value: "18 → 4", label: "screens collapsed into the My Team experience" },
+              { value: "76%", label: "efficiency increase for PLs" },
             ]}
           />
         </section>
@@ -121,13 +121,6 @@ export default function PeopleLeaderRedesignCaseStudy() {
 
           <div className="flex flex-col gap-6">
             <Figure
-              src="/case-study/pl-redesign/tab0.png"
-              width={1440}
-              height={1129}
-              alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
-              caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
-            />
-            <Figure
               src="/case-study/pl-redesign/old-myteam-table.png"
               width={1440}
               height={1137}
@@ -176,6 +169,13 @@ export default function PeopleLeaderRedesignCaseStudy() {
               </p>
             </Prose>
           </div>
+          <Figure
+            src="/case-study/pl-redesign/tab0.png"
+            width={1440}
+            height={1129}
+            alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
+            caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
+          />
           <PullQuote>
             Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow — and enables more objective calibration sessions.
           </PullQuote>
@@ -221,32 +221,14 @@ export default function PeopleLeaderRedesignCaseStudy() {
               <SectionHeading>From 18+ screens to four</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
-                <div className="flex flex-1 flex-col items-center gap-1 text-center">
-                  <div className="font-semibold text-[clamp(40px,7vw,72px)] tracking-tight text-[var(--accent)]">
-                    18+ → 4
-                  </div>
-                  <div className="max-w-[20ch] text-base text-[var(--muted)] sm:text-lg">
-                    screens collapsed into the My Team experience
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col gap-1">
-                  <div className="font-semibold text-[clamp(40px,7vw,72px)] tracking-tight text-[var(--accent)]">
-                    76%
-                  </div>
-                  <div className="max-w-[28ch] text-base text-[var(--muted)] sm:text-lg">
-                    efficiency increase for PLs
-                  </div>
-                </div>
-              </div>
               <Prose>
                 <p>
                   The redesign brought a leader&apos;s entire calibration prep onto a few connected screens, with the inputs for a fair assessment side by side instead of scattered. Delivered as a high-fidelity prototype in 72 hours — what typically takes weeks of fragmented virtual work — its impact carried well past the sprint:
                 </p>
                 <ul>
-                  <li><strong>Cross-functional alignment.</strong> The prototype immediately informed dependent features, including Self-Evaluations and Performance Reviews.</li>
-                  <li><strong>Process evolution.</strong> The HR team refined the &ldquo;My Team&rdquo; sprint methodology through subsequent sprints and retrospectives.</li>
-                  <li><strong>A reusable toolkit.</strong> Those learnings were codified into a finalized process other teams now run from.</li>
+                  <li><strong className="font-bold text-[var(--foreground)]">Cross-functional alignment.</strong> The prototype immediately informed dependent features, including Self-Evaluations and Performance Reviews.</li>
+                  <li><strong className="font-bold text-[var(--foreground)]">Process evolution.</strong> The HR team refined the &ldquo;My Team&rdquo; sprint methodology through subsequent sprints and retrospectives.</li>
+                  <li><strong className="font-bold text-[var(--foreground)]">A reusable toolkit.</strong> Those learnings were codified into a finalized process other teams now run from.</li>
                 </ul>
               </Prose>
             </div>

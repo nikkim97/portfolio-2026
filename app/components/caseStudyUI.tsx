@@ -96,7 +96,7 @@ export function PhoneFrame({ children, maxWidth = 300 }: { children: ReactNode; 
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div
-      className="flex flex-col gap-5 font-light text-[16px] sm:text-[18px] leading-[1.8]"
+      className="flex flex-col gap-5 font-light text-[16px] sm:text-[18px] leading-[1.8] [&_strong]:font-bold [&_strong]:text-[var(--foreground)]"
       style={{ color: "#3A3530" }}
     >
       {children}

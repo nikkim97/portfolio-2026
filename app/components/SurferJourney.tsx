@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
 
+const mobileJourneyNodes = journeyNodes.filter((node) => node.type !== "career");
+
 function MobileCardSwitcher() {
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
@@ -15,9 +17,8 @@ function MobileCardSwitcher() {
     setIndex(next);
   };
 
-  const node = journeyNodes[index];
-  const isCareer = node.type === "career";
-  const hasCard = !isCareer;
+  const node = mobileJourneyNodes[index];
+  const hasCard = true;
   const isActionable = !!node.href && !node.comingSoon;
   const Wrapper = isActionable ? "a" : "div";
 
@@ -29,7 +30,7 @@ function MobileCardSwitcher() {
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           const dx = touchStartX.current - e.changedTouches[0].clientX;
-          if (dx > 40 && index < journeyNodes.length - 1) go(index + 1);
+          if (dx > 40 && index < mobileJourneyNodes.length - 1) go(index + 1);
           if (dx < -40 && index > 0) go(index - 1);
         }}
       >
@@ -157,7 +158,7 @@ function MobileCardSwitcher() {
           ← Prev
         </button>
         <div className="flex items-center gap-1.5">
-          {journeyNodes.map((_, i) => (
+          {mobileJourneyNodes.map((_, i) => (
             <button
               key={i}
               onClick={() => go(i)}
@@ -172,9 +173,9 @@ function MobileCardSwitcher() {
         </div>
         <button
           onClick={() => go(index + 1)}
-          disabled={index === journeyNodes.length - 1}
+          disabled={index === mobileJourneyNodes.length - 1}
           className="text-[11px] tracking-[0.15em] uppercase transition-opacity duration-200"
-          style={{ color: "var(--midtone)", opacity: index === journeyNodes.length - 1 ? 0.25 : 1 }}
+          style={{ color: "var(--midtone)", opacity: index === mobileJourneyNodes.length - 1 ? 0.25 : 1 }}
         >
           Next →
         </button>

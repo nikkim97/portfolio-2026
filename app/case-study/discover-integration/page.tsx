@@ -68,23 +68,6 @@ export default function DiscoverIntegrationCaseStudy() {
           { src: "/case-study/manager/welcome2.png", aspect: "806 / 1724", priority: true, label: "Welcome animation: the welcome message that lands the moment", caption: "We're happy you're here" },
         ]} />
 
-        {/* ── The problem ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>The problem</SectionLabel>
-              <SectionHeading>Converting people who spend into people who bank</SectionHeading>
-            </div>
-            <div className="flex flex-col gap-8">
-              <Prose>
-                <p>
-                  We focused on &ldquo;spenders&rdquo;: customers who primarily used a Discover debit card, sometimes alongside multiple debit or credit cards. Beneath that simple behavior were complex migration paths. Most customers had one checking and one savings account; others held Discover money market accounts, a product Capital One did not offer. The challenge was creating one clear transition that handled each variation without disrupting familiar habits—or losing customers whose accounts had no direct equivalent.
-                </p>
-              </Prose>
-            </div>
-          </div>
-        </section>
-
         {/* ── The insight ── */}
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
