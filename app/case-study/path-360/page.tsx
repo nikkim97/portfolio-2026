@@ -41,7 +41,7 @@ export default function Path360CaseStudy() {
       <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgb(245,241,235)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
-          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2023 – 2025</span>
+          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2024 – 2025</span>
           <NextProjectLink currentHref="/case-study/path-360" />
         </div>
       </div>
@@ -56,6 +56,7 @@ export default function Path360CaseStudy() {
           role="Lead product designer"
           timeline="Dec 2024 – June 2025"
           platform="Enterprise web platform"
+          resultsLabel="Directional signal"
           results={[
             { value: "↑ 70%", label: "PLs satisfied with the PM experience" },
             { value: "↑ 70%", label: "PLs confident in final ratings" },
@@ -306,6 +307,9 @@ export default function Path360CaseStudy() {
               </div>
             ))}
           </div>
+          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
+            Directional figures from the pilot and early rollout; the 70,000+ reflects full enterprise scale.
+          </p>
         </section>
 
         {/* ── Growth ── */}
@@ -313,7 +317,7 @@ export default function Path360CaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <p className={`${LABEL} text-[var(--accent)]`}>What I learned</p>
-              <h2 className="font-light" style={SECTION_HEADING}>Growth as a leader</h2>
+              <h2 className="font-light" style={SECTION_HEADING}>What enterprise scale taught me</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "#3A3530" }}>
               <p>Building this ecosystem taught me what it means to design at enterprise scale, where the system has to hold for every edge case, not just the happy path.</p>
