@@ -44,7 +44,7 @@ export default function BloomCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Most compatibility tools flatten people into generic traits. I used plant care as a warmer metaphor for emotional needs, daily rhythms, and relationship fit<span style={{ color: "var(--accent)" }}>.</span>
+            Moving in with my partner, I realized I&apos;m a pothos and he&apos;s a snake plant — same space, completely different needs. Bloom turns that into a quiz for couples figuring out how to live together<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
             role="Builder: concept, trait framework, question design, and copy tone"
@@ -67,32 +67,22 @@ export default function BloomCaseStudy() {
           />
         </div>
 
-        {/* ── Why this project (bridge from enterprise work) ── */}
-        <section className="pt-14 pb-2">
-          <p
-            className="font-light max-w-[820px]"
-            style={{ fontSize: "clamp(19px, 2vw, 24px)", letterSpacing: "-0.01em", lineHeight: 1.5, color: "var(--foreground)" }}
-          >
-            After years designing performance systems for 70,000 people — layers of stakeholders, real constraints, long timelines — I wanted to build something with none of that. Bloom was the experiment: what can I make on my own, start to finish, and what do these new AI tools actually change about how I work?
-          </p>
-        </section>
-
-        {/* ── The concept ── */}
-        <section className="py-16 flex flex-col gap-10">
+        {/* ── The concept (origin + how it works, combined) ── */}
+        <section className="pt-14 pb-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The concept</SectionLabel>
-              <SectionHeading>Plant care needs are surprisingly good metaphors for people</SectionHeading>
+              <SectionHeading>A way to talk about our differences without taking them personally</SectionHeading>
             </div>
             <Prose>
               <p>
-                A Monstera needs full sun and constant water; a Cactus thrives on neglect. The same range exists in people — but most compatibility tools never look for it. They ask about values or love languages. Bloom asks about emotional metabolism instead: how you actually function day to day, not how you'd like to.
+                It came out of a hard conversation. My partner and I had recently moved in together, deep in the kind of talk every new couple has — why our days run on different rhythms, why the way he recharges isn&apos;t the way I do. The pothos-and-snake-plant line just fell out of me, and something about it made the whole thing easier: his needs were valid, so were mine, and we only had to find the overlap and be gentle about the places we didn&apos;t.
               </p>
               <p>
-                Six plant-care needs map onto six human ones. How often a plant needs watering becomes how often a person needs quality time and connection. Light becomes social energy — full sun for extroverts, low light for introverts. Root space becomes how much solitude you need before you can show up for someone else, and temperature sensitivity becomes your appetite for stability versus change.
+                That&apos;s the idea Bloom runs on. A Monstera needs full sun and constant water; a cactus thrives on neglect — people run on the same range, even if most compatibility tools never look for it. They ask what you value, or your love language; I wanted Bloom to ask something more honest: not how you&apos;d <em>like</em> to show up for someone, but how you actually do, day to day. So I mapped six plant-care needs onto six human ones — watering became quality time, light became social energy, root space became how much solitude you need before you can show up for someone else.
               </p>
               <p>
-                You answer thirteen questions, and the app scores you against eight plant archetypes to find your closest match. Your partner does the same. What comes back isn't a score — it's a pairing, like <em>Monstera meets Chinese Elephant Ear</em>, with an honest read on where you align, where you differ, and what to do about it.
+                You answer thirteen questions, your partner does too, and instead of a score you each get a plant — then the two of you as a pairing, like <em>Monstera meets Chinese Elephant Ear</em>. It reads back where you align, where you differ, and what to do about it: light enough to send like a BuzzFeed quiz, honest enough to be worth talking about.
               </p>
             </Prose>
           </div>
@@ -135,7 +125,7 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                I set the terms of the collaboration in the first conversation: I'd own the product thinking — the concept, the trait framework, the question design, the tone of the copy — and Claude would build. That division held for the whole project.
+                I set the terms in the very first conversation: I'd own the product thinking — the concept, the trait framework, the questions, the tone of the writing — and Claude would do the building. That line held the whole way through.
               </p>
               <p>
                 The concept itself took shape in a live chat. I brought the plant analogy; Claude helped map it onto human behavior, asked sharper questions about what the quiz was really measuring, and pushed the thinking past where I'd taken it alone — surfacing friction points I hadn't yet put words to, like after-work energy and the negotiation of a shared social calendar.
@@ -172,14 +162,14 @@ export default function BloomCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>V1</SectionLabel>
-              <SectionHeading>Functional. But the cards felt like data, not people.</SectionHeading>
+              <SectionHeading>It worked — but the cards felt like data, not people.</SectionHeading>
             </div>
             <Prose>
               <p>
-                V1 worked. The homepage landed exactly where I wanted it — clean and editorial, opening on <em>"Every relationship has a nature"</em> — and the quiz flowed straight through to a results page that set your trait charts beside your partner's.
+                The first version worked. The homepage landed exactly where I wanted it — clean and editorial, opening on <em>"Every relationship has a nature"</em> — and the quiz flowed straight through to a results page that set your trait charts beside your partner's.
               </p>
               <p>
-                But the results stayed on the surface. The bars were accurate and doing their job; they just didn't tell you anything about <em>who you actually were</em> as that plant. You got data. You didn't get a mirror.
+                But the results stayed on the surface. The bars were accurate and doing their job; they just didn't tell you anything about <em>who you actually were</em> as that plant. It handed you data when what you wanted was a mirror.
               </p>
               <p>
                 One moment looked like a bug and turned out to be the most interesting thing that happened. Two plants were showing no real differences, and Claude traced it: <em>"It's not a bug, it's the data. Look at their trait matrices side by side."</em> Monstera and Chinese Elephant Ear had scored within a point of each other on all seven traits — they genuinely were nearly identical. Claude offered to handle the edge case gracefully; I decided how.
@@ -189,8 +179,8 @@ export default function BloomCaseStudy() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
-              src="/case-study/bloom/02.a.png"
-              aspect="1582/1396"
+              src="/case-study/bloom/hero2.2.png"
+              aspect="1732/1390"
               label="V1 results page: Monstera meets Chinese Elephant Ear, two partner cards side by side"
               caption="V1 results page: correct, but more data display than emotional resonance"
             />
@@ -218,11 +208,11 @@ export default function BloomCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>Evolution</SectionLabel>
-              <SectionHeading>Three days later. Two things changed. The gap closed.</SectionHeading>
+              <SectionHeading>Three days later, I came back and closed the gap.</SectionHeading>
             </div>
             <Prose>
               <p>
-                Three days later I came back with a clear list of what felt off. The plant cards needed to read like portraits, not profiles. And the compatibility section had to do real interpretive work — not just surface the data, but tell you what it meant.
+                The plant cards needed to read like portraits, not profiles. And the compatibility section had to do real interpretive work — not just surface the data, but tell you what it meant.
               </p>
               <p>
                 So the descriptions became character studies. <em>"You don't open up for just anyone, and that's not a flaw, it's discernment. When the conditions are right you are one of the most loving, attentive partners there is. The person who takes the time to understand you gets something truly rare."</em> That's a different thing to read than a bar chart.
@@ -231,7 +221,7 @@ export default function BloomCaseStudy() {
                 The compatibility breakdown split in two — <em>Where you align</em> and <em>Where you're different</em> — and each side did the interpreting for you, turning matched and mismatched traits into what they mean in practice, with a piece of plain advice to hold onto: <em>"Keep checking in even when things are good. The couples who stay emotionally close aren't the ones who talk when things are hard. They're the ones who never fully stop talking."</em>
               </p>
               <p>
-                The loop was tight: Claude built, I reviewed on localhost, I redirected or approved. Three files. Fifty seconds of thinking. Meaningfully better.
+                The loop was tight — Claude built, I reviewed on localhost, I redirected or approved, and around we went. Three files and about fifty seconds of thinking later, it was meaningfully better.
               </p>
             </Prose>
           </div>
@@ -275,20 +265,23 @@ export default function BloomCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>What I learned</SectionLabel>
-              <SectionHeading>The bottleneck shifted. The work didn't disappear.</SectionHeading>
+              <SectionHeading>I&apos;m an ideas person. I finally got to work like one.</SectionHeading>
             </div>
             <Prose>
               <p>
-                Vibe coding isn't about typing less code. It's a different kind of creative work: you direct instead of build, and the bottleneck moves with you — from implementation to decision-making.
+                In an enterprise environment, getting an interaction out of my head and into something real meant routing through a stack of tools and a stack of people — and most of my ideas died in that distance. Building Bloom, I could work the way I actually think: try a flow, feel it, scrap it, try another, making the calls myself in real time. I explored more interaction ideas in a few weeks than I had in years of structured work.
               </p>
               <p>
-                The real time went where the judgment was: the concept, the trait framework, the question design, the tone of the copy. Not the scaffolding — Claude can build scaffolding all day. What it can't tell you is whether a quiz question feels like an interrogation or a conversation, or whether a results page has earned the emotional weight it's reaching for. That part is still yours.
+                For a long time, the thing standing between an idea and a working version of it was a learning curve — knowing the right tools, in the right order, well enough. With that barrier gone, the only thing left in the way was my own judgment — which is exactly where I want the work to live.
               </p>
               <p>
-                What surprised me most was that debugging moment. <em>"It's not a bug, it's the data."</em> Claude read the trait matrices, found the real issue, and proposed a fix better than the one I'd have reached for — acting like a product partner, not a code executor. I didn't expect that, and it changed how I think about what these tools are genuinely good at.
+                It showed up most in the small calls. When a pairing came back with almost nothing to set the two apart, I didn&apos;t accept the empty <em>&ldquo;where you differ&rdquo;</em> section — I dug into why. The data was right; the experience wasn&apos;t. So I made the call: when two people align that closely, name it and make it a moment — <em>&ldquo;you&apos;re remarkably well-matched&rdquo;</em> — instead of leaving a hole. I was steering the product the whole way; the build kept pace.
               </p>
               <p>
-                If I did it again, I'd define the visual design up front. The aesthetic came out fine, but I got there reactively, one decision at a time, when I'd rather have set the direction deliberately. Next time I'd spec the design system before I ever typed the first build command.
+                Bloom came straight out of my own life, and that&apos;s the part that&apos;s stuck. Nearly every couple I show it to asks me to buy the domain and send it to them — not as a gag, but because they genuinely want it for their own relationship. The thing my partner and I were navigating, it turns out, is something a lot of people are quietly working out too.
+              </p>
+              <p>
+                I&apos;m not sharing it widely yet — the perfectionist in me wants to fix the backend and cut the content overload first, get it to the bar I&apos;d want before it&apos;s in someone else&apos;s hands. But couple after couple asking for the link is the kind of validation no metric gives you. Bloom gave me a way of working that fits how I think — and proof that an idea pulled straight from my own life had a real need waiting for it.
               </p>
             </Prose>
           </div>
