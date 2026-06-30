@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
-import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
+import { HeroVideo, IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 export default function BloomCaseStudy() {
@@ -56,14 +56,14 @@ export default function BloomCaseStudy() {
           />
         </section>
 
-        {/* ── Hero image ── */}
+        {/* ── Hero video ── */}
         <div>
-          <Screenshot
-            src="/case-study/bloom/hero-new.png"
-            aspect="1060/992"
-            priority
-            label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
-            caption="V1 homepage running on localhost:3000, March 23 2026"
+          <HeroVideo
+            src="/case-study/bloom/bloom-hero.mp4"
+            poster="/case-study/bloom/hero-new.png"
+            aspect="1474/1160"
+            maxWidth={720}
+            label="Bloom homepage intro animation: Every relationship has a nature"
           />
         </div>
 

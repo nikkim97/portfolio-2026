@@ -7,6 +7,16 @@ const projects = journeyNodes.filter(
   (node): node is ProjectNode => Boolean(node.href && node.title),
 );
 
+const bridgeCopyByHref: Record<string, string> = {
+  "/case-study/visn": "That early hardware work taught me to design through uncertainty. The next chapter moved into enterprise systems, where trust had to scale.",
+  "/case-study/sa-xd": "That pilot proved better feedback could change the conversation. PATH asked the bigger question: how do you scale that trust across the enterprise?",
+  "/case-study/path-360": "Once the platform existed, the next challenge was flow: helping leaders prepare for high-stakes conversations without stitching context together themselves.",
+  "/case-study/people-leader-redesign": "After designing for internal decision-making, Discover shifted the stakes outward: a customer-facing migration where clarity had to earn trust immediately.",
+  "/case-study/discover-integration": "Those enterprise constraints made me hungry to build faster, smaller, and closer to the idea itself.",
+  "/case-study/bloom": "Bloom proved I could move from a personal insight to a working product quickly. Time Tracker pushed that same speed into a more structured tool.",
+  "/case-study/time-tracker": "That builder energy loops back to where I started: designing systems that make invisible needs easier to navigate.",
+};
+
 function getNextProject(currentHref: string) {
   const currentIndex = projects.findIndex((project) => project.href === currentHref);
   if (currentIndex === -1) return null;
@@ -31,6 +41,7 @@ export function NextProjectLink({ currentHref }: { currentHref: string }) {
 export function NextProjectCard({ currentHref }: { currentHref: string }) {
   const nextProject = getNextProject(currentHref);
   if (!nextProject) return null;
+  const bridgeCopy = bridgeCopyByHref[currentHref];
 
   return (
     <section className="border-t border-[var(--border)] py-10">
@@ -42,6 +53,11 @@ export function NextProjectCard({ currentHref }: { currentHref: string }) {
         <p className="text-[10px] font-normal uppercase tracking-[0.22em] text-[var(--accent-text)]">
           Next project
         </p>
+        {bridgeCopy ? (
+          <p className="max-w-[68ch] text-sm font-light leading-relaxed text-[var(--body)] sm:text-base">
+            {bridgeCopy}
+          </p>
+        ) : null}
         <div className="flex items-end justify-between gap-6">
           <div className="flex max-w-[70ch] flex-col gap-2">
             <h2

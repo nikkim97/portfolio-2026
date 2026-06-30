@@ -46,3 +46,4 @@ next-env.d.ts
 
 # ...but allow small, web-optimized hero videos so they deploy
 !public/case-study/**/regular-flow.mp4
+!public/case-study/bloom/bloom-hero.mp4

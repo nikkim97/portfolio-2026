@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FadeIn } from "./ui";
 
@@ -9,18 +10,18 @@ import { FadeIn } from "./ui";
 type Photo = { src: string; caption: string };
 
 const PHOTOS: Photo[] = [
-  { src: "/about/active.jpg", caption: "Where I learned to trust my body and breathe." },        // you
-  { src: "/about/vegan.jpg", caption: "Vegan eats at a Tokyo hole-in-the-wall." },                // food
-  { src: "/about/music-2.jpg", caption: "My first solo concert — just me and Dylan." },           // scene
-  { src: "/about/active-3.jpg", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." }, // you
-  { src: "/about/tea.jpg", caption: "A tea ceremony in a Kyoto garden." },                        // food
-  { src: "/about/culture-3.jpg", caption: "Mindfully taking in Japan's temples." },               // scene
-  { src: "/about/vegan-2.jpg", caption: "More vegan adventures on the road." },                   // food
-  { src: "/about/active-2.png", caption: "Eighty feet down a Costa Rican waterfall." },           // scene
-  { src: "/about/tea-2.jpg", caption: "Hiding in a Manhattan tea shop with a book." },            // food
-  { src: "/about/music-3.jpg", caption: "My sixth time seeing my favorite, Quinn XCII." },        // scene
-  { src: "/about/vegan-4.jpg", caption: "The best vegan sushi, from two grandmothers in Kamakura." }, // food
-  { src: "/about/culture-2.jpg", caption: "Wandering into the Sahara." },                         // you
+  { src: "/about/optimized/active.webp", caption: "Where I learned to trust my body and breathe." },
+  { src: "/about/optimized/vegan.webp", caption: "Vegan eats at a Tokyo hole-in-the-wall." },
+  { src: "/about/optimized/music-2.webp", caption: "My first solo concert — just me and Dylan." },
+  { src: "/about/optimized/active-3.webp", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." },
+  { src: "/about/optimized/tea.webp", caption: "A tea ceremony in a Kyoto garden." },
+  { src: "/about/optimized/culture-3.webp", caption: "Mindfully taking in Japan's temples." },
+  { src: "/about/optimized/vegan-2.webp", caption: "More vegan adventures on the road." },
+  { src: "/about/optimized/active-2.webp", caption: "Eighty feet down a Costa Rican waterfall." },
+  { src: "/about/optimized/tea-2.webp", caption: "Hiding in a Manhattan tea shop with a book." },
+  { src: "/about/optimized/music-3.webp", caption: "My sixth time seeing my favorite, Quinn XCII." },
+  { src: "/about/optimized/vegan-4.webp", caption: "The best vegan sushi, from two grandmothers in Kamakura." },
+  { src: "/about/optimized/culture-2.webp", caption: "Wandering into the Sahara." },
 ];
 
 const GAP = 24;
@@ -35,14 +36,14 @@ function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) 
         style={{ aspectRatio: "4 / 5", background: "var(--card)", border: "1px solid var(--border)" }}
       >
         {!errored ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={photo.src}
             alt={photo.caption}
+            fill
+            sizes="(max-width: 767px) 78vw, 33vw"
             draggable={false}
             onError={() => setErrored(true)}
-            className="w-full h-full object-cover select-none"
-            style={{ display: "block" }}
+            className="object-cover select-none"
           />
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5" style={{ color: "var(--midtone)" }}>
