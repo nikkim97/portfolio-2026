@@ -45,7 +45,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             ← Back
           </Link>
           <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
-            Capital One · 2024
+            Capital One · 2025 – 2026
           </span>
           <NextProjectLink currentHref="/case-study/people-leader-redesign" />
         </div>
@@ -65,7 +65,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             Preparing for a single calibration meant moving through 18+ screens. I helped collapse the work into four connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
-            role="Design Lead for team of 3"
+            role="Design Lead for team of 4"
             timeline="Nov 2025 - Feb 2026"
             platform="Enterprise web"
             results={[
