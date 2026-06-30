@@ -53,6 +53,7 @@ export default function DiscoverIntegrationCaseStudy() {
             role="Design & Strategy Lead"
             timeline="Jan 2026 – Present"
             platform="Native (iOS, Android), Web, Mobile Web"
+            resultsLabel="Targets"
             results={[
               { value: "↑ 89%", label: "customer volume retained" },
               { value: "↓ 35%", label: "calls to front-line associates" },
@@ -188,6 +189,27 @@ export default function DiscoverIntegrationCaseStudy() {
             <Prose>
               <p>
                 Success will be measured on two things: the <strong>customer volume retained</strong> through the switch and <strong>how few calls</strong> the change drives to front-line associates. The experience is scheduled to launch and enter testing in late 2026, so results are still to come. I&apos;ll update this case study as retention and call-volume data become available.
+              </p>
+            </Prose>
+          </div>
+        </section>
+
+        {/* ── What I learned ── */}
+        <section className="py-16 flex flex-col gap-10">
+          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
+            <div className="flex flex-col gap-2">
+              <SectionLabel>What I learned</SectionLabel>
+              <SectionHeading>The higher the stakes, the less of the job is the design.</SectionHeading>
+            </div>
+            <Prose>
+              <p>
+                Every project before this handed me a problem already shaped into a screen. This one handed me a migration strategy and a locked component toolkit, and the design problem was mine to find inside it. With the canvas fixed, the creative work moved upstream — into deciding what the experience even needed to be, and then defending that definition.
+              </p>
+              <p>
+                The work that actually moved the needle wasn&apos;t in the file. It was convincing senior leadership that a layer of clarity — telling people what changed, where they were, and what to do next — deserved to be prioritized against everything else competing for the release. That meant translating &ldquo;help customers understand&rdquo; into the only language the business measures: retained volume and fewer calls. At this level, the design isn&apos;t finished when the screens are right; it&apos;s finished when the people who fund the work believe in it.
+              </p>
+              <p>
+                I used to think of constraints as the enemy of good design. Here they <em>were</em> the brief. Building entirely within an existing system, for customers who only get one first impression, taught me that the judgment — what to fight for, how to frame its value, when the clearest thing is also the boldest thing — is the work. That&apos;s the part that travels with me, whatever I design next.
               </p>
             </Prose>
           </div>

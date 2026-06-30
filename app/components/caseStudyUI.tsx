@@ -147,11 +147,13 @@ export function IntroMetadataSection({
   timeline,
   platform,
   results,
+  resultsLabel = "Results",
 }: {
   role: ReactNode;
   timeline: ReactNode;
   platform: ReactNode;
   results?: { value: string; label: string }[];
+  resultsLabel?: string;
 }) {
   const metadata = [
     { label: "My role", value: role },
@@ -181,7 +183,7 @@ export function IntroMetadataSection({
       {results && results.length > 0 && (
         <div className="rounded-xl px-6 sm:px-8 py-5" style={{ background: "var(--card)" }}>
           <div className="flex flex-col gap-3">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>Results</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent)" }}>{resultsLabel}</p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
               {results.map((result) => (
                 <div key={`${result.value}-${result.label}`} className="flex items-baseline gap-3">
