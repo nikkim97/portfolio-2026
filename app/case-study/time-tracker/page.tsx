@@ -71,7 +71,7 @@ export default function TimeTrackerCaseStudy() {
           <IntroMetadataSection
             role='Builder: concept, four life pillars, and "spec first" approach'
             timeline="April 2026"
-            platform="Web app"
+            platform="Mobile web"
           />
         </section>
 
@@ -244,14 +244,17 @@ export default function TimeTrackerCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>What I learned</SectionLabel>
-              <SectionHeading>The bottleneck is the decisions, not the code</SectionHeading>
+              <SectionHeading>After Bloom, I led with the spec</SectionHeading>
             </div>
             <Prose>
               <p>
-                Writing the spec first changed the whole build. The time I spent wasn&apos;t on implementation: Claude handled that. It was on the decisions: what counts as Self-Care, whether to split events across pillars (no), what to refuse to build yet. Vibe coding&apos;s bottleneck isn&apos;t typing. It&apos;s judgment, and judgment is easier to apply consistently when you&apos;ve written it down.
+                Bloom taught me I could build by feel: try a flow, feel it, scrap it, decide in real time. Time Tracker was that same speed pointed the other way. This time I wrote the spec first. Before a single screen existed, I&apos;d already settled what counts as Self-Care, that one event never splits across two pillars, and what I&apos;d refuse to build until the core read earned it. Claude handled the implementation; the spec is where the product actually lived.
               </p>
               <p>
-                V2 earned its way to more surface area: the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown, by proving the core read first. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only now, because the dummy-data version earned it.
+                That restraint paid off. V2 earned its way to more surface area, the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown, only after the core read proved itself on a week of dummy data. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only because the dummy-data version earned it.
+              </p>
+              <p>
+                Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that judgment travels further when I write it down before I build, which is the difference between exploring an idea and shipping a coherent one.
               </p>
             </Prose>
           </div>
