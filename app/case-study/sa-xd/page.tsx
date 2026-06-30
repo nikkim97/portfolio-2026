@@ -58,7 +58,7 @@ export default function SaXdCaseStudy() {
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
-      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}>
+      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgb(245,241,235)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <NextProjectLink currentHref="/case-study/sa-xd" />
@@ -84,10 +84,12 @@ export default function SaXdCaseStudy() {
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10">
         <figure className="flex flex-col gap-3">
           <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/case-study/sa-xd/xd-1.png"
               alt="Where the 360 feedback experience broke down across the performance cycle"
+              width={1946}
+              height={740}
+              sizes="(max-width: 768px) 100vw, 1200px"
               className="block w-full h-auto rounded-xl select-none"
               draggable={false}
             />
@@ -116,12 +118,13 @@ export default function SaXdCaseStudy() {
 
           <div className="flex flex-col gap-4">
             <LightboxFrame alt="Detail of the 360 feedback experience breakdown">
-              <div className="w-full overflow-hidden rounded-xl aspect-[1422/652]" style={{ background: "var(--card)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+              <div className="relative w-full overflow-hidden rounded-xl aspect-[1422/652]" style={{ background: "var(--card)" }}>
+                <Image
                   src="/case-study/sa-xd/xd-1.1.png"
                   alt="Detail of the 360 feedback experience breakdown"
-                  className="block w-full h-full object-cover object-top select-none"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  className="object-cover object-top select-none"
                   draggable={false}
                 />
               </div>
@@ -166,14 +169,17 @@ export default function SaXdCaseStudy() {
               {
                 visual: "/case-study/sa-xd/principle-1-quant-qual.png",
                 title: "Quant & qual data together",
+                w: 1600, h: 1590,
               },
               {
                 visual: "/case-study/sa-xd/principle-2-anonymity.png",
                 title: "Psychological safety through anonymity",
+                w: 1574, h: 1600,
               },
               {
                 visual: "/case-study/sa-xd/principle-3-comparative.png",
                 title: "Comparative context to reduce bias",
+                w: 1600, h: 1527,
               },
             ].map((p, index) => (
               <article key={p.visual} className="flex flex-col gap-5">
@@ -183,7 +189,7 @@ export default function SaXdCaseStudy() {
                     style={{ background: "var(--card)" }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.visual} alt={p.title} className="block w-full h-auto select-none" draggable={false} />
+                    <Image src={p.visual} alt={p.title} width={p.w} height={p.h} sizes="(max-width: 768px) 90vw, 400px" className="block w-full h-auto select-none" draggable={false} />
                     {(index === 0 || index === 1 || index === 2) && (
                       <span className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center" aria-hidden>
                         <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
@@ -223,10 +229,12 @@ export default function SaXdCaseStudy() {
             <p className={`${PROSE}`} style={{ color: "#3A3530" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
             <figure className="flex flex-col gap-3">
               <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/case-study/sa-xd/sa-xd-13-2.png"
                   alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback"
+                  width={1308}
+                  height={687}
+                  sizes="(max-width: 768px) 100vw, 1200px"
                   className="block w-full h-auto rounded-xl select-none"
                   draggable={false}
                 />

@@ -1,19 +1,18 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Prose, PullQuote } from "../../components/caseStudyUI";
-import LightboxFrame from "../../components/LightboxFrame";
+import Image from "next/image";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
-// Standard image: shows at natural height, full column width.
-function Figure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+// Standard image: shows at natural height, full column width. Routed through
+// next/image so it's resized to display size, served lazily, and reserves its
+// height (width/height) before loading.
+function Figure({ src, alt, caption, width, height }: { src: string; alt: string; caption?: string; width: number; height: number }) {
   return (
     <figure className="flex flex-col gap-2">
-      <LightboxFrame alt={alt}>
-        <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
-        </div>
-      </LightboxFrame>
+      <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+        <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 768px) 100vw, 1100px" className="block w-full h-auto select-none" draggable={false} />
+      </div>
       {caption && <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">{caption}</figcaption>}
     </figure>
   );
@@ -21,15 +20,12 @@ function Figure({ src, alt, caption }: { src: string; alt: string; caption?: str
 
 // Long-form screens (full calibration profiles, full tab views) shown at their
 // full natural height — as long as they need to be.
-function TallFigure({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+function TallFigure({ src, alt, caption, width, height }: { src: string; alt: string; caption?: string; width: number; height: number }) {
   return (
     <figure className="flex flex-col gap-2">
-      <LightboxFrame alt={alt}>
-        <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} className="block w-full h-auto select-none" draggable={false} />
-        </div>
-      </LightboxFrame>
+      <div className="w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+        <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 768px) 100vw, 1100px" className="block w-full h-auto select-none" draggable={false} />
+      </div>
       {caption && <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">{caption}</figcaption>}
     </figure>
   );
@@ -42,7 +38,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
       {/* Top bar */}
       <div
         className="sticky top-0 z-40 border-b border-[var(--border)]"
-        style={{ backgroundColor: "rgba(245,241,235,0.92)", backdropFilter: "blur(12px)" }}
+        style={{ backgroundColor: "rgb(245,241,235)" }}
       >
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
@@ -97,6 +93,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
           </div>
           <Figure
             src="/case-study/pl-redesign/group.jpg"
+            width={1500}
+            height={1234}
             alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
             caption="Three days, in person: discovery → framework → high-fidelity prototype"
           />
@@ -124,25 +122,35 @@ export default function PeopleLeaderRedesignCaseStudy() {
           <div className="flex flex-col gap-6">
             <Figure
               src="/case-study/pl-redesign/tab0.png"
+              width={1440}
+              height={1129}
               alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
               caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
             />
             <Figure
               src="/case-study/pl-redesign/old-myteam-table.png"
+              width={1440}
+              height={1137}
               alt="The old table-based My Team: a row per associate, with feedback, results, and the calibration profile each behind a separate link"
               caption="Before: the table-based 'My Team' — a row per person, every input behind its own link"
             />
             <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
               <TallFigure
                 src="/case-study/pl-redesign/old-1.png"
+                width={1441}
+                height={2465}
                 alt="Legacy calibration profile workflow, screen one"
               />
               <TallFigure
                 src="/case-study/pl-redesign/old-2.png"
+                width={1761}
+                height={4000}
                 alt="Legacy calibration profile workflow, screen two"
               />
               <TallFigure
                 src="/case-study/pl-redesign/old-3.png"
+                width={1441}
+                height={2947}
                 alt="Legacy calibration profile workflow, screen three"
               />
             </div>
@@ -191,11 +199,15 @@ export default function PeopleLeaderRedesignCaseStudy() {
           </div>
           <TallFigure
             src="/case-study/pl-redesign/360-view.png"
+            width={1440}
+            height={2795}
             alt="The 360 associate view: dynamic tabs for feedback, results, strengths, and the calibration profile, with a sliding drawer for the full profile"
             caption="The 360 associate view: dynamic tabs and a sliding calibration drawer keep the leader in flow"
           />
           <TallFigure
             src="/case-study/pl-redesign/360-results.png"
+            width={1440}
+            height={2299}
             alt="Key results tab: the associate's key results and impact, surfaced as a dynamic tab within the 360 view"
             caption="A dynamic tab in the same view — key results and impact, without losing the associate's context"
           />
@@ -241,6 +253,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
           </div>
           <TallFigure
             src="/case-study/pl-redesign/360-calibration.png"
+            width={1440}
+            height={4214}
             alt="The redesigned calibration profile: competency assessment, key results, strengths and development — complete and still editable"
             caption="The redesigned calibration profile — assembled in the flow, not a separate five-step build"
           />
