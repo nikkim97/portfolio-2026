@@ -75,13 +75,15 @@ export default function TimeTrackerCaseStudy() {
           />
         </section>
 
-        {/* ── Hero image (placeholder: to fill later) ── */}
-        <PhoneFrame maxWidth={300}>
+        {/* ── Hero image (static interim; looping video planned) ── */}
+        <div className="mx-auto w-full" style={{ maxWidth: 560 }}>
           <Screenshot
-            aspect={PHONE_ASPECT}
-            label="Hero image: to come"
+            src="/case-study/time-track/hero2.png"
+            aspect="775/911"
+            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
+            priority
           />
-        </PhoneFrame>
+        </div>
 
         {/* ── The concept ── */}
         <section className="py-16 flex flex-col gap-10">

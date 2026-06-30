@@ -324,9 +324,9 @@ export default function Home() {
             <FadeIn delay={0.4}>
               <div className="flex flex-wrap gap-8">
                 {[
-                  { label: "Email", href: "mailto:niharika@example.com" },
+                  { label: "Email", href: "mailto:niharikamishr@gmail.com" },
                   { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
-                  { label: "GitHub", href: "https://github.com/niharikamishra", external: true },
+                  { label: "GitHub", href: "https://github.com/nikkim97", external: true },
                   { label: "Résumé", href: "/resume.pdf", external: true },
                 ].map(({ label, href, external }) => (
                   <a

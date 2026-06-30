@@ -20,17 +20,6 @@ const SESSION_PREP_PRINCIPLES = [
   "A dedicated key-roles area prompted facilitators to assign every required role—something often missed when scheduling sessions in Google Sheets or Calendar.",
   "Facilitators could see whether every associate’s performance one-pager was submitted, confirming the session was ready without chasing individual leaders.",
 ];
-function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
-  return (
-    <div
-      className="overflow-hidden rounded-xl flex items-center justify-center"
-      style={{ aspectRatio: aspect, background: "var(--card)" }}
-    >
-      <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">{label}</p>
-    </div>
-  );
-}
-
 function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string }) {
   return (
     <LightboxFrame alt={alt}>
@@ -98,7 +87,7 @@ export default function Path360CaseStudy() {
 
       {/* ── Hero image ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
-        <Placeholder label="Hero image placeholder" aspect="1200/896" />
+        <Img src="/case-study/pa-xd/hero-editorial.png" alt="PATH calibrations: the new calibration matrix and profile view, with automated guidance for more consistent, fair ratings" aspect="1137/928" fit="cover" />
       </div>
 
       {/* ── The Problem ── */}
