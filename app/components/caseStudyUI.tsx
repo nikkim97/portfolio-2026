@@ -93,6 +93,43 @@ export function PhoneFrame({ children, maxWidth = 300 }: { children: ReactNode; 
   );
 }
 
+// Autoplaying, looping, muted hero video. autoPlay/loop/muted/playsInline are
+// declarative attributes, so this stays a server component. The container holds
+// the aspect ratio to avoid layout shift before the video loads; the poster
+// covers the first paint.
+export function HeroVideo({
+  src,
+  poster,
+  aspect,
+  label,
+  maxWidth = 420,
+}: {
+  src: string;
+  poster?: string;
+  aspect: string;
+  label: string;
+  maxWidth?: number;
+}) {
+  return (
+    <div className="mx-auto w-full" style={{ maxWidth }}>
+      <div className="w-full rounded-xl overflow-hidden relative" style={{ aspectRatio: aspect }}>
+        <video
+          className="absolute inset-0 w-full h-full object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={poster}
+          aria-label={label}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  );
+}
+
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div

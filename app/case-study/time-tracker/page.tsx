@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
-import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, PhoneFrame, Prose, PullQuote } from "../../components/caseStudyUI";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, PhoneFrame, HeroVideo, Prose, PullQuote } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 // Phone screenshots are portrait (~1:2) with the device frame baked in.
@@ -75,15 +75,14 @@ export default function TimeTrackerCaseStudy() {
           />
         </section>
 
-        {/* ── Hero image (static interim; looping video planned) ── */}
-        <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
-          <Screenshot
-            src="/case-study/time-track/hero2.png"
-            aspect="775/911"
-            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
-            priority
-          />
-        </div>
+        {/* ── Hero video (looping screen recording of the real flow) ── */}
+        <HeroVideo
+          src="/case-study/time-track/regular-flow.mp4"
+          poster="/case-study/time-track/regular-flow-poster.jpg"
+          aspect="540/1110"
+          label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
+          maxWidth={420}
+        />
 
         {/* ── The concept ── */}
         <section className="py-16 flex flex-col gap-10">
@@ -257,6 +256,13 @@ export default function TimeTrackerCaseStudy() {
                 Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that judgment travels further when I write it down before I build, which is the difference between exploring an idea and shipping a coherent one.
               </p>
             </Prose>
+          </div>
+          <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
+            <Screenshot
+              src="/case-study/time-track/hero2.png"
+              aspect="775/911"
+              label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
+            />
           </div>
         </section>
 
