@@ -92,7 +92,10 @@ export default function Home() {
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!mobileMenuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
   }, [mobileMenuOpen]);
 
   return (
@@ -136,7 +139,12 @@ export default function Home() {
             transition={{ duration: 0.25, ease: EASE }}
             className="fixed inset-0 z-[55] flex flex-col items-center justify-center gap-10"
             style={{ background: "var(--background)", ...FONT }}
+            onClick={() => setMobileMenuOpen(false)}
           >
+            {/* Close (X) — lives inside the overlay so it sits above it and is tappable */}
+            <div className="absolute top-0 right-0 max-w-5xl w-full mx-auto px-8 py-10 flex justify-end">
+              <Hamburger open onClick={() => setMobileMenuOpen(false)} />
+            </div>
             {NAV_ITEMS.map(item => (
               <a
                 key={item.label}

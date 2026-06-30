@@ -96,7 +96,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </Prose>
           </div>
           <Figure
-            src="/case-study/pl-redesign/group.png"
+            src="/case-study/pl-redesign/group.jpg"
             alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
             caption="Three days, in person: discovery → framework → high-fidelity prototype"
           />
