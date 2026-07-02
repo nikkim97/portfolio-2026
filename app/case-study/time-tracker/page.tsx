@@ -68,21 +68,18 @@ export default function TimeTrackerCaseStudy() {
           >
             People budget money carefully but rarely see where their time goes. I designed a lightweight tracker that makes the shape of a week visible enough to reflect on<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
-          <p className="max-w-[760px] text-[15px] leading-relaxed" style={{ color: "var(--body)" }}>
-            I budget my money down to the category but had no idea where my weeks actually went — so I built myself the same view for time.
-          </p>
           <IntroMetadataSection
             role='Builder: concept, four life pillars, and "spec first" approach'
-            timeline="April 2026"
+            timeline="Personal April 2026"
             platform="Mobile web"
           />
         </section>
 
         {/* ── Hero image ── */}
-        <div className="mx-auto w-full" style={{ maxWidth: 860 }}>
+        <div className="mx-auto w-full" style={{ maxWidth: 600 }}>
           <Screenshot
-            src="/case-study/time-track/hero2.png"
-            aspect="775/911"
+            src="/case-study/time-track/herofinal.png"
+            aspect="731/1456"
             label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
             priority
           />
@@ -97,13 +94,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your week. Four life pillars, Family, Self-Care, Socialization, Career, each with a target share of your time. The app shows you the actual breakdown next to the one you intended.
+                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your calendar. Four life pillars — Family, Self-Care, Socialization, and Career — are the default categories, each assigned a target share of your time. The app shows you the actual breakdown next to the one you choose for yourself.
               </p>
               <p>
-                The primary view puts each pillar next to its target as a bar, where you went over, where you came up short, exactly like a budget flags the category you blew past. On top of it sits a plain-English balance read: <em>Balanced, On track, Drifting,</em> or <em>Off balance</em>, so the numbers resolve into a single judgment. And you can drop into any week to see the actual sessions that filled it. The point isn&apos;t to track for tracking&apos;s sake: it&apos;s to make an invisible thing visible enough to act on.
-              </p>
-              <p>
-                Each pillar carries its own target, so the dashboard always has something to measure against:
+                Each pillar carries its own target, so the dashboard always has something to measure against. My goal was to create something that could hold you accountable to how you want to spend your time, because most people, including me, feel like life runs on autopilot without us directing it. And almost always, people&apos;s regrets have to do with, &ldquo;I wish I did that with my time at that age.&rdquo; So I wanted to attempt seeing where all of the time was going in multiple forms.
               </p>
               <PillarKey />
             </Prose>
@@ -142,20 +136,20 @@ export default function TimeTrackerCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The decision</SectionLabel>
-              <SectionHeading>One rule keeps the whole thing honest</SectionHeading>
+              <SectionHeading>Pillars have to fit the life you&apos;re living</SectionHeading>
             </div>
             <Prose>
               <p>
-                The hardest part of any tracker isn&apos;t the chart: it&apos;s categorization. The moment one event is allowed to count toward two things, the data turns to mush and the donut stops meaning anything. So I made a single rule and held it: <em>who you&apos;re with decides the pillar.</em>
+                The hardest part of any tracker isn&apos;t the chart: it&apos;s categorization. Pillars have to be personal, because different things matter to different people at different stages in their life.
               </p>
               <p>
-                A hike with your kids is Family, not Self-Care, even though it&apos;s good for you. Self-Care is strictly solo: just you, recharging. One event, one pillar, no splitting. It sounds almost too simple, but that constraint <em>is</em>{" "}the product. It&apos;s what makes the breakdown trustworthy instead of negotiable.
+                Since some categories could overlap, we also needed to set definitions around each category. So the onboarding starts with defaults, but lets people shape the system around what they actually want to track. The point is not to force one universal definition of a balanced life; it is to make the categories meaningful enough that the breakdown feels honest.
               </p>
             </Prose>
           </div>
 
           <PullQuote>
-            &ldquo;Who you&apos;re with determines the pillar. A hike with your kids is Family, not Self-Care. Self-Care is strictly solo time.&rdquo;
+            &ldquo;Different things matter at different stages of life, so the pillars need to be personal enough to grow with you.&rdquo;
           </PullQuote>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-start">
@@ -203,13 +197,13 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                V1 proved the concept on a realistic fake week: deep work blocks, a family hike, coffee with a friend, morning runs, all local, all dummy data, no account and no backend. The bet: if the dashboard doesn&apos;t feel useful with clean hand-made data, real calendar data won&apos;t save it.
+                The first version led with a donut chart, which made sense as a first cut because I wanted to see the shape of a week at a glance. But I quickly realized it didn&apos;t match the real intention of the app.
               </p>
               <p>
-                It led with a donut. Pretty, and good at answering <em>&ldquo;what was the shape of my week&rdquo;</em>, but weak at the question that actually matters: <em>am I on target?</em> Comparing a slice to a goal means eyeballing two arcs. The one thing V1 nailed was the plain-English read: <em>&ldquo;Career led the way… Self-Care was a little quieter than you&apos;d hoped&rdquo;</em>, because a number is information but a sentence is a nudge.
+                A donut can tell you what happened, but it makes you decode whether that week reflected the life you were trying to live. I didn&apos;t want the dashboard to be a pretty summary; I wanted it to create a moment of accountability. The important question was not just <em>where did my time go?</em> It was <em>did my time go where I said it mattered?</em>
               </p>
               <p>
-                V2 kept the sentence and promoted the goal-versus-actual bar to the primary view, then added an explicit balance state on top. Same data, a read you don&apos;t have to decode. Here&apos;s where it started:
+                That is why the experience moved toward goal-versus-actual bars and plain-language feedback. The visual needed to make the gap between intention and reality obvious without making the user do math.
               </p>
             </Prose>
           </div>
@@ -247,15 +241,9 @@ export default function TimeTrackerCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>What I learned</SectionLabel>
-              <SectionHeading>After Bloom, I led with the spec</SectionHeading>
+              <SectionHeading>It&apos;s fun to see my ideas come to life</SectionHeading>
             </div>
             <Prose>
-              <p>
-                Bloom taught me I could build by feel: try a flow, feel it, scrap it, decide in real time. Time Tracker was that same speed pointed the other way. This time I wrote the spec first. Before a single screen existed, I&apos;d already settled what counts as Self-Care, that one event never splits across two pillars, and what I&apos;d refuse to build until the core read earned it. Claude handled the implementation; the spec is where the product actually lived.
-              </p>
-              <p>
-                That restraint paid off. V2 earned its way to more surface area, the month calendar and the session-level &ldquo;where your time went&rdquo; breakdown, only after the core read proved itself on a week of dummy data. What&apos;s still deliberately ahead is the infrastructure: real Google Calendar sync, auto-categorizing live events into pillars with a manual override for the calls the algorithm gets wrong, and a database to replace localStorage. But only because the dummy-data version earned it.
-              </p>
               <p>
                 Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that judgment travels further when I write it down before I build, which is the difference between exploring an idea and shipping a coherent one.
               </p>

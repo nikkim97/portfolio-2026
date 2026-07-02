@@ -62,14 +62,14 @@ export default function PeopleLeaderRedesignCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Preparing for a single calibration meant moving through 18+ screens. I helped collapse the work into four connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
+            Preparing for a single calibration meant moving through 10 screens. I helped collapse the work into four connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
             role="Design Lead for team of 4"
-            timeline="Nov 2025 - Feb 2026"
+            timeline="Capital One · Nov 2025 - Feb 2026"
             platform="Enterprise web"
             results={[
-              { value: "18 → 4", label: "screens collapsed into the My Team experience" },
+              { value: "10 → 4", label: "screens collapsed into the My Team experience" },
               { value: "76%", label: "efficiency increase for PLs" },
             ]}
           />
@@ -105,7 +105,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>The problem · 02</SectionLabel>
-              <SectionHeading>18+ screens to prepare for one conversation</SectionHeading>
+              <SectionHeading>10 screens to prepare for one conversation</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
               <Prose>
@@ -113,7 +113,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
                   To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>five-step flow — Overview, Key results, Strengths, Opportunities, Preview</strong> — to assemble every calibration profile.
                 </p>
                 <p>
-                  All told, <strong>18+ screens for a single conversation.</strong> Information was split across all of them, so leaders had to hold the synthesis in their heads — high cognitive load, endless clicking, and judgment formed from scattered context.
+                  All told, <strong>10 screens for a single conversation.</strong> Information was split across all of them, so leaders had to hold the synthesis in their heads — high cognitive load, endless clicking, and judgment formed from scattered context.
                 </p>
               </Prose>
             </div>
@@ -169,6 +169,9 @@ export default function PeopleLeaderRedesignCaseStudy() {
               </p>
             </Prose>
           </div>
+          <PullQuote>
+            Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow — and enables more objective calibration sessions.
+          </PullQuote>
           <Figure
             src="/case-study/pl-redesign/tab0.png"
             width={1440}
@@ -176,9 +179,6 @@ export default function PeopleLeaderRedesignCaseStudy() {
             alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
             caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
           />
-          <PullQuote>
-            Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow — and enables more objective calibration sessions.
-          </PullQuote>
         </section>
 
         {/* ── The solution ── */}
@@ -190,10 +190,10 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </div>
             <Prose>
               <p>
-                We abandoned the table-based navigation for a <strong>&ldquo;My Team&rdquo; framework</strong> that anchors the experience on the individual direct report — and collapsed <strong>18+ screens to four</strong>. A leader now opens one My Team page and sees every stat they need for calibration at a glance.
+                Now, when a leader opens the <strong>My Team</strong> page, they see every stat they need for calibration at a glance. From there, a single associate view puts feedback, results, strengths, and the calibration profile <strong>side by side</strong> — dynamic tabs and sliding drawers keep the leader in flow instead of hopping across screens.
               </p>
               <p>
-                From there, a single <strong>360-degree associate view</strong> puts feedback, results, strengths, and the calibration profile <strong>side by side</strong> — dynamic tabs and sliding drawers keep the leader in flow instead of hopping across screens. The work also produced reusable UI patterns now standardized across the PATH ecosystem, plus a rigorous accessibility review for the enterprise release.
+                The work also produced reusable UI patterns now standardized across the PATH ecosystem, plus a rigorous accessibility review for the enterprise release. This made their workflow much more straightforward.
               </p>
             </Prose>
           </div>
@@ -218,7 +218,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
               <SectionLabel>Outcome · 05</SectionLabel>
-              <SectionHeading>From 18+ screens to four</SectionHeading>
+              <SectionHeading>From 10 screens to four</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
               <Prose>

@@ -71,12 +71,12 @@ export default function SaXdCaseStudy() {
         <div className="flex flex-col gap-6">
           <p className="text-[10px] uppercase tracking-[0.28em] font-normal" style={{ color: "var(--accent-text)" }}>Design &amp; Research Lead · Capital One</p>
           <h1 className="font-light max-w-[1100px]" style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}>
-            Leaders and associates both distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
+            Leaders and associates at Capital One distrusted 360 feedback they received. I used research to turn a noisy process into clearer, more actionable growth conversations<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
         </div>
         <IntroMetadataSection
           role="Design and research lead"
-          timeline="Dec 2023 – Sept 2024"
+          timeline="Capital One · Dec 2023 – Sept 2024"
           platform="Web platform"
           resultsLabel="Directional signal"
           results={[
@@ -277,7 +277,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>The pilot made the case</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
-              <p>The results were strong enough to convince our HR stakeholders to discontinue using Workday as the primary tool for performance and talent, and invest in building an in-house performance system that understood Capital One&apos;s internal performance process and was grounded in 360 feedback as the foundation.</p>
+              <p>The results were strong enough to convince our HR stakeholders to <strong>discontinue using Workday</strong> as the primary tool for performance and talent, and <strong>invest in building an in-house performance system</strong> that understood Capital One&apos;s internal performance process and was grounded in 360 feedback as the foundation.</p>
             </div>
           </div>
           <StatCards stats={[

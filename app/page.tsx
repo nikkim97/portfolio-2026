@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import SurferJourney from "./components/SurferJourney";
 import AboutCarousel from "./components/AboutCarousel";
 import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
@@ -99,7 +99,20 @@ export default function Home() {
   }, [mobileMenuOpen]);
 
   return (
-    <>
+    <div style={{ "--background": "#FAEBD7" } as CSSProperties}>
+      {/* Homepage-only cream paper background: flat antique-white + subtle grain.
+          The --background override above re-tints every var(--background) usage
+          (hero fade, curtain, mobile menu) to cream so nothing seams. */}
+      <div
+        aria-hidden
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          zIndex: 0,
+          backgroundColor: "var(--background)",
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.13'/%3E%3C/svg%3E\")",
+        }}
+      />
       {/* Progress bar */}
       <motion.div
         style={{ scaleX, transformOrigin: "left" }}
@@ -115,7 +128,7 @@ export default function Home() {
             exit={{ y: -48, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
             className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
-            style={{ backgroundColor: "rgba(250,248,245,0.92)", backdropFilter: "blur(12px)", ...FONT }}
+            style={{ backgroundColor: "rgba(250,235,215,0.9)", backdropFilter: "blur(12px)", ...FONT }}
           >
             <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-end">
               <div className="hidden sm:flex items-center gap-8">
@@ -295,7 +308,7 @@ export default function Home() {
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
               <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
             </p>
-            <div className="flex flex-col gap-5 text-base font-light leading-[1.9]" style={{ color: "var(--body)" }}>
+            <div className="flex flex-col gap-5 text-base font-normal leading-[1.9]" style={{ color: "var(--body)" }}>
               {[
                 "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
                 "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
@@ -356,6 +369,6 @@ export default function Home() {
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
         </footer>
       </main>
-    </>
+    </div>
   );
 }

@@ -130,16 +130,16 @@ export default function VisnCaseStudy() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <figure className="flex flex-col gap-3">
               <ZoomableImage
-                src="/visn/visn-wearable.png"
-                alt="VISN wearable fanny pack with sensor placement"
-                width={673}
-                height={487}
-                aspectRatio="16/9"
-                fit="cover"
-                sizes="(max-width: 768px) 100vw, 25vw"
+                src="/visn/visn2.jpeg"
+                alt="VISN wearable: red fanny pack on a mannequin, labeled with multi-element ultrasonic sensors, Arduino Nano processing unit, 9-axis gyroscope/IMU, internal Li-ion battery, and power-status LEDs"
+                width={1024}
+                height={741}
+                aspectRatio="1024/741"
+                fit="contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">The wearable setup: sensors, Arduino, and compass inside a fanny pack worn on the chest; the Android app handled navigation and obstacle alerts</figcaption>
             </figure>

@@ -54,7 +54,7 @@ export default function Path360CaseStudy() {
         </h1>
         <IntroMetadataSection
           role="Lead product designer"
-          timeline="Dec 2024 – June 2025"
+          timeline="Capital One · Dec 2024 – June 2025"
           platform="Enterprise web platform"
           resultsLabel="Directional signal"
           results={[
@@ -64,9 +64,16 @@ export default function Path360CaseStudy() {
         />
       </div>
 
-      {/* ── Hero image ── */}
+      {/* ── Hero image ── (placeholder: replace with final hero) */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
-        <Img src="/case-study/pa-xd/hero-editorial.png" alt="PATH calibrations: the new calibration matrix and profile view, with automated guidance for more consistent, fair ratings" aspect="1137/928" fit="cover" />
+        <div
+          className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
+          style={{ aspectRatio: "1137/928", background: "var(--card)" }}
+        >
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">
+            Calibrations Ecosystem hero — image coming
+          </p>
+        </div>
       </div>
 
       {/* ── The Problem ── */}
@@ -128,22 +135,13 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Before the room: Prep for calibrations</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
-              <p>The calibration experience starts long before anyone walks into a session. Leaders need to see who's been nominated, understand the rating distribution across their team, flag concerns, and prepare talking points, all without the full picture that only comes together in the room.</p>
-              <p>We designed the session management experience to give leaders exactly what they needed ahead of time: clear visibility into team standing, easy ways to surface edge cases, and a prep experience that reduced the cognitive load in the session itself.</p>
+              <p>Before PATH, calibration sessions were set up manually by HR business partners in Google Sheets. Each group had to be assembled by hand: which teams should calibrate together, which associates belonged in each session, who needed to attend, and when the conversation should happen.</p>
+              <p>We created a smarter setup system that let HR partners select the teams they wanted to calibrate together, then automatically generated session groups by level and job family. From there, they could edit the details that still needed human judgment: attendees, calibrated associates, session timing, and any edge cases before the room began.</p>
             </div>
           </div>
 
           <figure className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Img src="/case-study/pa-xd/manage1.png" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
-                <Img
-                  src="/case-study/pa-xd/manage1.1.1.png"
-                  alt="Session management UI showing grouped calibration sessions and setup controls"
-                  aspect="1440/1401"
-                  fit="contain"
-                />
-              </div>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {SESSION_PREP_PRINCIPLES.slice(0, 2).map((principle, index) => (
                   <div
@@ -161,22 +159,17 @@ export default function Path360CaseStudy() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Img src="/case-study/pa-xd/manage1.png" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
                 <Img
-                  src="/case-study/pa-xd/manage2.png"
-                  alt="Session management UI showing rating distribution and calibration prep"
-                  aspect="1440/1225"
-                  fit="contain"
-                />
-                <Img
-                  src="/case-study/pa-xd/manage3.png"
-                  alt="Session management UI showing manager preparation details"
-                  aspect="1440/1712"
+                  src="/case-study/pa-xd/manage1.1.1.png"
+                  alt="Session management UI showing grouped calibration sessions and setup controls"
+                  aspect="1440/1401"
                   fit="contain"
                 />
               </div>
+            </div>
+            <div className="flex flex-col gap-2">
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {SESSION_PREP_PRINCIPLES.slice(2, 4).map((principle, index) => (
                   <div
@@ -194,8 +187,21 @@ export default function Path360CaseStudy() {
                   </div>
                 ))}
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Img
+                  src="/case-study/pa-xd/manage2.png"
+                  alt="Session management UI showing rating distribution and calibration prep"
+                  aspect="1440/1225"
+                  fit="contain"
+                />
+                <Img
+                  src="/case-study/pa-xd/manage3.png"
+                  alt="Session management UI showing manager preparation details"
+                  aspect="1440/1712"
+                  fit="contain"
+                />
+              </div>
             </div>
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Session management: giving leaders a clear picture before the conversation begins</figcaption>
           </figure>
         </section>
 
@@ -216,6 +222,9 @@ export default function Path360CaseStudy() {
               <div className="md:col-span-2">
                 <Img src="/case-study/pa-xd/image4.1.png" alt="Live calibration UI showing session management, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
               </div>
+              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "var(--body)" }}>
+                The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
+              </p>
               <div className="grid grid-cols-1 gap-2 md:col-span-2 sm:grid-cols-2">
                 {LIVE_CALIBRATION_PRINCIPLES.map((principle, index) => (
                   <div
@@ -245,11 +254,7 @@ export default function Path360CaseStudy() {
                 aspect="1440/1779"
                 fit="contain"
               />
-              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "var(--body)" }}>
-                The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
-              </p>
             </div>
-            <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Live calibrations: 360 feedback and performance data surfaced together, in the moment decisions are made</figcaption>
           </figure>
         </section>
       </div>
@@ -264,7 +269,7 @@ export default function Path360CaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>We ran iterative research throughout the build, not just usability studies, but ongoing conversations with people leaders and HR partners as the experience took shape. The early feedback validated our core bets and surfaced edge cases we hadn't anticipated.</p>
-              <p>Leaders described calibrations as feeling "more grounded": less debate about facts, more real conversation about development. HR partners noted fewer escalations post-session. The signal was clear enough to accelerate the enterprise rollout.</p>
+              <p>Once this experience launched, leaders described calibrations as feeling "more grounded": less debate about facts, more real conversation about development. HR partners noted fewer escalations post-session. The signal was clear enough to accelerate the enterprise rollout.</p>
             </div>
           </div>
 
@@ -284,7 +289,7 @@ export default function Path360CaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>From pilot to platform</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
-              <p>PATH launched as Capital One's first enterprise performance management platform, built on the foundation the pilot established.</p>
+              <p>PATH launched as Capital One&apos;s first enterprise performance management platform, built on the foundation the pilot established. The calibration ecosystem was the next main addition to the platform alongside the 360 feedback experience.</p>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-[2px] sm:grid-cols-3">

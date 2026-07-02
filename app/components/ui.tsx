@@ -108,8 +108,16 @@ export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay, ease: EASE }}
-      className="text-[13px] px-3.5 py-2 cursor-default tracking-wide font-light"
-      style={{ color: "var(--foreground)", borderRadius: "18px", ...GLASS }}
+      className="text-[13px] px-3.5 py-2 cursor-default tracking-wide font-normal"
+      style={{
+        color: "var(--foreground)",
+        borderRadius: "18px",
+        border: "1px solid rgba(255,255,255,0.6)",
+        background: "rgba(255,252,246,0.5)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        boxShadow: "0 6px 20px rgba(36,33,23,0.08), inset 0 1px 0 rgba(255,255,255,0.7)",
+      }}
     >
       {skill}
     </motion.span>

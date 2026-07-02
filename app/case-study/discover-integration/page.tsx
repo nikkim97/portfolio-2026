@@ -51,7 +51,7 @@ export default function DiscoverIntegrationCaseStudy() {
           </h1>
           <IntroMetadataSection
             role="Design & Strategy Lead"
-            timeline="Jan 2026 – Present"
+            timeline="Capital One · Jan 2026 – Present"
             platform="Native (iOS, Android), Web, Mobile Web"
             resultsLabel="Targets"
             results={[
@@ -78,7 +78,7 @@ export default function DiscoverIntegrationCaseStudy() {
             </div>
             <Prose>
               <p>
-                Instead of segmenting by product or demographics, we framed every incoming customer through one behavioral lens: they&apos;re <strong>spenders</strong>. That&apos;s the relationship they already understood, and the one we had to build from. The lens was earned, not assumed: we triangulated behavioral transaction data (how Discover customers actually used their cards) with customer research before we built on it.
+                After reviewing our customer segments by product type and demographics, we framed every incoming customer through two behavioral lenses: <strong>savers</strong> and <strong>spenders</strong>. Since that was the relationship they already understood, and the one they would be bringing to Capital One, it was the one we had to build from. For the first wave of customers, we focused on spenders and triangulated behavioral transaction data (how Discover customers actually used their cards) with customer research before we built on it.
               </p>
               <p>
                 It sounds small, but the framing did real work. It gave a cross-functional team one shared mental model of who we were designing for, and it set the job-to-be-done: meet people where they are, spending, and create a clear, low-friction path toward the rest of what a bank can do for them.
@@ -118,7 +118,7 @@ export default function DiscoverIntegrationCaseStudy() {
             </div>
             <Prose>
               <p>
-                The first thing a Discover customer sees is the First Time Experience: a welcome animation, followed by a single screen that lays out everything changing for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place, here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
+                The Capital One app already had established L1 and L2 experiences through EASE, and we couldn&apos;t alter those surfaces much. So we focused on the First Time Experience: the first thing a Discover customer would see, a welcome animation followed by a single screen that lays out everything changing for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place, here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
               </p>
               <p>
                 The animation does the emotional work, marking the moment as a welcome rather than a disruption. The glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place. To preserve that continuity into the landing page, we reused familiar language and a wrench icon in the mudflap, clearly signaling which accounts still needed setup to keep customers&apos; existing routines intact.
@@ -147,7 +147,7 @@ export default function DiscoverIntegrationCaseStudy() {
                 These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff. &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too specific for FTUX, while the recurring wrench icon acted as wayfinding—showing exactly where setup was still required.
               </p>
               <p>
-                Across FTUX and L2, consistent icons and supporting text answered the customer&apos;s running questions: &ldquo;what changed, where am I, and what do I do next?&rdquo; That clarity was also a call-deflection strategy—every screen that explained itself prevented an avoidable call to a front-line associate.
+                The wrench icon and supporting content took most of our deliberate design decisioning. That pairing was what convinced senior stakeholders that customers would have enough confidence to understand what needed fixing, complete the right setup steps, and move through the transition smoothly. It also became a call-deflection strategy: every screen that explained itself prevented an avoidable call to a front-line associate.
               </p>
             </Prose>
           </div>

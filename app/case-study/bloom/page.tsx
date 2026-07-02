@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FONT } from "../../components/ui";
-import { HeroVideo, IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
+import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 
 export default function BloomCaseStudy() {
@@ -48,7 +48,7 @@ export default function BloomCaseStudy() {
           </h1>
           <IntroMetadataSection
             role="Builder: concept, trait framework, question design, and copy tone"
-            timeline="March 2026: two sessions, three days apart"
+            timeline="Personal March 2026"
             platform="Web mobile"
             results={[
               { value: "1 day", label: "idea to working app" },
@@ -56,14 +56,14 @@ export default function BloomCaseStudy() {
           />
         </section>
 
-        {/* ── Hero video ── */}
+        {/* ── Hero image ── */}
         <div>
-          <HeroVideo
-            src="/case-study/bloom/bloom-hero.mp4"
-            poster="/case-study/bloom/hero-new.png"
-            aspect="1474/1160"
-            maxWidth={720}
-            label="Bloom homepage intro animation: Every relationship has a nature"
+          <Screenshot
+            src="/case-study/bloom/hero-new.png"
+            aspect="1060/992"
+            priority
+            label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
+            caption="V1 homepage running on localhost:3000, March 23 2026"
           />
         </div>
 
@@ -82,7 +82,7 @@ export default function BloomCaseStudy() {
                 That&apos;s the idea Bloom runs on. A Monstera needs full sun and constant water; a cactus thrives on neglect — people run on the same range, even if most compatibility tools never look for it. They ask what you value, or your love language; I wanted Bloom to ask something more honest: not how you&apos;d <em>like</em> to show up for someone, but how you actually do, day to day. So I mapped six plant-care needs onto six human ones — watering became quality time, light became social energy, root space became how much solitude you need before you can show up for someone else.
               </p>
               <p>
-                You answer thirteen questions, your partner does too, and instead of a score you each get a plant — then the two of you as a pairing, like <em>Monstera meets Chinese Elephant Ear</em>. It reads back where you align, where you differ, and what to do about it: light enough to send like a BuzzFeed quiz, honest enough to be worth talking about.
+                I spent most of the initial work talking to Claude and planning how to make the quiz genuinely useful, because I personally wanted something like this to exist. I put extra effort into mapping the plants, care types, and human equivalents so the result would make emotional sense, not just feel like a cute metaphor.
               </p>
             </Prose>
           </div>
@@ -136,10 +136,6 @@ export default function BloomCaseStudy() {
             </Prose>
           </div>
 
-          <PullQuote>
-            "Think of it like: I'm the product partner, Claude Code is the developer. You're the founder talking to both."
-          </PullQuote>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Screenshot
               src="/case-study/bloom/scoring-logic.png"
@@ -169,10 +165,7 @@ export default function BloomCaseStudy() {
                 The first version worked. The homepage landed exactly where I wanted it — clean and editorial, opening on <em>"Every relationship has a nature"</em> — and the quiz flowed straight through to a results page that set your trait charts beside your partner's.
               </p>
               <p>
-                But the results stayed on the surface. The bars were accurate and doing their job; they just didn't tell you anything about <em>who you actually were</em> as that plant. It handed you data when what you wanted was a mirror.
-              </p>
-              <p>
-                One moment looked like a bug and turned out to be the most interesting thing that happened. Two plants were showing no real differences, and Claude traced it: <em>"It's not a bug, it's the data. Look at their trait matrices side by side."</em> Monstera and Chinese Elephant Ear had scored within a point of each other on all seven traits — they genuinely were nearly identical. Claude offered to handle the edge case gracefully; I decided how.
+                It was fun to experiment and feel my creativity move while using Claude. For the first time, I could combine my engineering foundation with my design instincts and maximize both: shaping the logic, testing the flow, and still caring deeply about whether the experience felt valuable. The best part was taking the quiz with my partner when he came home that same day.
               </p>
             </Prose>
           </div>
@@ -192,15 +185,6 @@ export default function BloomCaseStudy() {
             />
           </div>
 
-          <div>
-            <Screenshot
-              src="/case-study/bloom/claudedo2.png"
-              aspect="2904/1164"
-              label="Debug moment: Claude identifying that two plants scoring identically isn't a bug, it's the data"
-              caption="'It's not a bug, it's the data.' Claude acting like a product partner, not just a code executor"
-            />
-          </div>
-
         </section>
 
         {/* ── Evolution ── */}
@@ -212,16 +196,13 @@ export default function BloomCaseStudy() {
             </div>
             <Prose>
               <p>
-                The plant cards needed to read like portraits, not profiles. And the compatibility section had to do real interpretive work — not just surface the data, but tell you what it meant.
+                After testing with friends and coworkers, I had fun playing with the formatting, but the bigger opportunity was the voice. The quiz could not frame one partner as the easy plant and another as the difficult one — a cactus is not worse than a monstera; it just needs different care.
               </p>
               <p>
-                So the descriptions became character studies. <em>"You don't open up for just anyone, and that's not a flaw, it's discernment. When the conditions are right you are one of the most loving, attentive partners there is. The person who takes the time to understand you gets something truly rare."</em> That's a different thing to read than a bar chart.
+                That language mattered. Everyone is unique, and god knows there are enough differences in the world; I wanted Bloom to help people feel understood instead of categorized. So the descriptions became more affirming, careful, and specific — written to make each person feel acceptable as they are.
               </p>
               <p>
-                The compatibility breakdown split in two — <em>Where you align</em> and <em>Where you're different</em> — and each side did the interpreting for you, turning matched and mismatched traits into what they mean in practice, with a piece of plain advice to hold onto: <em>"Keep checking in even when things are good. The couples who stay emotionally close aren't the ones who talk when things are hard. They're the ones who never fully stop talking."</em>
-              </p>
-              <p>
-                The loop was tight — Claude built, I reviewed on localhost, I redirected or approved, and around we went. Three files and about fifty seconds of thinking later, it was meaningfully better.
+                I also added a similar/different section so couples could better understand who they were to each other: where their care needs aligned, where they diverged, and how to talk about those differences without making either person the problem.
               </p>
             </Prose>
           </div>
@@ -279,9 +260,6 @@ export default function BloomCaseStudy() {
               </p>
               <p>
                 Bloom came straight out of my own life, and that&apos;s the part that&apos;s stuck. Nearly every couple I show it to asks me to buy the domain and send it to them — not as a gag, but because they genuinely want it for their own relationship. The thing my partner and I were navigating, it turns out, is something a lot of people are quietly working out too.
-              </p>
-              <p>
-                I&apos;m not sharing it widely yet — the perfectionist in me wants to fix the backend and cut the content overload first, get it to the bar I&apos;d want before it&apos;s in someone else&apos;s hands. But couple after couple asking for the link is the kind of validation no metric gives you. Bloom gave me a way of working that fits how I think — and proof that an idea pulled straight from my own life had a real need waiting for it.
               </p>
             </Prose>
           </div>

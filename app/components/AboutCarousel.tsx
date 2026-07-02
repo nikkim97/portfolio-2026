@@ -180,7 +180,7 @@ export default function AboutCarousel() {
           <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
             When I&apos;m not building
           </p>
-          <p className="text-base font-light leading-[1.9]" style={{ color: "var(--body)" }}>
+          <p className="text-base font-normal leading-[1.9]" style={{ color: "var(--body)" }}>
             Travel is how I feed my curiosity. I&apos;m wired to ask questions, and getting out into the
             world helps me expand my perspective and continue evolving. I&apos;m happiest when I&apos;m
             growing — so I chase side quests that stretch me, like hiking volcanoes or surfing despite
