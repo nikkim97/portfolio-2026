@@ -64,16 +64,14 @@ export default function Path360CaseStudy() {
         />
       </div>
 
-      {/* ── Hero image ── (placeholder: replace with final hero) */}
+      {/* ── Hero image ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
-        <div
-          className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
-          style={{ aspectRatio: "1137/928", background: "var(--card)" }}
-        >
-          <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--midtone)] opacity-50 px-4 text-center">
-            Calibrations Ecosystem hero — image coming
-          </p>
-        </div>
+        <Img
+          src="/case-study/pa-xd/hero-editorial.png"
+          alt="Two leaders in a live PATH calibration session, reviewing the distribution matrix and an associate's feedback profile together"
+          aspect="1137/928"
+          fit="cover"
+        />
       </div>
 
       {/* ── The Problem ── */}
