@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
@@ -36,13 +36,15 @@ export function FadeIn({
 }: {
   children: React.ReactNode; delay?: number; className?: string; distance?: number;
 }) {
+  const prefersReduced = useReducedMotion();
   const { ref, visible } = useFadeInOnScroll();
+  const d = prefersReduced ? 0 : distance;
   return (
     <div ref={ref} className={className}>
       <motion.div
-        initial={{ opacity: 0, y: distance }}
+        initial={{ opacity: 0, y: d }}
         animate={visible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay, ease: EASE }}
+        transition={{ duration: prefersReduced ? 0 : 0.8, delay: prefersReduced ? 0 : delay, ease: EASE }}
       >
         {children}
       </motion.div>
@@ -64,6 +66,7 @@ export function WordStaggerLine({
   perWord?: number;
   duration?: number;
 }) {
+  const prefersReduced = useReducedMotion();
   const words = text.split(" ");
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const [visible, setVisible] = useState(trigger === "mount");
@@ -79,6 +82,11 @@ export function WordStaggerLine({
     io.observe(el);
     return () => io.disconnect();
   }, [trigger]);
+
+  // Reduced motion: render the line as plain text, no per-word slide-up.
+  if (prefersReduced) {
+    return <span ref={wrapperRef}>{text}</span>;
+  }
 
   return (
     <span ref={wrapperRef}>

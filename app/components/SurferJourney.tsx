@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { EASE, GLASS } from "./ui";
 import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journeyData";
@@ -26,7 +27,7 @@ function MobileCardSwitcher() {
     <div className="flex flex-col gap-5">
       <div
         className="relative overflow-hidden"
-        style={{ minHeight: hasCard ? 500 : 170 }}
+        style={{ minHeight: hasCard ? 580 : 170 }}
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           const dx = touchStartX.current - e.changedTouches[0].clientX;
@@ -59,23 +60,24 @@ function MobileCardSwitcher() {
             {hasCard && (
               <div
                 style={{
-                  height: 260,
+                  height: 340,
                   background: "linear-gradient(135deg, #CFC7B7 0%, #BEB39E 100%)",
                   overflow: "hidden",
                   position: "relative",
                 }}
               >
                 {node.image && (
-                  <img
+                  <Image
                     src={node.image.src}
                     alt={node.image.alt}
+                    fill
+                    sizes="(max-width: 640px) 90vw, 500px"
                     style={{
-                      width: "100%",
-                      height: "100%",
                       objectFit: node.image.fit ?? "cover",
-                      objectPosition: node.image.position ?? "center",
+                      // Mobile: anchor to the top of each screenshot (crop from the
+                      // bottom) rather than the middle, so headers/titles stay visible.
+                      objectPosition: "center top",
                       transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
-                      display: "block",
                       filter: "saturate(0.95) contrast(1.02)",
                     }}
                   />
@@ -162,6 +164,8 @@ function MobileCardSwitcher() {
             <button
               key={i}
               onClick={() => go(i)}
+              aria-label={`Go to project ${i + 1} of ${mobileJourneyNodes.length}`}
+              aria-current={i === index ? "true" : undefined}
               className="rounded-full transition-all duration-200"
               style={{
                 width: i === index ? 16 : 5,
@@ -189,6 +193,7 @@ const CARD_W = 320;
 const CARD_IMG_H = 280;
 
 export default function SurferJourney() {
+  const prefersReduced = useReducedMotion();
   const [isCompact, setIsCompact] = useState(false);
   useEffect(() => {
     const check = () => setIsCompact(window.innerWidth < 1240);
@@ -384,7 +389,7 @@ export default function SurferJourney() {
                 stroke={isCareer && !passed ? "var(--midtone)" : "none"}
                 strokeWidth="1"
               />
-              {passed && (
+              {passed && !prefersReduced && (
                 <motion.circle
                   cx={a.x} cy={a.y} r={isCareer ? 6 : 9}
                   fill="none" stroke="var(--foreground)" strokeWidth="1"
@@ -394,7 +399,7 @@ export default function SurferJourney() {
                   transition={{ duration: 1, ease: "easeOut" }}
                 />
               )}
-              {passed && (
+              {passed && !prefersReduced && (
                 <motion.circle
                   cx={a.x} cy={a.y} r={isCareer ? 4 : 6}
                   fill="none" stroke="var(--foreground)" strokeWidth="0.8"
@@ -529,16 +534,15 @@ export default function SurferJourney() {
                 }}
               >
                 {node.image && (
-                  <img
+                  <Image
                     src={node.image.src}
                     alt={node.image.alt}
+                    fill
+                    sizes="320px"
                     style={{
-                      width: "100%",
-                      height: "100%",
                       objectFit: node.image.fit ?? "cover",
                       objectPosition: node.image.position ?? "center",
                       transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
-                      display: "block",
                       filter: inZone ? "saturate(1.04) contrast(1.03)" : "saturate(0.9) contrast(0.98)",
                       transition: "filter 0.4s ease",
                     }}

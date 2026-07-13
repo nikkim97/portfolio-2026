@@ -58,7 +58,7 @@ export default function SaXdCaseStudy() {
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
-      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "rgb(245,241,235)" }}>
+      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "var(--card)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2023 – 2024</span>
@@ -193,7 +193,6 @@ export default function SaXdCaseStudy() {
                     className="relative w-full overflow-hidden rounded-xl"
                     style={{ background: "var(--card)" }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <Image src={p.visual} alt={p.title} width={p.w} height={p.h} sizes="(max-width: 768px) 90vw, 400px" className="block w-full h-auto select-none" draggable={false} />
                     {(index === 0 || index === 1 || index === 2) && (
                       <span className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center" aria-hidden>

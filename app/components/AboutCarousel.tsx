@@ -11,12 +11,12 @@ type Photo = { src: string; caption: string };
 
 const PHOTOS: Photo[] = [
   { src: "/about/optimized/active.webp", caption: "Where I learned to trust my body and breathe." },
-  { src: "/about/optimized/vegan.webp", caption: "Vegan eats at a Tokyo hole-in-the-wall." },
+  { src: "/about/optimized/vegan.webp", caption: "Vegan eats in Tokyo." },
   { src: "/about/optimized/music-2.webp", caption: "My first solo concert — just me and Dylan." },
   { src: "/about/optimized/active-3.webp", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." },
   { src: "/about/optimized/tea.webp", caption: "A tea ceremony in a Kyoto garden." },
-  { src: "/about/optimized/culture-3.webp", caption: "Mindfully taking in Japan's temples." },
-  { src: "/about/optimized/vegan-2.webp", caption: "More vegan adventures on the road." },
+  { src: "/about/optimized/culture-3.webp", caption: "Taking in Japan's temples." },
+  { src: "/about/optimized/vegan-2.webp", caption: "Freshly made empanadas in Antigua." },
   { src: "/about/optimized/active-2.webp", caption: "Eighty feet down a Costa Rican waterfall." },
   { src: "/about/optimized/tea-2.webp", caption: "Hiding in a Manhattan tea shop with a book." },
   { src: "/about/optimized/music-3.webp", caption: "My sixth time seeing my favorite, Quinn XCII." },
@@ -174,19 +174,11 @@ function PinnedGallery() {
 
 export default function AboutCarousel() {
   return (
-    <div className="flex flex-col gap-10 sm:gap-12">
+    <div className="flex flex-col gap-5 sm:gap-6">
       <FadeIn>
-        <div className="flex flex-col gap-6">
-          <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
-            When I&apos;m not building
-          </p>
-          <p className="text-base font-normal leading-[1.9]" style={{ color: "var(--body)" }}>
-            Travel is how I feed my curiosity. I&apos;m wired to ask questions, and getting out into the
-            world helps me expand my perspective and continue evolving. I&apos;m happiest when I&apos;m
-            growing — so I chase side quests that stretch me, like hiking volcanoes or surfing despite
-            not having grown up athletic.
-          </p>
-        </div>
+        <p className="text-[10px] font-normal tracking-[0.28em] uppercase text-[var(--midtone)]">
+          when I&apos;m not building —
+        </p>
       </FadeIn>
 
       <PinnedGallery />

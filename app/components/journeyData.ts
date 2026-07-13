@@ -54,7 +54,7 @@ export const journeyNodes: JourneyNode[] = [
   },
   {
     id: "path-360",
-    period: "2023–25",
+    period: "2024–25",
     role: "Principal Associate, Experience Design",
     title: "Calibrations Ecosystem",
     brief: "How do you give people leaders the clarity they need to have real talent conversations?",

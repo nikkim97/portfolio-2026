@@ -42,7 +42,7 @@ export default function TimeTrackerCaseStudy() {
       {/* Top bar */}
       <div
         className="sticky top-0 z-40 border-b border-[var(--border)]"
-        style={{ backgroundColor: "rgb(245,241,235)" }}
+        style={{ backgroundColor: "var(--card)" }}
       >
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
@@ -59,9 +59,19 @@ export default function TimeTrackerCaseStudy() {
 
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
-            Product Design · Vibe Coding
-          </p>
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
+              Product Design · Vibe Coding
+            </p>
+            <a
+              href="https://time-tracker-pi-sandy.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-1.5 text-[10px] font-normal tracking-[0.22em] uppercase text-[var(--accent-text)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--accent)] transition-colors duration-200"
+            >
+              Live prototype ↗
+            </a>
+          </div>
           <h1
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}

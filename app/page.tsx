@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState, type CSSProperties } from "react";
 import SurferJourney from "./components/SurferJourney";
 import AboutCarousel from "./components/AboutCarousel";
@@ -11,14 +12,28 @@ const skills = [
   "Design Systems", "Prototyping & Wireframing", "Figma", "UX Research", "AWS", "Python",
 ];
 
-type NavItem = { label: string; href: string; section?: string; external?: boolean };
+type NavItem = { label: string; href: string; section?: string; external?: boolean; cta?: boolean };
 const NAV_ITEMS: NavItem[] = [
   { label: "Work", href: "#work", section: "work" },
   { label: "About", href: "#about", section: "about" },
   { label: "Résumé ↗", href: "/resume.pdf", external: true },
+  { label: "Let's talk", href: "#contact", section: "contact", cta: true },
 ];
 
 function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
+  if (item.cta) {
+    return (
+      <a
+        href={item.href}
+        onClick={onClick}
+        {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.2em] uppercase transition-opacity duration-200 hover:opacity-85"
+        style={{ background: "var(--foreground)", color: "var(--background)" }}
+      >
+        {item.label}
+      </a>
+    );
+  }
   return (
     <a
       href={item.href}
@@ -56,6 +71,7 @@ function Hamburger({ open, onClick }: { open: boolean; onClick: () => void }) {
 }
 
 export default function Home() {
+  const prefersReduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
@@ -159,15 +175,27 @@ export default function Home() {
               <Hamburger open onClick={() => setMobileMenuOpen(false)} />
             </div>
             {NAV_ITEMS.map(item => (
-              <a
-                key={item.label}
-                href={item.href}
-                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-base tracking-[0.2em] uppercase transition-colors duration-200 ${item.section && item.section === activeSection ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
-              >
-                {item.label}
-              </a>
+              item.cta ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-full px-7 py-3 text-base font-medium tracking-[0.2em] uppercase transition-opacity duration-200 hover:opacity-85"
+                  style={{ background: "var(--foreground)", color: "var(--background)" }}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-base tracking-[0.2em] uppercase transition-colors duration-200 ${item.section && item.section === activeSection ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
+                >
+                  {item.label}
+                </a>
+              )
             ))}
           </motion.div>
         )}
@@ -182,16 +210,18 @@ export default function Home() {
             width: 380, height: 380, borderRadius: "50%",
             background: "radial-gradient(circle, rgba(155,101,57,1) 0%, transparent 70%)",
             filter: "blur(18px)",
-            x: blobTerraX, y: blobTerraY, opacity: blobTerraOpacity,
+            x: prefersReduced ? 0 : blobTerraX,
+            y: prefersReduced ? 0 : blobTerraY,
+            opacity: prefersReduced ? 0.12 : blobTerraOpacity,
           }}
         />
       </div>
 
       {/* ── Curtain ── */}
       <motion.div
-        initial={{ y: 0 }}
+        initial={{ y: prefersReduced ? "-100%" : 0 }}
         animate={{ y: "-100%" }}
-        transition={{ duration: 0.85, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ duration: prefersReduced ? 0 : 0.85, delay: prefersReduced ? 0 : 0.1, ease: [0.76, 0, 0.24, 1] }}
         className="fixed inset-0 z-[100] pointer-events-none"
         style={{ background: "var(--background)" }}
       />
@@ -201,10 +231,13 @@ export default function Home() {
         <div className="sticky top-0 h-screen flex overflow-hidden">
           {/* Full-width editorial surf backdrop: muted + warm, with a paper-grain overlay */}
           <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-            <img
+            <Image
               src="/nikki-3.png"
               alt=""
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
               style={{
                 filter: "grayscale(0.7) saturate(0.9) contrast(1.06) brightness(1.0)",
                 opacity: 0.55,
@@ -266,7 +299,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
                 className="text-[10px] tracking-[0.22em] uppercase text-[var(--foreground)] mb-5"
               >
-                Niharika Mishra · Design Leader
+                Niharika Mishra · Design Leader at Capital One
               </motion.p>
 
               <div className="flex flex-col">
@@ -312,6 +345,7 @@ export default function Home() {
               {[
                 "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
                 "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
+                "Travel is how I feed my curiosity. I'm wired to ask questions, and getting out into the world helps me expand my perspective and continue evolving. I'm happiest when I'm growing — so I chase side quests that stretch me, like hiking volcanoes or surfing despite not having grown up athletic.",
               ].map((p, i) => (
                 <FadeIn key={i} delay={i * 0.08} distance={12}>
                   <p>{p}</p>
@@ -339,7 +373,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-12">
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 2.8vw, 36px)", letterSpacing: "-0.015em", lineHeight: 1.25 }}>
-              <WordStaggerLine text="If you're building for impact and appreciate real ownership, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
+              <WordStaggerLine text="If you're building for impact and appreciate ownership, let's talk." trigger="inView" perWord={0.06} duration={0.9} />
             </p>
 
             <FadeIn delay={0.4}>

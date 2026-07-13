@@ -50,6 +50,16 @@ html {
   position: relative;
 }
 
+/* Keyboard focus: an on-palette ring that appears only on Tab (never on mouse
+   click), so keyboard users can see where they are. Scoped to interactive elements. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 .prose p {
   margin-bottom: 1em;
   line-height: 1.85;
