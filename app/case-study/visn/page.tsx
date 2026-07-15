@@ -2,6 +2,14 @@ import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "VISN",
+  description:
+    "A wearable that combines obstacle detection and audio route guidance — making navigation without sight a solvable design problem.",
+  slug: "visn",
+});
 import { SystemDiagram } from "./_components/AppMockup";
 import ZoomableImage from "./_components/ZoomableImage";
 
@@ -43,7 +51,7 @@ export default function VisnCaseStudy() {
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
         <figure className="flex flex-col gap-4">
           <ZoomableImage
-            src="/visn/hero-image.png"
+            src="/visn/hero-image.webp"
             alt="VISN hero image"
             width={1818}
             height={794}
@@ -74,7 +82,7 @@ export default function VisnCaseStudy() {
 
           <figure className="flex flex-col gap-3">
             <ZoomableImage
-              src="/visn/visn-poster.png"
+              src="/visn/visn-poster.webp"
               alt="VISN project poster presentation"
               width={988}
               height={758}
@@ -102,7 +110,7 @@ export default function VisnCaseStudy() {
           <div className="flex flex-col gap-4">
             <figure className="flex flex-col gap-2">
               <ZoomableImage
-                src="/visn/visn-circuit.png"
+                src="/visn/visn-circuit.webp"
                 alt="VISN circuit diagram with Arduino Nano and sensors"
                 width={951}
                 height={436}
@@ -133,7 +141,7 @@ export default function VisnCaseStudy() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <figure className="flex flex-col gap-3">
               <ZoomableImage
-                src="/visn/visn2.jpeg"
+                src="/visn/visn2.webp"
                 alt="VISN wearable: red fanny pack on a mannequin, labeled with multi-element ultrasonic sensors, Arduino Nano processing unit, 9-axis gyroscope/IMU, internal Li-ion battery, and power-status LEDs"
                 width={1024}
                 height={741}
@@ -188,7 +196,7 @@ export default function VisnCaseStudy() {
 
           <figure className="flex flex-col gap-4">
             <ZoomableImage
-              src="/visn/visn-hero1.png"
+              src="/visn/visn-hero1.webp"
               alt="VISN hero image"
               width={1272}
               height={640}

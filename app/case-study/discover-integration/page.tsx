@@ -2,6 +2,14 @@ import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "Discover Integration Experience",
+  description:
+    "Onboarding flows that helped Discover banking customers become Capital One customers — turning a complex migration into a clear, familiar experience.",
+  slug: "discover-integration",
+});
 
 // A row of native mobile screens. Each shot carries its own aspect ratio since
 // the source captures range from full device frames to cropped bottom sheets.
@@ -63,10 +71,10 @@ export default function DiscoverIntegrationCaseStudy() {
 
         {/* ── Hero image: the welcome animation, frame by frame ── */}
         <MobileShots cols={4} shots={[
-          { src: "/case-study/manager/welcome3.png", aspect: "806 / 1724", priority: true, label: "Welcome animation: starts on the Discover card the customer knows", caption: "Starts on what they know" },
-          { src: "/case-study/manager/welcome4.png", aspect: "806 / 1724", priority: true, label: "Welcome animation: the Discover and Capital One cards mid-morph", caption: "The cards morph" },
-          { src: "/case-study/manager/welcome1.png", aspect: "806 / 1724", priority: true, label: "Welcome animation: resolves on the Capital One card", caption: "Now Capital One" },
-          { src: "/case-study/manager/welcome2.png", aspect: "806 / 1724", priority: true, label: "Welcome animation: the welcome message that lands the moment", caption: "We're happy you're here" },
+          { src: "/case-study/manager/welcome3.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: starts on the Discover card the customer knows", caption: "Starts on what they know" },
+          { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: the Discover and Capital One cards mid-morph", caption: "The cards morph" },
+          { src: "/case-study/manager/welcome1.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: resolves on the Capital One card", caption: "Now Capital One" },
+          { src: "/case-study/manager/welcome2.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: the welcome message that lands the moment", caption: "We're happy you're here" },
         ]} />
 
         {/* ── The insight ── */}
@@ -126,9 +134,9 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { src: "/case-study/manager/welcome4.png", aspect: "806 / 1724", label: "FTX: the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
-            { src: "/case-study/manager/ftux.png", aspect: "403 / 862", label: "FTX: your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
-            { src: "/case-study/manager/checking-l1.png", aspect: "403 / 955", label: "FTX: hand-off into the home screen, with what still needs setup flagged", caption: "Into the app: with what's left to set up flagged" },
+            { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", label: "FTX: the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
+            { src: "/case-study/manager/ftux.webp", aspect: "403 / 862", label: "FTX: your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
+            { src: "/case-study/manager/checking-l1.webp", aspect: "403 / 955", label: "FTX: hand-off into the home screen, with what still needs setup flagged", caption: "Into the app: with what's left to set up flagged" },
           ]} />
         </section>
 
@@ -152,9 +160,9 @@ export default function DiscoverIntegrationCaseStudy() {
             </Prose>
           </div>
           <MobileShots shots={[
-            { src: "/case-study/manager/checklist-debit.png", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
-            { src: "/case-study/manager/l2-account-summary.png", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
-            { src: "/case-study/manager/mma-checklist-default.png", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
+            { src: "/case-study/manager/checklist-debit.webp", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
+            { src: "/case-study/manager/l2-account-summary.webp", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
+            { src: "/case-study/manager/mma-checklist-default.webp", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
           ]} />
         </section>
 

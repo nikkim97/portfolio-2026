@@ -5,6 +5,14 @@ import AnimatedStat from "../../components/AnimatedStat";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
 import LightboxFrame from "../../components/LightboxFrame";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "360 Feedback",
+  description:
+    "Research that turned a noisy, distrusted 360 feedback process at Capital One into clearer, more actionable growth conversations.",
+  slug: "sa-xd",
+});
 import MeasureCarousel from "./MeasureCarousel";
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
@@ -90,7 +98,7 @@ export default function SaXdCaseStudy() {
         <figure className="flex flex-col gap-3">
           <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
             <Image
-              src="/case-study/sa-xd/xd-1.png"
+              src="/case-study/sa-xd/xd-1.webp"
               alt="Where the 360 feedback experience broke down across the performance cycle"
               width={1946}
               height={740}
@@ -125,7 +133,7 @@ export default function SaXdCaseStudy() {
             <LightboxFrame alt="Detail of the 360 feedback experience breakdown">
               <div className="relative w-full overflow-hidden rounded-xl aspect-[1422/652]" style={{ background: "var(--card)" }}>
                 <Image
-                  src="/case-study/sa-xd/xd-1.1.png"
+                  src="/case-study/sa-xd/xd-1.1.webp"
                   alt="Detail of the 360 feedback experience breakdown"
                   fill
                   sizes="(max-width: 768px) 100vw, 1200px"
@@ -172,17 +180,17 @@ export default function SaXdCaseStudy() {
           <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
             {[
               {
-                visual: "/case-study/sa-xd/principle-1-quant-qual.png",
+                visual: "/case-study/sa-xd/principle-1-quant-qual.webp",
                 title: "Quant & qual data together",
                 w: 1600, h: 1590,
               },
               {
-                visual: "/case-study/sa-xd/principle-2-anonymity.png",
+                visual: "/case-study/sa-xd/principle-2-anonymity.webp",
                 title: "Psychological safety through anonymity",
                 w: 1574, h: 1600,
               },
               {
-                visual: "/case-study/sa-xd/principle-3-comparative.png",
+                visual: "/case-study/sa-xd/principle-3-comparative.webp",
                 title: "Comparative context to reduce bias",
                 w: 1600, h: 1527,
               },
@@ -227,7 +235,7 @@ export default function SaXdCaseStudy() {
 
           <div className="flex flex-col gap-10">
             <figure className="flex flex-col gap-3">
-              <Img src="/case-study/sa-xd/sa-xd-12-2.png" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
+              <Img src="/case-study/sa-xd/sa-xd-12-2.webp" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
             <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em> — it&apos;s easy to dismiss a critique you can&apos;t attribute — and &ldquo;compared to peers&rdquo; framing risked turning a growth tool into a ranking. We were trading those risks for candor, and wouldn&apos;t know which way it broke until the pilot.</p>
@@ -235,7 +243,7 @@ export default function SaXdCaseStudy() {
             <figure className="flex flex-col gap-3">
               <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
                 <Image
-                  src="/case-study/sa-xd/sa-xd-13-2.png"
+                  src="/case-study/sa-xd/sa-xd-13-2.webp"
                   alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback"
                   width={1308}
                   height={687}

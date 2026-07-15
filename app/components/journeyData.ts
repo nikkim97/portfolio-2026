@@ -23,7 +23,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Undergrad", "Hardware"],
     href: "/case-study/visn",
     type: "project",
-    image: { src: "/visn/Intro-pic.png", alt: "VISN: wearable navigation system for visually impaired people", position: "38% top" },
+    image: { src: "/visn/Intro-pic.webp", alt: "VISN: wearable navigation system for visually impaired people", position: "38% top" },
   },
   {
     id: "asc-swe",
@@ -50,7 +50,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Research"],
     href: "/case-study/sa-xd",
     type: "project",
-    image: { src: "/case-study/sa-xd/sa-xd-09.png", alt: "360 feedback: many raters giving feedback on one person" },
+    image: { src: "/case-study/sa-xd/sa-xd-09.webp", alt: "360 feedback: many raters giving feedback on one person" },
   },
   {
     id: "path-360",
@@ -61,7 +61,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/pa-xd/hero1.png", alt: "PATH calibrations ecosystem interface" },
+    image: { src: "/case-study/pa-xd/hero1.webp", alt: "PATH calibrations ecosystem interface" },
   },
   {
     id: "people-leader-redesign",
@@ -72,7 +72,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/people-leader-redesign",
     type: "project",
-    image: { src: "/case-study/pl-redesign/hero.png", alt: "People Leader Redesign: aligning the experience with how leaders assess their people" },
+    image: { src: "/case-study/pl-redesign/hero.webp", alt: "People Leader Redesign: aligning the experience with how leaders assess their people" },
   },
   {
     id: "path-people",
@@ -83,7 +83,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Visual UI"],
     href: "/case-study/discover-integration",
     type: "project",
-    image: { src: "/case-study/manager/hero2.png", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
+    image: { src: "/case-study/manager/hero2.webp", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
   },
   {
     id: "bloom",
@@ -93,7 +93,7 @@ export const journeyNodes: JourneyNode[] = [
     brief: "How do you make talking about your differences feel less personal?",
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/bloom",
-    image: { src: "/case-study/bloom/hero-new.png", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
+    image: { src: "/case-study/bloom/hero-new.webp", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
     type: "horizon",
   },
   {
@@ -105,7 +105,7 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Vibe Coded", "Claude"],
     href: "/case-study/time-tracker",
     type: "horizon",
-    image: { src: "/case-study/time-track/hero2.png", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
+    image: { src: "/case-study/time-track/hero2.webp", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
   },
 ];
 

@@ -5,6 +5,14 @@ import AnimatedStat from "../../components/AnimatedStat";
 import { IntroMetadataSection } from "../../components/caseStudyUI";
 import LightboxFrame from "../../components/LightboxFrame";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "Calibrations Ecosystem",
+  description:
+    "A scalable system that brought structure, trust, and shared context to calibration sessions run inconsistently across the enterprise.",
+  slug: "path-360",
+});
 
 const PROSE = "prose font-light leading-[1.8] text-[16px] sm:text-[18px]";
 const LABEL = "text-[10px] tracking-[0.28em] uppercase";
@@ -67,7 +75,7 @@ export default function Path360CaseStudy() {
       {/* ── Hero image ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
         <Img
-          src="/case-study/pa-xd/hero-editorial.png"
+          src="/case-study/pa-xd/hero-editorial.webp"
           alt="Two leaders in a live PATH calibration session, reviewing the distribution matrix and an associate's feedback profile together"
           aspect="1137/928"
           fit="cover"
@@ -92,7 +100,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image2.png" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
+            <Img src="/case-study/pa-xd/image2.webp" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early whiteboard sessions helped us map the full calibration journey, far messier than the pilot suggested.</figcaption>
           </figure>
         </section>
@@ -111,7 +119,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-2">
-            <Img src="/case-study/pa-xd/image2.5-clean.png" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
+            <Img src="/case-study/pa-xd/image2.5-clean.webp" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Three personas, three different needs: from a single consistent prep space to flexible tools for editing ratings</figcaption>
           </figure>
 
@@ -120,7 +128,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-2">
-            <Img src="/case-study/pa-xd/image3.png" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
+            <Img src="/case-study/pa-xd/image3.webp" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Personas mapped across the calibration journey: each role's jobs-to-be-done at every phase</figcaption>
           </figure>
         </section>
@@ -158,9 +166,9 @@ export default function Path360CaseStudy() {
                 ))}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Img src="/case-study/pa-xd/manage1.png" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
+                <Img src="/case-study/pa-xd/manage1.webp" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
                 <Img
-                  src="/case-study/pa-xd/manage1.1.1.png"
+                  src="/case-study/pa-xd/manage1.1.1.webp"
                   alt="Session management UI showing grouped calibration sessions and setup controls"
                   aspect="1440/1401"
                   fit="contain"
@@ -187,13 +195,13 @@ export default function Path360CaseStudy() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Img
-                  src="/case-study/pa-xd/manage2.png"
+                  src="/case-study/pa-xd/manage2.webp"
                   alt="Session management UI showing rating distribution and calibration prep"
                   aspect="1440/1225"
                   fit="contain"
                 />
                 <Img
-                  src="/case-study/pa-xd/manage3.png"
+                  src="/case-study/pa-xd/manage3.webp"
                   alt="Session management UI showing manager preparation details"
                   aspect="1440/1712"
                   fit="contain"
@@ -218,7 +226,7 @@ export default function Path360CaseStudy() {
           <figure className="flex flex-col gap-3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
               <div className="md:col-span-2">
-                <Img src="/case-study/pa-xd/image4.1.png" alt="Live calibration UI showing session management, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
+                <Img src="/case-study/pa-xd/image4.1.webp" alt="Live calibration UI showing session management, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
               </div>
               <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "var(--body)" }}>
                 The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders weren&apos;t debating from memory and having informed conversations. Status tracking meant sessions could pause and resume without losing ground and it became easier for facilitators to keep track of session data.
@@ -241,13 +249,13 @@ export default function Path360CaseStudy() {
                 ))}
               </div>
               <Img
-                src="/case-study/pa-xd/04-2.png"
+                src="/case-study/pa-xd/04-2.webp"
                 alt="Live calibration UI showing an individual associate deep-dive panel"
                 aspect="1440/1779"
                 fit="contain"
               />
               <Img
-                src="/case-study/pa-xd/04-3.png"
+                src="/case-study/pa-xd/04-3.webp"
                 alt="Live calibration UI showing 360 feedback surfaced during a session"
                 aspect="1440/1779"
                 fit="contain"
@@ -272,7 +280,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image-last2.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
+            <Img src="/case-study/pa-xd/image-last2.webp" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field: leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>

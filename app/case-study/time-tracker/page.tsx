@@ -2,6 +2,14 @@ import Link from "next/link";
 import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, PhoneFrame, HeroVideo, Prose, PullQuote } from "../../components/caseStudyUI";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "Time Tracking Dashboard",
+  description:
+    "A lightweight tracker that makes the shape of a week visible — so you can see where your time actually goes, and reflect on it.",
+  slug: "time-tracker",
+});
 
 // Phone screenshots are portrait (~1:2) with the device frame baked in.
 const PHONE_ASPECT = "1/2";
@@ -88,7 +96,7 @@ export default function TimeTrackerCaseStudy() {
         {/* ── Hero image ── */}
         <div className="mx-auto w-full" style={{ maxWidth: 600 }}>
           <Screenshot
-            src="/case-study/time-track/herofinal.png"
+            src="/case-study/time-track/herofinal.webp"
             aspect="731/1456"
             label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
             priority
@@ -115,7 +123,7 @@ export default function TimeTrackerCaseStudy() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v2.1.png"
+                src="/case-study/time-track/v2.1.webp"
                 aspect={PHONE_ASPECT}
                 priority
                 label="V2 dashboard: a week of time across Family, Self-Care, Socialization, and Career, each measured against its target"
@@ -124,7 +132,7 @@ export default function TimeTrackerCaseStudy() {
             </PhoneFrame>
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v2.3.png"
+                src="/case-study/time-track/v2.3.webp"
                 aspect={PHONE_ASPECT}
                 label="Balance states: Balanced, On track, Drifting, Off balance, the plain-English read on the week"
                 caption="The balance read: where you land, in one word"
@@ -132,7 +140,7 @@ export default function TimeTrackerCaseStudy() {
             </PhoneFrame>
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v2.2.png"
+                src="/case-study/time-track/v2.2.webp"
                 aspect={PHONE_ASPECT}
                 label="Where your time went: the calendar and the actual sessions behind a week, sorted by most time or most frequent"
                 caption="Drill into any week to see the sessions that filled it"
@@ -165,7 +173,7 @@ export default function TimeTrackerCaseStudy() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-start">
             <div>
               <Screenshot
-                src="/case-study/time-track/onboard.png"
+                src="/case-study/time-track/onboard.webp"
                 aspect={PHONE_ASPECT}
                 label="Onboarding step 1: intro and setup framing"
                 caption="Onboarding · intro"
@@ -173,7 +181,7 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <div>
               <Screenshot
-                src="/case-study/time-track/onboard-2.1.png"
+                src="/case-study/time-track/onboard-2.1.webp"
                 aspect={PHONE_ASPECT}
                 label="Onboarding step 2: configuring preferences"
                 caption="Onboarding · setup"
@@ -181,7 +189,7 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <div>
               <Screenshot
-                src="/case-study/time-track/onboard-2.2.png"
+                src="/case-study/time-track/onboard-2.2.webp"
                 aspect={PHONE_ASPECT}
                 label="Onboarding step 3: pillar defaults and confirmation"
                 caption="Onboarding · defaults"
@@ -189,7 +197,7 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <div>
               <Screenshot
-                src="/case-study/time-track/onbaord3.png"
+                src="/case-study/time-track/onbaord3.webp"
                 aspect={PHONE_ASPECT}
                 label="Onboarding step 4: completion"
                 caption="Onboarding · complete"
@@ -221,7 +229,7 @@ export default function TimeTrackerCaseStudy() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v1.1.png"
+                src="/case-study/time-track/v1.1.webp"
                 aspect={PHONE_ASPECT}
                 label="V1 dashboard: the donut breakdown with pillar cards and the generated insight line"
                 caption="V1 · the donut: shape of the week, weak on 'am I on target'"
@@ -229,7 +237,7 @@ export default function TimeTrackerCaseStudy() {
             </PhoneFrame>
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v1.3.png"
+                src="/case-study/time-track/v1.3.webp"
                 aspect={PHONE_ASPECT}
                 label="V1 goal vs. reality: paired goal and actual bars per pillar with plus/minus deltas"
                 caption="V1 · goal vs. reality lived behind a flip. V2 made it the front door"
@@ -237,7 +245,7 @@ export default function TimeTrackerCaseStudy() {
             </PhoneFrame>
             <PhoneFrame maxWidth={520}>
               <Screenshot
-                src="/case-study/time-track/v1.2.png"
+                src="/case-study/time-track/v1.2.webp"
                 aspect={PHONE_ASPECT}
                 label="V1 calendar: a month grid with a colored dot per pillar logged each day"
                 caption="V1 · the calendar: a dot per pillar, per day"
@@ -261,7 +269,7 @@ export default function TimeTrackerCaseStudy() {
           </div>
           <HeroVideo
             src="/case-study/time-track/regular-flow.mp4"
-            poster="/case-study/time-track/regular-flow-poster.jpg"
+            poster="/case-study/time-track/regular-flow-poster.webp"
             aspect="540/1110"
             label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
             maxWidth={420}

@@ -232,7 +232,7 @@ export default function Home() {
           {/* Full-width editorial surf backdrop: muted + warm, with a paper-grain overlay */}
           <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
             <Image
-              src="/nikki-3.png"
+              src="/nikki-3.webp"
               alt=""
               fill
               priority
@@ -303,13 +303,13 @@ export default function Home() {
               </motion.p>
 
               <div className="flex flex-col">
-                <p
+                <h1
                   className="font-light text-[var(--foreground)]"
                   style={{ fontSize: "clamp(28px, 4vw, 52px)", letterSpacing: "-0.02em", lineHeight: 1.15 }}
                 >
                   <WordStaggerLine text="Hi, I'm Nikki" startDelay={1.15} perWord={0.07} duration={0.9} />
                   <span style={{ color: "var(--accent)" }}>.</span>
-                </p>
+                </h1>
                 <p
                   className="font-normal"
                   style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "var(--foreground)", marginTop: 20, textWrap: "balance" }}

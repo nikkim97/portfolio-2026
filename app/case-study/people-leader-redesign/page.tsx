@@ -3,6 +3,14 @@ import { FONT } from "../../components/ui";
 import { IntroMetadataSection, SectionLabel, SectionHeading, Prose, PullQuote } from "../../components/caseStudyUI";
 import Image from "next/image";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import { caseStudyMetadata } from "../../lib/siteMetadata";
+
+export const metadata = caseStudyMetadata({
+  title: "People Leader Redesign",
+  description:
+    "Collapsing a 10-screen calibration prep flow into four connected screens with every input a people leader needs.",
+  slug: "people-leader-redesign",
+});
 
 // Standard image: shows at natural height, full column width. Routed through
 // next/image so it's resized to display size, served lazily, and reserves its
@@ -92,7 +100,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </Prose>
           </div>
           <Figure
-            src="/case-study/pl-redesign/group.jpg"
+            src="/case-study/pl-redesign/group.webp"
             width={1500}
             height={1234}
             alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
@@ -121,7 +129,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
 
           <div className="flex flex-col gap-6">
             <Figure
-              src="/case-study/pl-redesign/old-myteam-table.png"
+              src="/case-study/pl-redesign/old-myteam-table.webp"
               width={1440}
               height={1137}
               alt="The old table-based My Team: a row per associate, with feedback, results, and the calibration profile each behind a separate link"
@@ -129,19 +137,19 @@ export default function PeopleLeaderRedesignCaseStudy() {
             />
             <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
               <TallFigure
-                src="/case-study/pl-redesign/old-1.png"
+                src="/case-study/pl-redesign/old-1.webp"
                 width={1441}
                 height={2465}
                 alt="Legacy calibration profile workflow, screen one"
               />
               <TallFigure
-                src="/case-study/pl-redesign/old-2.png"
+                src="/case-study/pl-redesign/old-2.webp"
                 width={1761}
                 height={4000}
                 alt="Legacy calibration profile workflow, screen two"
               />
               <TallFigure
-                src="/case-study/pl-redesign/old-3.png"
+                src="/case-study/pl-redesign/old-3.webp"
                 width={1441}
                 height={2947}
                 alt="Legacy calibration profile workflow, screen three"
@@ -173,7 +181,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow — and enables more objective calibration sessions.
           </PullQuote>
           <Figure
-            src="/case-study/pl-redesign/tab0.png"
+            src="/case-study/pl-redesign/tab0.webp"
             width={1440}
             height={1129}
             alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
@@ -198,14 +206,14 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </Prose>
           </div>
           <TallFigure
-            src="/case-study/pl-redesign/360-view.png"
+            src="/case-study/pl-redesign/360-view.webp"
             width={1440}
             height={2795}
             alt="The 360 associate view: dynamic tabs for feedback, results, strengths, and the calibration profile, with a sliding drawer for the full profile"
             caption="The 360 associate view: dynamic tabs and a sliding calibration drawer keep the leader in flow"
           />
           <TallFigure
-            src="/case-study/pl-redesign/360-results.png"
+            src="/case-study/pl-redesign/360-results.webp"
             width={1440}
             height={2299}
             alt="Key results tab: the associate's key results and impact, surfaced as a dynamic tab within the 360 view"
@@ -234,7 +242,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </div>
           </div>
           <TallFigure
-            src="/case-study/pl-redesign/360-calibration.png"
+            src="/case-study/pl-redesign/360-calibration.webp"
             width={1440}
             height={4214}
             alt="The redesigned calibration profile: competency assessment, key results, strengths and development — complete and still editable"
