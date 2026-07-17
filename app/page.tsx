@@ -17,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Work", href: "#work", section: "work" },
   { label: "About", href: "#about", section: "about" },
   { label: "Résumé ↗", href: "/resume.pdf", external: true },
-  { label: "Let's talk", href: "#contact", section: "contact", cta: true },
+  { label: "Let's talk", href: "mailto:niharikamishr@gmail.com", cta: true },
 ];
 
 function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
@@ -115,7 +115,7 @@ export default function Home() {
   }, [mobileMenuOpen]);
 
   return (
-    <div style={{ "--background": "#FAEBD7" } as CSSProperties}>
+    <div style={{ "--background": "#EFEAE2" } as CSSProperties}>
       {/* Homepage-only cream paper background: flat antique-white + subtle grain.
           The --background override above re-tints every var(--background) usage
           (hero fade, curtain, mobile menu) to cream so nothing seams. */}
@@ -144,7 +144,7 @@ export default function Home() {
             exit={{ y: -48, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
             className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
-            style={{ backgroundColor: "rgba(250,235,215,0.9)", backdropFilter: "blur(12px)", ...FONT }}
+            style={{ backgroundColor: "rgba(239,234,226,0.9)", backdropFilter: "blur(12px)", ...FONT }}
           >
             <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-end">
               <div className="hidden sm:flex items-center gap-8">
@@ -343,9 +343,9 @@ export default function Home() {
             </p>
             <div className="flex flex-col gap-5 text-base font-normal leading-[1.9]" style={{ color: "var(--body)" }}>
               {[
-                "My foundation as an engineer was fueled by a lifelong curiosity to understand how things work. Moving into design felt natural. I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
-                "Vibe coding has unlocked something for me: I can move from insight to working product faster than ever, and my engineering background means I'm not guessing at what's possible. Design and engineering are how I build good for the world. I'm looking for teams where that combo and that drive actually matter.",
-                "Travel is how I feed my curiosity. I'm wired to ask questions, and getting out into the world helps me expand my perspective and continue evolving. I'm happiest when I'm growing — so I chase side quests that stretch me, like hiking volcanoes or surfing despite not having grown up athletic.",
+                "I became an engineer because I've always wanted to know how things work. Moving into design felt natural: I wanted to get closer to the why behind how people think, struggle, and make decisions. I think in systems, design for humans, and build to ship.",
+                "Vibe coding lets me move from insight to working product faster than ever, and my engineering roots mean I'm not guessing at what's possible. That combination is why I still love building.",
+                "Travel keeps me curious, and so does being a little out of my depth. I surf despite not growing up athletic, and I've hiked volcanoes for the same reason: I'm happiest when something is stretching me.",
               ].map((p, i) => (
                 <FadeIn key={i} delay={i * 0.08} distance={12}>
                   <p>{p}</p>

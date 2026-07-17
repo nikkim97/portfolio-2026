@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FadeIn } from "./ui";
+
+// Correct the layout before paint on the client, but fall back to useEffect on
+// the server (React warns that useLayoutEffect is a no-op during SSR).
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 // "Life outside work" — a pinned, scroll-driven horizontal gallery. As the
 // section scrolls, it sticks to the viewport and the photo row pans sideways
@@ -25,6 +29,8 @@ const PHOTOS: Photo[] = [
 ];
 
 const GAP = 24;
+const MOBILE_GAP = 16;
+const MOBILE_CARD_WIDTH_RATIO = 0.78;
 const VISIBLE = 3; // cards visible at once
 
 function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) {
@@ -33,6 +39,8 @@ function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) 
     <div className="flex-none flex flex-col gap-3" style={{ width }}>
       <div
         className="relative w-full rounded-2xl overflow-hidden"
+        // Fixed 4:5 aspect. The card's *width* is capped in the measure effect so
+        // this height always fits the viewport — cards size down, never clip/crop.
         style={{ aspectRatio: "4 / 5", background: "var(--card)", border: "1px solid var(--border)" }}
       >
         {!errored ? (
@@ -40,7 +48,7 @@ function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) 
             src={photo.src}
             alt={photo.caption}
             fill
-            sizes="(max-width: 767px) 78vw, 33vw"
+            sizes="(max-width: 1279px) 78vw, 33vw"
             draggable={false}
             onError={() => setErrored(true)}
             className="object-cover select-none"
@@ -75,16 +83,19 @@ function PhotoCard({ photo, width }: { photo: Photo; width?: number | string }) 
 }
 
 function PinnedGallery() {
-  const [isMobile, setIsMobile] = useState(false);
+  // Default to the mobile (swipe) layout — the safe layout to render before the
+  // width is known. Corrected to the 3-card desktop pan pre-paint on wide screens.
+  const [isMobile, setIsMobile] = useState(true);
   const outerRef = useRef<HTMLDivElement>(null);
   const paneRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
   const [cardW, setCardW] = useState(0);
   const [travel, setTravel] = useState(0);
   const travelRef = useRef(0);
+  const gap = isMobile ? MOBILE_GAP : GAP;
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+  useIsomorphicLayoutEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1280);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -96,9 +107,14 @@ function PinnedGallery() {
       const pane = paneRef.current;
       if (!pane) return;
       const paneW = pane.clientWidth;
-      // VISIBLE cards plus a GAP-sized inset on both edges fill the viewport.
-      const cw = (paneW - (VISIBLE + 1) * GAP) / VISIBLE;
-      const rowW = PHOTOS.length * cw + (PHOTOS.length + 1) * GAP;
+      // Desktop: 3 visible cards. Mobile: one large card peeking into the next.
+      const baseW = isMobile ? paneW * MOBILE_CARD_WIDTH_RATIO : (paneW - (VISIBLE + 1) * GAP) / VISIBLE;
+      // Cap the width so the 4:5 height fits the viewport (height = width × 1.25).
+      // On wide/short screens the whole card sizes down, preserving aspect — no clip.
+      // The 120px reserves room for the caption + a little vertical breathing.
+      const cw = Math.min(baseW, (window.innerHeight - 120) * 0.8);
+      const activeGap = isMobile ? MOBILE_GAP : GAP;
+      const rowW = PHOTOS.length * cw + (PHOTOS.length + 1) * activeGap;
       const t = Math.max(0, rowW - paneW);
       setCardW(cw);
       setTravel(t);
@@ -112,7 +128,6 @@ function PinnedGallery() {
   // Drive the horizontal pan off the section's scroll position (manual, to match
   // the rest of the site — framer's useScroll mis-tracks under body overflow-x).
   useEffect(() => {
-    if (isMobile) return;
     let raf = 0;
     const update = () => {
       raf = 0;
@@ -135,23 +150,7 @@ function PinnedGallery() {
     };
   }, [isMobile, travel]);
 
-  // Mobile: a normal swipe row, no scroll hijacking.
-  if (isMobile) {
-    return (
-      <div
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden -mx-1 px-1 pb-1"
-        style={{ scrollbarWidth: "none" }}
-      >
-        {PHOTOS.map((p) => (
-          <div key={p.src} className="snap-start flex-none w-[78vw]">
-            <PhotoCard photo={p} width="100%" />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  // Desktop: pin the pane and pan the row sideways with scroll. The wrapper
+  // Pin the pane and pan the row sideways with vertical scroll. The wrapper
   // breaks out of the centered content column to span the full viewport width.
   return (
     <div
@@ -162,7 +161,7 @@ function PinnedGallery() {
         ref={paneRef}
         style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", alignItems: "center" }}
       >
-        <div ref={rowRef} className="flex" style={{ gap: GAP, paddingLeft: GAP, paddingRight: GAP, willChange: "transform" }}>
+        <div ref={rowRef} className="flex" style={{ gap, paddingLeft: gap, paddingRight: gap, willChange: "transform" }}>
           {PHOTOS.map((p) => (
             <PhotoCard key={p.src} photo={p} width={cardW || undefined} />
           ))}

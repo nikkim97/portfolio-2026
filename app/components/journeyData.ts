@@ -109,50 +109,68 @@ export const journeyNodes: JourneyNode[] = [
   },
 ];
 
-// The wave is hand-tuned. Spacing accommodates the expanded (~455px) project/horizon
-// cards: each anchor sits exactly on the path so the surfer tracks it, with enough
-// vertical room between same-side cards that they never collide. SVG_H leaves top and
-// bottom breathing room for the first and last cards.
-export const WAVE_PATH_D = [
-  "M 80,290",
-  // Career zigzag: VISN → asc-swe → sr-swe
-  "C 80,359 490,417 490,463",
-  "C 490,532 80,642 80,682",
-  // LOOP 1: sr-swe → sa-xd (engineer → designer pivot)
-  "C 80,763 170,843 230,855",
-  "C 290,866 400,857 420,805",
-  "C 440,753 320,728 250,774",
-  "C 180,820 180,918 260,941",
-  "C 340,964 550,1004 550,1039",
-  // sa-xd → path-360 (direct)
-  "C 550,1195 50,1285 50,1350",
-  // path-360 → people-leader-redesign (cross to the right)
-  "C 50,1467 510,1557 510,1647",
-  // people-leader-redesign (right) → Discover (cross to the left)
-  "C 510,1747 110,1952 110,2077",
-  // LOOP 2: Discover → bloom (project → vibe coding), loops left then crosses to the right
-  "C 110,2157 170,2226 230,2238",
-  "C 290,2249 400,2243 420,2192",
-  "C 440,2140 320,2117 250,2163",
-  "C 180,2209 180,2295 260,2318",
-  "C 340,2341 525,2376 525,2410",
-  // bloom (right) → time-tracker (cross to the left)
-  "C 525,2477 75,2547 75,2612",
-  // tail
-  "C 75,2662 300,2697 300,2722",
-].join(" ");
-
-export const SVG_W = 600;
-export const SVG_H = 2902;
+export const SVG_W = 520;
+export const SVG_H = 2620;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 80,  y: 290,  side: "left"  }, // VISN
-  { x: 490, y: 463,  side: "right" }, // asc-swe
-  { x: 80,  y: 682,  side: "left"  }, // sr-swe
-  { x: 550, y: 1039, side: "right" }, // sa-xd
-  { x: 50,  y: 1350, side: "left"  }, // path-360
-  { x: 510, y: 1647, side: "right" }, // people-leader-redesign
-  { x: 110, y: 2077, side: "left"  }, // Discover Integration (Manager, Experience Design)
-  { x: 525, y: 2410, side: "right" }, // bloom
-  { x: 75,  y: 2612, side: "left"  }, // time-tracker
+  { x: 88,  y: 260,  side: "left"  }, // VISN
+  { x: 408, y: 450,  side: "right" }, // asc-swe
+  { x: 88,  y: 635,  side: "left"  }, // sr-swe
+  { x: 455, y: 880,  side: "right" }, // sa-xd
+  { x: 65,  y: 1180, side: "left"  }, // path-360
+  { x: 424, y: 1460, side: "right" }, // people-leader-redesign
+  { x: 112, y: 1760, side: "left"  }, // Discover Integration (Manager, Experience Design)
+  { x: 436, y: 2040, side: "right" }, // bloom
+  { x: 85,  y: 2340, side: "left"  }, // time-tracker
 ];
+
+type WavePoint = { x: number; y: number };
+
+const formatPoint = (value: number) => Number(value.toFixed(1));
+
+function splinePath(points: WavePoint[], tension = 0.62) {
+  if (points.length < 2) return "";
+
+  const commands = [`M ${points[0].x},${points[0].y}`];
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i - 1] ?? points[i];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2] ?? p2;
+    const handle = tension / 6;
+
+    const c1x = formatPoint(p1.x + (p2.x - p0.x) * handle);
+    const c1y = formatPoint(p1.y + (p2.y - p0.y) * handle);
+    const c2x = formatPoint(p2.x - (p3.x - p1.x) * handle);
+    const c2y = formatPoint(p2.y - (p3.y - p1.y) * handle);
+
+    commands.push(`C ${c1x},${c1y} ${c2x},${c2y} ${p2.x},${p2.y}`);
+  }
+
+  return commands.join(" ");
+}
+
+// The wave is generated from smooth waypoints so every join has a continuous
+// tangent. The curve keeps moving downward in SVG Y so scroll progress and
+// surfer position stay aligned, while the added interior waypoints create the
+// loopy, wavy character between the anchored cards.
+const WAVE_WAYPOINTS: WavePoint[] = [
+  WAVE_ANCHORS[0],
+  WAVE_ANCHORS[1],
+  WAVE_ANCHORS[2],
+  { x: 160, y: 710 },
+  { x: 330, y: 770 },
+  { x: 292, y: 830 },
+  WAVE_ANCHORS[3],
+  WAVE_ANCHORS[4],
+  WAVE_ANCHORS[5],
+  WAVE_ANCHORS[6],
+  { x: 176, y: 1836 },
+  { x: 336, y: 1900 },
+  { x: 292, y: 1972 },
+  WAVE_ANCHORS[7],
+  WAVE_ANCHORS[8],
+  { x: 260, y: 2445 },
+];
+
+export const WAVE_PATH_D = splinePath(WAVE_WAYPOINTS);
