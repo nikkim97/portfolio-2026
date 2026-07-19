@@ -8,11 +8,11 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 export const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
 
 export const GLASS = {
-  border: "1px solid rgba(255,255,255,0.78)",
-  background: "rgba(246,243,235,0.58)",
+  border: "1px solid var(--glass-border)",
+  background: "var(--glass-bg)",
   backdropFilter: "blur(22px)",
   WebkitBackdropFilter: "blur(22px)",
-  boxShadow: "0 10px 34px rgba(36,33,23,0.1), inset 0 1px 0 rgba(255,255,255,0.82)",
+  boxShadow: "var(--glass-shadow)",
 };
 
 function useFadeInOnScroll(threshold = 0.1) {
@@ -120,11 +120,11 @@ export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
       style={{
         color: "var(--foreground)",
         borderRadius: "18px",
-        border: "1px solid rgba(255,255,255,0.6)",
-        background: "rgba(255,252,246,0.5)",
+        border: "1px solid var(--glass-border)",
+        background: "var(--glass-bg)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
-        boxShadow: "0 6px 20px rgba(36,33,23,0.08), inset 0 1px 0 rgba(255,255,255,0.7)",
+        boxShadow: "var(--glass-shadow)",
       }}
     >
       {skill}

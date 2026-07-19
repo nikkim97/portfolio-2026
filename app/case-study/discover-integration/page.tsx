@@ -7,7 +7,7 @@ import { caseStudyMetadata } from "../../lib/siteMetadata";
 export const metadata = caseStudyMetadata({
   title: "Discover Integration Experience",
   description:
-    "Onboarding flows that helped Discover banking customers become Capital One customers — turning a complex migration into a clear, familiar experience.",
+    "Onboarding flows that helped Discover banking customers become Capital One customers, turning a complex migration into a clear, familiar experience.",
   slug: "discover-integration",
 });
 
@@ -30,8 +30,8 @@ export default function DiscoverIntegrationCaseStudy() {
 
       {/* Top bar */}
       <div
-        className="sticky top-0 z-40 border-b border-[var(--border)]"
-        style={{ backgroundColor: "var(--card)" }}
+        className="sticky top-0 z-40"
+        style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}
       >
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
@@ -55,7 +55,7 @@ export default function DiscoverIntegrationCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Discover banking customers needed to become Capital One customers without feeling disrupted. I designed onboarding flows that turned a complex migration strategy into a clear, familiar customer experience<span style={{ color: "var(--accent)" }}>.</span>
+            Discover banking customers needed to move to Capital One without feeling disrupted. I designed onboarding flows that simplified an overly complex migration strategy<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
             role="Design & Strategy Lead"
@@ -152,7 +152,7 @@ export default function DiscoverIntegrationCaseStudy() {
                 The second layer (L2) is where intent turns into action: a checklist of the things that actually make Capital One someone&apos;s primary bank: <strong>setting up direct deposit, moving autopay and recurring payments, and activating the new card</strong>. Each completed step is both a setup task and a small proof that the switch was worth making.
               </p>
               <p>
-                These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff. &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too specific for FTUX, while the recurring wrench icon acted as wayfinding—showing exactly where setup was still required.
+                These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff. &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too specific for FTUX, while the recurring wrench icon acted as wayfinding, showing exactly where setup was still required.
               </p>
               <p>
                 The wrench icon and supporting content took most of our deliberate design decisioning. That pairing was what convinced senior stakeholders that customers would have enough confidence to understand what needed fixing, complete the right setup steps, and move through the transition smoothly. It also became a call-deflection strategy: every screen that explained itself prevented an avoidable call to a front-line associate.

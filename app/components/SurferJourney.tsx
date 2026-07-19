@@ -14,7 +14,6 @@ const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffec
 const mobileJourneyNodes = journeyNodes.filter((node) => node.type !== "career");
 
 function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }) {
-  const isPersonal = node.type === "horizon";
   const isActionable = !!node.href && !node.comingSoon;
   const Wrapper = isActionable ? "a" : "div";
 
@@ -27,14 +26,12 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
         padding: 0,
         borderRadius: "12px",
         ...GLASS,
-        ...(isPersonal ? { background: "rgba(226,231,214,0.64)", border: "1px solid rgba(94,102,71,0.5)" } : {}),
       }}
     >
-      {isPersonal && <div aria-hidden style={{ height: 6, background: "var(--green)", flexShrink: 0 }} />}
       <div
         style={{
           height: 340,
-          background: "linear-gradient(135deg, #CFC7B7 0%, #BEB39E 100%)",
+          background: "linear-gradient(135deg, var(--card-grad-a) 0%, var(--card-grad-b) 100%)",
           overflow: "hidden",
           position: "relative",
         }}
@@ -70,8 +67,8 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
           {node.pills?.map((p) => (
             <span
               key={p}
-              className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-              style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.22)" }}
+              className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
+              style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)" }}
             >
               {p}
             </span>
@@ -103,7 +100,7 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
             {node.title}
           </p>
         )}
-        <p className="leading-relaxed" style={{ fontSize: 13, color: "#3A352B", fontWeight: 400 }}>
+        <p className="leading-relaxed" style={{ fontSize: 13, color: "var(--body)", fontWeight: 400 }}>
           {node.brief}
         </p>
         {node.type === "horizon" && !node.comingSoon && (
@@ -344,7 +341,7 @@ export default function SurferJourney() {
         <path
           ref={drawPathRef}
           d={WAVE_PATH_D}
-          stroke="var(--accent)"
+          stroke="var(--accent-deep)"
           strokeWidth="2"
           fill="none"
           strokeLinecap="round"
@@ -438,8 +435,8 @@ export default function SurferJourney() {
                   textAlign: isRight ? "left" : "right",
                   paddingLeft: isRight ? 12 : 0,
                   paddingRight: isRight ? 0 : 12,
-                  borderLeft: isRight ? "2px solid var(--accent)" : "none",
-                  borderRight: !isRight ? "2px solid var(--accent)" : "none",
+                  borderLeft: isRight ? "2px solid var(--accent-deep)" : "none",
+                  borderRight: !isRight ? "2px solid var(--accent-deep)" : "none",
                 }}
               >
                 <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
@@ -449,8 +446,8 @@ export default function SurferJourney() {
                   {node.pills?.map((p) => (
                     <span
                       key={p}
-                      className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.2)", opacity: 0.9 }}
+                      className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
+                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)", opacity: 0.9 }}
                     >
                       {p}
                     </span>
@@ -461,7 +458,7 @@ export default function SurferJourney() {
                     {node.role}
                   </p>
                 )}
-                <p className="leading-relaxed" style={{ fontSize: 13, color: "#3A352B", fontWeight: 400, marginTop: 5 }}>
+                <p className="leading-relaxed" style={{ fontSize: 13, color: "var(--body)", fontWeight: 400, marginTop: 5 }}>
                   {node.brief}
                 </p>
               </div>
@@ -472,8 +469,6 @@ export default function SurferJourney() {
         // Project / horizon nodes: editorial two-section card
         const isActionable = !!node.href && !node.comingSoon;
         const CardLink = isActionable ? "a" : "div";
-        // Personal (self-initiated, vibe-coded) builds get a burnt-orange editorial signal.
-        const isPersonal = node.type === "horizon";
 
         return (
           <CardLink
@@ -501,21 +496,18 @@ export default function SurferJourney() {
                 display: "flex",
                 flexDirection: "column",
                 ...GLASS,
-                ...(isPersonal ? { background: "rgba(226,231,214,0.64)" } : {}),
                 border: inZone
-                  ? "1px solid rgba(155,101,57,0.58)"
-                  : isPersonal ? "1px solid rgba(94,102,71,0.5)" : GLASS.border,
+                  ? "1px solid var(--accent-deep)"
+                  : GLASS.border,
                 boxShadow: inZone
-                  ? "0 18px 48px rgba(36,33,23,0.18), 0 0 0 6px rgba(155,101,57,0.09), inset 0 1px 0 rgba(255,255,255,0.86)"
+                  ? "0 18px 48px rgba(36,33,23,0.18), 0 0 0 6px color-mix(in srgb, var(--accent) 9%, transparent), inset 0 1px 0 rgba(255,255,255,0.86)"
                   : GLASS.boxShadow,
               }}
             >
-              {/* Personal-project spine: bold sage cap, corners clip to the card radius */}
-              {isPersonal && <div aria-hidden style={{ height: 6, background: "var(--green)", flexShrink: 0 }} />}
               {/* Top section: image or placeholder */}
               <div
                 style={{
-                  background: "linear-gradient(135deg, #CFC7B7 0%, #BEB39E 100%)",
+                  background: "linear-gradient(135deg, var(--card-grad-a) 0%, var(--card-grad-b) 100%)",
                   minHeight: CARD_IMG_H,
                   height: CARD_IMG_H,
                   overflow: "hidden",
@@ -565,8 +557,8 @@ export default function SurferJourney() {
                   {node.pills?.map((p) => (
                     <span
                       key={p}
-                      className="text-[10px] tracking-[0.12em] uppercase px-1.5 py-0.5 border"
-                      style={{ color: "var(--midtone)", borderColor: "var(--border)", background: "rgba(255,255,255,0.24)" }}
+                      className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
+                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)" }}
                     >
                       {p}
                     </span>
@@ -593,7 +585,7 @@ export default function SurferJourney() {
                     {node.title}
                   </p>
                 )}
-                <p style={{ fontSize: 13, color: "#3A352B", lineHeight: 1.55, fontWeight: 400, marginTop: 2 }}>
+                <p style={{ fontSize: 13, color: "var(--body)", lineHeight: 1.55, fontWeight: 400, marginTop: 2 }}>
                   {node.brief}
                 </p>
                 {node.comingSoon ? (

@@ -2,9 +2,11 @@
 
 import { motion, useScroll, useSpring, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import SurferJourney from "./components/SurferJourney";
 import AboutCarousel from "./components/AboutCarousel";
+import DesignPrinciples from "./components/DesignPrinciples";
+import CursorDot from "./components/CursorDot";
 import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
 
 const skills = [
@@ -41,11 +43,12 @@ function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; on
       {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`group relative text-[11px] font-normal tracking-[0.2em] uppercase transition-colors duration-200 hover:text-[var(--foreground)] ${active ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
     >
-      {item.label}
       <span
         aria-hidden
-        className={`pointer-events-none absolute left-0 -bottom-1 h-px bg-current transition-[width] duration-300 ease-out ${active ? "w-full" : "w-0 group-hover:w-full"}`}
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 scale-[0.35] transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100"
+        style={{ width: 132, height: 132, background: "var(--border)", filter: "blur(7px)" }}
       />
+      <span className="relative z-10">{item.label}</span>
     </a>
   );
 }
@@ -115,7 +118,8 @@ export default function Home() {
   }, [mobileMenuOpen]);
 
   return (
-    <div style={{ "--background": "#EFEAE2" } as CSSProperties}>
+    <div>
+      <CursorDot />
       {/* Homepage-only cream paper background: flat antique-white + subtle grain.
           The --background override above re-tints every var(--background) usage
           (hero fade, curtain, mobile menu) to cream so nothing seams. */}
@@ -143,8 +147,17 @@ export default function Home() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -48, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed top-0 left-0 right-0 z-40 border-b border-[var(--border)]"
-            style={{ backgroundColor: "rgba(239,234,226,0.9)", backdropFilter: "blur(12px)", ...FONT }}
+            className="fixed top-0 left-0 right-0 z-40"
+            style={{
+              backgroundColor: "var(--nav-bg)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              // Fade the bottom edge instead of a hard border, so the blurred bar
+              // blends smoothly into the content below.
+              maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
+              ...FONT,
+            }}
           >
             <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-end">
               <div className="hidden sm:flex items-center gap-8">
@@ -208,7 +221,7 @@ export default function Home() {
           style={{
             position: "absolute", top: "45vh", right: "22%",
             width: 380, height: 380, borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(155,101,57,1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
             filter: "blur(18px)",
             x: prefersReduced ? 0 : blobTerraX,
             y: prefersReduced ? 0 : blobTerraY,
@@ -253,7 +266,7 @@ export default function Home() {
             {/* Soft top/bottom fade so the nav and name stay legible */}
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to bottom, var(--background) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 72%, var(--background) 100%)" }}
+              style={{ background: "linear-gradient(to bottom, var(--background) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, var(--background) 90%)" }}
             />
             {/* Paper grain */}
             <div
@@ -311,7 +324,7 @@ export default function Home() {
                   <span style={{ color: "var(--accent)" }}>.</span>
                 </h1>
                 <p
-                  className="font-normal"
+                  className="font-light"
                   style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "var(--foreground)", marginTop: 20, textWrap: "balance" }}
                 >
                   <WordStaggerLine text={"I make complex things feel human. Let me take you on my journey so far."} startDelay={1.6} perWord={0.05} duration={0.9} />
@@ -354,6 +367,8 @@ export default function Home() {
             </div>
           </div>
 
+          <DesignPrinciples />
+
           <AboutCarousel />
 
           <div className="flex flex-col gap-6">
@@ -377,20 +392,27 @@ export default function Home() {
             </p>
 
             <FadeIn delay={0.4}>
-              <div className="flex flex-wrap gap-8">
+              <div className="flex flex-wrap gap-x-12 gap-y-8">
                 {[
                   { label: "Email", href: "mailto:niharikamishr@gmail.com" },
                   { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
                   { label: "GitHub", href: "https://github.com/nikkim97", external: true },
+                  { label: "Substack", href: "https://substack.com/@nikkim97", external: true },
                   { label: "Résumé", href: "/resume.pdf", external: true },
                 ].map(({ label, href, external }) => (
                   <a
                     key={label}
                     href={href}
                     {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200 border-b border-[var(--border)] pb-0.5 hover:border-[var(--foreground)]"
+                    className="group relative inline-flex items-center gap-1.5 text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200"
                   >
-                    {label}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 scale-[0.35] transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100"
+                      style={{ width: 132, height: 132, background: "var(--border)", filter: "blur(7px)" }}
+                    />
+                    <span className="relative z-10">{label}</span>
+                    <span aria-hidden className="relative z-10 leading-none transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                   </a>
                 ))}
               </div>

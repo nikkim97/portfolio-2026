@@ -65,7 +65,7 @@ export const journeyNodes: JourneyNode[] = [
   },
   {
     id: "people-leader-redesign",
-    period: "Sept 2024 – Jan 2025",
+    period: "Nov 2025 – Feb 2026",
     role: "Manager, Experience Design",
     title: "People Leader Redesign",
     brief: "How do you align the experience with how leaders actually assess their people?",

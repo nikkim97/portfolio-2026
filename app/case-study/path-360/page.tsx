@@ -46,7 +46,7 @@ export default function Path360CaseStudy() {
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
-      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "var(--card)" }}>
+      <div className="sticky top-0 z-40" style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2024 – 2025</span>

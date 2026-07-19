@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
+/* Single dark theme (warm espresso). Light mode was removed; these are the only
+   palette values, so every page renders dark. */
 :root {
-  --background: #DAD4C6;
-  --foreground: #242117;
-  --midtone: #4D4738;
-  --card: #D5CFC0;
-  --border: #AFA58F;
-  --accent: #9B6539;
-  --pop: #BC4A1F;
-  --green: #5E6647;
-  --body: #3A3530; /* primary body-copy ink: softer than --foreground, AA on bg + card */
-  --accent-text: #744B2A; /* darker accent for small uppercase labels — AA (4.5+) on bg + card */
+  color-scheme: dark;
+  --background: #201D17;
+  --foreground: #EDE7DA;
+  --midtone: #A79E8B;
+  --card: #262219;
+  --border: #3C3629;
+  --accent: #C68A5B;
+  --accent-deep: #A9743F; /* darker caramel: surfer path, its lines + card outline */
+  --pop: #C68A5B; /* unified: one accent everywhere */
+  --green: #9DB07C; /* sage, brightened for dark */
+  --body: #D8D1C2; /* primary body-copy ink: softer than --foreground */
+  --accent-text: #C68A5B; /* unified with --accent */
   --font-poppins: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --glass-bg: rgba(38,34,25,0.55);
+  --glass-border: rgba(237,231,218,0.10);
+  --glass-shadow: 0 10px 34px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+  --card-grad-a: #2A2620;
+  --card-grad-b: #211E18;
+  --personal-bg: rgba(94,102,71,0.18);
+  --nav-bg: rgba(28,26,21,0.9);
+  --chip-bg: rgba(237,231,218,0.12); /* small uppercase tag chips on cards */
 }
 
 @theme inline {
@@ -30,6 +43,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+/* Homepage custom dot cursor: hide the native pointer while the dot is active.
+   Added to <html> only on fine-pointer devices; removed on unmount. */
+.cursor-hidden,
+.cursor-hidden * {
+  cursor: none !important;
 }
 
 /* Paper grain: a subtle fixed noise overlay across the whole site. */

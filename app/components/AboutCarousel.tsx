@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { FadeIn } from "./ui";
 
 // Correct the layout before paint on the client, but fall back to useEffect on
 // the server (React warns that useLayoutEffect is a no-op during SSR).
@@ -16,7 +15,7 @@ type Photo = { src: string; caption: string };
 const PHOTOS: Photo[] = [
   { src: "/about/optimized/active.webp", caption: "Where I learned to trust my body and breathe." },
   { src: "/about/optimized/vegan.webp", caption: "Vegan eats in Tokyo." },
-  { src: "/about/optimized/music-2.webp", caption: "My first solo concert — just me and Dylan." },
+  { src: "/about/optimized/music-2.webp", caption: "My first solo concert: just me and Dylan." },
   { src: "/about/optimized/active-3.webp", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." },
   { src: "/about/optimized/tea.webp", caption: "A tea ceremony in a Kyoto garden." },
   { src: "/about/optimized/culture-3.webp", caption: "Taking in Japan's temples." },
@@ -174,12 +173,12 @@ function PinnedGallery() {
 export default function AboutCarousel() {
   return (
     <div className="flex flex-col gap-5 sm:gap-6">
-      <FadeIn>
-        <p className="text-[10px] font-normal tracking-[0.28em] uppercase text-[var(--midtone)]">
-          when I&apos;m not building —
-        </p>
-      </FadeIn>
-
+      <p
+        className="font-light text-[var(--foreground)]"
+        style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}
+      >
+        When I&apos;m not building
+      </p>
       <PinnedGallery />
     </div>
   );

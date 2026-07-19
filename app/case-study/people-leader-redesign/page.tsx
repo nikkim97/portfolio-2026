@@ -45,8 +45,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
 
       {/* Top bar */}
       <div
-        className="sticky top-0 z-40 border-b border-[var(--border)]"
-        style={{ backgroundColor: "var(--card)" }}
+        className="sticky top-0 z-40"
+        style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}
       >
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
@@ -95,7 +95,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
                 A cross-functional team ran a three-day, in-person discovery sprint with one goal: a high-fidelity prototype by day four. Two product partners kept the work anchored in real needs while another designer and I shaped the framework. I then led a team of four designers in translating that framework into an interactive prototype.
               </p>
               <p>
-                The format did the heavy lifting. Being in the same room collapsed weeks of fragmented virtual meetings into <strong>72 focused hours</strong> — discovery, framework, and a shared high-fidelity prototype, end to end.
+                The format did the heavy lifting. Being in the same room collapsed weeks of fragmented virtual meetings into <strong>72 focused hours</strong>: discovery, framework, and a shared high-fidelity prototype, end to end.
               </p>
             </Prose>
           </div>
@@ -118,10 +118,10 @@ export default function PeopleLeaderRedesignCaseStudy() {
             <div className="flex flex-col gap-8">
               <Prose>
                 <p>
-                  To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>five-step flow — Overview, Key results, Strengths, Opportunities, Preview</strong> — to assemble every calibration profile.
+                  To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>five-step flow (Overview, Key results, Strengths, Opportunities, Preview)</strong> to assemble every calibration profile.
                 </p>
                 <p>
-                  All told, <strong>10 screens for a single conversation.</strong> Information was split across all of them, so leaders had to hold the synthesis in their heads — high cognitive load, endless clicking, and judgment formed from scattered context.
+                  All told, <strong>10 screens for a single conversation.</strong> Information was split across all of them, so leaders had to hold the synthesis in their heads: high cognitive load, endless clicking, and judgment formed from scattered context.
                 </p>
               </Prose>
             </div>
@@ -133,7 +133,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
               width={1440}
               height={1137}
               alt="The old table-based My Team: a row per associate, with feedback, results, and the calibration profile each behind a separate link"
-              caption="Before: the table-based 'My Team' — a row per person, every input behind its own link"
+              caption="Before: the table-based 'My Team,' a row per person, every input behind its own link"
             />
             <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-3">
               <TallFigure
@@ -170,22 +170,22 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </div>
             <Prose>
               <p>
-                A three-day venture sprint surfaced the core friction: the legacy design fundamentally clashed with the People Leader mental model. The old system relied on <strong>table-based navigation</strong>, but research showed that leaders don&apos;t evaluate a spreadsheet of people — they assess each associate <em>holistically</em>, one person at a time.
+                A three-day venture sprint surfaced the core friction: the legacy design fundamentally clashed with the People Leader mental model. The old system relied on <strong>table-based navigation</strong>, but research showed that leaders don&apos;t evaluate a spreadsheet of people: they assess each associate <em>holistically</em>, one person at a time.
               </p>
               <p>
-                That reframed the whole problem. If the experience mirrored how leaders actually think — pulling self-evaluation, peer feedback, and their own perspective into one place per person — the workflow would feel intuitive, and calibration would get more objective as a result.
+                That reframed the whole problem. If the experience mirrored how leaders actually think, pulling self-evaluation, peer feedback, and their own perspective into one place per person, the workflow would feel intuitive, and calibration would get more objective as a result.
               </p>
             </Prose>
           </div>
           <PullQuote>
-            Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow — and enables more objective calibration sessions.
+            Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive workflow, and enables more objective calibration sessions.
           </PullQuote>
           <Figure
             src="/case-study/pl-redesign/tab0.webp"
             width={1440}
             height={1129}
             alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
-            caption="The redesigned 'My Team' page — every stat a leader needs for calibration, in one place"
+            caption="The redesigned 'My Team' page: every stat a leader needs for calibration, in one place"
           />
         </section>
 
@@ -198,7 +198,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </div>
             <Prose>
               <p>
-                Now, when a leader opens the <strong>My Team</strong> page, they see every stat they need for calibration at a glance. From there, a single associate view puts feedback, results, strengths, and the calibration profile <strong>side by side</strong> — dynamic tabs and sliding drawers keep the leader in flow instead of hopping across screens.
+                Now, when a leader opens the <strong>My Team</strong> page, they see every stat they need for calibration at a glance. From there, a single associate view puts feedback, results, strengths, and the calibration profile <strong>side by side</strong>: dynamic tabs and sliding drawers keep the leader in flow instead of hopping across screens.
               </p>
               <p>
                 The work also produced reusable UI patterns now standardized across the PATH ecosystem, plus a rigorous accessibility review for the enterprise release. This made their workflow much more straightforward.
@@ -217,7 +217,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             width={1440}
             height={2299}
             alt="Key results tab: the associate's key results and impact, surfaced as a dynamic tab within the 360 view"
-            caption="A dynamic tab in the same view — key results and impact, without losing the associate's context"
+            caption="A dynamic tab in the same view: key results and impact, without losing the associate's context"
           />
         </section>
 
@@ -231,7 +231,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
             <div className="flex flex-col gap-8">
               <Prose>
                 <p>
-                  The redesign brought a leader&apos;s entire calibration prep onto a few connected screens, with the inputs for a fair assessment side by side instead of scattered. Delivered as a high-fidelity prototype in 72 hours — what typically takes weeks of fragmented virtual work — its impact carried well past the sprint:
+                  The redesign brought a leader&apos;s entire calibration prep onto a few connected screens, with the inputs for a fair assessment side by side instead of scattered. Delivered as a high-fidelity prototype in 72 hours (what typically takes weeks of fragmented virtual work), its impact carried well past the sprint:
                 </p>
                 <ul>
                   <li><strong className="font-bold text-[var(--foreground)]">Cross-functional alignment.</strong> The prototype immediately informed dependent features, including Self-Evaluations and Performance Reviews.</li>
@@ -245,8 +245,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
             src="/case-study/pl-redesign/360-calibration.webp"
             width={1440}
             height={4214}
-            alt="The redesigned calibration profile: competency assessment, key results, strengths and development — complete and still editable"
-            caption="The redesigned calibration profile — assembled in the flow, not a separate five-step build"
+            alt="The redesigned calibration profile: competency assessment, key results, strengths and development, complete and still editable"
+            caption="The redesigned calibration profile: assembled in the flow, not a separate five-step build"
           />
         </section>
 

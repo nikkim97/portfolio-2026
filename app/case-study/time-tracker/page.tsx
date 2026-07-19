@@ -7,7 +7,7 @@ import { caseStudyMetadata } from "../../lib/siteMetadata";
 export const metadata = caseStudyMetadata({
   title: "Time Tracking Dashboard",
   description:
-    "A lightweight tracker that makes the shape of a week visible — so you can see where your time actually goes, and reflect on it.",
+    "A lightweight tracker that makes the shape of a week visible, so you can see where your time actually goes, and reflect on it.",
   slug: "time-tracker",
 });
 
@@ -49,8 +49,8 @@ export default function TimeTrackerCaseStudy() {
 
       {/* Top bar */}
       <div
-        className="sticky top-0 z-40 border-b border-[var(--border)]"
-        style={{ backgroundColor: "var(--card)" }}
+        className="sticky top-0 z-40"
+        style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}
       >
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
@@ -112,10 +112,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your calendar. Four life pillars — Family, Self-Care, Socialization, and Career — are the default categories, each assigned a target share of your time. The app shows you the actual breakdown next to the one you choose for yourself.
+                A budget app breaks your spending into categories so you can see where the money goes. Time Tracker does the same thing with your calendar. Four life pillars (Family, Self-Care, Socialization, and Career) are the default categories, each assigned a target share of your time. The app shows you the actual breakdown next to the one you choose for yourself.
               </p>
               <p>
-                Each pillar carries its own target, so the dashboard always has something to measure against. My goal was to create something that could hold you accountable to how you want to spend your time, because most people, including me, feel like life runs on autopilot without us directing it. And almost always, people&apos;s regrets have to do with, &ldquo;I wish I did that with my time at that age.&rdquo; So I wanted to attempt seeing where all of the time was going in multiple forms.
+                Each pillar carries its own target, so the dashboard always has something to measure against. My goal was to create something that could hold you accountable to how you want to spend your time, because most people, including me, feel like life runs on autopilot without us directing it. And almost always, people&apos;s regrets have to do with, &ldquo;I wish I did that with my time at that age.&rdquo; So I wanted to see where the time was actually going, in more than one view.
               </p>
               <PillarKey />
             </Prose>
@@ -215,13 +215,10 @@ export default function TimeTrackerCaseStudy() {
             </div>
             <Prose>
               <p>
-                The first version led with a donut chart, which made sense as a first cut because I wanted to see the shape of a week at a glance. But I quickly realized it didn&apos;t match the real intention of the app.
+                I was the person I was building for. I get stumped when someone asks where my time is going, and I knew I&apos;d reach for this constantly, so the UX decisions came fast and felt aligned to what I needed. A lot of the vibe coding got refined in the same pass, tightening the build as the design got sharper.
               </p>
               <p>
-                A donut can tell you what happened, but it makes you decode whether that week reflected the life you were trying to live. I didn&apos;t want the dashboard to be a pretty summary; I wanted it to create a moment of accountability. The important question was not just <em>where did my time go?</em> It was <em>did my time go where I said it mattered?</em>
-              </p>
-              <p>
-                That is why the experience moved toward goal-versus-actual bars and plain-language feedback. The visual needed to make the gap between intention and reality obvious without making the user do math.
+                My first version was built on web with a donut chart, but the two didn&apos;t align well with the abstract outcomes I was trying to ground. A donut can tell you what happened, but it makes you decode whether the week reflected the life you were trying to live. I didn&apos;t want a pretty summary; I wanted a moment of accountability. The question was not just <em>where did my time go?</em> It was <em>did my time go where I said it mattered?</em> That is why the second version moved to goal-versus-actual bars and plain-language feedback: make the gap between intention and reality obvious without making you do math. It became the version I actually use.
               </p>
             </Prose>
           </div>

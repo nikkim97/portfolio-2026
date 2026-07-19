@@ -7,7 +7,7 @@ import { caseStudyMetadata } from "../../lib/siteMetadata";
 export const metadata = caseStudyMetadata({
   title: "VISN",
   description:
-    "A wearable that combines obstacle detection and audio route guidance — making navigation without sight a solvable design problem.",
+    "A wearable that combines obstacle detection and audio route guidance, making navigation without sight a solvable design problem.",
   slug: "visn",
 });
 import { SystemDiagram } from "./_components/AppMockup";
@@ -22,7 +22,7 @@ export default function VisnCaseStudy() {
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
-      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "var(--card)" }}>
+      <div className="sticky top-0 z-40" style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Rutgers University · Jan – May 2019</span>
@@ -75,7 +75,7 @@ export default function VisnCaseStudy() {
                 <p>Visually impaired people navigate the world with a combination of memory, muscle memory, and whatever technology they can afford: canes, guide dogs, and a handful of smart devices that each solve part of the problem but none of it completely.</p>
                 <p>Existing solutions like SUNU (a sonar wristband) or Google Lookout didn&apos;t exist back in 2019. No single system combined real-time object proximity, directional awareness, and turn-by-turn navigation in one wearable, accessible package.</p>
                 <p>We wanted to build that. A system that could tell you: where you're going, what's in your way, and which direction you're facing, all through your ears, hands-free.</p>
-                <p>At 21 I scoped this as a hardware gap — what the sensors could detect. What I&apos;d frame now is the user&apos;s gap: blind travelers navigate the familiar fluently; it&apos;s the unfamiliar that breaks down.</p>
+                <p>At 21 I scoped this as a hardware gap: what the sensors could detect. What I&apos;d frame now is the user&apos;s gap: blind travelers navigate the familiar fluently; it&apos;s the unfamiliar that breaks down.</p>
               </div>
             </div>
           </div>
@@ -155,7 +155,9 @@ export default function VisnCaseStudy() {
             <figure className="flex flex-col gap-4">
               <div
                 className="rounded-2xl px-6 sm:px-10 py-10 sm:py-12 h-full"
-                style={{ background: "var(--card)" }}
+                // Fixed light panel: the diagram is a hand-colored illustration
+                // (#4A4440 ink), so it stays on a light figure background in dark mode.
+                style={{ background: "#D5CFC0" }}
               >
                 <SystemDiagram />
               </div>
@@ -190,7 +192,7 @@ export default function VisnCaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Here's what I didn't know at the time: product design existed as a discipline. I was the project manager and the engineer on this team, and I thought that was the whole job. The fanny pack call, the audio-first interface, the decision to build around dignity, those came from instinct, not training.</p>
-              <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical: the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: I&apos;d shadow how blind travelers already move through a route they know by heart, then design only for the gap between that and an unfamiliar one — instead of scoping for &ldquo;navigation&rdquo; in the abstract and letting the hardware decide what the product was.</p>
+              <p>I still think those instincts were right. But I can see now how much further we could have taken them with the tools I've learned since. Seven years later, some of what I'd change is technical: the hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I'd change is about the experience itself, starting with the work it takes to earn it: I&apos;d shadow how blind travelers already move through a route they know by heart, then design only for the gap between that and an unfamiliar one, instead of scoping for &ldquo;navigation&rdquo; in the abstract and letting the hardware decide what the product was.</p>
             </div>
           </div>
 

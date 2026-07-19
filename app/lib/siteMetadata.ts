@@ -34,7 +34,7 @@ export function caseStudyMetadata(opts: {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${title} — case study by ${SITE_NAME}`,
+          alt: `${title}, case study by ${SITE_NAME}`,
         },
       ],
     },

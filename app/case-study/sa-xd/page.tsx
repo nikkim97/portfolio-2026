@@ -66,7 +66,7 @@ export default function SaXdCaseStudy() {
     <main style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
 
       {/* ── Top bar ── */}
-      <div className="sticky top-0 z-40 border-b border-[var(--border)]" style={{ backgroundColor: "var(--card)" }}>
+      <div className="sticky top-0 z-40" style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}>
         <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
           <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">← Back</Link>
           <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">Capital One · 2023 – 2024</span>
@@ -89,7 +89,7 @@ export default function SaXdCaseStudy() {
           resultsLabel="Directional signal"
           results={[
             { value: "↑ 58%", label: "gained clarity on development opportunities" },
-            { value: "↑ 73%", label: "more feedback leveraged in performance management" },
+            { value: "↑ 73%", label: "more feedback used in performance conversations" },
           ]}
         />
       </div>
@@ -170,7 +170,7 @@ export default function SaXdCaseStudy() {
                         {index + 1}
                       </span>
                     </span>
-                    <span><span className="italic font-normal" style={{ color: "#242117" }}>{p.title}<span style={{ color: "var(--accent)" }}>.</span></span> {p.body}</span>
+                    <span><span className="italic font-normal" style={{ color: "var(--foreground)" }}>{p.title}<span style={{ color: "var(--accent)" }}>.</span></span> {p.body}</span>
                   </div>
                 ))}
               </div>
@@ -238,8 +238,8 @@ export default function SaXdCaseStudy() {
               <Img src="/case-study/sa-xd/sa-xd-12-2.webp" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
               <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Feedback form: competency-based ratings, required qualitative comments, fully anonymous</figcaption>
             </figure>
-            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em> — it&apos;s easy to dismiss a critique you can&apos;t attribute — and &ldquo;compared to peers&rdquo; framing risked turning a growth tool into a ranking. We were trading those risks for candor, and wouldn&apos;t know which way it broke until the pilot.</p>
-            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback — something managers could actually reference mid-conversation.</p>
+            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em> (it&apos;s easy to dismiss a critique you can&apos;t attribute), and &ldquo;compared to peers&rdquo; framing risked turning a growth tool into a ranking. We were trading those risks for candor, and wouldn&apos;t know which way it broke until the pilot.</p>
+            <p className={`${PROSE}`} style={{ color: "var(--body)" }}>The key decision: <strong>making 360 feedback a first-class input in calibration, not an afterthought</strong>. At the time, people leaders used Google Slides to represent their associates during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback directly alongside the performance data leaders collected. Peer comparison graphs showed ratings relative to the cohort. Written feedback was structured to surface strengths and development opportunities side by side, with context on who provided the feedback: something managers could actually reference mid-conversation.</p>
             <figure className="flex flex-col gap-3">
               <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
                 <Image
@@ -265,7 +265,7 @@ export default function SaXdCaseStudy() {
               <h2 className="font-light" style={SECTION_HEADING}>Measuring what mattered</h2>
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
-              <p>After the performance cycle, we measured impact by surveying, observing, and interviewing different participating user groups, then triangulating those data sources. This helped us understand what was resonating with users at each step of the performance cycle, how meaningful the leverage was, and how it shaped performance conversations.</p>
+              <p>After the performance cycle, we measured impact by surveying, observing, and interviewing different participating user groups, then triangulating those data sources. This helped us understand what was resonating with users at each step of the performance cycle, how much the feedback was actually used, and how it shaped performance conversations.</p>
             </div>
           </div>
 
@@ -293,9 +293,9 @@ export default function SaXdCaseStudy() {
             { value: "↑ 52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
           ]} />
           <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
-            Directional figures from the pilot study — the signal that convinced HR to invest in an in-house platform.
+            Directional figures from the pilot study: the signal that convinced HR to invest in an in-house platform.
           </p>
-          <p className={`${PROSE}`} style={{ color: "var(--body)" }}>That in-house platform became PATH — the next case study — where this pilot&apos;s bet got built for the whole enterprise.</p>
+          <p className={`${PROSE}`} style={{ color: "var(--body)" }}>That in-house platform became PATH (the next case study), where this pilot&apos;s bet got built for the whole enterprise.</p>
         </section>
 
         {/* ── Growth ── */}
@@ -307,7 +307,7 @@ export default function SaXdCaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>This was my first major lead effort, and it changed the way I think about product and strategy design.</p>
-              <p>What stayed with me most was how much stronger the work became when alignment happened early. Bringing cross-functional partners in from the beginning didn&apos;t just improve the solution — it created a shared sense of ownership that carried the project forward. It also taught me that measurement isn&apos;t something you do after launch; it&apos;s how you understand whether the work is resonating, and how you earn the next phase.</p>
+              <p>What stayed with me most was how much stronger the work became when alignment happened early. Bringing cross-functional partners in from the beginning didn&apos;t just improve the solution: it created a shared sense of ownership that carried the project forward. It also taught me that measurement isn&apos;t something you do after launch; it&apos;s how you understand whether the work is resonating, and how you earn the next phase.</p>
               <p>It also gave me a clearer sense of where I&apos;d grow next. We took on a lot of change at once, and in hindsight I&apos;d be more intentional about managing scope, thin-slicing the problem, and sequencing bigger bets so the impact of each decision can be seen more clearly.</p>
             </div>
           </div>
