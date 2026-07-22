@@ -10,8 +10,8 @@ export const FONT = { fontFamily: "var(--font-poppins), sans-serif" };
 export const GLASS = {
   border: "1px solid var(--glass-border)",
   background: "var(--glass-bg)",
-  backdropFilter: "blur(22px)",
-  WebkitBackdropFilter: "blur(22px)",
+  backdropFilter: "var(--glass-filter)",
+  WebkitBackdropFilter: "var(--glass-filter)",
   boxShadow: "var(--glass-shadow)",
 };
 
@@ -122,8 +122,8 @@ export function SkillPill({ skill, delay }: { skill: string; delay: number }) {
         borderRadius: "18px",
         border: "1px solid var(--glass-border)",
         background: "var(--glass-bg)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backdropFilter: "var(--pill-filter)",
+        WebkitBackdropFilter: "var(--pill-filter)",
         boxShadow: "var(--glass-shadow)",
       }}
     >

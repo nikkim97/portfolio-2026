@@ -25,6 +25,23 @@
   --personal-bg: rgba(94,102,71,0.18);
   --nav-bg: rgba(28,26,21,0.9);
   --chip-bg: rgba(237,231,218,0.12); /* small uppercase tag chips on cards */
+
+  /* Backdrop-blur radii, driven through vars so they can be switched off during
+     scroll (see html.is-scrolling below). Live backdrop-filter recomputes every
+     frame the content behind it moves; dropping it to `none` while scrolling is
+     the single biggest scroll-perf win for the glass cards. */
+  --glass-filter: blur(22px); /* main glass cards */
+  --pill-filter: blur(14px);  /* pills + skill chips */
+  --nav-filter: blur(12px);   /* fixed top nav */
+}
+
+/* While the page is actively scrolling, disable live backdrop-blur. Restored
+   ~140ms after scrolling stops (ScrollBlurGate), so cards read fully frosted at
+   rest — when you're actually looking at them — and cheap while in motion. */
+html.is-scrolling {
+  --glass-filter: none;
+  --pill-filter: none;
+  --nav-filter: none;
 }
 
 @theme inline {
@@ -50,19 +67,6 @@ body {
 .cursor-hidden,
 .cursor-hidden * {
   cursor: none !important;
-}
-
-/* Paper grain: a subtle fixed noise overlay across the whole site. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)' opacity='0.55'/%3E%3C/svg%3E");
-  background-size: 220px 220px;
-  opacity: 0.06;
-  mix-blend-mode: multiply;
 }
 
 html {

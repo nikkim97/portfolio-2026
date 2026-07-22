@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "./lib/siteMetadata";
+import ScrollBlurGate from "./components/ScrollBlurGate";
 
 const title = "Niharika Mishra, Designer who builds.";
 const description =
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" data-scroll-behavior="smooth">
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <ScrollBlurGate />
         {children}
       </body>
     </html>

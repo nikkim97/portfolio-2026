@@ -68,7 +68,7 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
             <span
               key={p}
               className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-              style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)" }}
+              style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)" }}
             >
               {p}
             </span>
@@ -110,7 +110,7 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
           <span className="text-[9px] tracking-[0.14em] uppercase mt-1 text-[var(--midtone)]">Coming Soon</span>
         )}
         {isActionable && !node.comingSoon && (
-          <span className="text-[9px] tracking-[0.14em] uppercase mt-1" style={{ color: "var(--foreground)" }}>View case study ↗</span>
+          <span className="text-[9px] tracking-[0.14em] uppercase mt-1" style={{ color: "var(--foreground)" }}>View case study ↗︎</span>
         )}
       </div>
     </Wrapper>
@@ -256,18 +256,21 @@ export default function SurferJourney() {
 
       // `screenY` is strictly increasing, so this maps the focus line to exactly
       // one point on the path — smooth through loops, no branch flipping.
+      // `best` already carries the interpolated path x/y, so we avoid three
+      // synchronous getPointAtLength() SVG-geometry queries per scroll frame.
       const best = sampleAtScreenY(samples, focusY);
-      const pathPoint = p.getPointAtLength(best.len);
 
       d.style.strokeDashoffset = `${pathLen - best.len}`;
 
       const s = surferRef.current;
       if (s) {
-        const eps = 5;
-        const ptA = p.getPointAtLength(Math.min(best.len + eps, pathLen));
-        const ptB = p.getPointAtLength(Math.max(best.len - eps, 0));
-        const dx = ptA.x - ptB.x;
-        const dy = ptA.y - ptB.y;
+        // Tangent from two nearby sampled points (cheap binary searches, no SVG
+        // geometry). Forward = increasing focusY.
+        const eps = 6;
+        const ahead = sampleAtScreenY(samples, focusY + eps);
+        const behind = sampleAtScreenY(samples, focusY - eps);
+        const dx = ahead.x - behind.x;
+        const dy = ahead.y - behind.y;
         // Tilt to the path's slope but never flip upside down: mirror
         // horizontally for leftward travel and keep the tilt within ±90°.
         let flipX = lastFlipRef.current;
@@ -276,9 +279,10 @@ export default function SurferJourney() {
           lastFlipRef.current = flipX;
         }
         const tilt = Math.atan2(dy, Math.abs(dx)) * (180 / Math.PI);
-        s.style.left = `calc(50% - ${SVG_W / 2}px + ${pathPoint.x}px)`;
-        s.style.top = `${pathPoint.y}px`;
-        s.style.transform = `translate(-50%, -${SURFER_ANCHOR_Y}%) scaleX(${flipX}) rotate(${tilt}deg)`;
+        // Transform-only positioning: left/top stay constant (set once in JSX)
+        // so the surfer moves on the compositor without triggering layout each
+        // frame. The px offsets ride on top of the container-centered anchor.
+        s.style.transform = `translate(calc(-50% + ${best.x}px), calc(-${SURFER_ANCHOR_Y}% + ${best.y}px)) scaleX(${flipX}) rotate(${tilt}deg)`;
       }
 
       // Passed set only grows (monotonic) — once the surfer reaches an anchor's
@@ -398,10 +402,14 @@ export default function SurferJourney() {
         aria-hidden
         className="absolute z-10 pointer-events-none select-none"
         style={{
-          left: 0,
+          // left/top stay fixed at the container-centered path origin; the
+          // render loop moves the surfer with transform only (composited, no
+          // per-frame layout). willChange promotes it to its own layer.
+          left: `calc(50% - ${SVG_W / 2}px)`,
           top: 0,
           transform: `translate(-50%, -${SURFER_ANCHOR_Y}%)`,
           transformOrigin: `50% ${SURFER_ANCHOR_Y}%`,
+          willChange: "transform",
           fontSize: 28,
           lineHeight: 1,
           visibility: pathLen === 0 ? "hidden" : "visible",
@@ -447,7 +455,7 @@ export default function SurferJourney() {
                     <span
                       key={p}
                       className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)", opacity: 0.9 }}
+                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)", opacity: 0.9 }}
                     >
                       {p}
                     </span>
@@ -558,7 +566,7 @@ export default function SurferJourney() {
                     <span
                       key={p}
                       className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", boxShadow: "var(--glass-shadow)" }}
+                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)" }}
                     >
                       {p}
                     </span>
@@ -594,7 +602,7 @@ export default function SurferJourney() {
                   </span>
                 ) : isActionable ? (
                   <span className="mt-1 transition-colors duration-200 group-hover:text-[var(--foreground)]" style={{ fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: inZone ? "var(--foreground)" : "var(--midtone)" }}>
-                    View Case Study ↗
+                    View Case Study ↗︎
                   </span>
                 ) : null}
               </div>

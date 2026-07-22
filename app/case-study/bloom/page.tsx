@@ -45,7 +45,7 @@ export default function BloomCaseStudy() {
               rel="noopener noreferrer"
               className="inline-flex w-fit items-center gap-1.5 text-[10px] font-normal tracking-[0.22em] uppercase text-[var(--accent-text)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--accent)] transition-colors duration-200"
             >
-              Live prototype ↗
+              Live prototype ↗︎
             </a>
           </div>
           <h1

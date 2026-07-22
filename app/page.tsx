@@ -18,7 +18,7 @@ type NavItem = { label: string; href: string; section?: string; external?: boole
 const NAV_ITEMS: NavItem[] = [
   { label: "Work", href: "#work", section: "work" },
   { label: "About", href: "#about", section: "about" },
-  { label: "Résumé ↗", href: "/resume.pdf", external: true },
+  { label: "Résumé ↗︎", href: "/resume.pdf", external: true },
   { label: "Let's talk", href: "mailto:niharikamishr@gmail.com", cta: true },
 ];
 
@@ -150,8 +150,8 @@ export default function Home() {
             className="fixed top-0 left-0 right-0 z-40"
             style={{
               backgroundColor: "var(--nav-bg)",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
+              backdropFilter: "var(--nav-filter)",
+              WebkitBackdropFilter: "var(--nav-filter)",
               // Fade the bottom edge instead of a hard border, so the blurred bar
               // blends smoothly into the content below.
               maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
@@ -412,7 +412,7 @@ export default function Home() {
                       style={{ width: 132, height: 132, background: "var(--border)", filter: "blur(7px)" }}
                     />
                     <span className="relative z-10">{label}</span>
-                    <span aria-hidden className="relative z-10 leading-none transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    <span aria-hidden className="relative z-10 leading-none transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗︎</span>
                   </a>
                 ))}
               </div>

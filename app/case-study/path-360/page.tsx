@@ -28,14 +28,20 @@ const SESSION_PREP_PRINCIPLES = [
   "A dedicated key-roles area prompted facilitators to assign every required role, something often missed when scheduling sessions in Google Sheets or Calendar.",
   "Facilitators could see whether every associate’s performance one-pager was submitted, confirming the session was ready without chasing individual leaders.",
 ];
-function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string }) {
+const SESSION_PREP_IMAGES = [
+  { src: "/case-study/pa-xd/manage1.webp", alt: "Session management UI showing a pre-calibration team overview", aspect: "1440/1261" },
+  { src: "/case-study/pa-xd/manage1.1.1.webp", alt: "Session management UI showing grouped calibration sessions and setup controls", aspect: "1440/1401" },
+  { src: "/case-study/pa-xd/manage2.webp", alt: "Session management UI showing rating distribution and calibration prep", aspect: "1440/1225" },
+  { src: "/case-study/pa-xd/manage3.webp", alt: "Session management UI showing manager preparation details", aspect: "1440/1712" },
+];
+function Img({ src, alt, aspect = "16/9", fit = "cover", position = "center", sizes = "(max-width: 1024px) 100vw, 1180px" }: { src: string; alt: string; aspect?: string; fit?: "contain" | "cover"; position?: string; sizes?: string }) {
   return (
     <LightboxFrame alt={alt}>
       <div
         className="relative overflow-hidden rounded-xl"
         style={{ aspectRatio: aspect, background: "var(--card)" }}
       >
-        <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 1180px" style={{ objectFit: fit, objectPosition: position }} />
+        <Image src={src} alt={alt} fill sizes={sizes} style={{ objectFit: fit, objectPosition: position }} />
       </div>
     </LightboxFrame>
   );
@@ -143,71 +149,35 @@ export default function Path360CaseStudy() {
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Before PATH, calibration sessions were set up manually by HR business partners in Google Sheets. Each group had to be assembled by hand: which teams should calibrate together, which associates belonged in each session, who needed to attend, and when the conversation should happen.</p>
               <p>We created a smarter setup system that let HR partners select the teams they wanted to calibrate together, then automatically generated session groups by level and job family. From there, they could edit the details that still needed human judgment: attendees, calibrated associates, session timing, and any edge cases before the room began.</p>
-            </div>
-          </div>
-
-          <figure className="flex flex-col gap-8">
-            <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {SESSION_PREP_PRINCIPLES.slice(0, 2).map((principle, index) => (
-                  <div
-                    key={principle}
-                    className="flex items-start gap-3 rounded-xl px-4 py-3"
-                    style={{ background: "var(--card)" }}
-                  >
+              <div role="list" className="flex flex-col gap-4">
+                {SESSION_PREP_PRINCIPLES.map((principle, index) => (
+                  <div role="listitem" key={principle} className="flex gap-3.5">
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                      className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold"
                       style={{ background: "var(--accent-text)", color: "var(--background)" }}
+                      aria-hidden
                     >
                       {index + 1}
                     </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
+                    <span>{principle}</span>
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Img src="/case-study/pa-xd/manage1.webp" alt="Session management UI showing a pre-calibration team overview" aspect="1440/1261" fit="contain" />
-                <Img
-                  src="/case-study/pa-xd/manage1.1.1.webp"
-                  alt="Session management UI showing grouped calibration sessions and setup controls"
-                  aspect="1440/1401"
-                  fit="contain"
-                />
-              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {SESSION_PREP_PRINCIPLES.slice(2, 4).map((principle, index) => (
-                  <div
-                    key={principle}
-                    className="flex items-start gap-3 rounded-xl px-4 py-3"
-                    style={{ background: "var(--card)" }}
-                  >
-                    <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
-                      style={{ background: "var(--accent-text)", color: "var(--background)" }}
-                    >
-                      {index + 3}
-                    </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <Img
-                  src="/case-study/pa-xd/manage2.webp"
-                  alt="Session management UI showing rating distribution and calibration prep"
-                  aspect="1440/1225"
-                  fit="contain"
-                />
-                <Img
-                  src="/case-study/pa-xd/manage3.webp"
-                  alt="Session management UI showing manager preparation details"
-                  aspect="1440/1712"
-                  fit="contain"
-                />
-              </div>
-            </div>
+          </div>
+
+          {/* Breaks out of the 1260px container so the two rows can run bigger */}
+          <figure className="relative left-1/2 grid w-[min(100vw-3rem,1800px)] -translate-x-1/2 grid-cols-1 items-start gap-6 md:grid-cols-2">
+            {SESSION_PREP_IMAGES.map((image) => (
+              <Img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                aspect={image.aspect}
+                fit="contain"
+                sizes="(max-width: 768px) 100vw, min(50vw, 900px)"
+              />
+            ))}
           </figure>
         </section>
 
