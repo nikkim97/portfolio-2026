@@ -18,7 +18,7 @@ type NavItem = { label: string; href: string; section?: string; external?: boole
 const NAV_ITEMS: NavItem[] = [
   { label: "Work", href: "#work", section: "work" },
   { label: "About", href: "#about", section: "about" },
-  { label: "Résumé ↗︎", href: "/resume.pdf", external: true },
+  { label: "Résumé ↗︎", href: "/nikki-resume1.pdf", external: true },
   { label: "Let's talk", href: "mailto:niharikamishr@gmail.com", cta: true },
 ];
 
@@ -398,7 +398,7 @@ export default function Home() {
                   { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
                   { label: "GitHub", href: "https://github.com/nikkim97", external: true },
                   { label: "Substack", href: "https://substack.com/@nikkim97", external: true },
-                  { label: "Résumé", href: "/resume.pdf", external: true },
+                  { label: "Résumé", href: "/nikki-resume1.pdf", external: true },
                 ].map(({ label, href, external }) => (
                   <a
                     key={label}
