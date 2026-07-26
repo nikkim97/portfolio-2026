@@ -10,7 +10,7 @@ import CursorDot from "./components/CursorDot";
 import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
 
 const skills = [
-  "Product Strategy", "Claude Code", "Interaction Design", "UX Design",
+  "Product Strategy", "Vibe Coding", "Interaction Design", "UX Design",
   "Design Systems", "Prototyping & Wireframing", "Figma", "UX Research", "AWS", "Python",
 ];
 

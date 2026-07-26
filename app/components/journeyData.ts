@@ -36,7 +36,7 @@ export const journeyNodes: JourneyNode[] = [
   {
     id: "sr-swe",
     period: "2020–22",
-    role: "Senior Associate, Software Engineer",
+    role: "Senior Associate, Data Engineer",
     brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
     pills: ["Capital One"],
     type: "career",
@@ -102,7 +102,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Builder",
     title: "Time Tracking Dashboard",
     brief: "How can we help people see where their time is actually going?",
-    pills: ["Vibe Coded", "Claude"],
+    pills: ["Vibe Coded", "Codex"],
     href: "/case-study/time-tracker",
     type: "horizon",
     image: { src: "/case-study/time-track/hero2.webp", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },

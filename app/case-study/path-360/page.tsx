@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FONT } from "../../components/ui";
 import AnimatedStat from "../../components/AnimatedStat";
-import { IntroMetadataSection } from "../../components/caseStudyUI";
+import { IntroMetadataSection, HeroVideo } from "../../components/caseStudyUI";
 import LightboxFrame from "../../components/LightboxFrame";
 import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
 import { caseStudyMetadata } from "../../lib/siteMetadata";
@@ -78,13 +78,14 @@ export default function Path360CaseStudy() {
         />
       </div>
 
-      {/* ── Hero image ── */}
+      {/* ── Hero video ── */}
       <div className="max-w-[1260px] mx-auto px-6 sm:px-10 pb-0">
-        <Img
-          src="/case-study/pa-xd/hero-editorial.webp"
-          alt="Two leaders in a live PATH calibration session, reviewing the distribution matrix and an associate's feedback profile together"
-          aspect="1137/928"
-          fit="cover"
+        <HeroVideo
+          src="/case-study/pa-xd/hero2.mp4"
+          poster="/case-study/pa-xd/hero2-poster.webp"
+          aspect="2288/1320"
+          label="Two leaders in a live PATH calibration session, reviewing the distribution matrix and an associate's feedback profile together"
+          maxWidth={1260}
         />
       </div>
 
@@ -166,8 +167,7 @@ export default function Path360CaseStudy() {
             </div>
           </div>
 
-          {/* Breaks out of the 1260px container so the two rows can run bigger */}
-          <figure className="relative left-1/2 grid w-[min(100vw-3rem,1800px)] -translate-x-1/2 grid-cols-1 items-start gap-6 md:grid-cols-2">
+          <figure className="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
             {SESSION_PREP_IMAGES.map((image) => (
               <Img
                 key={image.src}
@@ -175,7 +175,7 @@ export default function Path360CaseStudy() {
                 alt={image.alt}
                 aspect={image.aspect}
                 fit="contain"
-                sizes="(max-width: 768px) 100vw, min(50vw, 900px)"
+                sizes="(max-width: 768px) 100vw, min(50vw, 620px)"
               />
             ))}
           </figure>
@@ -190,47 +190,37 @@ export default function Path360CaseStudy() {
             </div>
             <div className={`${PROSE}`} style={{ color: "var(--body)" }}>
               <p>Live calibrations are the hard part. We built this experience for two core personas: people leaders making talent decisions and facilitators responsible for keeping the session structured, fair, and moving. The room has multiple leaders, one shared screen, limited time, and years of performance data that need to resolve into actionable decisions.</p>
-            </div>
-          </div>
-
-          <figure className="flex flex-col gap-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
-              <div className="md:col-span-2">
-                <Img src="/case-study/pa-xd/image4.1.webp" alt="Live calibration UI showing session management, rating distribution, and prep experience" aspect="1582/706" fit="cover" />
-              </div>
-              <p className="md:col-span-2 text-[16px] sm:text-[18px] font-light leading-[1.8] py-2" style={{ color: "var(--body)" }}>
-                The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders could have real conversations instead of debating from memory. Status tracking let sessions pause and resume without losing ground.
-              </p>
-              <div className="grid grid-cols-1 gap-2 md:col-span-2 sm:grid-cols-2">
+              <p>The distribution view gave rooms a shared anchor. The individual view surfaced 360 feedback alongside performance data, so leaders could have real conversations instead of debating from memory. Status tracking let sessions pause and resume without losing ground.</p>
+              <div role="list" className="flex flex-col gap-4">
                 {LIVE_CALIBRATION_PRINCIPLES.map((principle, index) => (
-                  <div
-                    key={principle}
-                    className={`flex items-start gap-3 rounded-xl px-4 py-3 ${index === 2 ? "sm:col-span-2" : ""}`}
-                    style={{ background: "var(--card)" }}
-                  >
+                  <div role="listitem" key={principle} className="flex gap-3.5">
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                      className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold"
                       style={{ background: "var(--accent-text)", color: "var(--background)" }}
+                      aria-hidden
                     >
                       {index + 1}
                     </span>
-                    <p className="m-0 text-[12px] leading-relaxed" style={{ color: "var(--body)" }}>{principle}</p>
+                    <span>{principle}</span>
                   </div>
                 ))}
               </div>
-              <Img
-                src="/case-study/pa-xd/04-2.webp"
-                alt="Live calibration UI showing an individual associate deep-dive panel"
-                aspect="1440/1779"
-                fit="contain"
-              />
-              <Img
-                src="/case-study/pa-xd/04-3.webp"
-                alt="Live calibration UI showing 360 feedback surfaced during a session"
-                aspect="1440/1779"
-                fit="contain"
-              />
             </div>
+          </div>
+
+          <figure className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-8">
+            <Img
+              src="/case-study/pa-xd/04-2.webp"
+              alt="Live calibration UI showing an individual associate deep-dive panel"
+              aspect="1440/1779"
+              fit="contain"
+            />
+            <Img
+              src="/case-study/pa-xd/04-3.webp"
+              alt="Live calibration UI showing 360 feedback surfaced during a session"
+              aspect="1440/1779"
+              fit="contain"
+            />
           </figure>
         </section>
       </div>
@@ -250,7 +240,7 @@ export default function Path360CaseStudy() {
           </div>
 
           <figure className="flex flex-col gap-3">
-            <Img src="/case-study/pa-xd/image-last2.webp" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
+            <Img src="/case-study/pa-xd/group12.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
             <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">Early feedback from the field: leaders felt more prepared, conversations felt more fair</figcaption>
           </figure>
         </section>

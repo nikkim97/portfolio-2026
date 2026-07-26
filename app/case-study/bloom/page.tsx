@@ -103,7 +103,7 @@ export default function BloomCaseStudy() {
             />
             <Screenshot
               src="/case-study/bloom/friction-points.webp"
-              aspect="2914/1354"
+              aspect="1728/1308"
               label="Question design: Claude conversation rebuilding the quiz questions in a warm, non-clinical voice"
               caption="Asking Claude to rebuild the question set in my voice: warm and non-clinical"
             />
@@ -262,9 +262,6 @@ export default function BloomCaseStudy() {
               </p>
               <p>
                 For a long time, the thing standing between an idea and a working version of it was a learning curve: knowing the right tools, in the right order, well enough. With that barrier gone, the only thing left in the way was my own judgment, which is exactly where I want the work to live.
-              </p>
-              <p>
-                It showed up most in the small calls. When a pairing came back with almost nothing to set the two apart, I didn&apos;t accept the empty <em>&ldquo;where you differ&rdquo;</em> section. I dug into why. The data was right; the experience wasn&apos;t. So I made the call: when two people align that closely, name it and make it a moment (<em>&ldquo;you&apos;re remarkably well-matched&rdquo;</em>) instead of leaving a hole. I was steering the product the whole way; the build kept pace.
               </p>
               <p>
                 Bloom came straight out of my own life, and that&apos;s the part that&apos;s stuck. Nearly every couple I show it to asks me to buy the domain and send it to them, not as a gag, but because they genuinely want it for their own relationship. The thing my partner and I were navigating, it turns out, is something a lot of people are quietly working out too.

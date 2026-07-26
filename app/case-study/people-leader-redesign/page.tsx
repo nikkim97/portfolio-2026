@@ -8,7 +8,7 @@ import { caseStudyMetadata } from "../../lib/siteMetadata";
 export const metadata = caseStudyMetadata({
   title: "People Leader Redesign",
   description:
-    "Collapsing a 10-screen calibration prep flow into four connected screens with every input a people leader needs.",
+    "Collapsing a 10-screen calibration prep flow into two connected screens with every input a people leader needs.",
   slug: "people-leader-redesign",
 });
 
@@ -70,41 +70,16 @@ export default function PeopleLeaderRedesignCaseStudy() {
             className="font-light max-w-[1100px]"
             style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
           >
-            Preparing for a single calibration meant moving through 10 screens. I helped collapse the work into four connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
+            Preparing for a single calibration meant moving through 10 screens. I helped collapse the work into two connected screens with every input a leader needs<span style={{ color: "var(--accent)" }}>.</span>
           </h1>
           <IntroMetadataSection
             role="Design Lead for team of 4"
             timeline="Capital One · Nov 2025 - Feb 2026"
             platform="Enterprise web"
             results={[
-              { value: "10 → 4", label: "screens collapsed into the My Team experience" },
+              { value: "10 → 2", label: "screens collapsed into the My Team experience" },
               { value: "76%", label: "efficiency increase for PLs" },
             ]}
-          />
-        </section>
-
-        {/* ── The process ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>The process · 01</SectionLabel>
-              <SectionHeading>A 3-day, in-person venture sprint</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                A cross-functional team ran a three-day, in-person discovery sprint with one goal: a high-fidelity prototype by day four. Two product partners kept the work anchored in real needs while another designer and I shaped the framework. I then led a team of four designers in translating that framework into an interactive prototype.
-              </p>
-              <p>
-                The format did the heavy lifting. Being in the same room collapsed weeks of fragmented virtual meetings into <strong>72 focused hours</strong>: discovery, framework, and a shared high-fidelity prototype, end to end.
-              </p>
-            </Prose>
-          </div>
-          <Figure
-            src="/case-study/pl-redesign/group.webp"
-            width={1500}
-            height={1234}
-            alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
-            caption="Three days, in person: discovery → framework → high-fidelity prototype"
           />
         </section>
 
@@ -112,13 +87,16 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The problem · 02</SectionLabel>
+              <SectionLabel>The problem · 01</SectionLabel>
               <SectionHeading>10 screens to prepare for one conversation</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
               <Prose>
                 <p>
-                  To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>five-step flow (Overview, Key results, Strengths, Opportunities, Preview)</strong> to assemble every calibration profile.
+                  Our design team ran a three-day, in-person discovery sprint with one goal: a high-fidelity prototype by day four. Two product partners kept the work anchored in real needs while another designer and I shaped the framework. I then led a team of four designers in translating that framework into an interactive prototype.
+                </p>
+                <p>
+                  To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>ten-step flow (Overview, Key results, Strengths, Opportunities, Preview)</strong> to assemble every calibration profile.
                 </p>
                 <p>
                   All told, <strong>10 screens for a single conversation.</strong> Information was split across all of them, so leaders had to hold the synthesis in their heads: high cognitive load, endless clicking, and judgment formed from scattered context.
@@ -128,6 +106,13 @@ export default function PeopleLeaderRedesignCaseStudy() {
           </div>
 
           <div className="flex flex-col gap-6">
+            <Figure
+              src="/case-study/pl-redesign/from-10-screens-to-2.webp"
+              width={2400}
+              height={1111}
+              alt="Diagram: collapsing the 10-screen calibration prep flow down to two connected screens"
+              caption="From 10 screens to 2: the calibration prep flow, before and after"
+            />
             <Figure
               src="/case-study/pl-redesign/old-myteam-table.webp"
               width={1440}
@@ -155,9 +140,6 @@ export default function PeopleLeaderRedesignCaseStudy() {
                 alt="Legacy calibration profile workflow, screen three"
               />
             </div>
-            <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
-              Before: each calibration profile was assembled across a separate multi-step flow
-            </p>
           </div>
         </section>
 
@@ -165,12 +147,12 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The insight · 03</SectionLabel>
+              <SectionLabel>The insight · 02</SectionLabel>
               <SectionHeading>Leaders assess people, not rows in a table</SectionHeading>
             </div>
             <Prose>
               <p>
-                A three-day venture sprint surfaced the core friction: the legacy design fundamentally clashed with the People Leader mental model. The old system relied on <strong>table-based navigation</strong>, but research showed that leaders don&apos;t evaluate a spreadsheet of people: they assess each associate <em>holistically</em>, one person at a time.
+                The sprint surfaced the core friction: the legacy design fundamentally clashed with the People Leader mental model. The old system relied on <strong>table-based navigation</strong>, but research showed that leaders don&apos;t evaluate a spreadsheet of people: they assess each associate <em>holistically</em>, one person at a time.
               </p>
               <p>
                 That reframed the whole problem. If the experience mirrored how leaders actually think, pulling self-evaluation, peer feedback, and their own perspective into one place per person, the workflow would feel intuitive, and calibration would get more objective as a result.
@@ -193,8 +175,8 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The solution · 04</SectionLabel>
-              <SectionHeading>Four screens, everything side by side</SectionHeading>
+              <SectionLabel>The solution · 03</SectionLabel>
+              <SectionHeading>Two screens, everything side by side</SectionHeading>
             </div>
             <Prose>
               <p>
@@ -212,21 +194,14 @@ export default function PeopleLeaderRedesignCaseStudy() {
             alt="The 360 associate view: dynamic tabs for feedback, results, strengths, and the calibration profile, with a sliding drawer for the full profile"
             caption="The 360 associate view: dynamic tabs and a sliding calibration drawer keep the leader in flow"
           />
-          <TallFigure
-            src="/case-study/pl-redesign/360-results.webp"
-            width={1440}
-            height={2299}
-            alt="Key results tab: the associate's key results and impact, surfaced as a dynamic tab within the 360 view"
-            caption="A dynamic tab in the same view: key results and impact, without losing the associate's context"
-          />
         </section>
 
         {/* ── Outcome ── */}
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Outcome · 05</SectionLabel>
-              <SectionHeading>From 10 screens to four</SectionHeading>
+              <SectionLabel>Outcome · 04</SectionLabel>
+              <SectionHeading>From 10 screens to two</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
               <Prose>
@@ -242,11 +217,11 @@ export default function PeopleLeaderRedesignCaseStudy() {
             </div>
           </div>
           <TallFigure
-            src="/case-study/pl-redesign/360-calibration.webp"
-            width={1440}
-            height={4214}
-            alt="The redesigned calibration profile: competency assessment, key results, strengths and development, complete and still editable"
-            caption="The redesigned calibration profile: assembled in the flow, not a separate five-step build"
+            src="/case-study/pl-redesign/group.webp"
+            width={1500}
+            height={1234}
+            alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
+            caption="Three days, in person: discovery → framework → high-fidelity prototype"
           />
         </section>
 

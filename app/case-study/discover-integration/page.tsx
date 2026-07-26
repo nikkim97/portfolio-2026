@@ -64,7 +64,7 @@ export default function DiscoverIntegrationCaseStudy() {
             resultsLabel="Targets"
             results={[
               { value: "↑ 89%", label: "customer volume retained" },
-              { value: "↓ 35%", label: "calls to front-line associates" },
+              { value: "99%", label: "escalations contained to digital" },
             ]}
           />
         </section>
@@ -96,24 +96,17 @@ export default function DiscoverIntegrationCaseStudy() {
           <PullQuote>
             &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them what else is here.&rdquo;
           </PullQuote>
-          <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-2">
-            <Screenshot
-              src="/case-study/manager/plan1.JPG"
-              aspect="3 / 4"
-              label="Planning the spender experience, artifact one"
-            />
+          <div className="grid grid-cols-1 items-start gap-5">
             <Screenshot
               src="/case-study/manager/plan2.JPG"
               aspect="4 / 3"
+              label="Planning the spender experience, artifact one"
+            />
+            <Screenshot
+              src="/case-study/manager/plan3.JPG"
+              aspect="4 / 3"
               label="Planning the spender experience, artifact two"
             />
-            <div className="sm:col-span-2">
-              <Screenshot
-                src="/case-study/manager/plan3.JPG"
-                aspect="4 / 3"
-                label="Planning the spender experience, artifact three"
-              />
-            </div>
           </div>
         </section>
 

@@ -177,7 +177,7 @@ export default function SaXdCaseStudy() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
+          <div className="grid grid-cols-1 items-start gap-12">
             {[
               {
                 visual: "/case-study/sa-xd/principle-1-quant-qual.webp",
@@ -201,7 +201,7 @@ export default function SaXdCaseStudy() {
                     className="relative w-full overflow-hidden rounded-xl"
                     style={{ background: "var(--card)" }}
                   >
-                    <Image src={p.visual} alt={p.title} width={p.w} height={p.h} sizes="(max-width: 768px) 90vw, 400px" className="block w-full h-auto select-none" draggable={false} />
+                    <Image src={p.visual} alt={p.title} width={p.w} height={p.h} sizes="(max-width: 1024px) 100vw, 1180px" className="block w-full h-auto select-none" draggable={false} />
                     {(index === 0 || index === 1 || index === 2) && (
                       <span className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center" aria-hidden>
                         <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping"></span>
