@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "./lib/siteMetadata";
 import ScrollBlurGate from "./components/ScrollBlurGate";
+import CursorDot from "./components/CursorDot";
 
 const title = "Niharika Mishra, Designer who builds.";
 const description =
@@ -36,6 +37,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased" data-scroll-behavior="smooth">
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ScrollBlurGate />
+        <CursorDot />
         {children}
       </body>
     </html>

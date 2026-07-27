@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Homepage-only custom cursor: a small dot that trails the mouse and grows into
+// Site-wide custom cursor (mounted in the root layout): a small dot that trails the mouse and grows into
 // a soft ring over interactive elements. Fine-pointer devices only (mouse /
 // trackpad); touch devices keep native behavior. mix-blend-difference keeps the
 // dot visible over both light and dark surfaces and over images.

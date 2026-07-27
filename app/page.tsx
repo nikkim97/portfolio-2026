@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import SurferJourney from "./components/SurferJourney";
 import AboutCarousel from "./components/AboutCarousel";
 import DesignPrinciples from "./components/DesignPrinciples";
-import CursorDot from "./components/CursorDot";
 import { EASE, FadeIn, FONT, SkillPill, WordStaggerLine } from "./components/ui";
 
 const skills = [
@@ -119,7 +118,6 @@ export default function Home() {
 
   return (
     <div>
-      <CursorDot />
       {/* Homepage-only cream paper background: flat antique-white + subtle grain.
           The --background override above re-tints every var(--background) usage
           (hero fade, curtain, mobile menu) to cream so nothing seams. */}

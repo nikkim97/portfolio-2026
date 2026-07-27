@@ -104,7 +104,7 @@ export default function DiscoverIntegrationCaseStudy() {
             />
             <Screenshot
               src="/case-study/manager/plan3.JPG"
-              aspect="4 / 3"
+              aspect="1599 / 872"
               label="Planning the spender experience, artifact two"
             />
           </div>

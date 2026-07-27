@@ -80,7 +80,7 @@ export const journeyNodes: JourneyNode[] = [
     role: "Manager, Experience Design",
     title: "Discover Integration Experience",
     brief: "How do you turn a cashback debit customer into a full-time banking customer?",
-    pills: ["Capital One", "Visual UI"],
+    pills: ["Capital One", "Mobile"],
     href: "/case-study/discover-integration",
     type: "project",
     image: { src: "/case-study/manager/hero2.webp", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
