@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useSpring, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SurferJourney from "./components/SurferJourney";
 import AboutCarousel from "./components/AboutCarousel";
 import DesignPrinciples from "./components/DesignPrinciples";
@@ -13,62 +13,74 @@ const skills = [
   "Design Systems", "Prototyping & Wireframing", "Figma", "UX Research", "AWS", "Python",
 ];
 
-type NavItem = { label: string; href: string; section?: string; external?: boolean; cta?: boolean };
+type NavItem = { label: string; href: string; section?: string; external?: boolean; cta?: boolean; icon?: "wave" };
 const NAV_ITEMS: NavItem[] = [
+  { label: "Hi", href: "#intro", section: "intro", icon: "wave" },
   { label: "Work", href: "#work", section: "work" },
   { label: "About", href: "#about", section: "about" },
-  { label: "Résumé ↗︎", href: "/nikki-resume1.pdf", external: true },
-  { label: "Let's talk", href: "mailto:niharikamishr@gmail.com", cta: true },
+  { label: "Let's talk", href: "#contact", section: "contact" },
 ];
 
-function NavLink({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
-  if (item.cta) {
-    return (
-      <a
-        href={item.href}
-        onClick={onClick}
-        {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="rounded-full px-4 py-1.5 text-[11px] font-medium tracking-[0.2em] uppercase transition-opacity duration-200 hover:opacity-85"
-        style={{ background: "var(--foreground)", color: "var(--background)" }}
-      >
-        {item.label}
-      </a>
-    );
-  }
+function WaveGlyph({ active, waveKey }: { active: boolean; waveKey: number }) {
   return (
-    <a
-      href={item.href}
-      onClick={onClick}
-      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`group relative text-[11px] font-normal tracking-[0.2em] uppercase transition-colors duration-200 hover:text-[var(--foreground)] ${active ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
+    <motion.svg
+      key={`${active ? "wave-active" : "wave-idle"}-${waveKey}`}
+      aria-hidden
+      viewBox="0 0 24 24"
+      className="h-5 w-5 sm:h-6 sm:w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.4"
+      initial={{ rotate: 0 }}
+      animate={active ? { rotate: [0, 16, -10, 14, -6, 0] } : { rotate: 0 }}
+      transition={{ duration: 0.9, ease: EASE }}
+      style={{ transformOrigin: "70% 80%" }}
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 scale-[0.35] transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100"
-        style={{ width: 132, height: 132, background: "var(--border)", filter: "blur(7px)" }}
-      />
-      <span className="relative z-10">{item.label}</span>
-    </a>
+      <path d="M7.4 11.2 5.7 7.1a1.2 1.2 0 0 1 2.2-.9l1.5 3.5" />
+      <path d="M9.4 9.7 7.2 4.4a1.2 1.2 0 0 1 2.2-.9l2.1 5" />
+      <path d="M11.5 8.5 10 4.8a1.2 1.2 0 0 1 2.2-.9l1.8 4.3" />
+      <path d="M14 8.2 13 5.9a1.1 1.1 0 0 1 2-.8l2.4 5.8" />
+      <path d="M7.4 11.2 6.8 9.7a1.3 1.3 0 0 0-2.4 1l2.1 5c1.4 3.4 4.6 4.8 7.8 3.5 3.4-1.4 4.8-4.7 3.4-8.1" />
+      <path d="M18.9 4.1c1.1.7 1.8 1.7 2.1 3" />
+      <path d="M4 4.6c-.9 1-1.3 2.1-1.2 3.4" />
+    </motion.svg>
   );
 }
 
-function Hamburger({ open, onClick }: { open: boolean; onClick: () => void }) {
+function RailNav({ activeSection, introWaveKey }: { activeSection: string | null; introWaveKey: number }) {
   return (
-    <button
-      onClick={onClick}
-      aria-label={open ? "Close menu" : "Open menu"}
-      aria-expanded={open}
-      className="sm:hidden relative w-6 h-6 flex flex-col items-center justify-center gap-1.5"
+    <nav
+      aria-label="Primary"
+      className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 sm:bottom-auto sm:left-7 sm:top-1/2 sm:translate-x-0 sm:-translate-y-1/2"
+      style={FONT}
     >
-      <span
-        className="block h-px w-5 bg-[var(--foreground)] transition-transform duration-300"
-        style={{ transform: open ? "translateY(3px) rotate(45deg)" : "none" }}
-      />
-      <span
-        className="block h-px w-5 bg-[var(--foreground)] transition-transform duration-300"
-        style={{ transform: open ? "translateY(-3px) rotate(-45deg)" : "none" }}
-      />
-    </button>
+      <div
+        className="flex items-center gap-3 border border-[rgba(237,231,218,0.08)] bg-[var(--nav-bg)] px-3 py-2 backdrop-blur-md sm:flex-col sm:items-center sm:gap-10 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:backdrop-blur-none"
+      >
+        {NAV_ITEMS.map((item, index) => {
+          const active = !!item.section && item.section === activeSection;
+          return (
+            <a
+              key={item.label}
+              href={item.href}
+              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className={`group flex items-center gap-1.5 text-[9px] font-normal uppercase tracking-[0.16em] transition-colors duration-200 sm:flex-col sm:gap-3 sm:text-[10px] ${
+                active ? "text-[var(--foreground)]" : item.cta ? "text-[var(--foreground)]" : "text-[var(--midtone)] hover:text-[var(--foreground)]"
+              }`}
+            >
+              <span className="hidden sm:inline [writing-mode:vertical-rl]">{item.icon === "wave" ? <WaveGlyph active={active} waveKey={introWaveKey} /> : item.label}</span>
+              <span className="sm:hidden">{item.icon === "wave" ? <WaveGlyph active={active} waveKey={introWaveKey} /> : item.label.replace("Let's talk", "Talk")}</span>
+              <span
+                aria-hidden
+                className={`hidden w-px transition-all duration-300 sm:block ${active ? "h-8 bg-[var(--foreground)]" : "h-4 bg-[var(--border)] group-hover:h-8 group-hover:bg-[var(--foreground)]"}`}
+              />
+            </a>
+          );
+        })}
+      </div>
+    </nav>
   );
 }
 
@@ -83,16 +95,15 @@ export default function Home() {
   const blobTerraOpacity = useTransform(scrollYProgress, [0.63, 0.72, 0.88, 1], [0, 0.20, 0.16, 0.08]);
 
 
-  const [navVisible, setNavVisible] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [introWaveKey, setIntroWaveKey] = useState(0);
+  const initialIntroWavePlayed = useRef(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setNavVisible(window.scrollY > window.innerHeight * 0.7);
       const center = window.innerHeight / 2;
-      let active: string | null = null;
-      for (const id of ["work", "about"]) {
+      let active: string | null = "intro";
+      for (const id of ["intro", "work", "about", "contact"]) {
         const el = document.getElementById(id);
         if (!el) continue;
         const rect = el.getBoundingClientRect();
@@ -109,12 +120,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
-    if (!mobileMenuOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileMenuOpen(false); };
-    window.addEventListener("keydown", onKey);
-    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
-  }, [mobileMenuOpen]);
+    if (activeSection !== "intro") return;
+    if (!initialIntroWavePlayed.current) {
+      initialIntroWavePlayed.current = true;
+      const timeout = window.setTimeout(() => setIntroWaveKey(key => key + 1), 950);
+      return () => window.clearTimeout(timeout);
+    }
+    setIntroWaveKey(key => key + 1);
+  }, [activeSection]);
 
   return (
     <div>
@@ -137,80 +150,14 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 h-px bg-[var(--foreground)] z-50 pointer-events-none"
       />
 
-      {/* Sticky nav */}
-      <AnimatePresence>
-        {navVisible && (
-          <motion.nav
-            initial={{ y: -48, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -48, opacity: 0 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="fixed top-0 left-0 right-0 z-40"
-            style={{
-              backgroundColor: "var(--nav-bg)",
-              backdropFilter: "var(--nav-filter)",
-              WebkitBackdropFilter: "var(--nav-filter)",
-              // Fade the bottom edge instead of a hard border, so the blurred bar
-              // blends smoothly into the content below.
-              maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
-              ...FONT,
-            }}
-          >
-            <div className="max-w-5xl mx-auto px-6 sm:px-16 h-12 flex items-center justify-end">
-              <div className="hidden sm:flex items-center gap-8">
-                {NAV_ITEMS.map(item => (
-                  <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
-                ))}
-              </div>
-              <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: EASE }}
-            className="fixed inset-0 z-[55] flex flex-col items-center justify-center gap-10"
-            style={{ background: "var(--background)", ...FONT }}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {/* Close (X) — lives inside the overlay so it sits above it and is tappable */}
-            <div className="absolute top-0 right-0 max-w-5xl w-full mx-auto px-8 py-10 flex justify-end">
-              <Hamburger open onClick={() => setMobileMenuOpen(false)} />
-            </div>
-            {NAV_ITEMS.map(item => (
-              item.cta ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-full px-7 py-3 text-base font-medium tracking-[0.2em] uppercase transition-opacity duration-200 hover:opacity-85"
-                  style={{ background: "var(--foreground)", color: "var(--background)" }}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-base tracking-[0.2em] uppercase transition-colors duration-200 ${item.section && item.section === activeSection ? "text-[var(--foreground)]" : "text-[var(--midtone)]"}`}
-                >
-                  {item.label}
-                </a>
-              )
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Rail nav */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.85, ease: EASE }}
+      >
+        <RailNav activeSection={activeSection} introWaveKey={introWaveKey} />
+      </motion.div>
 
       {/* ── Page-level background blobs ── */}
       <div aria-hidden className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
@@ -238,7 +185,7 @@ export default function Home() {
       />
 
       {/* ── HERO ── pinned scene 1; chains into the pinned interstitial below ── */}
-      <section className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
+      <section id="intro" className="relative h-[140vh]" style={{ ...FONT, zIndex: 1 }}>
         <div className="sticky top-0 h-screen flex overflow-hidden">
           {/* Full-width editorial surf backdrop: muted + warm, with a paper-grain overlay */}
           <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -294,12 +241,6 @@ export default function Home() {
                   {String(new Date().getDate()).padStart(2, "0")}<span style={{ color: "var(--accent)" }}>.</span>
                 </p>
               </div>
-              <div className="hidden sm:flex items-center gap-8">
-                {NAV_ITEMS.map(item => (
-                  <NavLink key={item.label} item={item} active={!!item.section && item.section === activeSection} />
-                ))}
-              </div>
-              <Hamburger open={mobileMenuOpen} onClick={() => setMobileMenuOpen(o => !o)} />
             </motion.div>
 
             {/* Name block */}
