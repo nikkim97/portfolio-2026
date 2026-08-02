@@ -81,12 +81,16 @@ export function PhoneSequence() {
   );
 }
 
+const DIAGRAM_INK = "#3F3934";
+const DIAGRAM_MUTED = "#6A6258";
+const DIAGRAM_RULE = "#C9C0B3";
+
 function Node({ x, y, w, h, label, sub, accent }: { x: number; y: number; w: number; h: number; label: string; sub?: string; accent?: boolean }) {
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} rx={8} fill="#FBF7F1" stroke={accent ? "var(--accent)" : "#DDD6CC"} strokeWidth={accent ? 1.5 : 1} />
-      <text x={x + w / 2} y={y + 20} textAnchor="middle" fontSize="11" fill="var(--foreground)" fontWeight="300" letterSpacing="0.5">{label}</text>
-      {sub && <text x={x + w / 2} y={y + 36} textAnchor="middle" fontSize="8" fill="#4A4440" fontWeight="300">{sub}</text>}
+      <rect x={x} y={y} width={w} height={h} rx={8} fill="#FBF7F1" stroke={accent ? "var(--accent)" : DIAGRAM_RULE} strokeWidth={accent ? 1.5 : 1} />
+      <text x={x + w / 2} y={y + 20} textAnchor="middle" fontSize="11" fill={DIAGRAM_INK} fontWeight="400" letterSpacing="0.5">{label}</text>
+      {sub && <text x={x + w / 2} y={y + 36} textAnchor="middle" fontSize="8" fill={DIAGRAM_MUTED} fontWeight="400">{sub}</text>}
     </g>
   );
 }
@@ -97,37 +101,37 @@ export function SystemDiagram() {
       <svg viewBox="0 0 600 320" className="w-full h-auto">
         <defs>
           <marker id="arrow-vi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4A4440" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill={DIAGRAM_INK} />
           </marker>
         </defs>
 
-        <text x="20" y="30" fontSize="9" letterSpacing="3" fill="#4A4440" fontWeight="300">WEARABLE LAYER</text>
+        <text x="20" y="30" fontSize="9" letterSpacing="3" fill={DIAGRAM_MUTED} fontWeight="400">WEARABLE LAYER</text>
         <Node x={20} y={40} w={140} h={50} label="Ultrasonic Array" sub="distance + angle" />
         <Node x={20} y={110} w={140} h={50} label="Compass + IMU" sub="heading + motion" />
         <Node x={20} y={180} w={140} h={50} label="BLE Device Agent" sub="sampling + sync" accent />
 
-        <line x1={160} y1={205} x2={230} y2={135} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
-        <line x1={160} y1={205} x2={230} y2={205} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={160} y1={205} x2={230} y2={135} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={160} y1={205} x2={230} y2={205} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
 
-        <text x="240" y="30" fontSize="9" letterSpacing="3" fill="var(--accent)" fontWeight="300">APP LAYER</text>
+        <text x="240" y="30" fontSize="9" letterSpacing="3" fill={DIAGRAM_INK} fontWeight="300">APP LAYER</text>
         <Node x={240} y={40} w={130} h={50} label="Onboarding + Pairing" sub="voice-led setup" />
         <Node x={240} y={110} w={130} h={50} label="Guidance Core" sub="route + obstacle fusion" accent />
         <Node x={240} y={180} w={130} h={50} label="Map + Session State" sub="turn context + logs" />
 
-        <line x1={305} y1={90} x2={305} y2={108} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
-        <line x1={305} y1={160} x2={305} y2={178} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={305} y1={90} x2={305} y2={108} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={305} y1={160} x2={305} y2={178} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
 
-        <line x1={370} y1={135} x2={450} y2={65} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
-        <line x1={370} y1={135} x2={450} y2={135} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
-        <line x1={370} y1={135} x2={450} y2={205} stroke="#4A4440" strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={370} y1={135} x2={450} y2={65} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={370} y1={135} x2={450} y2={135} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
+        <line x1={370} y1={135} x2={450} y2={205} stroke={DIAGRAM_INK} strokeWidth={1} markerEnd="url(#arrow-vi)" />
 
-        <text x="460" y="30" fontSize="9" letterSpacing="3" fill="#4A4440" fontWeight="300">GUIDANCE OUTPUTS</text>
+        <text x="460" y="30" fontSize="9" letterSpacing="3" fill={DIAGRAM_MUTED} fontWeight="400">GUIDANCE OUTPUTS</text>
         <Node x={460} y={40} w={120} h={50} label="Haptic Cues" sub="left / right pulse" />
         <Node x={460} y={110} w={120} h={50} label="Audio Alerts" sub='&quot;object 3 ft left&quot;' />
         <Node x={460} y={180} w={120} h={50} label="Fallback Prompts" sub="recenter + recover" />
 
-        <text x="300" y="260" textAnchor="middle" fontSize="9" letterSpacing="3" fill="#4A4440" fontWeight="300">CURRENT VISN STRUCTURE</text>
-        <text x="300" y="280" textAnchor="middle" fontSize="10" fill="var(--foreground)" fontWeight="300">Pairing-first onboarding · fused guidance loop · non-visual defaults with recovery states</text>
+        <text x="300" y="260" textAnchor="middle" fontSize="9" letterSpacing="3" fill={DIAGRAM_MUTED} fontWeight="400">CURRENT VISN STRUCTURE</text>
+        <text x="300" y="280" textAnchor="middle" fontSize="10" fill={DIAGRAM_INK} fontWeight="400">Pairing-first onboarding · fused guidance loop · non-visual defaults with recovery states</text>
       </svg>
     </div>
   );
