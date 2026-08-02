@@ -81,7 +81,7 @@ export default function DiscoverIntegrationCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The insight</SectionLabel>
+              <SectionLabel>01 / Insight</SectionLabel>
               <SectionHeading>We treated every customer as a &ldquo;spender&rdquo;</SectionHeading>
             </div>
             <Prose>
@@ -114,7 +114,7 @@ export default function DiscoverIntegrationCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The experience · 01</SectionLabel>
+              <SectionLabel>02 / First Experience</SectionLabel>
               <SectionHeading>The First Time Experience</SectionHeading>
             </div>
             <Prose>
@@ -137,7 +137,7 @@ export default function DiscoverIntegrationCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The experience · 02</SectionLabel>
+              <SectionLabel>03 / Setup</SectionLabel>
               <SectionHeading>L2: setup and wayfinding</SectionHeading>
             </div>
             <Prose>
@@ -163,7 +163,7 @@ export default function DiscoverIntegrationCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The hard part</SectionLabel>
+              <SectionLabel>04 / Constraints</SectionLabel>
               <SectionHeading>Designing inside the lines, and selling the why</SectionHeading>
             </div>
             <Prose>
@@ -184,7 +184,7 @@ export default function DiscoverIntegrationCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Outcome</SectionLabel>
+              <SectionLabel>05 / Outcome</SectionLabel>
               <SectionHeading>Measured on retention</SectionHeading>
             </div>
             <Prose>

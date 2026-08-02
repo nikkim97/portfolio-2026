@@ -87,7 +87,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The problem · 01</SectionLabel>
+              <SectionLabel>01 / Problem</SectionLabel>
               <SectionHeading>10 screens to prepare for one conversation</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">
@@ -147,7 +147,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The insight · 02</SectionLabel>
+              <SectionLabel>02 / Insight</SectionLabel>
               <SectionHeading>Leaders assess people, not rows in a table</SectionHeading>
             </div>
             <Prose>
@@ -175,7 +175,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The solution · 03</SectionLabel>
+              <SectionLabel>03 / Solution</SectionLabel>
               <SectionHeading>Two screens, everything side by side</SectionHeading>
             </div>
             <Prose>
@@ -200,7 +200,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Outcome · 04</SectionLabel>
+              <SectionLabel>04 / Outcome</SectionLabel>
               <SectionHeading>From 10 screens to two</SectionHeading>
             </div>
             <div className="flex flex-col gap-8">

@@ -79,7 +79,7 @@ export default function BloomCaseStudy() {
         <section className="pt-14 pb-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The concept</SectionLabel>
+              <SectionLabel>01 / Concept</SectionLabel>
               <SectionHeading>A way to talk about our differences without taking them personally</SectionHeading>
             </div>
             <Prose>
@@ -128,7 +128,7 @@ export default function BloomCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The build</SectionLabel>
+              <SectionLabel>02 / Build</SectionLabel>
               <SectionHeading>I'm the product partner. Claude Code is the developer.</SectionHeading>
             </div>
             <Prose>
@@ -165,7 +165,7 @@ export default function BloomCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>V1</SectionLabel>
+              <SectionLabel>03 / V1</SectionLabel>
               <SectionHeading>It worked, but the cards felt like data, not people.</SectionHeading>
             </div>
             <Prose>
@@ -199,7 +199,7 @@ export default function BloomCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Evolution</SectionLabel>
+              <SectionLabel>04 / Evolution</SectionLabel>
               <SectionHeading>Three days later, I came back and closed the gap.</SectionHeading>
             </div>
             <Prose>
@@ -253,7 +253,7 @@ export default function BloomCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>What I learned</SectionLabel>
+              <SectionLabel>05 / Reflection</SectionLabel>
               <SectionHeading>I&apos;m an ideas person. I finally got to work like one.</SectionHeading>
             </div>
             <Prose>

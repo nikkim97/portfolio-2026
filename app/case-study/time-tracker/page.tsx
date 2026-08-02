@@ -107,7 +107,7 @@ export default function TimeTrackerCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The concept</SectionLabel>
+              <SectionLabel>01 / Concept</SectionLabel>
               <SectionHeading>Budget your time the way you budget money</SectionHeading>
             </div>
             <Prose>
@@ -153,7 +153,7 @@ export default function TimeTrackerCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>The decision</SectionLabel>
+              <SectionLabel>02 / Decision</SectionLabel>
               <SectionHeading>Pillars have to fit the life you&apos;re living</SectionHeading>
             </div>
             <Prose>
@@ -210,7 +210,7 @@ export default function TimeTrackerCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>Evolution</SectionLabel>
+              <SectionLabel>03 / Evolution</SectionLabel>
               <SectionHeading>The donut was the first cut, not the final one</SectionHeading>
             </div>
             <Prose>
@@ -255,7 +255,7 @@ export default function TimeTrackerCaseStudy() {
         <section className="py-16 flex flex-col gap-10">
           <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <div className="flex flex-col gap-2">
-              <SectionLabel>What I learned</SectionLabel>
+              <SectionLabel>04 / Reflection</SectionLabel>
               <SectionHeading>It&apos;s fun to see my ideas come to life</SectionHeading>
             </div>
             <Prose>
