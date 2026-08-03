@@ -7,7 +7,7 @@ import LightboxFrame from "./LightboxFrame";
 
 export function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--accent-text)]">
+    <p className="mono-label" style={{ color: "var(--accent-text)" }}>
       {children}
     </p>
   );
@@ -16,8 +16,8 @@ export function SectionLabel({ children }: { children: ReactNode }) {
 export function SectionHeading({ children }: { children: ReactNode }) {
   return (
     <h2
-      className="font-light"
-      style={{ fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "-0.02em", lineHeight: 1.25 }}
+      className="serif-display"
+      style={{ fontSize: "clamp(22px, 2.5vw, 31px)", lineHeight: 1.2, fontWeight: 400 }}
     >
       {children}
     </h2>
@@ -75,9 +75,7 @@ export function Screenshot({
         </div>
       )}
       {caption && (
-        <figcaption className="text-[10px] font-light text-[var(--midtone)] tracking-wide">
-          {caption}
-        </figcaption>
+        <figcaption className="figure-caption">{caption}</figcaption>
       )}
     </figure>
   );
@@ -131,14 +129,7 @@ export function HeroVideo({
 }
 
 export function Prose({ children }: { children: ReactNode }) {
-  return (
-    <div
-      className="flex flex-col gap-5 font-light text-[16px] sm:text-[18px] leading-[1.8] [&_strong]:font-bold [&_strong]:text-[var(--foreground)]"
-      style={{ color: "var(--body)" }}
-    >
-      {children}
-    </div>
-  );
+  return <div className="prose">{children}</div>;
 }
 
 export function PullQuote({ children }: { children: ReactNode }) {
@@ -157,6 +148,225 @@ export function PullQuote({ children }: { children: ReactNode }) {
     >
       {children}
     </blockquote>
+  );
+}
+
+export function ArticleHero({
+  eyebrow,
+  live,
+  title,
+  meta,
+}: {
+  eyebrow: ReactNode;
+  live?: { href: string; label: string };
+  title: ReactNode;
+  meta?: ReactNode;
+}) {
+  return (
+    <header className="pt-14 sm:pt-20 pb-2 flex flex-col gap-7">
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        <span className="mono-label" style={{ color: "var(--accent-text)" }}>{eyebrow}</span>
+        {live && (
+          <a
+            href={live.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mono-label border-b border-[var(--border)] pb-0.5 hover:border-[var(--accent)] transition-colors duration-200"
+            style={{ color: "var(--accent-text)" }}
+          >
+            {live.label} ↗︎
+          </a>
+        )}
+      </div>
+      <h1
+        className="serif-display"
+        style={{ fontSize: "clamp(30px, 4.4vw, 50px)", lineHeight: 1.12, fontWeight: 400 }}
+      >
+        {title}
+      </h1>
+      {meta}
+    </header>
+  );
+}
+
+export function ArticleMeta({
+  role,
+  timeline,
+  platform,
+  results,
+  resultsLabel = "Results",
+}: {
+  role: ReactNode;
+  timeline: ReactNode;
+  platform: ReactNode;
+  results?: { value: string; label: string }[];
+  resultsLabel?: string;
+}) {
+  const items = [
+    { label: "Role", value: role },
+    { label: "Timeline", value: timeline },
+    { label: "Platform", value: platform },
+  ];
+
+  return (
+    <div
+      className="flex flex-col gap-6 py-6"
+      style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {items.map((item) => (
+          <div key={item.label} className="flex flex-col gap-1.5 min-w-0">
+            <span className="mono-label">{item.label}</span>
+            <span
+              className="serif-display"
+              style={{ fontSize: 15, lineHeight: 1.45, color: "var(--body)", letterSpacing: 0 }}
+            >
+              {item.value}
+            </span>
+          </div>
+        ))}
+      </div>
+      {results && results.length > 0 && (
+        <div className="flex flex-col gap-2.5">
+          <span className="mono-label">{resultsLabel}</span>
+          <div className="flex flex-wrap gap-x-10 gap-y-4">
+            {results.map((result) => (
+              <div key={`${result.value}-${result.label}`} className="flex items-baseline gap-3">
+                <span
+                  className="serif-display tabular-nums"
+                  style={{ color: "var(--pop)", fontSize: "clamp(26px, 3.2vw, 36px)", fontWeight: 500, letterSpacing: "-0.02em" }}
+                >
+                  <AnimatedStat value={result.value} />
+                </span>
+                <span
+                  className="serif-display"
+                  style={{ fontSize: 15, lineHeight: 1.4, color: "var(--body)", letterSpacing: 0 }}
+                >
+                  {result.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function SectionHeader({
+  index,
+  label,
+  heading,
+  first = false,
+}: {
+  index?: string;
+  label: ReactNode;
+  heading: ReactNode;
+  first?: boolean;
+}) {
+  return (
+    <div className={`flex flex-col gap-3${first ? "" : " article-section-gap"}`}>
+      <span className="mono-label" style={{ color: "var(--accent-text)" }}>
+        {index ? `${index} / ` : ""}
+        {label}
+      </span>
+      <h2
+        className="serif-display"
+        style={{ fontSize: "clamp(22px, 2.5vw, 31px)", lineHeight: 1.2, fontWeight: 400 }}
+      >
+        {heading}
+      </h2>
+    </div>
+  );
+}
+
+const FIGURE_COL: Record<"text" | "wide" | "full", string> = {
+  text: "",
+  wide: "col-wide",
+  full: "col-full",
+};
+
+export function Figure({
+  src,
+  alt,
+  caption,
+  aspect = "16/9",
+  variant = "wide",
+  maxWidth,
+  fit = "contain",
+  background,
+  priority = false,
+}: {
+  src?: string;
+  alt: string;
+  caption?: ReactNode;
+  aspect?: string;
+  variant?: "text" | "wide" | "full";
+  maxWidth?: number;
+  fit?: "contain" | "cover";
+  background?: string;
+  priority?: boolean;
+}) {
+  const full = variant === "full";
+
+  return (
+    <figure
+      className={FIGURE_COL[variant]}
+      style={maxWidth ? { width: "100%", maxWidth, marginInline: "auto" } : undefined}
+    >
+      {src ? (
+        <LightboxFrame alt={alt}>
+          <div
+            className="w-full overflow-hidden relative flex items-center justify-center"
+            style={{ aspectRatio: aspect, borderRadius: full ? 0 : 12, background }}
+          >
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className={fit === "cover" ? "object-cover" : "object-contain"}
+              sizes={full ? "100vw" : "(max-width: 640px) 92vw, 900px"}
+              priority={priority}
+            />
+          </div>
+        </LightboxFrame>
+      ) : (
+        <div
+          className="w-full overflow-hidden relative flex items-center justify-center"
+          style={{ aspectRatio: aspect, background: background ?? "var(--card)", borderRadius: full ? 0 : 12 }}
+        >
+          <p className="mono-label opacity-50 px-4 text-center">{alt}</p>
+        </div>
+      )}
+      {caption && (
+        <figcaption className="figure-caption">{caption}</figcaption>
+      )}
+    </figure>
+  );
+}
+
+const FIGURE_GROUP_COLS: Record<2 | 3 | 4, string> = {
+  2: "grid-cols-1",
+  3: "grid-cols-1",
+  4: "grid-cols-1",
+};
+
+export function FigureGroup({
+  children,
+  cols = 2,
+  caption,
+}: {
+  children: ReactNode;
+  cols?: 2 | 3 | 4;
+  caption?: ReactNode;
+}) {
+  return (
+    <div className="col-wide">
+      <div className={`grid gap-4 items-start ${FIGURE_GROUP_COLS[cols]}`}>{children}</div>
+      {caption && (
+        <div className="figure-caption">{caption}</div>
+      )}
+    </div>
   );
 }
 
@@ -207,10 +417,13 @@ export function IntroMetadataSection({
             className="rounded-xl px-6 sm:px-8 py-5 flex flex-col gap-1 min-w-0"
             style={{ background: "var(--card)" }}
           >
-            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent-text)" }}>
+            <p className="mono-label" style={{ color: "var(--accent-text)" }}>
               {item.label}
             </p>
-            <div className="flex flex-col gap-1.5 text-[15px] sm:text-[16px] font-light leading-snug break-words" style={{ color: "var(--body)" }}>
+            <div
+              className="serif-display flex flex-col gap-1.5 text-[15px] sm:text-[16px] leading-snug break-words"
+              style={{ color: "var(--body)", letterSpacing: 0 }}
+            >
               <p>{item.value}</p>
             </div>
           </div>
@@ -220,14 +433,14 @@ export function IntroMetadataSection({
       {results && results.length > 0 && (
         <div className="rounded-xl px-6 sm:px-8 py-5" style={{ background: "var(--card)" }}>
           <div className="flex flex-col gap-3">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-normal" style={{ color: "var(--accent-text)" }}>{resultsLabel}</p>
+            <p className="mono-label" style={{ color: "var(--accent-text)" }}>{resultsLabel}</p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
               {results.map((result) => (
                 <div key={`${result.value}-${result.label}`} className="flex items-baseline gap-3">
-                  <span className="font-semibold tabular-nums shrink-0" style={{ color: "var(--pop)", fontSize: "clamp(20px, 4vw, 36px)", letterSpacing: "-0.03em" }}>
+                  <span className="serif-display tabular-nums shrink-0" style={{ color: "var(--pop)", fontSize: "clamp(26px, 3.2vw, 36px)", fontWeight: 500, letterSpacing: "-0.02em" }}>
                     <AnimatedStat value={result.value} />
                   </span>
-                  <span className="text-[13px] sm:text-[15px] font-light leading-snug" style={{ color: "var(--body)" }}>
+                  <span className="serif-display text-[13px] sm:text-[15px] leading-snug" style={{ color: "var(--body)", letterSpacing: 0 }}>
                     {result.label}
                   </span>
                 </div>

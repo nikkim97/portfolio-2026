@@ -1,7 +1,12 @@
-import Link from "next/link";
-import { FONT } from "../../components/ui";
-import { IntroMetadataSection, SectionLabel, SectionHeading, Screenshot, Prose, PullQuote } from "../../components/caseStudyUI";
-import { NextProjectCard, NextProjectLink } from "../../components/ProjectNavigation";
+import CaseStudyShell from "../../components/CaseStudyShell";
+import {
+  ArticleHero,
+  ArticleMeta,
+  Prose,
+  PullQuote,
+  Screenshot,
+  SectionHeader,
+} from "../../components/caseStudyUI";
 import { caseStudyMetadata } from "../../lib/siteMetadata";
 
 export const metadata = caseStudyMetadata({
@@ -11,14 +16,27 @@ export const metadata = caseStudyMetadata({
   slug: "discover-integration",
 });
 
-// A row of native mobile screens. Each shot carries its own aspect ratio since
-// the source captures range from full device frames to cropped bottom sheets.
-function MobileShots({ shots, cols = 3 }: { shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[]; cols?: 3 | 4 }) {
+function MobileShots({
+  shots,
+  cols = 3,
+  preserveGrid = false,
+}: {
+  shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[];
+  cols?: 3 | 4;
+  preserveGrid?: boolean;
+}) {
   const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
-    <div className={`grid ${colClass} gap-4 sm:gap-5 items-start`}>
-      {shots.map((s, i) => (
-        <Screenshot key={i} src={s.src} aspect={s.aspect ?? "390 / 844"} priority={s.priority} label={s.label} caption={s.caption} />
+    <div className={`col-wide grid ${preserveGrid ? colClass : "grid-cols-1"} gap-4 sm:gap-5 items-start`}>
+      {shots.map((shot) => (
+        <Screenshot
+          key={shot.label}
+          src={shot.src}
+          aspect={shot.aspect ?? "390 / 844"}
+          priority={shot.priority}
+          label={shot.label}
+          caption={shot.caption}
+        />
       ))}
     </div>
   );
@@ -26,38 +44,18 @@ function MobileShots({ shots, cols = 3 }: { shots: { src?: string; label: string
 
 export default function DiscoverIntegrationCaseStudy() {
   return (
-    <main className="min-h-screen flex flex-col" style={{ background: "var(--background)", color: "var(--foreground)", ...FONT }}>
-
-      {/* Top bar */}
-      <div
-        className="sticky top-0 z-40"
-        style={{ backgroundColor: "var(--card)", maskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)" }}
-      >
-        <div className="max-w-[1260px] mx-auto px-6 sm:px-10 h-12 flex items-center justify-between">
-          <Link href="/" className="text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] transition-colors duration-200">
-            ← Back
-          </Link>
-          <span className="hidden text-[11px] font-normal tracking-[0.15em] uppercase text-[var(--midtone)] md:inline">
-            Capital One · Jan 2026 – Present
-          </span>
-          <NextProjectLink currentHref="/case-study/discover-integration" />
-        </div>
-      </div>
-
-      <div className="max-w-[1260px] mx-auto w-full px-6 sm:px-10">
-
-        {/* ── Hero ── */}
-        <section className="pt-16 pb-12 flex flex-col gap-6">
-          <p className="text-[10px] tracking-[0.22em] uppercase text-[var(--accent-text)]">
-            Manager, Experience Design · Capital One
-          </p>
-          <h1
-            className="font-light max-w-[1100px]"
-            style={{ fontSize: "clamp(32px, calc(5vw - 2px), 52px)", letterSpacing: "-0.03em", lineHeight: 1.14 }}
-          >
-            Discover banking customers needed to move to Capital One without feeling disrupted. I designed onboarding flows that simplified an overly complex migration strategy<span style={{ color: "var(--accent)" }}>.</span>
-          </h1>
-          <IntroMetadataSection
+    <CaseStudyShell context="Capital One · Jan 2026 – Present" currentHref="/case-study/discover-integration">
+      <ArticleHero
+        eyebrow="Manager, Experience Design · Capital One"
+        title={
+          <>
+            Discover banking customers needed to move to Capital One without feeling disrupted. I designed
+            onboarding flows that simplified an overly complex migration strategy
+            <span style={{ color: "var(--accent)" }}>.</span>
+          </>
+        }
+        meta={
+          <ArticleMeta
             role="Design & Strategy Lead"
             timeline="Capital One · Jan 2026 – Present"
             platform="Native (iOS, Android), Web, Mobile Web"
@@ -67,147 +65,138 @@ export default function DiscoverIntegrationCaseStudy() {
               { value: "99%", label: "escalations contained to digital" },
             ]}
           />
-        </section>
+        }
+      />
 
-        {/* ── Hero image: the welcome animation, frame by frame ── */}
-        <MobileShots cols={4} shots={[
+      <MobileShots
+        cols={4}
+        preserveGrid
+        shots={[
           { src: "/case-study/manager/welcome3.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: starts on the Discover card the customer knows", caption: "Starts on what they know" },
           { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: the Discover and Capital One cards mid-morph", caption: "The cards morph" },
           { src: "/case-study/manager/welcome1.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: resolves on the Capital One card", caption: "Now Capital One" },
           { src: "/case-study/manager/welcome2.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: the welcome message that lands the moment", caption: "We're happy you're here" },
-        ]} />
+        ]}
+      />
 
-        {/* ── The insight ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>01 / Insight</SectionLabel>
-              <SectionHeading>We treated every customer as a &ldquo;spender&rdquo;</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                After reviewing our customer segments by product type and demographics, we framed every incoming customer through two behavioral lenses: <strong>savers</strong> and <strong>spenders</strong>. Since that was the relationship they already understood, and the one they would be bringing to Capital One, it was the one we had to build from. For the first wave of customers, we focused on spenders and triangulated behavioral transaction data (how Discover customers actually used their cards) with customer research before we built on it.
-              </p>
-              <p>
-                It sounds small, but the framing did real work. It gave a cross-functional team one shared mental model of who we were designing for, and it set the job-to-be-done: meet people where they are, spending, and create a clear, low-friction path toward the rest of what a bank can do for them.
-              </p>
-            </Prose>
-          </div>
-          <PullQuote>
-            &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them what else is here.&rdquo;
-          </PullQuote>
-          <div className="grid grid-cols-1 items-start gap-5">
-            <Screenshot
-              src="/case-study/manager/plan2.JPG"
-              aspect="4 / 3"
-              label="Planning the spender experience, artifact one"
-            />
-            <Screenshot
-              src="/case-study/manager/plan3.JPG"
-              aspect="1599 / 872"
-              label="Planning the spender experience, artifact two"
-            />
-          </div>
-        </section>
-
-        {/* ── Experience layer 1 ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>02 / First Experience</SectionLabel>
-              <SectionHeading>The First Time Experience</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                The Capital One app already had established L1 and L2 experiences through EASE, and we couldn&apos;t alter those surfaces much. So we focused on the First Time Experience: the first thing a Discover customer would see, a welcome animation followed by a single screen that lays out everything changing for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place, here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
-              </p>
-              <p>
-                The animation does the emotional work, marking the moment as a welcome rather than a disruption. The glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place. To preserve that continuity into the landing page, we reused familiar language and a wrench icon in the mudflap, clearly signaling which accounts still needed setup to keep customers&apos; existing routines intact.
-              </p>
-            </Prose>
-          </div>
-          <MobileShots shots={[
-            { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", label: "FTX: the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
-            { src: "/case-study/manager/ftux.webp", aspect: "403 / 862", label: "FTX: your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
-            { src: "/case-study/manager/checking-l1.webp", aspect: "403 / 955", label: "FTX: hand-off into the home screen, with what still needs setup flagged", caption: "Into the app: with what's left to set up flagged" },
-          ]} />
-        </section>
-
-        {/* ── Experience layer 2 ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>03 / Setup</SectionLabel>
-              <SectionHeading>L2: setup and wayfinding</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                The second layer (L2) is where intent turns into action: a checklist of the things that actually make Capital One someone&apos;s primary bank: <strong>setting up direct deposit, moving autopay and recurring payments, and activating the new card</strong>. Each completed step is both a setup task and a small proof that the switch was worth making.
-              </p>
-              <p>
-                These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff. &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too specific for FTUX, while the recurring wrench icon acted as wayfinding, showing exactly where setup was still required.
-              </p>
-              <p>
-                The wrench icon and supporting content took most of our deliberate design decisioning. That pairing was what convinced senior stakeholders that customers would have enough confidence to understand what needed fixing, complete the right setup steps, and move through the transition smoothly. It also became a call-deflection strategy: every screen that explained itself prevented an avoidable call to a front-line associate.
-              </p>
-            </Prose>
-          </div>
-          <MobileShots shots={[
-            { src: "/case-study/manager/checklist-debit.webp", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
-            { src: "/case-study/manager/l2-account-summary.webp", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
-            { src: "/case-study/manager/mma-checklist-default.webp", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
-          ]} />
-        </section>
-
-        {/* ── The hard part ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>04 / Constraints</SectionLabel>
-              <SectionHeading>Designing inside the lines, and selling the why</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                The biggest constraint wasn&apos;t the brief, it was the canvas. This lives inside the full Capital One app, which doesn&apos;t allow for many custom components, so the <strong>wayfinding</strong> system had to be built almost entirely from the existing toolkit, restructured and recomposed to do a new job. The creativity was in working <em>within</em>{" "}the system, not around it.
-              </p>
-              <p>
-                Layered on top: compliance requirements shaped the language, a hard brand-migration cutover meant narrow windows, and there&apos;s no second chance: you can&apos;t re-onboard someone, so the first impression had to land the first time.
-              </p>
-              <p>
-                And the hardest constraint wasn&apos;t on the screen at all: getting a layer of pure clarity prioritized meant making the case for it to senior leadership.
-              </p>
-            </Prose>
-          </div>
-        </section>
-
-        {/* ── Outcome ── */}
-        <section className="py-16 flex flex-col gap-10">
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <div className="flex flex-col gap-2">
-              <SectionLabel>05 / Outcome</SectionLabel>
-              <SectionHeading>Measured on retention</SectionHeading>
-            </div>
-            <Prose>
-              <p>
-                Success will be measured on two things: the <strong>customer volume retained</strong>{" "}through the switch and <strong>how few calls</strong>{" "}the change drives to front-line associates. The experience is scheduled to launch and enter testing in late 2026, so results are still to come. I&apos;ll update this case study as retention and call-volume data become available.
-              </p>
-            </Prose>
-          </div>
-        </section>
-
-        <NextProjectCard currentHref="/case-study/discover-integration" />
-
-        {/* ── Footer ── */}
-        <footer className="py-10 flex flex-wrap items-center justify-between gap-2">
-          <p className="text-[10px] font-light text-[var(--midtone)] tracking-wide">© 2026 Niharika Mishra</p>
-          <Link
-            href="/"
-            className="text-[11px] font-normal tracking-[0.2em] uppercase text-[var(--midtone)] hover:text-[var(--foreground)] border-b border-[var(--border)] pb-0.5 hover:border-[var(--foreground)] transition-colors duration-200"
-          >
-            ← Back to portfolio
-          </Link>
-        </footer>
+      <SectionHeader index="01" label="The insight" heading="We treated every customer as a “spender”" />
+      <Prose>
+        <p>
+          After reviewing our customer segments by product type and demographics, we framed every incoming
+          customer through two behavioral lenses: <strong>savers</strong> and <strong>spenders</strong>. Since
+          that was the relationship they already understood, and the one they would be bringing to Capital One,
+          it was the one we had to build from. For the first wave of customers, we focused on spenders and
+          triangulated behavioral transaction data (how Discover customers actually used their cards) with
+          customer research before we built on it.
+        </p>
+        <p>
+          It sounds small, but the framing did real work. It gave a cross-functional team one shared mental model
+          of who we were designing for, and it set the job-to-be-done: meet people where they are, spending, and
+          create a clear, low-friction path toward the rest of what a bank can do for them.
+        </p>
+      </Prose>
+      <PullQuote>
+        &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them
+        what else is here.&rdquo;
+      </PullQuote>
+      <div className="col-wide grid grid-cols-1 items-start gap-5">
+        <Screenshot
+          src="/case-study/manager/plan2.JPG"
+          aspect="4 / 3"
+          label="Planning the spender experience, artifact one"
+          caption="Planning artifact: mapping migration moments around the spender mental model."
+        />
+        <Screenshot
+          src="/case-study/manager/plan3.JPG"
+          aspect="1599 / 872"
+          label="Planning the spender experience, artifact two"
+          caption="Planning artifact: narrowing the first experience around clarity, continuity, and setup."
+        />
       </div>
-    </main>
+
+      <SectionHeader index="02" label="The first experience" heading="The First Time Experience" />
+      <Prose>
+        <p>
+          The Capital One app already had established L1 and L2 experiences through EASE, and we couldn&apos;t
+          alter those surfaces much. So we focused on the First Time Experience: the first thing a Discover
+          customer would see, a welcome animation followed by a single screen that lays out everything changing
+          for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place,
+          here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
+        </p>
+        <p>
+          The animation does the emotional work, marking the moment as a welcome rather than a disruption. The
+          glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place. To preserve that
+          continuity into the landing page, we reused familiar language and a wrench icon in the mudflap, clearly
+          signaling which accounts still needed setup to keep customers&apos; existing routines intact.
+        </p>
+      </Prose>
+      <MobileShots
+        shots={[
+          { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", label: "FTX: the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
+          { src: "/case-study/manager/ftux.webp", aspect: "403 / 862", label: "FTX: your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
+          { src: "/case-study/manager/checking-l1.webp", aspect: "403 / 955", label: "FTX: hand-off into the home screen, with what still needs setup flagged", caption: "Into the app: with what's left to set up flagged" },
+        ]}
+      />
+
+      <SectionHeader index="03" label="The setup" heading="L2: setup and wayfinding" />
+      <Prose>
+        <p>
+          The second layer (L2) is where intent turns into action: a checklist of the things that actually make
+          Capital One someone&apos;s primary bank: <strong>setting up direct deposit, moving autopay and recurring
+          payments, and activating the new card</strong>. Each completed step is both a setup task and a small
+          proof that the switch was worth making.
+        </p>
+        <p>
+          These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a
+          bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff.
+          &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too
+          specific for FTUX, while the recurring wrench icon acted as wayfinding, showing exactly where setup was
+          still required.
+        </p>
+        <p>
+          The wrench icon and supporting content took most of our deliberate design decisioning. That pairing was
+          what convinced senior stakeholders that customers would have enough confidence to understand what
+          needed fixing, complete the right setup steps, and move through the transition smoothly. It also became
+          a call-deflection strategy: every screen that explained itself prevented an avoidable call to a
+          front-line associate.
+        </p>
+      </Prose>
+      <MobileShots
+        shots={[
+          { src: "/case-study/manager/checklist-debit.webp", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
+          { src: "/case-study/manager/l2-account-summary.webp", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },
+          { src: "/case-study/manager/mma-checklist-default.webp", aspect: "403 / 1217", label: "L2: the setup checklist for a converted savings account", caption: "The checklist: what it takes to make us your primary bank" },
+        ]}
+      />
+
+      <SectionHeader index="04" label="The constraints" heading="Designing inside the lines, and selling the why" />
+      <Prose>
+        <p>
+          The biggest constraint wasn&apos;t the brief, it was the canvas. This lives inside the full Capital One
+          app, which doesn&apos;t allow for many custom components, so the <strong>wayfinding</strong> system had
+          to be built almost entirely from the existing toolkit, restructured and recomposed to do a new job. The
+          creativity was in working <em>within</em>{" "}the system, not around it.
+        </p>
+        <p>
+          Layered on top: compliance requirements shaped the language, a hard brand-migration cutover meant
+          narrow windows, and there&apos;s no second chance: you can&apos;t re-onboard someone, so the first impression
+          had to land the first time.
+        </p>
+        <p>
+          And the hardest constraint wasn&apos;t on the screen at all: getting a layer of pure clarity prioritized
+          meant making the case for it to senior leadership.
+        </p>
+      </Prose>
+
+      <SectionHeader index="05" label="The outcome" heading="Measured on retention" />
+      <Prose>
+        <p>
+          Success will be measured on two things: the <strong>customer volume retained</strong>{" "}through the
+          switch and <strong>how few calls</strong>{" "}the change drives to front-line associates. The
+          experience is scheduled to launch and enter testing in late 2026, so results are still to come.
+          I&apos;ll update this case study as retention and call-volume data become available.
+        </p>
+      </Prose>
+    </CaseStudyShell>
   );
 }
