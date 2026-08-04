@@ -20,10 +20,12 @@ function MobileShots({
   shots,
   cols = 3,
   preserveGrid = false,
+  expandable = true,
 }: {
   shots: { src?: string; label: string; caption?: string; aspect?: string; priority?: boolean }[];
   cols?: 3 | 4;
   preserveGrid?: boolean;
+  expandable?: boolean;
 }) {
   const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
@@ -36,6 +38,7 @@ function MobileShots({
           priority={shot.priority}
           label={shot.label}
           caption={shot.caption}
+          expandable={expandable}
         />
       ))}
     </div>
@@ -71,6 +74,7 @@ export default function DiscoverIntegrationCaseStudy() {
       <MobileShots
         cols={4}
         preserveGrid
+        expandable={false}
         shots={[
           { src: "/case-study/manager/welcome3.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: starts on the Discover card the customer knows", caption: "Starts on what they know" },
           { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", priority: true, label: "Welcome animation: the Discover and Capital One cards mid-morph", caption: "The cards morph" },

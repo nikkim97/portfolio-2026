@@ -77,8 +77,9 @@ export default function TimeTrackerCaseStudy() {
 
       <div className="col-wide media-inset">
         <Screenshot
+          expandable={false}
           src="/case-study/time-track/herofinal.webp"
-          aspect="731/1456"
+          aspect="16/9"
           label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
           caption="Final mobile dashboard: weekly balance, pillar breakdowns, and progress against target time."
           priority
@@ -131,11 +132,10 @@ export default function TimeTrackerCaseStudy() {
         &ldquo;Different things matter at different stages of life, so the pillars need to be personal enough to grow
         with you.&rdquo;
       </PullQuote>
-      <PhoneGrid cols={4}>
+      <PhoneGrid>
         <Screenshot src="/case-study/time-track/onboard.webp" aspect={PHONE_ASPECT} label="Onboarding step 1: intro and setup framing" caption="Onboarding · intro" />
         <Screenshot src="/case-study/time-track/onboard-2.1.webp" aspect={PHONE_ASPECT} label="Onboarding step 2: configuring preferences" caption="Onboarding · setup" />
         <Screenshot src="/case-study/time-track/onboard-2.2.webp" aspect={PHONE_ASPECT} label="Onboarding step 3: pillar defaults and confirmation" caption="Onboarding · defaults" />
-        <Screenshot src="/case-study/time-track/onbaord3.webp" aspect={PHONE_ASPECT} label="Onboarding step 4: completion" caption="Onboarding · complete" />
       </PhoneGrid>
 
       <SectionHeader index="03" label="The reflection" heading="It's fun to see my ideas come to life" />

@@ -121,6 +121,7 @@ export default function VisnCaseStudy() {
         </p>
       </Prose>
       <Figure
+        expandable={false}
         variant="wide"
         src="/visn/visn2.webp"
         alt="VISN wearable: red fanny pack on a mannequin, labeled with multi-element ultrasonic sensors, Arduino Nano processing unit, 9-axis gyroscope/IMU, internal Li-ion battery, and power-status LEDs"

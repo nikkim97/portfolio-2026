@@ -29,6 +29,9 @@ export function Screenshot({
   caption,
   aspect = "16/9",
   src,
+  expandable = true,
+  fit = "contain",
+  position = "center",
   priority = false,
 }: {
   label: string;
@@ -38,12 +41,19 @@ export function Screenshot({
   // dashed placeholder. Mobile screenshots already carry their device frame,
   // so we letterbox-blend against the page background rather than cover-crop.
   src?: string;
+  expandable?: boolean;
+  fit?: "contain" | "cover";
+  position?: string;
   priority?: boolean;
 }) {
+  const [aspectWidth, aspectHeight] = aspect.split("/").map((value) => Number.parseFloat(value.trim()));
+  const isPortrait = Number.isFinite(aspectWidth) && Number.isFinite(aspectHeight) && aspectWidth / aspectHeight < 0.85;
+  const modalWidth = isPortrait ? "min(82vw, 460px)" : undefined;
+
   return (
     <figure className="media-inset flex flex-col gap-2">
       {src ? (
-        <LightboxFrame alt={label}>
+        <LightboxFrame alt={label} expandable={expandable} modalWidth={modalWidth}>
           <div
             className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
             style={{
@@ -56,7 +66,8 @@ export function Screenshot({
               src={src}
               alt={label}
               fill
-              className="object-contain"
+              className={fit === "cover" ? "object-cover" : "object-contain"}
+              style={{ objectPosition: position }}
               sizes="(max-width: 640px) 90vw, 45vw"
               priority={priority}
             />
@@ -295,6 +306,7 @@ export function Figure({
   maxWidth,
   fit = "contain",
   background,
+  expandable = true,
   priority = false,
 }: {
   src?: string;
@@ -305,6 +317,7 @@ export function Figure({
   maxWidth?: number;
   fit?: "contain" | "cover";
   background?: string;
+  expandable?: boolean;
   priority?: boolean;
 }) {
   const full = variant === "full";
@@ -315,7 +328,7 @@ export function Figure({
       style={maxWidth ? { maxWidth } : undefined}
     >
       {src ? (
-        <LightboxFrame alt={alt}>
+        <LightboxFrame alt={alt} expandable={expandable}>
           <div
             className="w-full overflow-hidden relative flex items-center justify-center"
             style={{ aspectRatio: aspect, borderRadius: full ? 0 : 12, background }}

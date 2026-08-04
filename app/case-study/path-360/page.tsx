@@ -66,6 +66,7 @@ function Img({
   fit = "cover",
   position = "center",
   sizes = "(max-width: 1024px) 100vw, 1180px",
+  expandable = false,
 }: {
   src: string;
   alt: string;
@@ -73,9 +74,10 @@ function Img({
   fit?: "contain" | "cover";
   position?: string;
   sizes?: string;
+  expandable?: boolean;
 }) {
   return (
-    <LightboxFrame alt={alt}>
+    <LightboxFrame alt={alt} expandable={expandable}>
       <div className="relative overflow-hidden rounded-xl" style={{ aspectRatio: aspect, background: "var(--card)" }}>
         <Image src={src} alt={alt} fill sizes={sizes} style={{ objectFit: fit, objectPosition: position }} />
       </div>
@@ -108,19 +110,21 @@ function HoverCallout({ text }: { text: string }) {
 
 function NumberedList({ items }: { items: string[] }) {
   return (
-    <div role="list" className="not-prose flex flex-col gap-4">
+    <div role="list" className="numbered-note-list">
       {items.map((item, index) => (
-        <div role="listitem" key={item} className="flex gap-3.5">
-          <span
-            className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold"
-            style={{ background: "var(--accent-text)", color: "var(--background)" }}
-            aria-hidden
-          >
-            {index + 1}
-          </span>
-          <span>{item}</span>
-        </div>
+        <NumberedPoint key={item} index={index + 1} text={item} />
       ))}
+    </div>
+  );
+}
+
+function NumberedPoint({ index, text }: { index: number; text: string }) {
+  return (
+    <div role="listitem" className="numbered-note">
+      <span className="numbered-note-index" aria-hidden>
+        {index}
+      </span>
+      <span>{text}</span>
     </div>
   );
 }
@@ -151,7 +155,7 @@ export default function Path360CaseStudy() {
         }
       />
 
-      <div className="col-wide media-inset">
+      <div className="col-wide media-inset" style={{ maxWidth: "62rem" }}>
         <HeroVideo
           src="/case-study/pa-xd/hero2.mp4"
           poster="/case-study/pa-xd/hero2-poster.webp"
@@ -180,7 +184,7 @@ export default function Path360CaseStudy() {
         </p>
       </Prose>
       <figure className="col-wide media-inset">
-        <Img src="/case-study/pa-xd/image2.webp" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
+        <Img expandable src="/case-study/pa-xd/image2.webp" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
         <figcaption className="figure-caption">Early whiteboard sessions helped us map the full calibration journey, far messier than the pilot suggested.</figcaption>
       </figure>
 
@@ -199,7 +203,7 @@ export default function Path360CaseStudy() {
         </p>
       </Prose>
       <figure className="col-wide media-inset">
-        <Img src="/case-study/pa-xd/image2.5-clean.webp" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
+        <Img expandable src="/case-study/pa-xd/image2.5-clean.webp" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
         <figcaption className="figure-caption">Three personas, three different needs: from a single consistent prep space to flexible tools for editing ratings.</figcaption>
       </figure>
       <Prose>
@@ -211,7 +215,7 @@ export default function Path360CaseStudy() {
         </p>
       </Prose>
       <figure className="col-wide media-inset">
-        <Img src="/case-study/pa-xd/image3.webp" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
+        <Img expandable src="/case-study/pa-xd/image3.webp" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
         <figcaption className="figure-caption">Personas mapped across the calibration journey: each role&apos;s jobs-to-be-done at every phase.</figcaption>
       </figure>
 
@@ -228,18 +232,43 @@ export default function Path360CaseStudy() {
           edit the details that still needed human judgment: attendees, calibrated associates, session timing,
           and any edge cases before the room began.
         </p>
-        <NumberedList items={SESSION_PREP_PRINCIPLES} />
       </Prose>
       <figure className="col-wide media-inset grid grid-cols-1 items-start gap-6">
-        {SESSION_PREP_IMAGES.map((image) => (
-          <figure key={image.src}>
-            <div className="relative">
-              <Img src={image.src} alt={image.alt} aspect={image.aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
-              {image.callout && <HoverCallout text={image.callout} />}
-            </div>
-            <figcaption className="figure-caption">{image.caption}</figcaption>
-          </figure>
-        ))}
+        <figure>
+          <div className="relative">
+            <Img src={SESSION_PREP_IMAGES[0].src} alt={SESSION_PREP_IMAGES[0].alt} aspect={SESSION_PREP_IMAGES[0].aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+          </div>
+          <figcaption className="figure-caption">{SESSION_PREP_IMAGES[0].caption}</figcaption>
+        </figure>
+        <div role="list" className="numbered-note-list">
+          <NumberedPoint index={1} text={SESSION_PREP_PRINCIPLES[0]} />
+          <NumberedPoint index={2} text={SESSION_PREP_PRINCIPLES[1]} />
+        </div>
+        <figure>
+          <div className="relative">
+            <Img src={SESSION_PREP_IMAGES[1].src} alt={SESSION_PREP_IMAGES[1].alt} aspect={SESSION_PREP_IMAGES[1].aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+            {SESSION_PREP_IMAGES[1].callout && <HoverCallout text={SESSION_PREP_IMAGES[1].callout} />}
+          </div>
+          <figcaption className="figure-caption">{SESSION_PREP_IMAGES[1].caption}</figcaption>
+        </figure>
+        <div role="list" className="numbered-note-list">
+          <NumberedPoint index={3} text={SESSION_PREP_PRINCIPLES[2]} />
+        </div>
+        <figure>
+          <div className="relative">
+            <Img src={SESSION_PREP_IMAGES[2].src} alt={SESSION_PREP_IMAGES[2].alt} aspect={SESSION_PREP_IMAGES[2].aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+          </div>
+          <figcaption className="figure-caption">{SESSION_PREP_IMAGES[2].caption}</figcaption>
+        </figure>
+        <div role="list" className="numbered-note-list">
+          <NumberedPoint index={4} text={SESSION_PREP_PRINCIPLES[3]} />
+        </div>
+        <figure>
+          <div className="relative">
+            <Img src={SESSION_PREP_IMAGES[3].src} alt={SESSION_PREP_IMAGES[3].alt} aspect={SESSION_PREP_IMAGES[3].aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+          </div>
+          <figcaption className="figure-caption">{SESSION_PREP_IMAGES[3].caption}</figcaption>
+        </figure>
       </figure>
 
       <SectionHeader index="04" label="The live calibration" heading="In the room: live calibrations" />
@@ -255,13 +284,19 @@ export default function Path360CaseStudy() {
           performance data, so leaders could have real conversations instead of debating from memory. Status
           tracking let sessions pause and resume without losing ground.
         </p>
-        <NumberedList items={LIVE_CALIBRATION_PRINCIPLES} />
       </Prose>
       <figure className="col-wide media-inset grid grid-cols-1 gap-y-8">
+        <div role="list" className="numbered-note-list">
+          <NumberedPoint index={1} text={LIVE_CALIBRATION_PRINCIPLES[0]} />
+        </div>
         <figure>
           <Img src="/case-study/pa-xd/04-3.webp" alt="Live calibration UI showing 360 feedback surfaced during a session" aspect="1440/1779" fit="contain" />
           <figcaption className="figure-caption">360 feedback in session: qualitative evidence stayed visible while leaders made rating decisions.</figcaption>
         </figure>
+        <div role="list" className="numbered-note-list">
+          <NumberedPoint index={2} text={LIVE_CALIBRATION_PRINCIPLES[1]} />
+          <NumberedPoint index={3} text={LIVE_CALIBRATION_PRINCIPLES[2]} />
+        </div>
         <figure>
           <Img src="/case-study/pa-xd/04-2.webp" alt="Live calibration UI showing an individual associate deep-dive panel" aspect="1440/1779" fit="contain" />
           <figcaption className="figure-caption">Associate deep-dive: evidence and calibration context opened without leaving the live room.</figcaption>
@@ -282,7 +317,7 @@ export default function Path360CaseStudy() {
         </p>
       </Prose>
       <figure className="col-wide media-inset">
-        <Img src="/case-study/pa-xd/group12.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
+        <Img expandable src="/case-study/pa-xd/group12.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
         <figcaption className="figure-caption">Early feedback from the field: leaders felt more prepared, conversations felt more fair.</figcaption>
       </figure>
 

@@ -70,6 +70,35 @@ const PRINCIPLES = [
   },
 ];
 
+function PrinciplePoint({ principle, index }: { principle: (typeof PRINCIPLES)[number]; index: number }) {
+  return (
+    <div role="listitem" className="numbered-note">
+      <span className="numbered-note-index" aria-hidden>
+        {index + 1}
+      </span>
+      <span>
+        <span className="font-semibold" style={{ color: "var(--foreground)" }}>
+          {principle.title}<span style={{ color: "var(--accent)" }}>.</span>
+        </span>{" "}
+        {principle.body}
+      </span>
+    </div>
+  );
+}
+
+function PrincipleFigure({ principle }: { principle: (typeof PRINCIPLES)[number] }) {
+  return (
+    <figure className="col-wide media-inset flex flex-col gap-0">
+      <LightboxFrame alt={principle.title} expandable={false}>
+        <div className="relative w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
+          <Image src={principle.visual} alt={principle.title} width={principle.w} height={principle.h} sizes="(max-width: 768px) 90vw, 400px" className="block w-full h-auto select-none" draggable={false} />
+        </div>
+      </LightboxFrame>
+      <figcaption className="figure-caption">{principle.caption}</figcaption>
+    </figure>
+  );
+}
+
 export default function SaXdCaseStudy() {
   return (
     <CaseStudyShell context="Capital One · 2023 – 2024" currentHref="/case-study/sa-xd">
@@ -96,21 +125,6 @@ export default function SaXdCaseStudy() {
         }
       />
 
-      <figure className="col-wide media-inset">
-        <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
-          <Image
-            src="/case-study/sa-xd/xd-1.webp"
-            alt="Where the 360 feedback experience broke down across the performance cycle"
-            width={1946}
-            height={740}
-            sizes="(max-width: 768px) 100vw, 1200px"
-            className="block w-full h-auto rounded-xl select-none"
-            draggable={false}
-          />
-        </LightboxFrame>
-        <figcaption className="figure-caption">Performance management end-to-end process. Highlighted areas represent selected scope.</figcaption>
-      </figure>
-
       <SectionHeader index="01" label="The problem" heading="Low trust in a system that was supposed to help people grow" />
       <Prose>
         <p>
@@ -127,6 +141,20 @@ export default function SaXdCaseStudy() {
           would be used</strong> or who would see it.
         </p>
       </Prose>
+      <figure className="col-wide media-inset">
+        <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
+          <Image
+            src="/case-study/sa-xd/xd-1.webp"
+            alt="Where the 360 feedback experience broke down across the performance cycle"
+            width={1946}
+            height={740}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="block w-full h-auto rounded-xl select-none"
+            draggable={false}
+          />
+        </LightboxFrame>
+        <figcaption className="figure-caption">Performance management end-to-end process. Highlighted areas represent selected scope.</figcaption>
+      </figure>
       <div className="col-wide media-inset">
         <Img src="/case-study/sa-xd/xd-1.1.webp" alt="Detail of the 360 feedback experience breakdown" aspect="1422/652" fit="cover" />
         <p className="figure-caption">Detail view: the 360 feedback process was disconnected from the moments where leaders needed to use it.</p>
@@ -138,43 +166,19 @@ export default function SaXdCaseStudy() {
           From research, we knew that we needed to improve the consistency, quality &amp; actionability of the
           feedback received for it to be useful during the performance process. Our hypotheses were:
         </p>
-        <div role="list" className="not-prose flex flex-col gap-4">
-          {PRINCIPLES.map((principle, index) => (
-            <div role="listitem" key={principle.title} className="flex gap-3.5">
-              <span className="relative mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center" aria-hidden>
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping" />
-                <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold" style={{ background: "var(--accent-text)", color: "var(--background)" }}>
-                  {index + 1}
-                </span>
-              </span>
-              <span>
-                <span className="italic font-normal" style={{ color: "var(--foreground)" }}>
-                  {principle.title}<span style={{ color: "var(--accent)" }}>.</span>
-                </span>{" "}
-                {principle.body}
-              </span>
-            </div>
-          ))}
-        </div>
       </Prose>
-      <div className="col-wide media-inset grid grid-cols-1 items-start gap-10">
-        {PRINCIPLES.map((principle, index) => (
-          <figure key={principle.visual} className="flex flex-col gap-0">
-            <LightboxFrame alt={principle.title}>
-              <div className="relative w-full overflow-hidden rounded-xl" style={{ background: "var(--card)" }}>
-                <Image src={principle.visual} alt={principle.title} width={principle.w} height={principle.h} sizes="(max-width: 768px) 90vw, 400px" className="block w-full h-auto select-none" draggable={false} />
-                <span className="pointer-events-none absolute right-3 top-3 flex h-7 w-7 items-center justify-center" aria-hidden>
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-30 animate-ping" />
-                  <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-semibold" style={{ background: "var(--accent-text)", color: "var(--background)" }}>
-                    {index + 1}
-                  </span>
-                </span>
-              </div>
-            </LightboxFrame>
-            <figcaption className="figure-caption">{principle.caption}</figcaption>
-          </figure>
-        ))}
+      <div role="list" className="col-wide media-inset numbered-note-list">
+        <PrinciplePoint principle={PRINCIPLES[0]} index={0} />
       </div>
+      <PrincipleFigure principle={PRINCIPLES[0]} />
+      <div role="list" className="col-wide media-inset numbered-note-list">
+        <PrinciplePoint principle={PRINCIPLES[1]} index={1} />
+      </div>
+      <PrincipleFigure principle={PRINCIPLES[1]} />
+      <div role="list" className="col-wide media-inset numbered-note-list">
+        <PrinciplePoint principle={PRINCIPLES[2]} index={2} />
+      </div>
+      <PrincipleFigure principle={PRINCIPLES[2]} />
 
       <SectionHeader index="03" label="The calibration" heading="Connecting feedback to calibration" />
       <Prose>

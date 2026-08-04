@@ -63,7 +63,7 @@ export function NextProjectCard({
   const titleStyle = { fontSize: "clamp(20px, 3vw, 32px)", letterSpacing: "-0.03em", lineHeight: 1.1 } as const;
 
   return (
-    <section className="py-10 flex flex-col gap-6">
+    <section className="mt-10 border-t border-[var(--border)] py-10 flex flex-col gap-6">
       {showBridgeCopy && bridgeCopy ? (
         <p className="max-w-[68ch] text-sm font-light leading-relaxed text-[var(--body)] sm:text-base">
           {bridgeCopy}

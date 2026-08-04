@@ -16,6 +16,14 @@ export const metadata = caseStudyMetadata({
   slug: "people-leader-redesign",
 });
 
+function ProjectFigure(props: Parameters<typeof Figure>[0]) {
+  return <Figure expandable={false} {...props} />;
+}
+
+function ExpandableProjectFigure(props: Parameters<typeof Figure>[0]) {
+  return <Figure expandable {...props} />;
+}
+
 export default function PeopleLeaderRedesignCaseStudy() {
   return (
     <CaseStudyShell context="Capital One · 2025 – 2026" currentHref="/case-study/people-leader-redesign">
@@ -57,28 +65,28 @@ export default function PeopleLeaderRedesignCaseStudy() {
           judgment formed from scattered context.
         </p>
       </Prose>
-      <Figure
+      <ExpandableProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/from-10-screens-to-2.webp"
         alt="Diagram: collapsing the 10-screen calibration prep flow down to two connected screens"
         aspect="2400/1111"
         caption="From 10 screens to 2: the calibration prep flow, before and after"
       />
-      <Figure
+      <ProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/old-myteam-table.webp"
         alt="The old table-based My Team: a row per associate, with feedback, results, and the calibration profile each behind a separate link"
         aspect="1440/1137"
         caption="Before: the table-based 'My Team,' a row per person, every input behind its own link"
       />
-      <Figure
+      <ProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/old-1.webp"
         alt="Legacy calibration profile workflow, screen one"
         aspect="1441/2465"
         caption="Before: calibration profile setup lived inside a long, step-by-step workflow."
       />
-      <Figure
+      <ProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/old-2.webp"
         alt="Legacy calibration profile workflow, screen two"
@@ -103,7 +111,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         Aligning the experience with a leader&apos;s mental model of holistic assessment creates an intuitive
         workflow, and enables more objective calibration sessions.
       </PullQuote>
-      <Figure
+      <ExpandableProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/tab0.webp"
         alt="Redesigned My Team view: a leader's direct reports as cards, each showing feedback received, approvals, results, and calibration profile status"
@@ -123,7 +131,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
           accessibility review for the enterprise release. This made their workflow much more straightforward.
         </p>
       </Prose>
-      <Figure
+      <ProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/360-view.webp"
         alt="The 360 associate view: dynamic tabs for feedback, results, strengths, and the calibration profile, with a sliding drawer for the full profile"
@@ -164,7 +172,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
           </div>
         </div>
       </Prose>
-      <Figure
+      <ProjectFigure
         variant="wide"
         src="/case-study/pl-redesign/group.webp"
         alt="The cross-functional team working together in a conference room during the in-person venture sprint, with a remote teammate on screen"
