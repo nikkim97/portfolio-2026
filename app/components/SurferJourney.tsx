@@ -449,16 +449,16 @@ export default function SurferJourney() {
                 style={{
                   maxWidth: 180,
                   textAlign: isRight ? "left" : "right",
-                  paddingLeft: isRight ? 12 : 0,
-                  paddingRight: isRight ? 0 : 12,
-                  borderLeft: isRight ? "2px solid var(--accent-deep)" : "none",
-                  borderRight: !isRight ? "2px solid var(--accent-deep)" : "none",
-                }}
-              >
-                <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
-                  <span className="text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)", opacity: 0.9 }}>
-                    {node.period}
-                  </span>
+	                  paddingLeft: isRight ? 12 : 0,
+	                  paddingRight: isRight ? 0 : 12,
+	                  borderLeft: isRight ? "2px solid var(--accent-deep)" : "none",
+	                  borderRight: !isRight ? "2px solid var(--accent-deep)" : "none",
+	                }}
+	              >
+	                <div className={`flex items-center gap-1.5 ${isRight ? "" : "justify-end"}`}>
+	                  <span className="text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--midtone)", opacity: 0.9 }}>
+	                    {node.period}
+	                  </span>
                   {node.pills?.map((p) => (
                     <span
                       key={p}
@@ -474,10 +474,10 @@ export default function SurferJourney() {
                     {node.role}
                   </p>
                 )}
-                <p className="leading-relaxed" style={{ fontSize: 13, color: "var(--body)", fontWeight: 400, marginTop: 5 }}>
-                  {node.brief}
-                </p>
-              </div>
+	                <p className="leading-relaxed" style={{ fontSize: 13, color: "var(--body)", fontWeight: 400, marginTop: 5 }}>
+	                  {node.brief}
+	                </p>
+	              </div>
             </div>
           );
         }
