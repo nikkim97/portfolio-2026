@@ -27,7 +27,7 @@ function MobileShots({
 }) {
   const colClass = cols === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3";
   return (
-    <div className={`col-wide grid ${preserveGrid ? colClass : "grid-cols-1"} gap-4 sm:gap-5 items-start`}>
+    <div className={`col-wide media-inset grid ${preserveGrid ? colClass : "grid-cols-1"} gap-4 sm:gap-5 items-start`}>
       {shots.map((shot) => (
         <Screenshot
           key={shot.label}
@@ -99,7 +99,7 @@ export default function DiscoverIntegrationCaseStudy() {
         &ldquo;They&apos;re not new customers. They&apos;re spenders we already have, and the design job is to show them
         what else is here.&rdquo;
       </PullQuote>
-      <div className="col-wide grid grid-cols-1 items-start gap-5">
+      <div className="col-wide media-inset grid grid-cols-1 items-start gap-5">
         <Screenshot
           src="/case-study/manager/plan2.JPG"
           aspect="4 / 3"
@@ -131,6 +131,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </p>
       </Prose>
       <MobileShots
+        preserveGrid
         shots={[
           { src: "/case-study/manager/welcome4.webp", aspect: "806 / 1724", label: "FTX: the welcome animation, mid-transition from Discover to Capital One", caption: "The welcome animation: Discover becoming Capital One" },
           { src: "/case-study/manager/ftux.webp", aspect: "403 / 862", label: "FTX: your accounts from Discover, at a glance", caption: "Everything that changed, in one screen" },
@@ -141,27 +142,18 @@ export default function DiscoverIntegrationCaseStudy() {
       <SectionHeader index="03" label="The setup" heading="L2: setup and wayfinding" />
       <Prose>
         <p>
-          The second layer (L2) is where intent turns into action: a checklist of the things that actually make
-          Capital One someone&apos;s primary bank: <strong>setting up direct deposit, moving autopay and recurring
-          payments, and activating the new card</strong>. Each completed step is both a setup task and a small
+          The second layer (L2) turns intent into action: <strong>setting up direct deposit, moving autopay and
+          recurring payments, and activating the new card</strong>. Each step is a setup task, but also a small
           proof that the switch was worth making.
         </p>
         <p>
-          These aren&apos;t arbitrary tasks. Direct deposit and recurring payments are the stickiest behaviors a
-          bank can earn, so we sequenced the checklist around the actions with the greatest retention payoff.
-          &ldquo;What&apos;s different about my account?&rdquo; gave customers the account-level details that were too
-          specific for FTUX, while the recurring wrench icon acted as wayfinding, showing exactly where setup was
-          still required.
-        </p>
-        <p>
-          The wrench icon and supporting content took most of our deliberate design decisioning. That pairing was
-          what convinced senior stakeholders that customers would have enough confidence to understand what
-          needed fixing, complete the right setup steps, and move through the transition smoothly. It also became
-          a call-deflection strategy: every screen that explained itself prevented an avoidable call to a
-          front-line associate.
+          We sequenced the checklist around the stickiest retention behaviors, then used the recurring wrench
+          icon as wayfinding for anything still unfinished. The supporting content explained what changed, what
+          needed fixing, and helped customers move through the transition without calling a front-line associate.
         </p>
       </Prose>
       <MobileShots
+        preserveGrid
         shots={[
           { src: "/case-study/manager/checklist-debit.webp", aspect: "403 / 1474", label: "L2: finish setting up, with the new card delivery tracker and activation", caption: "Momentum + payoff: card tracker and activation" },
           { src: "/case-study/manager/l2-account-summary.webp", aspect: "403 / 862", label: "L2: what's different and what's the same about this account", caption: "Each step explains what changed, and what didn't" },

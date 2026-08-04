@@ -30,7 +30,7 @@ function Img({ src, alt, aspect = "16/9", fit = "contain" }: { src: string; alt:
 
 function StatCards({ stats }: { stats: { value: string; label: string }[] }) {
   return (
-    <div className="col-wide grid grid-cols-2 sm:grid-cols-3 gap-[2px]">
+    <div className="col-wide media-inset grid grid-cols-2 sm:grid-cols-3 gap-[2px]">
       {stats.map((stat) => (
         <div key={stat.label} className="flex flex-col gap-2 rounded-xl px-6 sm:px-8 py-5" style={{ background: "var(--card)" }}>
           <p className="font-semibold tabular-nums" style={{ fontSize: "clamp(30px, 4vw, 46px)", letterSpacing: "-0.03em", lineHeight: 1, color: "var(--pop)" }}>
@@ -96,7 +96,7 @@ export default function SaXdCaseStudy() {
         }
       />
 
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <LightboxFrame alt="Where the 360 feedback experience broke down across the performance cycle">
           <Image
             src="/case-study/sa-xd/xd-1.webp"
@@ -127,7 +127,7 @@ export default function SaXdCaseStudy() {
           would be used</strong> or who would see it.
         </p>
       </Prose>
-      <div className="col-wide">
+      <div className="col-wide media-inset">
         <Img src="/case-study/sa-xd/xd-1.1.webp" alt="Detail of the 360 feedback experience breakdown" aspect="1422/652" fit="cover" />
         <p className="figure-caption">Detail view: the 360 feedback process was disconnected from the moments where leaders needed to use it.</p>
       </div>
@@ -157,7 +157,7 @@ export default function SaXdCaseStudy() {
           ))}
         </div>
       </Prose>
-      <div className="col-wide grid grid-cols-1 items-start gap-12">
+      <div className="col-wide media-inset grid grid-cols-1 items-start gap-10">
         {PRINCIPLES.map((principle, index) => (
           <figure key={principle.visual} className="flex flex-col gap-0">
             <LightboxFrame alt={principle.title}>
@@ -184,13 +184,13 @@ export default function SaXdCaseStudy() {
           and making the entire process anonymous by design.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <Img src="/case-study/sa-xd/sa-xd-12-2.webp" alt="Feedback form: competency-based ratings, required qualitative comments, fully anonymous" aspect="1345/672" />
         <figcaption className="figure-caption">Feedback form: competency-based ratings, required qualitative comments, fully anonymous.</figcaption>
       </figure>
       <Prose>
         <p>
-          The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em>
+          The bet wasn&apos;t obviously safe. Full anonymity could have made leaders trust the feedback <em>less</em>{" "}
           (it&apos;s easy to dismiss a critique you can&apos;t attribute), and &ldquo;compared to peers&rdquo; framing
           risked turning a growth tool into a ranking. We were trading those risks for candor, and wouldn&apos;t know
           which way it broke until the pilot.
@@ -202,7 +202,7 @@ export default function SaXdCaseStudy() {
           directly alongside the performance data leaders collected.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <LightboxFrame alt="Calibration one-pager: 360 feedback as first-class input with peer comparison graph and written feedback">
           <Image
             src="/case-study/sa-xd/sa-xd-13-2.webp"
@@ -226,7 +226,7 @@ export default function SaXdCaseStudy() {
           and how it shaped performance conversations.
         </p>
       </Prose>
-      <div className="col-wide">
+      <div className="col-wide media-inset">
         <MeasureCarousel />
       </div>
 
@@ -246,7 +246,6 @@ export default function SaXdCaseStudy() {
           { value: "↑ 52%", label: "improvement in actionability: feedback used more actively in live calibrations" },
         ]}
       />
-      <p className="col-wide mono-label">Directional figures from the pilot study: the signal that convinced HR to invest in an in-house platform.</p>
       <Prose>
         <p>
           That in-house platform became PATH (the next case study), where this pilot&apos;s bet got built for the
@@ -265,11 +264,6 @@ export default function SaXdCaseStudy() {
           sense of ownership that carried the project forward. It also taught me that measurement isn&apos;t
           something you do after launch; it&apos;s how you understand whether the work is resonating, and how you
           earn the next phase.
-        </p>
-        <p>
-          It also gave me a clearer sense of where I&apos;d grow next. We took on a lot of change at once, and in
-          hindsight I&apos;d be more intentional about managing scope, thin-slicing the problem, and sequencing bigger
-          bets so the impact of each decision can be seen more clearly.
         </p>
       </Prose>
     </CaseStudyShell>

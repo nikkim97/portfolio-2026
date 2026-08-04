@@ -41,7 +41,7 @@ export function Screenshot({
   priority?: boolean;
 }) {
   return (
-    <figure className="flex flex-col gap-2">
+    <figure className="media-inset flex flex-col gap-2">
       {src ? (
         <LightboxFrame alt={label}>
           <div
@@ -311,8 +311,8 @@ export function Figure({
 
   return (
     <figure
-      className={FIGURE_COL[variant]}
-      style={maxWidth ? { width: "100%", maxWidth, marginInline: "auto" } : undefined}
+      className={`${FIGURE_COL[variant]} media-inset`}
+      style={maxWidth ? { maxWidth } : undefined}
     >
       {src ? (
         <LightboxFrame alt={alt}>
@@ -361,7 +361,7 @@ export function FigureGroup({
   caption?: ReactNode;
 }) {
   return (
-    <div className="col-wide">
+    <div className="col-wide media-inset">
       <div className={`grid gap-4 items-start ${FIGURE_GROUP_COLS[cols]}`}>{children}</div>
       {caption && (
         <div className="figure-caption">{caption}</div>

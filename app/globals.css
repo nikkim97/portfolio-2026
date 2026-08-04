@@ -212,6 +212,12 @@ button:focus-visible,
   margin-top: 8px;
 }
 
+.media-inset {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
 .serif-display {
   font-family: var(--font-serif), Georgia, "Times New Roman", serif;
   letter-spacing: -0.01em;

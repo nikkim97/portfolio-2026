@@ -45,9 +45,9 @@ function PillarKey() {
   );
 }
 
-function PhoneGrid({ children }: { children: ReactNode; cols?: 3 | 4 }) {
+function PhoneGrid({ children, cols = 3 }: { children: ReactNode; cols?: 3 | 4 }) {
   return (
-    <div className="col-wide grid grid-cols-1 gap-6 items-start">
+    <div className={`col-wide media-inset grid grid-cols-1 gap-6 items-start ${cols === 4 ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
       {children}
     </div>
   );
@@ -75,7 +75,7 @@ export default function TimeTrackerCaseStudy() {
         }
       />
 
-      <div className="col-wide mx-auto w-full" style={{ maxWidth: 600 }}>
+      <div className="col-wide media-inset">
         <Screenshot
           src="/case-study/time-track/herofinal.webp"
           aspect="731/1456"
@@ -138,36 +138,7 @@ export default function TimeTrackerCaseStudy() {
         <Screenshot src="/case-study/time-track/onbaord3.webp" aspect={PHONE_ASPECT} label="Onboarding step 4: completion" caption="Onboarding · complete" />
       </PhoneGrid>
 
-      <SectionHeader index="03" label="The evolution" heading="The donut was the first cut, not the final one" />
-      <Prose>
-        <p>
-          I was the person I was building for. I get stumped when someone asks where my time is going, and I knew
-          I&apos;d reach for this constantly, so the UX decisions came fast and felt aligned to what I needed. A lot
-          of the vibe coding got refined in the same pass, tightening the build as the design got sharper.
-        </p>
-        <p>
-          My first version was built on web with a donut chart, but the two didn&apos;t align well with the abstract
-          outcomes I was trying to ground. A donut can tell you what happened, but it makes you decode whether
-          the week reflected the life you were trying to live. I didn&apos;t want a pretty summary; I wanted a
-          moment of accountability. The question was not just <em>where did my time go?</em> It was <em>did my
-          time go where I said it mattered?</em> That is why the second version moved to goal-versus-actual bars
-          and plain-language feedback: make the gap between intention and reality obvious without making you do
-          math. It became the version I actually use.
-        </p>
-      </Prose>
-      <PhoneGrid>
-        <PhoneFrame maxWidth={520}>
-          <Screenshot src="/case-study/time-track/v1.1.webp" aspect={PHONE_ASPECT} label="V1 dashboard: the donut breakdown with pillar cards and the generated insight line" caption="V1 · the donut: shape of the week, weak on 'am I on target'" />
-        </PhoneFrame>
-        <PhoneFrame maxWidth={520}>
-          <Screenshot src="/case-study/time-track/v1.3.webp" aspect={PHONE_ASPECT} label="V1 goal vs. reality: paired goal and actual bars per pillar with plus/minus deltas" caption="V1 · goal vs. reality lived behind a flip. V2 made it the front door" />
-        </PhoneFrame>
-        <PhoneFrame maxWidth={520}>
-          <Screenshot src="/case-study/time-track/v1.2.webp" aspect={PHONE_ASPECT} label="V1 calendar: a month grid with a colored dot per pillar logged each day" caption="V1 · the calendar: a dot per pillar, per day" />
-        </PhoneFrame>
-      </PhoneGrid>
-
-      <SectionHeader index="04" label="The reflection" heading="It's fun to see my ideas come to life" />
+      <SectionHeader index="03" label="The reflection" heading="It's fun to see my ideas come to life" />
       <Prose>
         <p>
           Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that judgment
@@ -175,7 +146,7 @@ export default function TimeTrackerCaseStudy() {
           and shipping a coherent one.
         </p>
       </Prose>
-      <div className="col-wide">
+      <div className="col-wide media-inset">
         <HeroVideo
           src="/case-study/time-track/regular-flow.mp4"
           poster="/case-study/time-track/regular-flow-poster.webp"

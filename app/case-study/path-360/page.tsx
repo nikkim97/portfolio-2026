@@ -43,6 +43,7 @@ const SESSION_PREP_IMAGES = [
     alt: "Session management UI showing grouped calibration sessions and setup controls",
     aspect: "1440/1401",
     caption: "Generated sessions: groups, controls, and session details surfaced in one workspace.",
+    callout: SESSION_PREP_PRINCIPLES[0],
   },
   {
     src: "/case-study/pa-xd/manage2.webp",
@@ -82,6 +83,29 @@ function Img({
   );
 }
 
+function HoverCallout({ text }: { text: string }) {
+  return (
+    <button
+      type="button"
+      aria-label={`Show annotation: ${text}`}
+      className="group absolute z-10 h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-help rounded-full focus:outline-none"
+      style={{ left: "34.5%", top: "17.7%" }}
+    >
+      <span className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--accent)] bg-[var(--accent-text)]/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100" />
+      <span
+        className="pointer-events-none absolute left-10 top-1/2 w-[min(320px,70vw)] -translate-y-1/2 rounded-xl px-4 py-3 text-left text-[13px] leading-relaxed opacity-0 shadow-2xl transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+        style={{
+          background: "rgba(28, 25, 20, 0.94)",
+          color: "var(--foreground)",
+          border: "1px solid var(--border)",
+        }}
+      >
+        {text}
+      </span>
+    </button>
+  );
+}
+
 function NumberedList({ items }: { items: string[] }) {
   return (
     <div role="list" className="not-prose flex flex-col gap-4">
@@ -108,8 +132,8 @@ export default function Path360CaseStudy() {
         eyebrow="Principal Associate, Experience Design · PATH"
         title={
           <>
-            Calibration sessions were held inconsistently across the enterprise. I designed a scalable system
-            that brought structure, trust, and shared context into the room
+            Calibrations were held inconsistently across the enterprise. I designed a system that brought
+            structure, trust, and shared content into the room
             <span style={{ color: "var(--accent)" }}>.</span>
           </>
         }
@@ -127,7 +151,7 @@ export default function Path360CaseStudy() {
         }
       />
 
-      <div className="col-wide">
+      <div className="col-wide media-inset">
         <HeroVideo
           src="/case-study/pa-xd/hero2.mp4"
           poster="/case-study/pa-xd/hero2-poster.webp"
@@ -155,7 +179,7 @@ export default function Path360CaseStudy() {
           from how sessions are created and managed to what leaders see in the room when decisions are being made.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <Img src="/case-study/pa-xd/image2.webp" alt="Early whiteboard sessions mapping the end-to-end calibration workflow" aspect="1606/658" fit="cover" />
         <figcaption className="figure-caption">Early whiteboard sessions helped us map the full calibration journey, far messier than the pilot suggested.</figcaption>
       </figure>
@@ -174,7 +198,7 @@ export default function Path360CaseStudy() {
           them into one, then narrowed scope to what a single MVP could actually serve.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <Img src="/case-study/pa-xd/image2.5-clean.webp" alt="The three calibration personas: people leaders, PM champs / HRBPs, and facilitators, and what each needs" aspect="1756/608" fit="contain" />
         <figcaption className="figure-caption">Three personas, three different needs: from a single consistent prep space to flexible tools for editing ratings.</figcaption>
       </figure>
@@ -186,7 +210,7 @@ export default function Path360CaseStudy() {
           would change the quality of the session.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <Img src="/case-study/pa-xd/image3.webp" alt="Persona journey map: people leaders, HRBPs, and facilitators across prep, live, and post calibration" aspect="1558/632" fit="cover" />
         <figcaption className="figure-caption">Personas mapped across the calibration journey: each role&apos;s jobs-to-be-done at every phase.</figcaption>
       </figure>
@@ -206,10 +230,13 @@ export default function Path360CaseStudy() {
         </p>
         <NumberedList items={SESSION_PREP_PRINCIPLES} />
       </Prose>
-      <figure className="col-wide grid grid-cols-1 items-start gap-6">
+      <figure className="col-wide media-inset grid grid-cols-1 items-start gap-6">
         {SESSION_PREP_IMAGES.map((image) => (
           <figure key={image.src}>
-            <Img src={image.src} alt={image.alt} aspect={image.aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+            <div className="relative">
+              <Img src={image.src} alt={image.alt} aspect={image.aspect} fit="contain" sizes="(max-width: 768px) 100vw, min(50vw, 620px)" />
+              {image.callout && <HoverCallout text={image.callout} />}
+            </div>
             <figcaption className="figure-caption">{image.caption}</figcaption>
           </figure>
         ))}
@@ -230,14 +257,14 @@ export default function Path360CaseStudy() {
         </p>
         <NumberedList items={LIVE_CALIBRATION_PRINCIPLES} />
       </Prose>
-      <figure className="col-wide grid grid-cols-1 gap-y-8">
-        <figure>
-          <Img src="/case-study/pa-xd/04-2.webp" alt="Live calibration UI showing an individual associate deep-dive panel" aspect="1440/1779" fit="contain" />
-          <figcaption className="figure-caption">Associate deep-dive: evidence and calibration context opened without leaving the live room.</figcaption>
-        </figure>
+      <figure className="col-wide media-inset grid grid-cols-1 gap-y-8">
         <figure>
           <Img src="/case-study/pa-xd/04-3.webp" alt="Live calibration UI showing 360 feedback surfaced during a session" aspect="1440/1779" fit="contain" />
           <figcaption className="figure-caption">360 feedback in session: qualitative evidence stayed visible while leaders made rating decisions.</figcaption>
+        </figure>
+        <figure>
+          <Img src="/case-study/pa-xd/04-2.webp" alt="Live calibration UI showing an individual associate deep-dive panel" aspect="1440/1779" fit="contain" />
+          <figcaption className="figure-caption">Associate deep-dive: evidence and calibration context opened without leaving the live room.</figcaption>
         </figure>
       </figure>
 
@@ -254,7 +281,7 @@ export default function Path360CaseStudy() {
           post-session. The signal was clear enough to accelerate the enterprise rollout.
         </p>
       </Prose>
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <Img src="/case-study/pa-xd/group12.png" alt="Early feedback from the field: leader and HR partner testimonials from the pilot" aspect="1667/871" fit="cover" />
         <figcaption className="figure-caption">Early feedback from the field: leaders felt more prepared, conversations felt more fair.</figcaption>
       </figure>
@@ -267,10 +294,9 @@ export default function Path360CaseStudy() {
           alongside the 360 feedback experience.
         </p>
       </Prose>
-      <div className="col-wide grid grid-cols-1 gap-[2px] sm:grid-cols-3">
+      <div className="col-wide media-inset grid grid-cols-1 gap-[2px] sm:grid-cols-2">
         {[
           { value: "4 out of 5", label: "Calibration sessions reported fewer disputes and stronger post-session alignment" },
-          { value: "↑ 70,000+", label: "employees across Capital One, scaled from an 800-person pilot" },
           { value: "86%", label: "HR partners reported reduced escalations and cleaner outcomes in sessions using PATH" },
         ].map((outcome) => (
           <div key={outcome.label} className="flex flex-col justify-center gap-2 rounded-xl px-5 sm:px-6 py-4" style={{ background: "var(--card)" }}>
@@ -281,24 +307,7 @@ export default function Path360CaseStudy() {
           </div>
         ))}
       </div>
-      <p className="col-wide mono-label">Directional figures from the pilot and early rollout; the 70,000+ reflects full enterprise scale.</p>
 
-      <SectionHeader index="07" label="The reflection" heading="What enterprise scale taught me" />
-      <Prose>
-        <p>
-          Building this ecosystem taught me what it means to design at enterprise scale, where the system has to
-          hold for every edge case, not just the happy path.
-        </p>
-        <p>
-          The work that mattered most wasn&apos;t the interface. It was the alignment work: getting HR, engineering,
-          product, and business stakeholders onto the same model of what calibration should do and for whom.
-          Design was the medium for that conversation.
-        </p>
-        <p>
-          I also learned that launching isn&apos;t the end. The most valuable research happened after PATH was in the
-          field, when real users surfaced problems we never would have caught in a lab.
-        </p>
-      </Prose>
     </CaseStudyShell>
   );
 }

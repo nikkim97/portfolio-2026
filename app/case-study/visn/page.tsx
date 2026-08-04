@@ -66,10 +66,6 @@ export default function VisnCaseStudy() {
           We wanted to build that. A system that could tell you: where you&apos;re going, what&apos;s in your way, and
           which direction you&apos;re facing, all through your ears, hands-free.
         </p>
-        <p>
-          At 21 I scoped this as a hardware gap: what the sensors could detect. What I&apos;d frame now is the
-          user&apos;s gap: blind travelers navigate the familiar fluently; it&apos;s the unfamiliar that breaks down.
-        </p>
       </Prose>
       <Figure
         variant="wide"
@@ -132,7 +128,7 @@ export default function VisnCaseStudy() {
         fit="contain"
         caption="The wearable setup: sensors, Arduino, and compass inside a fanny pack worn on the chest; the Android app handled navigation and obstacle alerts."
       />
-      <figure className="col-wide">
+      <figure className="col-wide media-inset">
         <div
           className="rounded-xl px-5 py-8"
           style={{ background: "#D5CFC0" }}
@@ -166,18 +162,10 @@ export default function VisnCaseStudy() {
       <SectionHeader index="05" label="The reflection" heading="If I built VISN today" />
       <Prose>
         <p>
-          Here&apos;s what I didn&apos;t know at the time: product design existed as a discipline. I was the project
-          manager and the engineer on this team, and I thought that was the whole job. The fanny pack call, the
-          audio-first interface, the decision to build around dignity, those came from instinct, not training.
-        </p>
-        <p>
-          I still think those instincts were right. But I can see now how much further we could have taken them
-          with the tools I&apos;ve learned since. Seven years later, some of what I&apos;d change is technical: the
-          hardware is smaller, the sensors are better, indoor positioning actually works. But most of what I&apos;d
-          change is about the experience itself, starting with the work it takes to earn it: I&apos;d shadow how
-          blind travelers already move through a route they know by heart, then design only for the gap between
-          that and an unfamiliar one, instead of scoping for &ldquo;navigation&rdquo; in the abstract and letting the
-          hardware decide what the product was.
+          I didn&apos;t know product design existed as a discipline yet. I was the project manager and engineer, so
+          most of the product calls came from instinct: make it wearable, audio-first, and dignified. If I built
+          VISN now, I&apos;d start with the lived experience first: shadow how blind travelers move through familiar
+          routes, then design for the moments where the unfamiliar breaks down.
         </p>
       </Prose>
       <Figure
