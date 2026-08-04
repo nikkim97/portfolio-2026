@@ -131,6 +131,9 @@ const CARD_W = 395;
 // Uniform image-band height for all project/horizon cards (image or placeholder).
 const CARD_IMG_H = 340;
 const SURFER_ANCHOR_Y = 68;
+const JOURNEY_LANE_SCALE = 0.76;
+const JOURNEY_LANE_TRANSFORM = `translate(${SVG_W / 2} 0) scale(${JOURNEY_LANE_SCALE} 1) translate(${-SVG_W / 2} 0)`;
+const compressJourneyX = (x: number) => SVG_W / 2 + (x - SVG_W / 2) * JOURNEY_LANE_SCALE;
 
 type PathSample = { len: number; x: number; y: number; screenY: number };
 
@@ -282,7 +285,8 @@ export default function SurferJourney() {
         // Transform-only positioning: left/top stay constant (set once in JSX)
         // so the surfer moves on the compositor without triggering layout each
         // frame. The px offsets ride on top of the container-centered anchor.
-        s.style.transform = `translate(calc(-50% + ${best.x}px), calc(-${SURFER_ANCHOR_Y}% + ${best.y}px)) scaleX(${flipX}) rotate(${tilt}deg)`;
+        const surferX = compressJourneyX(best.x);
+        s.style.transform = `translate(calc(-50% + ${surferX}px), calc(-${SURFER_ANCHOR_Y}% + ${best.y}px)) scaleX(${flipX}) rotate(${tilt}deg)`;
       }
 
       // Passed set only grows (monotonic) — once the surfer reaches an anchor's
@@ -338,34 +342,37 @@ export default function SurferJourney() {
         className="absolute pointer-events-none"
         style={{ left: "50%", transform: "translateX(-50%)", top: 0 }}
       >
-        <path
-          ref={pathRef as React.Ref<SVGPathElement>}
-          d={WAVE_PATH_D} stroke="var(--border)" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.72"
-        />
-        <path
-          ref={drawPathRef}
-          d={WAVE_PATH_D}
-          stroke="var(--accent-deep)"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        <g transform={JOURNEY_LANE_TRANSFORM}>
+          <path
+            ref={pathRef as React.Ref<SVGPathElement>}
+            d={WAVE_PATH_D} stroke="var(--border)" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.72"
+          />
+          <path
+            ref={drawPathRef}
+            d={WAVE_PATH_D}
+            stroke="var(--accent-deep)"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
 
         {WAVE_ANCHORS.map((a, i) => {
           const node = journeyNodes[i];
           const isCareer = node.type === "career";
           const passed = isPassed[i];
+          const anchorX = compressJourneyX(a.x);
           return (
             <g key={i}>
               {!isCareer && (
-                <circle cx={a.x} cy={a.y} r={passed ? 10 : 8}
+                <circle cx={anchorX} cy={a.y} r={passed ? 10 : 8}
                   fill="var(--foreground)" opacity={passed ? 0.18 : 0.1}
                   style={{ transition: "r 0.3s ease, opacity 0.3s ease" }}
                 />
               )}
               <circle
-                cx={a.x} cy={a.y}
+                cx={anchorX} cy={a.y}
                 r={isCareer ? 3 : 4.5}
                 fill={isCareer && !passed ? "var(--background)" : "var(--foreground)"}
                 stroke={isCareer && !passed ? "var(--midtone)" : "none"}
@@ -373,7 +380,7 @@ export default function SurferJourney() {
               />
               {passed && !prefersReduced && (
                 <motion.circle
-                  cx={a.x} cy={a.y} r={isCareer ? 6 : 9}
+                  cx={anchorX} cy={a.y} r={isCareer ? 6 : 9}
                   fill="none" stroke="var(--foreground)" strokeWidth="1"
                   style={{ originX: 0.5, originY: 0.5 }}
                   initial={{ scale: 1, opacity: 0.65 }}
@@ -383,7 +390,7 @@ export default function SurferJourney() {
               )}
               {passed && !prefersReduced && (
                 <motion.circle
-                  cx={a.x} cy={a.y} r={isCareer ? 4 : 6}
+                  cx={anchorX} cy={a.y} r={isCareer ? 4 : 6}
                   fill="none" stroke="var(--foreground)" strokeWidth="0.8"
                   style={{ originX: 0.5, originY: 0.5 }}
                   initial={{ scale: 1, opacity: 0.4 }}
@@ -425,9 +432,10 @@ export default function SurferJourney() {
         const isCareer = node.type === "career";
         const inZone = activeIdx === i;
         const GAP = 14;
+        const anchorX = compressJourneyX(a.x);
 
-        const posLeft = isRight ? `calc(50% - ${SVG_W / 2}px + ${a.x + GAP}px)` : undefined;
-        const posRight = !isRight ? `calc(50% - ${SVG_W / 2}px + ${SVG_W - a.x + GAP}px)` : undefined;
+        const posLeft = isRight ? `calc(50% - ${SVG_W / 2}px + ${anchorX + GAP}px)` : undefined;
+        const posRight = !isRight ? `calc(50% - ${SVG_W / 2}px + ${SVG_W - anchorX + GAP}px)` : undefined;
 
         // Career nodes: simple left-border text style
         if (isCareer) {
