@@ -48,7 +48,6 @@ export default function BloomCaseStudy() {
           aspect="1060/992"
           priority
           label="Hero, Bloom V1 homepage: 'Every relationship has a nature'"
-          caption="V1 homepage running on localhost:3000, March 23 2026"
         />
       </div>
 

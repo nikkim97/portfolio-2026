@@ -147,8 +147,9 @@ export default function PeopleLeaderRedesignCaseStudy() {
           in 72 hours (what typically takes weeks of fragmented virtual work), its impact carried well past the
           sprint:
         </p>
-        <div className="pulse-list" role="list">
-          <div className="pulse-list-item" role="listitem">
+        <div className="numbered-note-list" role="list">
+          <div className="numbered-note" role="listitem">
+            <span className="numbered-note-index" aria-hidden>1</span>
             <span>
               <strong className="font-bold text-[var(--foreground)]">Cross-functional alignment.</strong>{" "}
               The
@@ -156,14 +157,16 @@ export default function PeopleLeaderRedesignCaseStudy() {
               Reviews.
             </span>
           </div>
-          <div className="pulse-list-item" role="listitem">
+          <div className="numbered-note" role="listitem">
+            <span className="numbered-note-index" aria-hidden>2</span>
             <span>
               <strong className="font-bold text-[var(--foreground)]">Process evolution.</strong>{" "}
               The HR team
               refined the &ldquo;My Team&rdquo; sprint methodology through subsequent sprints and retrospectives.
             </span>
           </div>
-          <div className="pulse-list-item" role="listitem">
+          <div className="numbered-note" role="listitem">
+            <span className="numbered-note-index" aria-hidden>3</span>
             <span>
               <strong className="font-bold text-[var(--foreground)]">A reusable toolkit.</strong>{" "}
               Those learnings

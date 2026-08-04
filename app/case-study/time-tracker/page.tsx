@@ -76,14 +76,15 @@ export default function TimeTrackerCaseStudy() {
       />
 
       <div className="col-wide media-inset">
-        <Screenshot
-          expandable={false}
-          src="/case-study/time-track/herofinal.webp"
-          aspect="16/9"
-          label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
-          caption="Final mobile dashboard: weekly balance, pillar breakdowns, and progress against target time."
-          priority
-        />
+        <div className="mx-auto w-full" style={{ maxWidth: 420 }}>
+          <Screenshot
+            expandable={false}
+            src="/case-study/time-track/herofinal.webp"
+            aspect="731/1456"
+            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
+            priority
+          />
+        </div>
       </div>
 
       <SectionHeader index="01" label="The concept" heading="Budget your time the way you budget money" />

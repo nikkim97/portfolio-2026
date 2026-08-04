@@ -32,6 +32,7 @@ export function Screenshot({
   expandable = true,
   fit = "contain",
   position = "center",
+  scale = 1,
   priority = false,
 }: {
   label: string;
@@ -44,6 +45,7 @@ export function Screenshot({
   expandable?: boolean;
   fit?: "contain" | "cover";
   position?: string;
+  scale?: number;
   priority?: boolean;
 }) {
   const [aspectWidth, aspectHeight] = aspect.split("/").map((value) => Number.parseFloat(value.trim()));
@@ -67,7 +69,7 @@ export function Screenshot({
               alt={label}
               fill
               className={fit === "cover" ? "object-cover" : "object-contain"}
-              style={{ objectPosition: position }}
+              style={{ objectPosition: position, transform: scale === 1 ? undefined : `scale(${scale})` }}
               sizes="(max-width: 640px) 90vw, 45vw"
               priority={priority}
             />
