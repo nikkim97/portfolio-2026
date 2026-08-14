@@ -8,26 +8,26 @@ const PRINCIPLES = [
   {
     key: "systems",
     tab: "Strategy",
-    title: "I think in systems",
-    body: "I want the things I make to keep working long after I've moved on, so I start by mapping systems and thinking strategically about the problem we're solving.",
+    title: "Think in systems",
+    body: "I design for what happens beyond the first launch. That means understanding the broader system, the incentives within it, and how an experience needs to hold up as it evolves.",
   },
   {
     key: "other-end",
     tab: "Audience",
-    title: "Someone is on the other end",
-    body: "I left engineering for design because I kept wondering who was actually using the systems I built. Figuring out who we're solving for still starts every project.",
+    title: "Start with the person",
+    body: "I moved from engineering to design because I wanted to get closer to the people using what I built. Understanding their context, needs, and decision-making is where every project begins.",
   },
   {
     key: "simplicity",
     tab: "Simplicity",
-    title: "Less is a decision",
-    body: "Complex problems don't need complex solutions, they need someone willing to make calls. If a feature, a word, or a pixel isn't doing a job, I cut it.",
+    title: "Make the call",
+    body: "Complexity is often necessary behind the scenes—not in the experience itself. I simplify by deciding what matters most and removing what doesn't.",
   },
   {
     key: "build",
     tab: "Feasibility",
-    title: "I design what I can build",
-    body: "My engineering foundations keep me honest about what's possible. I'll always design things I can build too.",
+    title: "Build toward real",
+    body: "My engineering background helps me work productively within constraints and recognize where to push them. I design with a clear path to making the work real.",
   },
 ];
 
