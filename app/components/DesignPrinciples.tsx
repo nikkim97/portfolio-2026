@@ -6,26 +6,26 @@ const PRINCIPLES = [
   {
     key: "systems",
     tab: "Strategy",
-    title: "Think in systems",
-    body: "Design beyond launch. Understand the broader system, its incentives, and how the experience evolves.",
+    title: "I think in systems.",
+    body: "I design beyond the moment of launch by considering the broader system, the incentives that shape it, and how an experience may evolve over time.",
   },
   {
     key: "other-end",
     tab: "Audience",
-    title: "Start with the person",
-    body: "Begin with context, needs, and decision-making. Get closer to the people using what I build.",
+    title: "I start with the person.",
+    body: "I begin by understanding the context people are in, what they need, and how they make decisions. The closer I can get to the people using a product, the better I can build for them.",
   },
   {
     key: "simplicity",
     tab: "Simplicity",
-    title: "Make the call",
-    body: "Decide what matters. Keep complexity behind the scenes and remove what doesn't belong in the experience.",
+    title: "I make the call.",
+    body: "I believe good design requires judgment. I focus on what matters most, keep unnecessary complexity behind the scenes, and remove anything that does not earn its place in the experience.",
   },
   {
     key: "build",
     tab: "Feasibility",
-    title: "Build toward real",
-    body: "Design with a clear path to shipping. Work within constraints and recognize where to push them.",
+    title: "I build toward something real.",
+    body: "I design with a clear path to shipping in mind. I work within constraints, while also recognizing when those constraints need to be challenged to make the work better.",
   },
 ];
 
@@ -38,11 +38,13 @@ export default function DesignPrinciples() {
             key={principle.key}
             className="flex flex-col"
           >
-            <span className="font-light leading-none tabular-nums text-[var(--accent)]" style={{ fontSize: "clamp(24px, 2.4vw, 30px)", opacity: 0.82 }}>
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <p className="mt-3 text-base font-normal leading-[1.75]" style={{ color: "var(--body)" }}>
-              <strong className="font-semibold uppercase tracking-[0.08em] text-[var(--foreground)]">{principle.title}</strong>
+            <p className="text-base font-normal leading-[1.75]" style={{ color: "var(--body)" }}>
+              <strong className="font-semibold uppercase tracking-[0.08em] text-[var(--foreground)]">
+                <span className="font-light tabular-nums text-[var(--accent)]" style={{ fontSize: "clamp(24px, 2.4vw, 30px)", opacity: 0.82 }}>
+                  {String(index + 1).padStart(2, "0")} —
+                </span>{" "}
+                {principle.title}
+              </strong>
               <br />
               {principle.body}
             </p>

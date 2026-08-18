@@ -176,9 +176,14 @@ export default function AboutCarousel() {
       >
         When I&apos;m not building
       </p>
-      <p className="text-base font-normal leading-[1.9] md:max-w-[72%]" style={{ color: "var(--body)" }}>
-        I&apos;ve grown up across two countries and two cultures, and moving around has taught me to meet unfamiliar places, people, and ways of thinking with curiosity. Travel, surfing, and hiking keep that same part of me alive: I&apos;m at my best when I&apos;m learning, adapting, and figuring things out as I go.
-      </p>
+      <div className="flex flex-col gap-5 text-base font-normal leading-[1.9] md:max-w-[72%]" style={{ color: "var(--body)" }}>
+        <p>
+          I grew up across two countries and cultures, and moving between them taught me to meet unfamiliar places, people, and ways of thinking with curiosity. That perspective continues to shape how I approach both work and life.
+        </p>
+        <p>
+          Travel, surfing, and hiking help me stay connected to that part of myself. I&apos;m at my best when I&apos;m learning, adapting, and figuring things out as I go.
+        </p>
+      </div>
       <PinnedGallery />
     </div>
   );

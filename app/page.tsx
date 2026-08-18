@@ -293,7 +293,8 @@ export default function Home() {
             </p>
 		            <div className="flex flex-col gap-5 text-base font-normal leading-[1.9] md:max-w-[72%]" style={{ color: "var(--body)" }}>
 	              {[
-	                "I started in engineering because I've always wanted to understand how things work. Design became the natural next step: a way to get closer to why people think, struggle, and make decisions. Building with AI has made that loop faster, but the way I build stays consistent:",
+	                "I started in engineering because I've always wanted to understand how things work. Over time, design became the natural next step because it gave me a way to explore not only how things are made, but also why people think, struggle, and make decisions the way they do.",
+	                "Building with AI has made the loop between idea and execution much faster. Still, the principles behind how I work have stayed the same.",
 	              ].map((p, i) => (
 	                <FadeIn key={i} delay={i * 0.08} distance={12}>
 	                  <p>{p}</p>
