@@ -138,12 +138,10 @@ export default function Home() {
         aria-hidden
         className="fixed inset-0 pointer-events-none"
         style={{
-          zIndex: 0,
-          backgroundColor: "var(--background)",
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.13'/%3E%3C/svg%3E\")",
-        }}
-      />
+	          zIndex: 0,
+	          backgroundColor: "var(--background)",
+	        }}
+	      />
       {/* Progress bar */}
       <motion.div
         style={{ scaleX, transformOrigin: "left" }}
@@ -336,7 +334,7 @@ export default function Home() {
                   { label: "Email", href: "mailto:niharikamishr@gmail.com" },
                   { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
                   { label: "GitHub", href: "https://github.com/nikkim97", external: true },
-                  { label: "Substack", href: "https://substack.com/@nikkim97", external: true },
+	                  { label: "X", href: "https://x.com/nikkimishra97", external: true },
                   { label: "Résumé", href: "/nikki-resume1.pdf", external: true },
                 ].map(({ label, href, external }) => (
                   <a
