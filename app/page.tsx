@@ -287,26 +287,23 @@ export default function Home() {
         <section id="about" className="py-12 sm:py-16 flex flex-col gap-20">
 
 
-          <div className="flex flex-col gap-10 md:gap-12">
+	          <div className="flex flex-col gap-5 md:gap-6">
             <p className="font-light text-[var(--foreground)]" style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}>
-              <WordStaggerLine text="So, what keeps me going?" trigger="inView" perWord={0.07} duration={0.9} />
+	              <WordStaggerLine text="So, what keeps me building?" trigger="inView" perWord={0.07} duration={0.9} />
             </p>
-            <div className="flex flex-col gap-5 text-base font-normal leading-[1.9]" style={{ color: "var(--body)" }}>
+		            <div className="flex flex-col gap-5 text-base font-normal leading-[1.9] md:max-w-[72%]" style={{ color: "var(--body)" }}>
 	              {[
-	                "I started in engineering because I've always wanted to understand how things work. Design became the natural next step: a way to get closer to why people think, struggle, and make decisions. I think in systems, design for humans, and care about getting ideas all the way to something real.",
-	                "Building with AI has made that loop faster. I can move from an insight to a working product quickly, and my engineering foundation helps me understand what's possible—and where to push it. That combination of systems thinking, craft, and making is what keeps me excited about the work.",
-	                "Travel, surfing, and hiking keep me curious for the same reason: I like being stretched by something unfamiliar. I'm at my best when I'm learning, adapting, and figuring things out as I go.",
+	                "I started in engineering because I've always wanted to understand how things work. Design became the natural next step: a way to get closer to why people think, struggle, and make decisions. Building with AI has made that loop faster, but the way I build stays consistent:",
 	              ].map((p, i) => (
-                <FadeIn key={i} delay={i * 0.08} distance={12}>
-                  <p>{p}</p>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
+	                <FadeIn key={i} delay={i * 0.08} distance={12}>
+	                  <p>{p}</p>
+	                </FadeIn>
+	              ))}
+	            </div>
+	            <DesignPrinciples />
+	          </div>
 
-          <DesignPrinciples />
-
-          <AboutCarousel />
+	          <AboutCarousel />
 
           <div className="flex flex-col gap-6">
             <FadeIn>

@@ -14,17 +14,14 @@ type Photo = { src: string; caption: string };
 
 const PHOTOS: Photo[] = [
   { src: "/about/optimized/active.webp", caption: "Where I learned to trust my body and breathe." },
-  { src: "/about/optimized/vegan.webp", caption: "Vegan eats in Tokyo." },
   { src: "/about/optimized/music-2.webp", caption: "My first solo concert: just me and Dylan." },
   { src: "/about/optimized/active-3.webp", caption: "Hiking Acatenango, my first 13,000-foot volcanic summit." },
   { src: "/about/optimized/tea.webp", caption: "A tea ceremony in a Kyoto garden." },
-  { src: "/about/optimized/culture-3.webp", caption: "Taking in Japan's temples." },
-  { src: "/about/optimized/vegan-2.webp", caption: "Freshly made empanadas in Antigua." },
   { src: "/about/optimized/active-2.webp", caption: "Eighty feet down a Costa Rican waterfall." },
-  { src: "/about/optimized/tea-2.webp", caption: "Hiding in a Manhattan tea shop with a book." },
-  { src: "/about/optimized/music-3.webp", caption: "My sixth time seeing my favorite, Quinn XCII." },
-  { src: "/about/optimized/vegan-4.webp", caption: "The best vegan sushi, from two grandmothers in Kamakura." },
+  { src: "/about/optimized/vegan-2.webp", caption: "Freshly made empanadas in Antigua." },
   { src: "/about/optimized/culture-2.webp", caption: "Wandering into the Sahara." },
+  { src: "/about/optimized/tea-2.webp", caption: "Hiding in a Manhattan tea shop with a book." },
+  { src: "/about/optimized/vegan-4.webp", caption: "The best vegan sushi, from two grandmothers in Kamakura." },
 ];
 
 const GAP = 24;
@@ -178,6 +175,9 @@ export default function AboutCarousel() {
         style={{ fontSize: "clamp(18px, 2.2vw, 28px)", letterSpacing: "-0.015em", lineHeight: 1.2 }}
       >
         When I&apos;m not building
+      </p>
+      <p className="text-base font-normal leading-[1.9] md:max-w-[72%]" style={{ color: "var(--body)" }}>
+        I&apos;ve grown up across two countries and two cultures, and moving around has taught me to meet unfamiliar places, people, and ways of thinking with curiosity. Travel, surfing, and hiking keep that same part of me alive: I&apos;m at my best when I&apos;m learning, adapting, and figuring things out as I go.
       </p>
       <PinnedGallery />
     </div>
