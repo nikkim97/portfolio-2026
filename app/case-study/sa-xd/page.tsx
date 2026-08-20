@@ -101,7 +101,7 @@ function PrincipleFigure({ principle }: { principle: (typeof PRINCIPLES)[number]
 
 export default function SaXdCaseStudy() {
   return (
-    <CaseStudyShell context="Capital One · 2023 – 2024" currentHref="/case-study/sa-xd">
+    <CaseStudyShell context="Capital One · Dec 2023 – Sept 2024" currentHref="/case-study/sa-xd">
       <ArticleHero
         eyebrow="Design & Research Lead · Capital One"
         title={

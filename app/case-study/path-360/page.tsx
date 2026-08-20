@@ -131,7 +131,7 @@ function NumberedPoint({ index, text }: { index: number; text: string }) {
 
 export default function Path360CaseStudy() {
   return (
-    <CaseStudyShell context="Capital One · 2024 – 2025" currentHref="/case-study/path-360">
+    <CaseStudyShell context="Capital One · Dec 2024 – June 2025" currentHref="/case-study/path-360">
       <ArticleHero
         eyebrow="Principal Associate, Experience Design · PATH"
         title={

@@ -15,53 +15,37 @@ export interface JourneyNode {
 
 export const journeyNodes: JourneyNode[] = [
   {
-    id: "visn",
-    period: "2019",
-    role: "Engineering Student",
-    title: "VISN",
-    brief: "How can we help someone navigate a world they can't see?",
-    pills: ["Undergrad", "Hardware"],
-    href: "/case-study/visn",
+    id: "time-tracker",
+    period: "June 2026",
+    role: "Builder",
+    title: "Time Tracking Dashboard",
+    brief: "How can we help people see where their time is actually going?",
+    pills: ["Personal", "Codex"],
+    href: "/case-study/time-tracker",
+    type: "horizon",
+    image: { src: "/case-study/time-track/hero2.webp", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
+  },
+  {
+    id: "path-people",
+    period: "Feb – June 2026",
+    role: "Manager, Experience Design",
+    title: "Discover Integration Experience",
+    brief: "How do you turn a cashback debit customer into a full-time banking customer?",
+    pills: ["Capital One", "Mobile"],
+    href: "/case-study/discover-integration",
     type: "project",
-    image: { src: "/visn/Intro-pic.webp", alt: "VISN: wearable navigation system for visually impaired people", position: "38% top" },
+    image: { src: "/case-study/manager/hero2.webp", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
   },
   {
-    id: "asc-swe",
-    period: "2019–20",
-    role: "Associate, Software Engineer",
-    brief: "My first end-to-end build, and my first real taste of what it means to ship something people actually touch.",
-    pills: ["Capital One"],
-    type: "career",
-  },
-  {
-    id: "sr-swe",
-    period: "2020–22",
-    role: "Senior Associate, Data Engineer",
-    brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
-    pills: ["Capital One"],
-    type: "career",
-  },
-  {
-    id: "sa-xd",
-    period: "2022–23",
-    role: "Sr. Associate, Experience Design",
-    title: "360 Feedback",
-    brief: "How do you design feedback that people trust enough to act on?",
-    pills: ["Capital One", "Research"],
-    href: "/case-study/sa-xd",
-    type: "project",
-    image: { src: "/case-study/sa-xd/sa-xd-09.webp", alt: "360 feedback: many raters giving feedback on one person" },
-  },
-  {
-    id: "path-360",
-    period: "2024–25",
-    role: "Principal Associate, Experience Design",
-    title: "Calibrations Ecosystem",
-    brief: "How do you give people leaders the clarity they need to have real talent conversations?",
-    pills: ["Capital One", "Visual UI"],
-    href: "/case-study/path-360",
-    type: "project",
-    image: { src: "/case-study/pa-xd/hero1.webp", alt: "PATH calibrations ecosystem interface" },
+    id: "bloom",
+    period: "March 2026",
+    role: "Builder",
+    title: "Bloom",
+    brief: "How do you make talking about your differences feel less personal?",
+    pills: ["Personal", "Claude Code"],
+    href: "/case-study/bloom",
+    image: { src: "/case-study/bloom/hero-new.webp", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
+    type: "horizon",
   },
   {
     id: "people-leader-redesign",
@@ -75,37 +59,53 @@ export const journeyNodes: JourneyNode[] = [
     image: { src: "/case-study/pl-redesign/hero.webp", alt: "People Leader Redesign: aligning the experience with how leaders assess their people" },
   },
   {
-    id: "path-people",
-    period: "Jan 2026 – Present",
-    role: "Manager, Experience Design",
-    title: "Discover Integration Experience",
-    brief: "How do you turn a cashback debit customer into a full-time banking customer?",
-    pills: ["Capital One", "Mobile"],
-    href: "/case-study/discover-integration",
+    id: "path-360",
+    period: "Dec 2024 – June 2025",
+    role: "Principal Associate, Experience Design",
+    title: "Calibrations Ecosystem",
+    brief: "How do you give people leaders the clarity they need to have real talent conversations?",
+    pills: ["Capital One", "Visual UI"],
+    href: "/case-study/path-360",
     type: "project",
-    image: { src: "/case-study/manager/hero2.webp", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
+    image: { src: "/case-study/pa-xd/hero1.webp", alt: "PATH calibrations ecosystem interface" },
   },
   {
-    id: "bloom",
-    period: "2026",
-    role: "Builder",
-    title: "Bloom",
-    brief: "How do you make talking about your differences feel less personal?",
-    pills: ["Vibe Coded", "Claude"],
-    href: "/case-study/bloom",
-    image: { src: "/case-study/bloom/hero-new.webp", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
-    type: "horizon",
+    id: "sa-xd",
+    period: "Dec 2023 – Sept 2024",
+    role: "Sr. Associate, Experience Design",
+    title: "360 Feedback",
+    brief: "How do you design feedback that people trust enough to act on?",
+    pills: ["Capital One", "Research"],
+    href: "/case-study/sa-xd",
+    type: "project",
+    image: { src: "/case-study/sa-xd/sa-xd-09.webp", alt: "360 feedback: many raters giving feedback on one person" },
   },
   {
-    id: "time-tracker",
-    period: "2026",
-    role: "Builder",
-    title: "Time Tracking Dashboard",
-    brief: "How can we help people see where their time is actually going?",
-    pills: ["Vibe Coded", "Codex"],
-    href: "/case-study/time-tracker",
-    type: "horizon",
-    image: { src: "/case-study/time-track/hero2.webp", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
+    id: "sr-swe",
+    period: "2020–22",
+    role: "Senior Associate, Data Engineer",
+    brief: "I built data pipelines for credit card decisioning at scale, but kept asking the same question: who's actually on the other end of this?",
+    pills: ["Capital One"],
+    type: "career",
+  },
+  {
+    id: "asc-swe",
+    period: "2019–20",
+    role: "Associate, Software Engineer",
+    brief: "My first end-to-end build, and my first real taste of what it means to ship something people actually touch.",
+    pills: ["Capital One"],
+    type: "career",
+  },
+  {
+    id: "visn",
+    period: "Jan – May 2019",
+    role: "Engineering Student",
+    title: "VISN",
+    brief: "How can we help someone navigate a world they can't see?",
+    pills: ["Undergrad", "Hardware"],
+    href: "/case-study/visn",
+    type: "project",
+    image: { src: "/visn/Intro-pic.webp", alt: "VISN: wearable navigation system for visually impaired people", position: "38% top" },
   },
 ];
 
@@ -113,15 +113,15 @@ export const SVG_W = 520;
 export const SVG_H = 2620;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 88,  y: 260,  side: "left"  }, // VISN
-  { x: 408, y: 450,  side: "right" }, // asc-swe
-  { x: 88,  y: 635,  side: "left"  }, // sr-swe
-  { x: 455, y: 880,  side: "right" }, // sa-xd
-  { x: 65,  y: 1180, side: "left"  }, // path-360
-  { x: 424, y: 1460, side: "right" }, // people-leader-redesign
-  { x: 112, y: 1760, side: "left"  }, // Discover Integration (Manager, Experience Design)
-  { x: 436, y: 2040, side: "right" }, // bloom
-  { x: 85,  y: 2340, side: "left"  }, // time-tracker
+  { x: 85,  y: 260,  side: "left"  }, // time-tracker
+  { x: 436, y: 560,  side: "right" }, // Discover Integration (Manager, Experience Design)
+  { x: 112, y: 840,  side: "left"  }, // bloom
+  { x: 424, y: 1140, side: "right" }, // people-leader-redesign
+  { x: 65,  y: 1420, side: "left"  }, // path-360
+  { x: 455, y: 1720, side: "right" }, // sa-xd
+  { x: 88,  y: 1965, side: "left"  }, // sr-swe
+  { x: 408, y: 2150, side: "right" }, // asc-swe
+  { x: 88,  y: 2340, side: "left"  }, // VISN
 ];
 
 type WavePoint = { x: number; y: number };
@@ -158,16 +158,16 @@ const WAVE_WAYPOINTS: WavePoint[] = [
   WAVE_ANCHORS[0],
   WAVE_ANCHORS[1],
   WAVE_ANCHORS[2],
-  { x: 160, y: 710 },
-  { x: 330, y: 770 },
-  { x: 292, y: 830 },
+  { x: 176, y: 916 },
+  { x: 336, y: 980 },
+  { x: 292, y: 1052 },
   WAVE_ANCHORS[3],
   WAVE_ANCHORS[4],
   WAVE_ANCHORS[5],
   WAVE_ANCHORS[6],
-  { x: 176, y: 1836 },
-  { x: 336, y: 1900 },
-  { x: 292, y: 1972 },
+  { x: 160, y: 2025 },
+  { x: 330, y: 2085 },
+  { x: 292, y: 2130 },
   WAVE_ANCHORS[7],
   WAVE_ANCHORS[8],
   { x: 260, y: 2445 },

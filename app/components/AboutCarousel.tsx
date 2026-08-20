@@ -21,6 +21,7 @@ const PHOTOS: Photo[] = [
   { src: "/about/optimized/vegan-2.webp", caption: "Freshly made empanadas in Antigua." },
   { src: "/about/optimized/culture-2.webp", caption: "Wandering into the Sahara." },
   { src: "/about/optimized/tea-2.webp", caption: "Hiding in a Manhattan tea shop with a book." },
+  { src: "/about/optimized/culture-3.webp", caption: "Taking in Japan's temples." },
   { src: "/about/optimized/vegan-4.webp", caption: "The best vegan sushi, from two grandmothers in Kamakura." },
 ];
 

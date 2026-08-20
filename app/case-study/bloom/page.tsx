@@ -21,7 +21,7 @@ function BloomScreenshot(props: Parameters<typeof Screenshot>[0]) {
 
 export default function BloomCaseStudy() {
   return (
-    <CaseStudyShell context="Personal Project · 2026" currentHref="/case-study/bloom">
+    <CaseStudyShell context="Personal Project · March 2026" currentHref="/case-study/bloom">
       <ArticleHero
         eyebrow="Product Design · Vibe Coding"
         live={{ href: "https://plantmatch-six.vercel.app/", label: "Live prototype" }}

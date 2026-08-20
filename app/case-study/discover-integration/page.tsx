@@ -47,7 +47,7 @@ function MobileShots({
 
 export default function DiscoverIntegrationCaseStudy() {
   return (
-    <CaseStudyShell context="Capital One · Jan 2026 – Present" currentHref="/case-study/discover-integration">
+    <CaseStudyShell context="Capital One · Feb – June 2026" currentHref="/case-study/discover-integration">
       <ArticleHero
         eyebrow="Manager, Experience Design · Capital One"
         title={
@@ -60,7 +60,7 @@ export default function DiscoverIntegrationCaseStudy() {
         meta={
           <ArticleMeta
             role="Design & Strategy Lead"
-            timeline="Capital One · Jan 2026 – Present"
+            timeline="Capital One · Feb – June 2026"
             platform="Native (iOS, Android), Web, Mobile Web"
             resultsLabel="Targets"
             results={[

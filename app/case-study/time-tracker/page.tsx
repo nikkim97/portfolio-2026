@@ -55,7 +55,7 @@ function PhoneGrid({ children, cols = 3 }: { children: ReactNode; cols?: 3 | 4 }
 
 export default function TimeTrackerCaseStudy() {
   return (
-    <CaseStudyShell context="Personal Project · 2026" currentHref="/case-study/time-tracker">
+    <CaseStudyShell context="Personal Project · June 2026" currentHref="/case-study/time-tracker">
       <ArticleHero
         eyebrow="Product Design · Vibe Coding"
         live={{ href: "https://time-tracker-pi-sandy.vercel.app/", label: "Live prototype" }}
@@ -69,7 +69,7 @@ export default function TimeTrackerCaseStudy() {
         meta={
           <ArticleMeta
             role='Builder: concept, four life pillars, and "spec first" approach'
-            timeline="Personal April 2026"
+            timeline="Personal June 2026"
             platform="Mobile web"
           />
         }

@@ -26,7 +26,7 @@ function ExpandableProjectFigure(props: Parameters<typeof Figure>[0]) {
 
 export default function PeopleLeaderRedesignCaseStudy() {
   return (
-    <CaseStudyShell context="Capital One · 2025 – 2026" currentHref="/case-study/people-leader-redesign">
+    <CaseStudyShell context="Capital One · Nov 2025 – Feb 2026" currentHref="/case-study/people-leader-redesign">
       <ArticleHero
         eyebrow="Manager, Experience Design · PATH"
         title={
@@ -38,7 +38,7 @@ export default function PeopleLeaderRedesignCaseStudy() {
         meta={
           <ArticleMeta
             role="Design Lead for team of 4"
-            timeline="Capital One · Nov 2025 - Feb 2026"
+            timeline="Capital One · Nov 2025 – Feb 2026"
             platform="Enterprise web"
             results={[
               { value: "10 → 2", label: "screens collapsed into the My Team experience" },
