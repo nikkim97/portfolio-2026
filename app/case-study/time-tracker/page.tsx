@@ -76,15 +76,16 @@ export default function TimeTrackerCaseStudy() {
       />
 
       <div className="col-wide media-inset">
-        <div className="mx-auto w-full" style={{ maxWidth: 420 }}>
-          <Screenshot
-            expandable={false}
-            src="/case-study/time-track/herofinal.webp"
-            aspect="731/1456"
-            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
-            priority
-          />
-        </div>
+        <HeroVideo
+          src="/case-study/time-track/regular-flow.mp4"
+          poster="/case-study/time-track/regular-flow-poster.webp"
+          aspect="540/1110"
+          label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
+          maxWidth={420}
+        />
+        <p className="figure-caption mx-auto w-full" style={{ maxWidth: 420 }}>
+          Walkthrough: logging a session and watching the weekly balance update across the four life pillars.
+        </p>
       </div>
 
       <SectionHeader index="01" label="The concept" heading="Budget your time the way you budget money" />
@@ -148,16 +149,15 @@ export default function TimeTrackerCaseStudy() {
         </p>
       </Prose>
       <div className="col-wide media-inset">
-        <HeroVideo
-          src="/case-study/time-track/regular-flow.mp4"
-          poster="/case-study/time-track/regular-flow-poster.webp"
-          aspect="540/1110"
-          label="Time Tracker walkthrough: logging a session and watching the weekly balance update across the four life pillars"
-          maxWidth={420}
-        />
-        <p className="figure-caption mx-auto w-full" style={{ maxWidth: 420 }}>
-          Walkthrough: logging a session and watching the weekly balance update across the four life pillars.
-        </p>
+        <div className="mx-auto w-full" style={{ maxWidth: 420 }}>
+          <Screenshot
+            expandable={false}
+            src="/case-study/time-track/herofinal.webp"
+            aspect="731/1456"
+            label="Time Tracker: the balance read and the weekly breakdown of hours across four life pillars"
+            priority
+          />
+        </div>
       </div>
     </CaseStudyShell>
   );
