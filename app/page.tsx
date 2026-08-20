@@ -249,7 +249,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 1.05, ease: EASE }}
                 className="text-[10px] tracking-[0.22em] uppercase text-[var(--foreground)] mb-5"
               >
-                Niharika Mishra · Design Leader at Capital One
+	                Niharika Mishra · Design Strategist at Capital One
               </motion.p>
 
               <div className="flex flex-col">
@@ -262,9 +262,9 @@ export default function Home() {
                 </h1>
                 <p
                   className="font-light"
-                  style={{ fontSize: "clamp(18px, 2.4vw, 28px)", letterSpacing: "-0.01em", lineHeight: 1.45, color: "var(--foreground)", marginTop: 20, textWrap: "balance" }}
+	                  style={{ fontSize: "clamp(18px, 2.1vw, 25px)", letterSpacing: "-0.01em", lineHeight: 1.35, color: "var(--foreground)", marginTop: 20, textWrap: "balance" }}
                 >
-                  <WordStaggerLine text={"I make complex things feel human. Let me take you on my journey so far."} startDelay={1.6} perWord={0.05} duration={0.9} />
+	                  <WordStaggerLine text={"I'm on a mission to make complex systems feel human. I enjoy zero-to-one work where I can find the real problem and build while the idea is still a hunch."} startDelay={1.6} perWord={0.05} duration={0.9} />
                 </p>
               </div>
             </div>

@@ -193,6 +193,20 @@ export default function DiscoverIntegrationCaseStudy() {
           I&apos;ll update this case study as retention and call-volume data become available.
         </p>
       </Prose>
+
+      <SectionHeader index="06" label="The reflection" heading="Clarity is a retention strategy" />
+      <Prose>
+        <p>
+          This work reinforced that trust during a migration is built through small moments of orientation. The
+          strategy was not to explain every backend change; it was to help customers recognize themselves in the
+          new experience, understand what changed, and know exactly what to do next.
+        </p>
+        <p>
+          It also taught me how much design leadership happens before the screen. Getting clarity prioritized
+          meant aligning research, business risk, compliance constraints, and customer emotion into one argument:
+          if people feel lost during the switch, we have already made retention harder.
+        </p>
+      </Prose>
     </CaseStudyShell>
   );
 }

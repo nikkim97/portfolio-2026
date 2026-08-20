@@ -63,6 +63,12 @@ export default function VisnCaseStudy() {
           in one wearable, accessible package.
         </p>
         <p>
+          Our research started with the navigation tools available at the time: what canes, guide dogs, GPS
+          apps, and early wearable concepts handled well, and where they left gaps. The pattern was clear:
+          route guidance and obstacle awareness were usually treated as separate problems, even though a person
+          moving through the world experiences them at the same time.
+        </p>
+        <p>
           We wanted to build that. A system that could tell you: where you&apos;re going, what&apos;s in your way, and
           which direction you&apos;re facing, all through your ears, hands-free.
         </p>

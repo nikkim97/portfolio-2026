@@ -182,6 +182,21 @@ export default function PeopleLeaderRedesignCaseStudy() {
         aspect="1500/1234"
         caption="Three days, in person: discovery → framework → high-fidelity prototype"
       />
+
+      <SectionHeader index="05" label="The reflection" heading="Speed works when the problem is shared" />
+      <Prose>
+        <p>
+          The biggest learning was that speed did not come from skipping discovery; it came from compressing the
+          distance between research, product decisions, and design execution. Having product partners, designers,
+          and stakeholders in the same room made the tradeoffs visible early, so the team could make decisions
+          with shared context instead of revisiting them later.
+        </p>
+        <p>
+          It also reinforced what makes redesign work stick: not just a cleaner interface, but a better mental
+          model. Once we framed the experience around how leaders actually assess people, the path from ten
+          screens to two became much easier to defend.
+        </p>
+      </Prose>
     </CaseStudyShell>
   );
 }
