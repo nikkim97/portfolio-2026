@@ -333,7 +333,7 @@ export default function Home() {
                   { label: "LinkedIn", href: "https://www.linkedin.com/in/nikkim97/", external: true },
                   { label: "GitHub", href: "https://github.com/nikkim97", external: true },
 	                  { label: "X", href: "https://x.com/nikkimishra97", external: true },
-                  { label: "Résumé", href: "/nikki-resume1.pdf", external: true },
+                  { label: "Résumé", href: "/nikki-generic.pdf", external: true },
                 ].map(({ label, href, external }) => (
                   <a
                     key={label}
