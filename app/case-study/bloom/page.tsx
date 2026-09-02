@@ -78,11 +78,11 @@ export default function BloomCaseStudy() {
         <BloomScreenshot src="/case-study/bloom/quiz2.webp" aspect="1594/1280" label="Individual result: 'You are Monstera, The Expansive One,' with a short character description" caption="Your result before your partner's: the plant you are, in plain language" />
       </div>
 
-      <SectionHeader index="02" label="The build" heading="I'm the product partner. Claude Code is the developer." />
+      <SectionHeader index="02" label="The build" heading="I shaped the product and technical direction; Claude Code helped me move from spec to working app." />
       <Prose>
         <p>
-          I set the terms early: I&apos;d own the concept, trait framework, questions, and voice; Claude would build.
-          That line held the whole way through.
+          I set the terms early: I&apos;d own the concept, trait framework, questions, voice, and product logic;
+          Claude Code would help implement the app. That line held the whole way through.
         </p>
         <p>
           The product took shape in a live chat. I brought the plant analogy; Claude helped map it to human
@@ -90,8 +90,8 @@ export default function BloomCaseStudy() {
           after-work energy, shared calendars, conflict recovery.
         </p>
         <p>
-          Then Claude built the app in one pass: quiz data, scoring logic, plant profiles, suggestion cards,
-          quiz flow, results page, and homepage.
+          Claude Code implemented the first pass, while I evaluated the quiz data, scoring logic, content
+          structure, and flow against the experience I wanted.
         </p>
       </Prose>
       <div className="col-wide media-inset grid grid-cols-1 gap-4">
@@ -106,10 +106,10 @@ export default function BloomCaseStudy() {
           that set your trait charts beside your partner&apos;s.
         </p>
         <p>
-          It was fun to experiment and feel my creativity move while using Claude. For the first time, I could
-          combine my engineering foundation with my design instincts and maximize both: shaping the logic,
-          testing the flow, and still caring deeply about whether the experience felt valuable. The best part was
-          taking the quiz with my partner when he came home that same day.
+          It was fun to experiment and feel my creativity move while using Claude. My engineering background
+          helped me pressure-test the scoring logic and product flow, while my design instincts shaped whether
+          the result felt useful, honest, and human. The best part was taking the quiz with my partner when he
+          came home that same day.
         </p>
       </Prose>
       <div className="col-wide media-inset grid grid-cols-1 gap-4">

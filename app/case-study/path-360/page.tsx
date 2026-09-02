@@ -136,8 +136,8 @@ export default function Path360CaseStudy() {
         eyebrow="Principal Associate, Experience Design · PATH"
         title={
           <>
-            Calibrations were held inconsistently across the enterprise. I designed a system that brought
-            structure, trust, and shared content into the room
+            Performance calibration is where leaders align on employee ratings, promotions, and development
+            needs. I designed a system that brought structure, trust, and shared content into the room
             <span style={{ color: "var(--accent)" }}>.</span>
           </>
         }
@@ -222,9 +222,10 @@ export default function Path360CaseStudy() {
       <SectionHeader index="03" label="The prep" heading="Before the room: Prep for calibrations" />
       <Prose>
         <p>
-          Before PATH, calibration sessions were set up manually by HR business partners in Google Sheets. Each
-          group had to be assembled by hand: which teams should calibrate together, which associates belonged in
-          each session, who needed to attend, and when the conversation should happen.
+          Before PATH, HR partners had to manually group employees, assign attendees, and prepare session
+          materials in spreadsheets. Each group had to be assembled by hand: which teams should calibrate
+          together, which associates belonged in each session, who needed to attend, and when the conversation
+          should happen.
         </p>
         <p>
           We created a smarter setup system that let HR partners select the teams they wanted to calibrate
@@ -325,8 +326,8 @@ export default function Path360CaseStudy() {
       <Prose>
         <p>
           PATH launched as Capital One&apos;s first enterprise performance management platform, built on the
-          foundation the pilot established. The calibration ecosystem was the next main addition to the platform
-          alongside the 360 feedback experience.
+          foundation the pilot established. The calibration ecosystem helped turn that pilot into a scalable
+          enterprise platform, with fewer disputes, stronger post-session alignment, and fewer HR escalations.
         </p>
       </Prose>
       <div className="col-wide media-inset grid grid-cols-1 gap-[2px] sm:grid-cols-2">

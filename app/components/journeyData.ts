@@ -15,17 +15,6 @@ export interface JourneyNode {
 
 export const journeyNodes: JourneyNode[] = [
   {
-    id: "time-tracker",
-    period: "June 2026",
-    role: "Builder",
-    title: "Time Tracking Dashboard",
-    brief: "How can we help people see where their time is actually going?",
-    pills: ["Personal", "Codex"],
-    href: "/case-study/time-tracker",
-    type: "horizon",
-    image: { src: "/case-study/time-track/hero2.webp", alt: "Time Tracking Dashboard: the balance read and the weekly breakdown of hours across four life pillars", position: "center top" },
-  },
-  {
     id: "path-people",
     period: "Feb – June 2026",
     role: "Manager, Experience Design",
@@ -34,7 +23,29 @@ export const journeyNodes: JourneyNode[] = [
     pills: ["Capital One", "Mobile"],
     href: "/case-study/discover-integration",
     type: "project",
-    image: { src: "/case-study/manager/hero2.webp", alt: "Discover Integration: the welcome flow, account summary, and new Capital One home screen", position: "center" },
+    image: { src: "/case-study/manager/card-hero-iphone-ui.png", alt: "Discover Integration: iPhone mockup showing the migrated Capital One account experience", position: "center" },
+  },
+  {
+    id: "people-leader-redesign",
+    period: "Nov 2025 – Feb 2026",
+    role: "Manager, Experience Design",
+    title: "People Leader Redesign",
+    brief: "How do you align the experience with how leaders actually assess their people?",
+    pills: ["Capital One", "Visual UI"],
+    href: "/case-study/people-leader-redesign",
+    type: "project",
+    image: { src: "/case-study/pl-redesign/card-hero.png", alt: "People Leader Redesign: laptop mockup showing the 50/50 performance evidence and calibration profile workspace" },
+  },
+  {
+    id: "time-tracker",
+    period: "June 2026",
+    role: "Builder",
+    title: "Time Tracking Dashboard",
+    brief: "How can we help people see where their time is actually going?",
+    pills: ["Personal", "Codex"],
+    href: "/case-study/time-tracker",
+    type: "horizon",
+    image: { src: "/case-study/time-track/card-hero-dashboard-balance.png", alt: "Time Tracking Dashboard: two-phone mockup showing the weekly dashboard and balance interpretation views", position: "center" },
   },
   {
     id: "bloom",
@@ -46,17 +57,6 @@ export const journeyNodes: JourneyNode[] = [
     href: "/case-study/bloom",
     image: { src: "/case-study/bloom/hero-new.webp", alt: "Bloom: every relationship has a nature, shown on a desktop in a plant-filled workspace" },
     type: "horizon",
-  },
-  {
-    id: "people-leader-redesign",
-    period: "Nov 2025 – Feb 2026",
-    role: "Manager, Experience Design",
-    title: "People Leader Redesign",
-    brief: "How do you align the experience with how leaders actually assess their people?",
-    pills: ["Capital One", "Visual UI"],
-    href: "/case-study/people-leader-redesign",
-    type: "project",
-    image: { src: "/case-study/pl-redesign/hero.webp", alt: "People Leader Redesign: aligning the experience with how leaders assess their people" },
   },
   {
     id: "path-360",
@@ -113,10 +113,10 @@ export const SVG_W = 520;
 export const SVG_H = 2620;
 
 export const WAVE_ANCHORS: { x: number; y: number; side: "left" | "right" }[] = [
-  { x: 85,  y: 260,  side: "left"  }, // time-tracker
-  { x: 436, y: 560,  side: "right" }, // Discover Integration (Manager, Experience Design)
-  { x: 112, y: 840,  side: "left"  }, // bloom
-  { x: 424, y: 1140, side: "right" }, // people-leader-redesign
+  { x: 85,  y: 260,  side: "left"  }, // Discover Integration
+  { x: 436, y: 560,  side: "right" }, // people-leader-redesign
+  { x: 112, y: 840,  side: "left"  }, // time-tracker
+  { x: 424, y: 1140, side: "right" }, // bloom
   { x: 65,  y: 1420, side: "left"  }, // path-360
   { x: 455, y: 1720, side: "right" }, // sa-xd
   { x: 88,  y: 1965, side: "left"  }, // sr-swe

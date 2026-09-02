@@ -128,11 +128,12 @@ export default function SaXdCaseStudy() {
       <SectionHeader index="01" label="The problem" heading="Low trust in a system that was supposed to help people grow" />
       <Prose>
         <p>
-          360 feedback was poorly connected to the broader performance flow. Feedback templates varied wildly
-          across teams. Responses skewed positive, not because everyone was performing exceptionally, but because
-          the system gave people no reason to be specific or honest. People leaders lacked confidence in the
-          feedback they received. Associates didn&apos;t know how it would be used. The result was a process that
-          consumed time and produced noise.
+          360 feedback — peer and manager input used during performance reviews — was disconnected from the
+          moments where leaders actually made decisions. Feedback templates varied wildly across teams.
+          Responses skewed positive, not because everyone was performing exceptionally, but because the system
+          gave people no reason to be specific or honest. People leaders lacked confidence in the feedback they
+          received. Associates didn&apos;t know how it would be used. The result was a process that consumed time and
+          produced noise.
         </p>
         <p>
           We interviewed leaders and associates and looked closely at how feedback was actually being written and
@@ -200,10 +201,10 @@ export default function SaXdCaseStudy() {
           which way it broke until the pilot.
         </p>
         <p>
-          The key decision: <strong>making 360 feedback a first-class input in calibration, not an
-          afterthought</strong>. At the time, people leaders used Google Slides to represent their associates
-          during calibrations. For our pilot group, we redesigned the calibration slide to surface feedback
-          directly alongside the performance data leaders collected.
+          The key decision was to <strong>make feedback visible during the actual rating conversation, not buried
+          in a separate tool</strong>. At the time, people leaders used Google Slides to represent their
+          associates during calibrations. For our pilot group, we redesigned the calibration slide to surface
+          feedback directly alongside the performance data leaders collected.
         </p>
       </Prose>
       <figure className="col-wide media-inset">
@@ -260,7 +261,8 @@ export default function SaXdCaseStudy() {
       <SectionHeader index="06" label="The reflection" heading="Growth as a designer" />
       <Prose>
         <p>
-          This was my first major lead effort, and it changed the way I think about product and strategy design.
+          This pilot improved feedback clarity, quality, and actionability, and helped Capital One move away
+          from Workday toward an in-house performance platform.
         </p>
         <p>
           What stayed with me most was how much stronger the work became when alignment happened early. Bringing

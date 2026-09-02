@@ -68,7 +68,7 @@ export default function TimeTrackerCaseStudy() {
         }
         meta={
           <ArticleMeta
-            role='Builder: concept, four life pillars, and "spec first" approach'
+            role="Builder: concept, product logic, four life pillars, and spec-first build direction"
             timeline="Personal June 2026"
             platform="Mobile web"
           />
@@ -143,9 +143,9 @@ export default function TimeTrackerCaseStudy() {
       <SectionHeader index="03" label="The reflection" heading="It's fun to see my ideas come to life" />
       <Prose>
         <p>
-          Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that judgment
-          travels further when I write it down before I build, which is the difference between exploring an idea
-          and shipping a coherent one.
+          Bloom showed me I could move at the speed of my own judgment. Time Tracker showed me that writing the
+          logic first — categories, targets, states, and edge cases — made the build sharper and kept the product
+          coherent.
         </p>
       </Prose>
       <div className="col-wide media-inset">

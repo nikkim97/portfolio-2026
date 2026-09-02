@@ -121,17 +121,17 @@ export default function DiscoverIntegrationCaseStudy() {
       <SectionHeader index="02" label="The first experience" heading="The First Time Experience" />
       <Prose>
         <p>
-          The Capital One app already had established L1 and L2 experiences through EASE, and we couldn&apos;t
-          alter those surfaces much. So we focused on the First Time Experience: the first thing a Discover
-          customer would see, a welcome animation followed by a single screen that lays out everything changing
-          for them, <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place,
-          here&apos;s what just happened, here&apos;s what&apos;s yours.</em>
+          The Capital One app already had established home and detail-page patterns, and we couldn&apos;t alter
+          those surfaces much. So we focused on the First Time Experience: the first thing a Discover customer
+          would see, a welcome animation followed by a single screen that lays out everything changing for them,
+          <em>at a glance</em>. It orients before it asks for anything: <em>you&apos;re in the right place, here&apos;s
+          what just happened, here&apos;s what&apos;s yours.</em>
         </p>
         <p>
           The animation does the emotional work, marking the moment as a welcome rather than a disruption. The
           glance screen does the cognitive work, answering &ldquo;what changed?&rdquo; in one place. To preserve that
-          continuity into the landing page, we reused familiar language and a wrench icon in the mudflap, clearly
-          signaling which accounts still needed setup to keep customers&apos; existing routines intact.
+          continuity into the landing page, we reused familiar language and a setup icon on the account card,
+          clearly signaling which accounts still needed attention to keep customers&apos; existing routines intact.
         </p>
       </Prose>
       <MobileShots
@@ -187,10 +187,10 @@ export default function DiscoverIntegrationCaseStudy() {
       <SectionHeader index="05" label="The outcome" heading="Measured on retention" />
       <Prose>
         <p>
-          Success will be measured on two things: the <strong>customer volume retained</strong>{" "}through the
-          switch and <strong>how few calls</strong>{" "}the change drives to front-line associates. The
-          experience is scheduled to launch and enter testing in late 2026, so results are still to come.
-          I&apos;ll update this case study as retention and call-volume data become available.
+          The experience is designed to protect retention during the migration, with success measured by
+          <strong> customer volume retained</strong>{" "}and migration questions resolved digitally instead of
+          through frontline support. It is scheduled to launch and enter testing in late 2026, so results are
+          still to come. I&apos;ll update this case study as retention and call-volume data become available.
         </p>
       </Prose>
 

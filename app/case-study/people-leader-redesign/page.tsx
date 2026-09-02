@@ -57,7 +57,11 @@ export default function PeopleLeaderRedesignCaseStudy() {
           interactive prototype.
         </p>
         <p>
-          To build calibration materials, a people leader had to work across the whole system. A <strong>table-based &ldquo;My Team&rdquo; list</strong> was just the index: from it, they clicked into a feedback flow to review each associate&apos;s responses, looked through results on separate screens, then moved through a distinct <strong>ten-step flow (Overview, Key results, Strengths, Opportunities, Preview)</strong> to assemble every calibration profile.
+          To build calibration materials, a people leader had to work across the whole system. A{" "}
+          <strong>table-based &ldquo;My Team&rdquo; list</strong>{" "}was just the index: from it, they clicked
+          into a feedback flow to review each associate&apos;s responses, looked through results on separate screens,
+          then moved through a long profile-building flow to assemble the materials needed for one calibration
+          conversation.
         </p>
         <p>
           All told, <strong>10 screens for a single conversation.</strong> Information was split across all of
@@ -122,13 +126,15 @@ export default function PeopleLeaderRedesignCaseStudy() {
       <SectionHeader index="03" label="The solution" heading="Two screens, everything side by side" />
       <Prose>
         <p>
-          Now, when a leader opens the <strong>My Team</strong> page, they see every stat they need for
-          calibration at a glance. From there, a single associate view puts feedback, results, strengths, and the
-          calibration profile <strong>side by side</strong>: dynamic tabs and sliding drawers keep the leader in flow instead of hopping across screens.
+          Now, when a leader opens the <strong>My Team</strong>{" "}page, they see every stat they need for
+          calibration at a glance. From there, a single associate view lets the leader review feedback, results,
+          strengths, and calibration notes in one place instead of jumping between screens.
         </p>
         <p>
-          The work also produced reusable UI patterns now standardized across the PATH ecosystem, plus a rigorous
-          accessibility review for the enterprise release. This made their workflow much more straightforward.
+          The biggest interaction decision was replacing the old step-by-step profile flow with a workspace: the
+          evidence stayed visible on the left, while the calibration profile opened beside it on the right. It
+          made the screen denser, but it solved the real problem: leaders needed to interpret performance data
+          and write their point of view at the same time.
         </p>
       </Prose>
       <ProjectFigure
@@ -139,7 +145,60 @@ export default function PeopleLeaderRedesignCaseStudy() {
         caption="The 360 associate view: dynamic tabs and a sliding calibration drawer keep the leader in flow"
       />
 
-      <SectionHeader index="04" label="Outcome" heading="From 10 screens to two" />
+      <SectionHeader index="04" label="The UI deep dive" heading="A one-screen workspace for evidence and judgment" />
+      <Prose>
+        <p>
+          We had to make a tradeoff: a 50/50 layout meant less room for each side, but it kept the leader in the
+          evaluation context. The outer tabs kept results, competency feedback, insights, calibration profile,
+          and performance review sticky as the page scrolled. Inside the profile, a second set of sticky tabs let
+          leaders move through the sections they needed to complete without losing their place.
+        </p>
+        <p>
+          The drawer also carried state. A profile checklist showed where the leader was in the process of
+          gathering and interpreting evidence, and the ready-for-calibration toggle stayed unavailable until the
+          required inputs were complete. Once the profile was marked ready, the form locked; turning the toggle
+          off unlocked it for edits.
+        </p>
+      </Prose>
+      <ProjectFigure
+        variant="wide"
+        src="/case-study/pl-redesign/workspace-50-50-locked.png"
+        alt="People Leader Redesign: 50/50 workspace with performance evidence on the left and locked calibration profile drawer on the right"
+        aspect="1440/4607"
+        caption="The shipped workspace: performance evidence stays visible while the calibration profile opens beside it. Sticky tabs keep both surfaces navigable during a dense review session."
+      />
+      <ProjectFigure
+        variant="wide"
+        src="/case-study/pl-redesign/profile-expanded-mode.png"
+        alt="People Leader Redesign: expanded calibration profile mode with profile status checklist and strengths and development sections"
+        aspect="1440/2404"
+        caption="Expanded mode: when the profile needed more room, leaders could move from split-screen review into a full-screen drawer without changing the underlying task model."
+      />
+
+      <SectionHeader index="05" label="The information architecture" heading="Tabs kept leaders in context; filters made messy feedback scannable" />
+      <Prose>
+        <p>
+          Earlier versions relied on hyperlinks, but every link pulled the leader out of the associate view. I
+          helped move the core subsections into tabs so leaders could switch between results, feedback, insights,
+          and profile-writing without losing the person they were evaluating.
+        </p>
+        <p>
+          Results were standardized into a consistent hierarchy: title, description, then impact. Feedback was
+          organized by competency instead of splitting strengths from opportunities, because competency was the
+          common ground across every feedback source. Within each competency, filters let leaders narrow by
+          feedback type, relationship type, and provider, while expandable sections handled long comments and
+          empty rows stayed visible as &ldquo;No feedback available.&rdquo;
+        </p>
+      </Prose>
+      <ProjectFigure
+        variant="wide"
+        src="/case-study/pl-redesign/competency-feedback-tab.png"
+        alt="People Leader Redesign: competency feedback tab with filters, expandable competency sections, feedback cards, counts, and empty rows"
+        aspect="1440/3248"
+        caption="Competency feedback: filters let leaders narrow by feedback type, relationship, and provider, while expandable competency rows kept long feedback, summary counts, and empty states scannable."
+      />
+
+      <SectionHeader index="06" label="Outcome" heading="From 10 screens to two" />
       <Prose>
         <p>
           The redesign brought a leader&apos;s entire calibration prep onto a few connected screens, with the
@@ -183,13 +242,13 @@ export default function PeopleLeaderRedesignCaseStudy() {
         caption="Three days, in person: discovery → framework → high-fidelity prototype"
       />
 
-      <SectionHeader index="05" label="The reflection" heading="Speed works when the problem is shared" />
+      <SectionHeader index="07" label="The reflection" heading="Speed works when the problem is shared" />
       <Prose>
         <p>
           The biggest learning was that speed did not come from skipping discovery; it came from compressing the
-          distance between research, product decisions, and design execution. Having product partners, designers,
-          and stakeholders in the same room made the tradeoffs visible early, so the team could make decisions
-          with shared context instead of revisiting them later.
+          distance between research, product decisions, and design execution. The redesign reduced prep from{" "}
+          <strong>10 screens to 2</strong>, created a <strong>76% efficiency gain</strong>{" "}for people leaders,
+          and became a reusable sprint model for related PATH workflows.
         </p>
         <p>
           It also reinforced what makes redesign work stick: not just a cleaner interface, but a better mental

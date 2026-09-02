@@ -11,10 +11,10 @@ const bridgeCopyByHref: Record<string, string> = {
   "/case-study/visn": "That early hardware work taught me to design through uncertainty. The next chapter moved into enterprise systems, where trust had to scale.",
   "/case-study/sa-xd": "That pilot proved better feedback could change the conversation. PATH asked the bigger question: how do you scale that trust across the enterprise?",
   "/case-study/path-360": "Once the platform existed, the next challenge was flow: helping leaders prepare for high-stakes conversations without stitching context together themselves.",
-  "/case-study/people-leader-redesign": "After designing for internal decision-making, Discover shifted the stakes outward: a customer-facing migration where clarity had to earn trust immediately.",
-  "/case-study/discover-integration": "Those enterprise constraints made me hungry to build faster, smaller, and closer to the idea itself.",
-  "/case-study/bloom": "Bloom proved I could move from a personal insight to a working product quickly. Time Tracker pushed that same speed into a more structured tool.",
-  "/case-study/time-tracker": "That builder energy loops back to where I started: designing systems that make invisible needs easier to navigate.",
+  "/case-study/people-leader-redesign": "That internal systems work made me hungry to build faster, smaller, and closer to the idea itself.",
+  "/case-study/discover-integration": "From a customer-facing migration, the next project moves inward: helping leaders make high-stakes talent decisions with clearer context.",
+  "/case-study/time-tracker": "Time Tracker made invisible patterns visible. Bloom brought that same builder energy into a more emotional system: relationships.",
+  "/case-study/bloom": "Bloom proved I could move from a personal insight to a working product quickly. The next chapter returns to enterprise systems, where trust had to scale.",
 };
 
 function getNextProject(currentHref: string) {
