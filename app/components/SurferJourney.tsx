@@ -12,9 +12,37 @@ import { journeyNodes, WAVE_PATH_D, SVG_W, SVG_H, WAVE_ANCHORS } from "./journey
 const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const mobileJourneyNodes = journeyNodes.filter((node) => node.type !== "career");
+const getPillStyle = (pill: string, options?: { inactive?: boolean }) => {
+  const isPersonalPill = pill.toLowerCase() === "personal";
+  const isCapitalOnePill = pill.toLowerCase() === "capital one";
+  const isUndergradPill = pill.toLowerCase() === "undergrad";
+
+  return {
+    color: isCapitalOnePill ? "var(--background)" : "var(--foreground)",
+    border: isCapitalOnePill
+      ? "1px solid rgba(246,244,237,0.9)"
+      : isPersonalPill
+        ? "1px solid rgba(211,146,91,0.5)"
+        : isUndergradPill
+          ? "1px solid rgba(185,176,148,0.42)"
+        : "1px solid var(--glass-border)",
+    background: isCapitalOnePill
+      ? "rgba(246,244,237,0.94)"
+      : isPersonalPill
+        ? "rgba(211,146,91,0.26)"
+        : isUndergradPill
+          ? "rgba(185,176,148,0.18)"
+        : "var(--glass-bg)",
+    backdropFilter: "var(--pill-filter)",
+    WebkitBackdropFilter: "var(--pill-filter)",
+    boxShadow: isCapitalOnePill ? "0 10px 24px rgba(0,0,0,0.16)" : "var(--glass-shadow)",
+    opacity: options?.inactive ? 0.9 : undefined,
+  };
+};
 
 function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }) {
   const isActionable = !!node.href && !node.comingSoon;
+  const isPersonalProject = node.type === "horizon";
   const Wrapper = isActionable ? "a" : "div";
 
   return (
@@ -46,7 +74,21 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
               objectFit: node.image.fit ?? "cover",
               objectPosition: "center top",
               transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
-              filter: "saturate(0.95) contrast(1.02)",
+              filter: isPersonalProject
+                ? "saturate(0.72) contrast(0.94) brightness(0.92)"
+                : "saturate(0.95) contrast(1.02)",
+              opacity: isPersonalProject ? 0.86 : 1,
+            }}
+          />
+        )}
+        {isPersonalProject && (
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(135deg, rgba(211,146,91,0.22), rgba(31,28,23,0.24))",
+              mixBlendMode: "multiply",
             }}
           />
         )}
@@ -68,7 +110,7 @@ function MobileJourneyCard({ node }: { node: typeof mobileJourneyNodes[number] }
             <span
               key={p}
               className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-              style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)" }}
+              style={getPillStyle(p)}
             >
               {p}
             </span>
@@ -463,7 +505,7 @@ export default function SurferJourney() {
                     <span
                       key={p}
                       className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)", opacity: 0.9 }}
+                      style={getPillStyle(p, { inactive: true })}
                     >
                       {p}
                     </span>
@@ -484,6 +526,7 @@ export default function SurferJourney() {
 
         // Project / horizon nodes: editorial two-section card
         const isActionable = !!node.href && !node.comingSoon;
+        const isPersonalProject = node.type === "horizon";
         const CardLink = isActionable ? "a" : "div";
 
         return (
@@ -540,8 +583,28 @@ export default function SurferJourney() {
                       objectFit: node.image.fit ?? "cover",
                       objectPosition: node.image.position ?? "center",
                       transform: node.image.scale ? `scale(${node.image.scale})` : undefined,
-                      filter: inZone ? "saturate(1.04) contrast(1.03)" : "saturate(0.9) contrast(0.98)",
+                      filter: isPersonalProject
+                        ? inZone
+                          ? "saturate(0.82) contrast(0.98) brightness(0.96)"
+                          : "saturate(0.66) contrast(0.92) brightness(0.9)"
+                        : inZone
+                          ? "saturate(1.04) contrast(1.03)"
+                          : "saturate(0.9) contrast(0.98)",
+                      opacity: isPersonalProject ? (inZone ? 0.9 : 0.82) : 1,
                       transition: "filter 0.4s ease",
+                    }}
+                  />
+                )}
+                {isPersonalProject && (
+                  <div
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(135deg, rgba(211,146,91,0.24), rgba(31,28,23,0.28))",
+                      mixBlendMode: "multiply",
+                      opacity: inZone ? 0.72 : 0.9,
+                      transition: "opacity 0.4s ease",
                     }}
                   />
                 )}
@@ -574,7 +637,7 @@ export default function SurferJourney() {
                     <span
                       key={p}
                       className="text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full"
-                      style={{ color: "var(--foreground)", border: "1px solid var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "var(--pill-filter)", WebkitBackdropFilter: "var(--pill-filter)", boxShadow: "var(--glass-shadow)" }}
+                      style={getPillStyle(p)}
                     >
                       {p}
                     </span>
