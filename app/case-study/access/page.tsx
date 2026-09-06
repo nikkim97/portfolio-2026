@@ -10,7 +10,7 @@ const PROTECTED_PATHS = new Set([
 
 export const metadata = caseStudyMetadata({
   title: "Protected Case Study",
-  description: "Password-protected Capital One case study access.",
+  description: "Protected portfolio work.",
   slug: "access",
 });
 
@@ -44,17 +44,6 @@ export default async function CaseStudyAccessPage({
         <p className="mono-label mb-5" style={{ color: "var(--accent-text)" }}>
           Protected Work
         </p>
-        <h1
-          className="serif-display mb-4"
-          style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1.05, fontWeight: 400 }}
-        >
-          Capital One case study access
-          <span style={{ color: "var(--accent)" }}>.</span>
-        </h1>
-        <p className="mb-8 leading-7" style={{ color: "var(--body)" }}>
-          This project includes confidential enterprise work, so it needs a password before viewing.
-        </p>
-
         <form action="/api/case-study-access" method="post" className="flex flex-col gap-4">
           <input type="hidden" name="redirect" value={redirect} />
           <label className="flex flex-col gap-2">
@@ -78,16 +67,8 @@ export default async function CaseStudyAccessPage({
               That password didn&apos;t work. Try again.
             </p>
           )}
-          <button
-            className="mono-label rounded-full px-6 py-4 transition-transform duration-200 hover:-translate-y-0.5"
-            type="submit"
-            style={{
-              background: "var(--accent)",
-              color: "var(--background)",
-              boxShadow: "0 14px 28px rgba(0, 0, 0, 0.25)",
-            }}
-          >
-            Unlock Case Study
+          <button className="sr-only" type="submit">
+            Submit password
           </button>
         </form>
 
