@@ -45,6 +45,44 @@ function MobileShots({
   );
 }
 
+const DISCOVER_SYSTEM_IMAGES = [
+  {
+    src: "/case-study/manager/discover-transfer-system-map.png",
+    aspect: "1586 / 1026",
+    label: "Discover transfer-state system map",
+    caption:
+      "Transfer-state map: welcome, checklist, EFO, account summary, error, and tablet states mapped together so the migration experience could scale across product combinations.",
+  },
+  {
+    src: "/case-study/manager/discover-welcome-transfer-variants.png",
+    aspect: "1790 / 724",
+    label: "Discover welcome transfer variants",
+    caption:
+      "Welcome Transfers variants: product-specific copy and task logic changed based on which Discover accounts were becoming Capital One accounts.",
+  },
+  {
+    src: "/case-study/manager/discover-account-summary-variations.png",
+    aspect: "984 / 1212",
+    label: "Discover L2 account summary variations",
+    caption:
+      "Account Summary variations: entry points and account-specific modules adapted to checking, savings, CDs, branch accounts, and money market transfers.",
+  },
+  {
+    src: "/case-study/manager/discover-efo-variations.png",
+    aspect: "1514 / 1090",
+    label: "Discover L2 EFO variations",
+    caption:
+      "EFO variations: the deeper utility layer connected customers to direct deposits, digital wallet, Zelle, locations, joint holders, savings rules, and cash access.",
+  },
+  {
+    src: "/case-study/manager/discover-checklist-variations.png",
+    aspect: "1044 / 560",
+    label: "Discover L2 checklist variations",
+    caption:
+      "Checklist variations: task states flexed based on debit reissue, bill pay, completion, and which setup actions were already done.",
+  },
+];
+
 export default function DiscoverIntegrationCaseStudy() {
   return (
     <CaseStudyShell context="Capital One · Feb – June 2026" currentHref="/case-study/discover-integration">
@@ -165,7 +203,33 @@ export default function DiscoverIntegrationCaseStudy() {
         ]}
       />
 
-      <SectionHeader index="04" label="The constraints" heading="Designing inside the lines, and selling the why" />
+      <SectionHeader index="04" label="The system" heading="Designing the transfer-state system" />
+      <Prose>
+        <p>
+          The work wasn&apos;t just a welcome screen. The migration had to account for different account
+          combinations, product rules, devices, and transfer states without making customers feel like they were
+          being pushed through a backend process.
+        </p>
+        <p>
+          Alongside my content designer and a junior designer, I laid out the end-to-end transfer ecosystem so
+          each customer saw a version of the experience that matched what was actually changing for them: money
+          market to savings, checking to checking, CDs, checklist tasks, account summaries, error states, and
+          tablet layouts.
+        </p>
+      </Prose>
+      <figure className="col-wide media-inset grid grid-cols-1 gap-6">
+        {DISCOVER_SYSTEM_IMAGES.map((image) => (
+          <Screenshot
+            key={image.label}
+            src={image.src}
+            aspect={image.aspect}
+            label={image.label}
+            caption={image.caption}
+          />
+        ))}
+      </figure>
+
+      <SectionHeader index="05" label="The constraints" heading="Designing inside the lines, and selling the why" />
       <Prose>
         <p>
           The biggest constraint wasn&apos;t the brief, it was the canvas. This lives inside the full Capital One
@@ -184,7 +248,7 @@ export default function DiscoverIntegrationCaseStudy() {
         </p>
       </Prose>
 
-      <SectionHeader index="05" label="The outcome" heading="Measured on retention" />
+      <SectionHeader index="06" label="The outcome" heading="Measured on retention" />
       <Prose>
         <p>
           The experience is designed to protect retention during the migration, with success measured by
@@ -194,19 +258,6 @@ export default function DiscoverIntegrationCaseStudy() {
         </p>
       </Prose>
 
-      <SectionHeader index="06" label="The reflection" heading="Clarity is a retention strategy" />
-      <Prose>
-        <p>
-          This work reinforced that trust during a migration is built through small moments of orientation. The
-          strategy was not to explain every backend change; it was to help customers recognize themselves in the
-          new experience, understand what changed, and know exactly what to do next.
-        </p>
-        <p>
-          It also taught me how much design leadership happens before the screen. Getting clarity prioritized
-          meant aligning research, business risk, compliance constraints, and customer emotion into one argument:
-          if people feel lost during the switch, we have already made retention harder.
-        </p>
-      </Prose>
     </CaseStudyShell>
   );
 }
