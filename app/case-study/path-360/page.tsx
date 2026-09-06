@@ -59,6 +59,45 @@ const SESSION_PREP_IMAGES = [
   },
 ];
 
+const STATE_SYSTEM_IMAGES = [
+  {
+    src: "/case-study/pa-xd/state-system-map.png",
+    alt: "Full state map for the calibrations ecosystem showing session states, creation flows, error states, empty states, and reusable components",
+    aspect: "1952/1336",
+    caption: "State map: the full ecosystem of facilitator permissions, live-session behavior, error handling, empty states, tooltips, components, and change log.",
+  },
+  {
+    src: "/case-study/pa-xd/state-drag-associate.png",
+    alt: "Move an associate by dragging: before and after facilitator views showing an associate moved between rating buckets",
+    aspect: "2182/1604",
+    caption: "Drag-and-drop states: facilitators could move associates between rating buckets during the live session without losing the shared room context.",
+  },
+  {
+    src: "/case-study/pa-xd/state-select-rating.png",
+    alt: "Select a rating: dropdown open, hover, and selected rating states inside the associate drawer",
+    aspect: "2420/1208",
+    caption: "Rating states: changing an associate rating happened inside the drawer, with clear open, hover, and selected states.",
+  },
+  {
+    src: "/case-study/pa-xd/state-error-states.png",
+    alt: "Error states for ending a session and failed associate movement during live calibration",
+    aspect: "2684/1148",
+    caption: "Recovery states: failed end-session attempts and unsaved movement errors used clear banner treatments so facilitators knew what blocked progress.",
+  },
+  {
+    src: "/case-study/pa-xd/state-empty-partial.png",
+    alt: "Empty and partial states for assigned sessions, read-only people leader views, selected associates, and collecting data",
+    aspect: "2090/1082",
+    caption: "Empty and partial states: the system handled sessions with no data, selected-only views, read-only states, and moments where associate data was still collecting.",
+  },
+  {
+    src: "/case-study/pa-xd/state-tooltips.png",
+    alt: "Tooltip states for stacked roles and distribution guidance in the calibration ecosystem",
+    aspect: "2084/1456",
+    caption: "Tooltip states: role overflow and distribution guidance stayed accessible without adding clutter to an already dense session view.",
+  },
+];
+
 function Img({
   src,
   alt,
@@ -304,7 +343,34 @@ export default function Path360CaseStudy() {
         </figure>
       </figure>
 
-      <SectionHeader index="05" label="The field signal" heading="Early signal from the field" />
+      <SectionHeader index="05" label="The states" heading="Designing the states behind the session" />
+      <Prose>
+        <p>
+          The hardest part wasn&apos;t only the live interaction. It was defining what every person could see,
+          change, and recover from depending on their role, timing, and session state. I led the end-to-end
+          structure for the calibration ecosystem, then partnered with another designer to expand the smaller
+          edge cases and interaction behaviors.
+        </p>
+        <p>
+          That meant the experience needed to behave like a real operating system for calibration season:
+          permission-based, state-aware, and calm under pressure.
+        </p>
+      </Prose>
+      <figure className="col-wide media-inset grid grid-cols-1 gap-6">
+        {STATE_SYSTEM_IMAGES.map((image) => (
+          <figure key={image.src}>
+            <Img
+              expandable
+              src={image.src}
+              alt={image.alt}
+              aspect={image.aspect}
+              fit="contain"
+            />
+            <figcaption className="figure-caption">{image.caption}</figcaption>
+          </figure>
+        ))}
+      </figure>
+      <SectionHeader index="06" label="The field signal" heading="Early signal from the field" />
       <Prose>
         <p>
           We ran iterative research throughout the build, not just usability studies, but ongoing conversations
@@ -322,7 +388,7 @@ export default function Path360CaseStudy() {
         <figcaption className="figure-caption">Early feedback from the field: leaders felt more prepared, conversations felt more fair.</figcaption>
       </figure>
 
-      <SectionHeader index="06" label="The outcome" heading="From pilot to platform" />
+      <SectionHeader index="07" label="The outcome" heading="From pilot to platform" />
       <Prose>
         <p>
           PATH launched as Capital One&apos;s first enterprise performance management platform, built on the
